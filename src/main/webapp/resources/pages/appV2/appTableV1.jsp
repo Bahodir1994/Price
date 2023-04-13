@@ -11,6 +11,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <div class="page-wrapper">
     <div class="page-header">
         <div class="page-block">
@@ -105,25 +106,238 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 p-4">
+                <div class="col-sm-12 p-2">
                     <div id="main">
                         <div class="container-fluid">
                             <div class="accordion" id="faq">
 
-                                <div class="card">
+                                <div class="card m-0">
                                     <div class="card-header" id="faqhead2">
-                                        <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2"
-                                           aria-expanded="true" aria-controls="faq2">Қўшимча қидирув филтрлари</a>
+                                        <a href="#" class="btn btn-header-link collapsed"
+                                           data-toggle="collapse" data-target="#faq2"
+                                           aria-expanded="true" aria-controls="faq2">Қўшимча қидирув
+                                            филтрлари</a>
                                     </div>
 
-                                    <div id="faq2" class="collapse" aria-labelledby="faqhead2" data-parent="#faq">
-                                        <div class="card-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                                            moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                            Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                            shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                            proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                            aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    <div id="faq2" class="collapse" aria-labelledby="faqhead2"
+                                         data-parent="#faq">
+                                        <div class="card-body text-center justify-content-center">
+                                            <form>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState1">ХББ</label>
+                                                        <select id="inputState1"
+                                                                class="form-control form-control-sm">
+                                                            <option selected>ХББни танланг</option>
+                                                            <option>...</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState2">Олиб ўтиш
+                                                            хусусияти</label>
+                                                        <select id="inputState2"
+                                                                class="form-control form-control-sm">
+                                                            <option selected>Олиб ўтиш хусусиятини
+                                                                танланг
+                                                            </option>
+                                                            <option>...</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState3">Қўшимча ўлчов
+                                                            бирлиги</label>
+                                                        <select id="inputState3"
+                                                                class="form-control form-control-sm">
+                                                            <option selected>Қўшимча ўлчов бирлиги
+                                                                танланг
+                                                            </option>
+                                                            <option>...</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState4">Божхона
+                                                            режими</label>
+                                                        <select id="inputState4"
+                                                                class="form-control form-control-sm">
+                                                            <option selected>Режимни танланг
+                                                            </option>
+                                                            <option>...</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState5">Етказиб
+                                                            шарти</label>
+                                                        <select id="inputState5"
+                                                                class="form-control form-control-sm">
+                                                            <option selected>Етказиб шартини
+                                                                танланг
+                                                            </option>
+                                                            <option>...</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-1">
+                                                        <label for="inputState6">БЮД(:дан)</label>
+                                                        <input type="date"
+                                                               class="form-control form-control-sm px-1"
+                                                               id="inputState6"
+                                                               maxlength="10" tabindex="1"
+                                                               name="dcodate"
+                                                               min="2020-01-01"
+                                                               max="2023-12-31"
+                                                               value="2023-03-01">
+                                                    </div>
+                                                    <div class="form-group col-md-1">
+                                                        <label for="inputState7">БЮД(:гача)</label>
+                                                        <input type="date"
+                                                               class="form-control form-control-sm px-1"
+                                                               id="inputState7"
+                                                               maxlength="10" tabindex="1"
+                                                               name="dcodate"
+                                                               min="2020-01-01"
+                                                               max="2023-12-31"
+                                                               value="2023-03-01">
+                                                    </div>
+
+
+
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState11">Божхона
+                                                            пости</label>
+                                                        <select id="inputState11"
+                                                                class="form-control form-control-sm">
+                                                            <option selected>Постни танланг</option>
+                                                            <option>...</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState12">Шартнома
+                                                            тури</label>
+                                                        <select id="inputState12"
+                                                                class="form-control form-control-sm">
+                                                            <option selected>Шартнома турини
+                                                                танланг
+                                                            </option>
+                                                            <option>...</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState13">Метод</label>
+                                                        <select id="inputState13"
+                                                                class="form-control form-control-sm">
+                                                            <option selected>Методтанланг</option>
+                                                            <option>...</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState14">Аввалги
+                                                            режим</label>
+                                                        <select id="inputState14"
+                                                                class="form-control form-control-sm">
+                                                            <option selected>Режимни танланг
+                                                            </option>
+                                                            <option>...</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState15">Товар
+                                                            маркаси</label>
+                                                        <input type="text"
+                                                               class="form-control form-control-sm px-1"
+                                                               id="inputState15"
+                                                               placeholder="Товар маркаси"
+                                                        >
+
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState20">Тузатиш
+                                                            киритилган</label>
+                                                        <select id="inputState20"
+                                                                class="form-control form-control-sm">
+                                                            <option selected>Режимни танланг
+                                                            </option>
+                                                            <option>...</option>
+                                                        </select>
+                                                    </div>
+
+
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState21">БЮД рақами</label>
+                                                        <input type="text"
+                                                               class="form-control form-control-sm px-1"
+                                                               id="inputState21"
+                                                               placeholder="пост/сана/рақам"
+                                                        >
+                                                    </div>
+
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState22">Имортер
+                                                            СТИР/ЖШШИР</label>
+                                                        <input type="text"
+                                                               class="form-control form-control-sm px-1"
+                                                               id="inputState22"
+                                                               placeholder="СТИР/ЖШШИР"
+                                                        >
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState23">Ўз
+                                                            еҳтиёжи/тижорат</label>
+                                                        <select id="inputState23"
+                                                                class="form-control form-control-sm">
+                                                            <option selected>Ўз еҳтиёжи/тижорат
+                                                            </option>
+                                                            <option>...</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState24">Шартнома ИДН
+                                                            рақами</label>
+                                                        <input type="text"
+                                                               class="form-control form-control-sm px-1"
+                                                               id="inputState24"
+                                                               placeholder="Шартнома ИДН рақами"
+                                                        >
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState25">Божхона қиймати
+                                                            асоси</label>
+                                                        <input type="text"
+                                                               class="form-control form-control-sm px-1"
+                                                               id="inputState25"
+                                                               placeholder="Божхона қиймати асоси"
+                                                        >
+
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label>Чегарани кесиб ўтган сана</label>
+                                                        <div class="px-1" style="margin-top: -2px">
+                                                            <button type="button"
+                                                                    class="btn  btn-outline-primary btn-sm">
+                                                                30 кун
+                                                            </button>
+                                                            <button type="button"
+                                                                    class="btn  btn-outline-secondary btn-sm">
+                                                                90 кун
+                                                            </button>
+                                                            <button type="button"
+                                                                    class="btn  btn-outline-secondary btn-sm">
+                                                                180 кун
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+
+                                                       <div class="col-2 text-right">
+                                                           <button type="button" tabindex="3"
+                                                                   class="btn btn-sm btn-outline-primary f-w-900 w-75 updateAppTableV1 "
+                                                                   style="border-radius: 3px">
+                                                               <i class="fas fa-wrench"></i>&nbsp;Созлама
+                                                           </button>
+                                                       </div>
+
+
+                                                </div>
+
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

@@ -53,6 +53,11 @@
 
                     </li>
                     <li class="nav-item pcoded-hasmenu">
+                        <a href="javascript:appFuncV2()" class="nav-link "><span class="pcoded-micon" style="color: #4fee51"><i
+                                class="fas fa-list"></i></span><span class="pcoded-mtext">Божхона қиймати мониторинги</span></a>
+
+                    </li>
+                    <li class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link"><span class="pcoded-micon" style="color: #bed52a"><i
                                 class="fas fa-cog"></i></span><span class="pcoded-mtext">Мантиқий назорат</span></a>
 
@@ -69,11 +74,7 @@
 
                     </li>
 
-                    <li class="nav-item pcoded-hasmenu">
-                        <a href="javascript:appFuncV2()" class="nav-link "><span class="pcoded-micon" style="color: #4fee51"><i
-                                class="fas fa-list"></i></span><span class="pcoded-mtext">Божхона қиймати мониторинги</span></a>
 
-                    </li>
                     <li class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link "><span class="pcoded-micon" style="color: #b9bbba"><i
                                 class="fas fa-copy"></i></span><span class="pcoded-mtext">Божхона қиймати бўйича қарор</span></a>
