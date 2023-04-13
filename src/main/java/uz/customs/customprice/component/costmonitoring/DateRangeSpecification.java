@@ -16,6 +16,7 @@ public class DateRangeSpecification implements Specification<BaseEntity> {
     private final LocalDate maxFirstDay;
 
     public DateRangeSpecification(DataTablesInput input) {
+        System.out.println("lolo+pepe");
         Search columnSearch = input.getColumn("gc3Date").getSearch();
         String dateFilter = columnSearch.getValue();
         columnSearch.setValue("");
