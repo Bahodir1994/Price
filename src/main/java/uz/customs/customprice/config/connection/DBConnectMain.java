@@ -33,20 +33,20 @@ import java.util.Properties;
 import static uz.customs.customprice.CustompriceinApplication.MODEL_PACKAGE;
 
 @Configuration
-@ConfigurationProperties("spring.datasource.expertise")
+@ConfigurationProperties("spring.datasource.customprice")
 @EnableTransactionManagement
 @EnableJpaRepositories(
         repositoryFactoryBeanClass = DataTablesRepositoryFactoryBean.class,
-        entityManagerFactoryRef = "entityManagerFactoryExpertise",
-        transactionManagerRef = "transactionManagerExpertise",
+        entityManagerFactoryRef = "entityManagerFactoryCustomprice",
+        transactionManagerRef = "transactionManagerCustomprice",
         basePackages = {"uz.customs.customprice.repository"}
 )
 public class DBConnectMain {
 
     private static HikariDataSource hikariDataSource;
 
-    protected final String PERSISTENCE_UNIT_NAME = "expertise";
-    protected final Properties JPA_EXPERTISE = new Properties() {{
+    protected final String PERSISTENCE_UNIT_NAME = "customprice";
+    protected final Properties JPA_CUSTOMPRICE = new Properties() {{
         put("database-platform", "org.hibernate.dialect.DB2400Dialect");
         put("hibernate.hbm2ddl.auto", "update");
         put("hibernate.dialect", "org.hibernate.dialect.DB2400Dialect");
@@ -65,14 +65,14 @@ public class DBConnectMain {
     }
 
     @Bean
-    @Qualifier("expertise")
-    public HikariDataSource expertise() throws UnknownHostException, SocketException {
+    @Qualifier("customprice")
+    public HikariDataSource customprice() throws UnknownHostException, SocketException {
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setAutoCommit(true);
         hikariConfig.addDataSourceProperty("characterEncoding", "utf8");
         hikariConfig.addDataSourceProperty("encoding", "UTF-8");
         hikariConfig.addDataSourceProperty("useUnicode", "true");
-        hikariConfig.setPoolName("expertise");
+        hikariConfig.setPoolName("customprice");
         hikariConfig.setDriverClassName("com.ibm.as400.access.AS400JDBCDriver");
         hikariConfig.setConnectionTestQuery("select current_timestamp cts from sysibm.sysdummy1");
 
@@ -107,23 +107,23 @@ public class DBConnectMain {
     }
 
     @Primary
-    @Bean(name = "entityManagerFactoryExpertise")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryExpertise(
-            final HikariDataSource expertise) throws SQLException {
+    @Bean(name = "entityManagerFactoryCustomprice")
+    public LocalContainerEntityManagerFactoryBean entityManagerFactoryCustomprice(
+            final HikariDataSource customprice) throws SQLException {
         return new LocalContainerEntityManagerFactoryBean() {{
-            setDataSource(expertise);
+            setDataSource(customprice);
             setPersistenceProviderClass(HibernatePersistenceProvider.class);
             setPersistenceUnitName(PERSISTENCE_UNIT_NAME);
             setPackagesToScan(MODEL_PACKAGE);
-            setJpaProperties(JPA_EXPERTISE);
+            setJpaProperties(JPA_CUSTOMPRICE);
         }};
     }
 
     @Primary
     @Bean
-    public PlatformTransactionManager transactionManagerExpertise(
-            final @Qualifier("entityManagerFactoryExpertise") LocalContainerEntityManagerFactoryBean entityManagerFactoryExpertise) {
-        return new JpaTransactionManager(Objects.requireNonNull(entityManagerFactoryExpertise.getObject()));
+    public PlatformTransactionManager transactionManagerCustomprice(
+            final @Qualifier("entityManagerFactoryCustomprice") LocalContainerEntityManagerFactoryBean entityManagerFactoryCustomprice) {
+        return new JpaTransactionManager(Objects.requireNonNull(entityManagerFactoryCustomprice.getObject()));
     }
 }
 
