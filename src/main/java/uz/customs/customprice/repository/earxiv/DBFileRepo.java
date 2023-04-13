@@ -1,4 +1,4 @@
-package uz.customs.customprice.component.repository.earxiv;
+package uz.customs.customprice.repository.earxiv;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package uz.customs.customprice.component.repository.authorization;
+package uz.customs.customprice.repository.authorization;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

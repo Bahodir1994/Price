@@ -1,4 +1,4 @@
-package uz.customs.customprice.component.repository.authorization;
+package uz.customs.customprice.repository.authorization;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

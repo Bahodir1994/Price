@@ -1,4 +1,4 @@
-package uz.customs.customprice.component.repository.authorization;
+package uz.customs.customprice.repository.authorization;
 
 
 import uz.customs.customprice.entity.authorization.ActivUserCount;

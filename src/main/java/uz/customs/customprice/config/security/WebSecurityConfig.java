@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
-                .antMatchers("/CUSTOMPRICE/**").permitAll()
+                .antMatchers("/CUSTOMPRICEIN/**").permitAll()
                 .antMatchers("/favicon.ico").permitAll()
                 .antMatchers("/user/auth/auth-signin/**").permitAll()
                 .antMatchers("/user/auth/auth-signup/**").permitAll()//.not().fullyAuthenticated()

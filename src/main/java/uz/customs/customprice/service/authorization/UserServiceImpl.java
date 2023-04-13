@@ -3,7 +3,7 @@ package uz.customs.customprice.service.authorization;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import uz.customs.customprice.component.repository.authorization.UserRepository;
+import uz.customs.customprice.repository.authorization.UserRepository;
 import uz.customs.customprice.entity.authorization.User;
 
 import java.util.List;
