@@ -70,7 +70,7 @@
                     </li>
 
                     <li class="nav-item pcoded-hasmenu">
-                        <a href="#!" class="nav-link "><span class="pcoded-micon" style="color: #4fee51"><i
+                        <a href="javascript:appFuncV2()" class="nav-link "><span class="pcoded-micon" style="color: #4fee51"><i
                                 class="fas fa-list"></i></span><span class="pcoded-mtext">Божхона қиймати мониторинги</span></a>
 
                     </li>
@@ -160,7 +160,7 @@
         <div class="pcoded-wrapper container-fluid">
             <div class="pcoded-content">
                 <div class="pcoded-inner-content">
-                    <div class="main-body" id="costmonitoring">
+                    <div class="main-body" id="main-body">
                     <!--put here page -->
                     </div>
                 </div>
@@ -222,13 +222,14 @@
         });
 
         function appFuncV2(){
+            alert("dsfsdffds")
             $.ajax({
                 type: "GET",
-                url: "${pageContext.servletContext.contextPath}/routeV2/data/tnf_app/v2",
+                url: "${pageContext.servletContext.contextPath}/routeV2/data/cost_monitoring_base/v1",
                 beforeSend: function () {},
                 accept: function () {},
                 success: function (response){
-                    $("#costmonitoring").html(response);
+                    $("#main-body").html(response);
                 },
                 error: function (){
 

@@ -139,27 +139,11 @@
         <!-- [ horizontal-layout ] start -->
         <div class="col-sm-12">
             <div class="mt-3 dt-responsive table-responsive p-4">
-                <table id="footer-search" class="table table-striped table-bordered nowrap">
+                <table id="app_table_01" class="table table-striped table-bordered nowrap">
                     <thead class="text-center">
                     <tr>
                         <th>№</th>
                         <th>БЮД рақами</th>
-                        <th>ТИФ ТН код</th>
-                        <th>Режим</th>
-                        <th>Юк жўн. мамлакат</th>
-                        <th>Ишлаб чиқ. мамлакат</th>
-                        <th>Савдо қил. мамлакат</th>
-                        <th>Етк. бер. шарти</th>
-                        <th>Етк. бер. пункти</th>
-                        <th>Тран. тури</th>
-                        <th>Товар тўлиқ номи</th>
-                        <th>Марка</th>
-                        <th>Б.Қ. индекси АҚШ долл.</th>
-                        <th>Б.Қ. АҚШ долл.</th>
-                        <th>Ф.Қ. АҚШ долл.</th>
-                        <th>Метод</th>
-                        <th>Нетто</th>
-                        <th>Брутто</th>
                     </tr>
                     </thead>
                 </table>
@@ -181,7 +165,7 @@
         searching: true,
         processing: true,
         responsive: true,
-        ajax: '<%=request.getContextPath()%>/routeV2/data/cost_monitoring_base/v1/',
+        ajax: '<%=request.getContextPath()%>/routeV2/data/cost_monitoring_base/v2',
         serverSide: true,
         dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-1'l><'col-sm-12 col-md-4'i><'col-sm-12 col-md-7'p>>",
         lengthMenu: [ [8, 25, 50, -1], [8, 25, 50, "барча"] ],
@@ -194,58 +178,7 @@
                 }
             },
             {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
-            },
-            {
-                data: 'id'
+                data: 'gc3Date'
             },
         ],
         columnDefs: [
@@ -308,11 +241,11 @@
     //     filter = filter.substring(0, filter.length - 1);
     //     table.column('.status').search(filter).draw();
     // });
-
+    //
     var minFirstDay = $('input#minFirstDay');
     var maxFirstDay = $('input#maxFirstDay');
     var onDateBoundChange = function () {
-        table.column('.insTime').search(minFirstDay.val() + ';' + maxFirstDay.val()).draw();
+        table.column('.gc3Date').search(minFirstDay.val() + ';' + maxFirstDay.val()).draw();
     };
     $('.updateAppTableV1').on('click', function () {
         onDateBoundChange();
@@ -327,22 +260,22 @@
         }).draw();
     });
 
-    function applicationProccess(id) {
-        let params = {
-            "id": id
-        }
-        $.ajax({
-            type: "GET",
-            url: "${pageContext.servletContext.contextPath}/route/decision_global/d_global/v1",
-            data: params,
-            beforeSend: function () {},
-            accept: function () {},
-            success: function (response){
-                $("#generalContainer").html(response);
-            },
-            error: function () {}
-        });
-    }
+    <%--function applicationProccess(id) {--%>
+    <%--    let params = {--%>
+    <%--        "id": id--%>
+    <%--    }--%>
+    <%--    $.ajax({--%>
+    <%--        type: "GET",--%>
+    <%--        url: "${pageContext.servletContext.contextPath}/route/decision_global/d_global/v1",--%>
+    <%--        data: params,--%>
+    <%--        beforeSend: function () {},--%>
+    <%--        accept: function () {},--%>
+    <%--        success: function (response){--%>
+    <%--            $("#generalContainer").html(response);--%>
+    <%--        },--%>
+    <%--        error: function () {}--%>
+    <%--    });--%>
+    <%--}--%>
 </script>
 <style>
     .dropdown dropdown-menu {

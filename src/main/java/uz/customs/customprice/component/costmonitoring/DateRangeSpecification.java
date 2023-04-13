@@ -16,24 +16,24 @@ public class DateRangeSpecification implements Specification<BaseEntity> {
     private final LocalDate maxFirstDay;
 
     public DateRangeSpecification(DataTablesInput input) {
-        Search columnSearch = input.getColumn("insTime").getSearch();
+        Search columnSearch = input.getColumn("gc3Date").getSearch();
         String dateFilter = columnSearch.getValue();
         columnSearch.setValue("");
-//        if (!hasText(dateFilter)) {
-//            minFirstDay = maxFirstDay = null;
-//            return;
-//        }
-//        String[] bounds = dateFilter.split(";");
-//        minFirstDay = getValue(bounds, 0);
-//        maxFirstDay = getValue(bounds, 1);
         if (!hasText(dateFilter)) {
-            minFirstDay = LocalDateTime.now().toLocalDate().minusDays(1);
-            maxFirstDay = LocalDateTime.now().toLocalDate();
-        } else {
-            String[] bounds = dateFilter.split(";");
-            minFirstDay = getValue(bounds, 0);
-            maxFirstDay = getValue(bounds, 1);
+            minFirstDay = maxFirstDay = null;
+            return;
         }
+        String[] bounds = dateFilter.split(";");
+        minFirstDay = getValue(bounds, 0);
+        maxFirstDay = getValue(bounds, 1);
+//        if (!hasText(dateFilter)) {
+//            minFirstDay = LocalDateTime.now().toLocalDate().minusDays(1);
+//            maxFirstDay = LocalDateTime.now().toLocalDate();
+//        } else {
+//            String[] bounds = dateFilter.split(";");
+//            minFirstDay = getValue(bounds, 0);
+//            maxFirstDay = getValue(bounds, 1);
+//        }
     }
 
     private LocalDate getValue(String[] bounds, int index) {
@@ -49,7 +49,7 @@ public class DateRangeSpecification implements Specification<BaseEntity> {
 
     @Override
     public Predicate toPredicate(Root<BaseEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-        Expression<LocalDate> firstDay = root.get("insTime").as(LocalDate.class);
+        Expression<LocalDate> firstDay = root.get("gc3Date").as(LocalDate.class);
         if (minFirstDay != null && maxFirstDay != null) {
             return criteriaBuilder.between(firstDay, minFirstDay, maxFirstDay);
         } else if (minFirstDay != null) {
