@@ -22,13 +22,12 @@
                             <div class="col-1 mx-2  p-0 text-center">
                                 <label for="tif"
                                        class="f-w-600"
-                                       style=" margin-right: 5px;">ТИФ ТН код </label>
+                                       style=" margin-right: 5px;">ТИФ ТН код</label>
 
                                 <input type="text" id="tif"
                                        class="form-control form-control-sm w-100 "
                                        placeholder="8703 80 000 0">
                             </div>
-
                             <div class="col-1 mx-2  p-0 text-center">
                                 <label for="tovar"
                                        class="f-w-600"

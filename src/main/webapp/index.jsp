@@ -137,7 +137,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-notification">
                                 <div class="pro-head">
-                                    <img src="assets/images/user/avatar-5.jpg" class="img-radius" alt="User-Profile-Image">
+                                    <img src="${pageContext.servletContext.contextPath}/resources/assets/images/user/avatar-5.jpg" class="img-radius" alt="User-Profile-Image">
                                     <span>Рол</span>
                                     <a href="#" class="dud-logout ml-1" title="Logout">
                                         <i class="feather icon-log-out"></i>
@@ -236,6 +236,32 @@
                 }
             });
         }
+
+        // $(document).ready(function () {
+        //     indexUserSession();
+        // });
+
+        function indexUserSession() {
+            setTimeout(() => {
+                $.get({
+                    url: "..${pageContext.request.contextPath}/index/index-user-session",
+                    dataType: "html",
+                    header: 'Content-type: text/html; charset=utf-8',
+                    success: function (res) {
+                        document.body.style.cursor = 'default';
+                        window.location.reload();
+                    },
+                    error: function (res) {
+                        $(".loading2").addClass("d-none");
+                        if (res.status == 401) {
+                            $(".logOutForm").submit();
+                        }
+                        document.body.style.cursor = 'default';
+                    }
+                });
+            }, 300)
+        }
+
     </script>
     <script src="${pageContext.servletContext.contextPath}/resources/assets/js/analytics.js"></script>
 </body>

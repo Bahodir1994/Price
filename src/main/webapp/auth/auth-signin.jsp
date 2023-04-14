@@ -52,10 +52,10 @@
         </div>
     </div>
 </div>
-<script src="${pageContext.servletContext.contextPath}/resources/js/vendor-all.min.js"></script>
-<script src="${pageContext.servletContext.contextPath}/resources/js/bootstrap.min.js"></script>
-<script src="${pageContext.servletContext.contextPath}/resources/js/ripple.js"></script>
-<script src="${pageContext.servletContext.contextPath}/resources/js/pcoded.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/assets/js/vendor-all.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/bootstrap.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/assets/js/ripple.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/assets/js/pcoded.min.js"></script>
 <script>
     function signUp() {
         signin.action = "..${pageContext.request.contextPath}/user/auth/authIn";
