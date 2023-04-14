@@ -14,9 +14,9 @@
     <meta name="description" content=""/>
     <meta name="keywords" content="">
     <meta name="author" content="Phoenixcoded"/>
-    <link rel="icon" href="${pageContext.servletContext.contextPath}/resources/images/emblem.png" type="image/x-icon">
+    <link rel="icon" href="${pageContext.servletContext.contextPath}/resources/assets/images/gtk.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/style.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/style.css">
 </head>
 <body>
 <div class="auth-wrapper">
@@ -25,26 +25,26 @@
             <div class="row align-items-center text-center">
                 <div class="col-md-12">
                     <div class="card-body">
-                        <img src="${pageContext.servletContext.contextPath}/resources/images/emblem.png" alt=""
-                             class="img-fluid mb-4" style="width: 80px; height: 80px">
-                        <form:form modelAttribute="auth-signin" method="post" cssClass="win3PartInfPartF needs-validation"
+                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/cyb.gif" alt=""
+                             class="img-fluid mb-4" style="width: 280px; margin-bottom: 50px!important;">
+                        <form:form modelAttribute="auth-signin" method="post"
+                                   cssClass="win3PartInfPartF needs-validation form-horizontal login-form"
                                    action="${pageContext.request.contextPath}/user/auth/auth-signin"
                                    id="signin" name="signin" novalidate="true">
-                            <h4 class="mb-3 f-w-400">Тизимга кириш</h4>
-                            <div class="form-group mb-3">
-                                <label class="floating-label" for="Username">Логин</label>
-                                <form:input type="text" path="username" name="username" id="username" placeholder=""
-                                            cssClass="form-control"/>
-                                <form:errors path="username" cssStyle="color:red;" cssClass="error"/>
+                            <div class="form-group relative">
+                                <form:input id="login_username" path="username" cssClass="form-control input-lg"
+                                            type="text" placeholder="Логин"/>
+                                <i class="fa fa-user"></i>
                             </div>
-                            <div class="form-group mb-4">
-                                <label class="floating-label" for="Password">Парол</label>
-                                <form:input type="password" path="password" name="password" id="password" placeholder=""
-                                            cssClass="form-control"/>
-                                <form:errors path="password" cssStyle="color:red;" cssClass="error"/>
+                            <div class="form-group relative password">
+                                <form:input id="login_password" path="password" cssClass="form-control input-lg"
+                                            type="password" placeholder="Парол"/>
+                                <i class="fa fa-lock"></i>
                             </div>
-                            <button class="btn btn-block btn-primary mb-4">Тизимга кириш</button>
-                            <%--                            <p class="mb-0 text-muted f-12"><a href="${pageContext.servletContext.contextPath}/user/auth/auth-signup" class="f-w-400" onclick="signUp()">Рўйхатдан ўтиш</a></p>--%>
+
+                            <div class="form-group" style="margin-top: 50px!important;">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Кириш</button>
+                            </div>
                         </form:form>
                     </div>
                 </div>
