@@ -11,395 +11,543 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<head>
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/fixedColumns.bootstrap4.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/fixedHeader.bootstrap4.min.css">
 
-<div class="page-wrapper">
-    <div class="page-header">
-        <div class="page-block">
-            <div class="row align-items-center">
-                <div class="col-sm-12 my-0 py-0 px-0 " style="vertical-align: middle">
-                    <div class="justify-content-center py-1 pb-2 mt-2">
-                        <div class="row m-0 justify-content-center">
-                            <div class="col-1 mx-2  p-0 text-center">
-                                <label for="tif"
-                                       class="f-w-600"
-                                       style=" margin-right: 5px;">ТИФ ТН код</label>
+</head>
+<body>
+    <div class="page-wrapper" id="container">
+        <div class="page-header">
+            <div class="page-block">
+                <a href="#" id="toggle_fullscreen"><i class="fa fa-window-maximize fa-2x"/></a>
+                <div class="row align-items-center">
 
-                                <input type="text" id="tif"
-                                       class="form-control form-control-sm w-100 "
-                                       placeholder="8703 80 000 0">
-                            </div>
-                            <div class="col-1 mx-2  p-0 text-center">
-                                <label for="tovar"
-                                       class="f-w-600"
-                                       style=" margin-right: 5px;">Товар номи </label>
+                    <div class="col-sm-12 my-0 py-0 px-0 " style="vertical-align: middle">
+                        <div class="justify-content-center py-1 pb-2 mt-2">
+                            <div class="row m-0 justify-content-center">
+                                <div class="col-1 mx-2  p-0 text-center">
+                                    <label for="tif" class="f-w-600" style=" margin-right: 5px;">ТИФ ТН код </label>
+                                    <input type="text" id="tif" class="form-control form-control-sm w-100 " placeholder="8703 80 000 0">
+                                </div>
+                                <div class="col-1 mx-2  p-0 text-center">
+                                    <label for="tovar" class="f-w-600" style=" margin-right: 5px;">Товар номи </label>
+                                    <input type="text" id="tovar" class="form-control form-control-sm w-100 " placeholder="BYD">
+                                </div>
+                                <div class="col-2 mr-2  p-0 text-center">
+                                    <label for="country" class="f-w-600" style=" margin-right: 5px;">Юк жўнатувчи мамлакат </label>
+                                    <select class="selectpicker form-control show-menu-arrow" data-style="form-control form-control-sm" id="country" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">
+                                        <c:forEach items="${country}" var="country" varStatus="i">
+                                            <option data-icon="fi fi-${country.cdIdL}" class="option-class" value="${country.code}" data-subtext="${country.code}">${country.cdNm}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="col-2 mr-2  p-0 text-center">
+                                    <label for="country_made" class="f-w-600" style=" margin-right: 5px;">Келиб чиқиш мамлакати </label>
+                                    <select class="selectpicker form-control show-menu-arrow" data-style="form-control form-control-sm" id="country_made" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">
+                                        <c:forEach items="${country}" var="country" varStatus="i">
+                                            <option data-icon="fi fi-${country.cdIdL}" class="option-class" value="${country.code}" data-subtext="${country.code}">${country.cdNm}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="col-1 text-right m-0 p-0 mr-1">
+                                    <label for="minFirstDay"
+                                           class="f-w-600"
+                                           style=" margin-right: 5px;">дан: </label>
 
-                                <input type="text" id="tovar"
-                                       class="form-control form-control-sm w-100 "
-                                       placeholder="BYD">
-                            </div>
-                            <div class="col-2 mr-2  p-0 text-center">
-                                <label for="country"
-                                       class="f-w-600"
-                                       style=" margin-right: 5px;">Юк жўнатувчи мамлакат </label>
+                                    <input type="date" class="form-control form-control-sm w-100 "
+                                           maxlength="10" tabindex="1"
+                                           name="dcodate" id="minFirstDay" min="2020-01-01"
+                                           max="2023-12-31" value="2023-03-01">
+                                </div>
+                                <div class="col-1 text-right m-0 p-0"><label for="maxFirstDay" class="f-w-600" style=" margin-right: 5px;">гача: </label>
+                                    <input type="date" class="form-control form-control-sm w-100 "
+                                           maxlength="10" tabindex="2"
+                                           name="dcodate" id="maxFirstDay" min="2020-01-01"
+                                           max="2023-12-31" value="2023-04-11">
+                                </div>
+                                <div class="col-1 text-right ml-1 p-0 " style="margin-top: 20px">
+                                    <button type="button" tabindex="3"
+                                            class="btn btn-sm btn-outline-primary f-w-900 w-75 updateAppTableV1"
+                                            style="border-radius: 5px">
+                                        <i class="feather icon-search"></i>&nbsp;Излаш
+                                    </button>
+                                </div>
+                                <div class="col-1 text-right ml-1 p-0 " style="margin-top: 20px">
+                                    <button type="button" tabindex="3"
+                                            class="btn btn-sm btn-outline-success f-w-900 w-75 updateAppTableV1"
+                                            style="border-radius: 5px" data-toggle="modal" data-target="#exampleModalCenter">
+                                        <i class="feather icon-bar-chart"></i>&nbsp;Ҳисобот
+                                    </button>
+                                </div>
+                                <div class="col-1 text-right ml-1 p-0 " style="margin-top: 20px">
+                                    <button type="button" tabindex="3"
+                                            class="btn btn-sm btn-outline-primary f-w-900 w-75 updateAppTableV1"
+                                            style="border-radius: 5px">
+                                        <i class="fas fa-wrench"></i>&nbsp;Созлама
+                                    </button>
+                                </div>
 
-                                <select id="country" class="form-control form-control-sm w-100 "
-                                >
-                                    <option>156 Хитой</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                            <div class="col-2 mr-2  p-0 text-center">
-                                <label for="country_made"
-                                       class="f-w-600"
-                                       style=" margin-right: 5px;">Келиб чиқиш мамлакати </label>
-                                <select id="country_made"
-                                        class="form-control form-control-sm w-100 "
-                                >
-                                    <option>410 Корея</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-
-                            </div>
-
-                            <div class="col-1 text-right m-0 p-0 mr-1">
-                                <label for="minFirstDay"
-                                       class="f-w-600"
-                                       style=" margin-right: 5px;">дан: </label>
-
-                                <input type="date" class="form-control form-control-sm w-100 "
-                                       maxlength="10" tabindex="1"
-                                       name="dcodate" id="minFirstDay" min="2020-01-01"
-                                       max="2023-12-31" value="2023-03-01">
-                            </div>
-                            <div class="col-1 text-right m-0 p-0"><label for="maxFirstDay"
-                                                                         class="f-w-600"
-                                                                         style=" margin-right: 5px;">гача: </label>
-
-                                <input type="date" class="form-control form-control-sm w-100 "
-                                       maxlength="10" tabindex="2"
-                                       name="dcodate" id="maxFirstDay" min="2020-01-01"
-                                       max="2023-12-31" value="2023-04-11">
-                            </div>
-                            <div class="col-1 text-right ml-1 p-0 " style="margin-top: 28px">
-                                <button type="button" tabindex="3"
-                                        class="btn btn-sm btn-outline-primary f-w-900 w-75 updateAppTableV1"
-                                        style="border-radius: 5px">
-                                    <i class="feather icon-search"></i>&nbsp;Излаш
-                                </button>
-
-                            </div>
-                            <div class="col-1 text-right ml-1 p-0 " style="margin-top: 28px">
-                                <button type="button" tabindex="3"
-                                        class="btn btn-sm btn-outline-success f-w-900 w-75 updateAppTableV1"
-                                        style="border-radius: 5px">
-                                    <i class="feather icon-bar-chart"></i>&nbsp;Ҳисобот
-                                </button>
-
+                                <div class="card-header-right " style="position: absolute; z-index: 9999; margin-top: -2%; margin-left: 94%">
+                                    <div class="btn-group card-option ">
+                                        <button type="button" class="btn dropdown-toggle has-ripple" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="feather icon-more-horizontal"></i>
+                                            <span class="ripple ripple-animate" style="height: 20px; width: 20px; animation-duration: 0.689655s; animation-timing-function: linear; background: rgb(136, 136, 136); opacity: 0.4; top: -4.375px; left: 0px;"></span>
+                                        </button>
+                                        <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right" style="">
+                                            <li class="dropdown-item full-card"><span style=""><i class="feather icon-maximize"></i> Кенгайтириш</span>
+                                                <span style="display: none;"><i class="feather icon-minimize"></i> Қайта тиклаш</span></li>
+                                            <li class="dropdown-item minimize-card"><span><i class="feather icon-minus"></i> Йиғиш</span><span style="display:none"><i class="feather icon-plus"></i> Кенгайтириш</span></li>
+                                            <li class="dropdown-item reload-card"><i class="feather icon-refresh-cw"></i> Янгилаш</li>
+                                            <li class="dropdown-item close-card"><i class="feather icon-trash"></i> Ўчириш</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-12 p-2">
-                    <div id="main">
-                        <div class="container-fluid">
-                            <div class="accordion" id="faq">
-
-                                <div class="card m-0">
-                                    <div class="card-header" id="faqhead2">
-                                        <a href="#" class="btn btn-header-link collapsed"
-                                           data-toggle="collapse" data-target="#faq2"
-                                           aria-expanded="true" aria-controls="faq2">Қўшимча қидирув
-                                            филтрлари</a>
-                                    </div>
-
-                                    <div id="faq2" class="collapse" aria-labelledby="faqhead2"
-                                         data-parent="#faq">
-                                        <div class="card-body text-center justify-content-center">
-                                            <form>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState1">ХББ</label>
-                                                        <select id="inputState1"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>ХББни танланг</option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState2">Олиб ўтиш
-                                                            хусусияти</label>
-                                                        <select id="inputState2"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Олиб ўтиш хусусиятини
-                                                                танланг
-                                                            </option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState3">Қўшимча ўлчов
-                                                            бирлиги</label>
-                                                        <select id="inputState3"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Қўшимча ўлчов бирлиги
-                                                                танланг
-                                                            </option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState4">Божхона
-                                                            режими</label>
-                                                        <select id="inputState4"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Режимни танланг
-                                                            </option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState5">Етказиб
-                                                            шарти</label>
-                                                        <select id="inputState5"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Етказиб шартини
-                                                                танланг
-                                                            </option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-1">
-                                                        <label for="inputState6">БЮД(:дан)</label>
-                                                        <input type="date"
-                                                               class="form-control form-control-sm px-1"
-                                                               id="inputState6"
-                                                               maxlength="10" tabindex="1"
-                                                               name="dcodate"
-                                                               min="2020-01-01"
-                                                               max="2023-12-31"
-                                                               value="2023-03-01">
-                                                    </div>
-                                                    <div class="form-group col-md-1">
-                                                        <label for="inputState7">БЮД(:гача)</label>
-                                                        <input type="date"
-                                                               class="form-control form-control-sm px-1"
-                                                               id="inputState7"
-                                                               maxlength="10" tabindex="1"
-                                                               name="dcodate"
-                                                               min="2020-01-01"
-                                                               max="2023-12-31"
-                                                               value="2023-03-01">
-                                                    </div>
-
-
-
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState11">Божхона
-                                                            пости</label>
-                                                        <select id="inputState11"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Постни танланг</option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState12">Шартнома
-                                                            тури</label>
-                                                        <select id="inputState12"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Шартнома турини
-                                                                танланг
-                                                            </option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState13">Метод</label>
-                                                        <select id="inputState13"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Методтанланг</option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState14">Аввалги
-                                                            режим</label>
-                                                        <select id="inputState14"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Режимни танланг
-                                                            </option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState15">Товар
-                                                            маркаси</label>
-                                                        <input type="text"
-                                                               class="form-control form-control-sm px-1"
-                                                               id="inputState15"
-                                                               placeholder="Товар маркаси"
-                                                        >
-
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState20">Тузатиш
-                                                            киритилган</label>
-                                                        <select id="inputState20"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Режимни танланг
-                                                            </option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-
-
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState21">БЮД рақами</label>
-                                                        <input type="text"
-                                                               class="form-control form-control-sm px-1"
-                                                               id="inputState21"
-                                                               placeholder="пост/сана/рақам"
-                                                        >
-                                                    </div>
-
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState22">Имортер
-                                                            СТИР/ЖШШИР</label>
-                                                        <input type="text"
-                                                               class="form-control form-control-sm px-1"
-                                                               id="inputState22"
-                                                               placeholder="СТИР/ЖШШИР"
-                                                        >
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState23">Ўз
-                                                            еҳтиёжи/тижорат</label>
-                                                        <select id="inputState23"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Ўз еҳтиёжи/тижорат
-                                                            </option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState24">Шартнома ИДН
-                                                            рақами</label>
-                                                        <input type="text"
-                                                               class="form-control form-control-sm px-1"
-                                                               id="inputState24"
-                                                               placeholder="Шартнома ИДН рақами"
-                                                        >
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState25">Божхона қиймати
-                                                            асоси</label>
-                                                        <input type="text"
-                                                               class="form-control form-control-sm px-1"
-                                                               id="inputState25"
-                                                               placeholder="Божхона қиймати асоси"
-                                                        >
-
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label>Чегарани кесиб ўтган сана</label>
-                                                        <div class="px-1" style="margin-top: -2px">
-                                                            <button type="button"
-                                                                    class="btn  btn-outline-primary btn-sm">
-                                                                30 кун
-                                                            </button>
-                                                            <button type="button"
-                                                                    class="btn  btn-outline-secondary btn-sm">
-                                                                90 кун
-                                                            </button>
-                                                            <button type="button"
-                                                                    class="btn  btn-outline-secondary btn-sm">
-                                                                180 кун
-                                                            </button>
+                    <div class="col-sm-12 p-2">
+                        <div id="main">
+                            <div class="container-fluid">
+                                <div class="accordion" id="faq">
+                                    <div class="card m-0">
+                                        <div class="card-header" id="faqhead2">
+                                            <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2" aria-expanded="true" aria-controls="faq2">Қўшимча қидирув филтрлари</a>
+                                        </div>
+                                        <div id="faq2" class="collapse" aria-labelledby="faqhead2"
+                                             data-parent="#faq">
+                                            <div class="card-body text-left justify-content-center">
+                                                <form>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState1">ХББ</label>
+                                                            <select class="selectpicker form-control show-menu-arrow" data-style="form-control form-control-sm" id="inputState1" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">
+                                                                <option data-icon="fi fi-af" class="option-class" value="26002" data-subtext="26002">"Тошкент-товар1" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                            </select>
                                                         </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState2">Олиб ўтиш хусусияти</label>
+                                                            <select class="selectpicker form-control show-menu-arrow" data-style="form-control form-control-sm" id="inputState2" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">
+                                                                <option data-icon="fa fa-heart" class="option-class" value="26002" data-subtext="26002">"Тошкент-товар1" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState3">Қўшимча ўлчов бирлиги</label>
+                                                            <select class="selectpicker form-control show-menu-arrow" data-style="form-control form-control-sm" id="inputState3" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">
+                                                                <option data-icon="fa fa-heart" class="option-class" value="26002" data-subtext="26002">"Тошкент-товар1" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState4">Божхона режими</label>
+                                                            <select class="selectpicker form-control show-menu-arrow" data-style="form-control form-control-sm" id="inputState4" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">
+                                                                <option data-icon="fa fa-heart" class="option-class" value="26002" data-subtext="26002">"Тошкент-товар1" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState5">Етказиб шарти</label>
+                                                            <select class="selectpicker form-control show-menu-arrow" data-style="form-control form-control-sm" id="inputState5" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">
+                                                                <option data-icon="fa fa-heart" class="option-class" value="26002" data-subtext="26002">"Тошкент-товар1" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-1">
+                                                            <label for="inputState6">БЮД(:дан)</label>
+                                                            <input type="date"
+                                                                   class="form-control form-control-sm px-1"
+                                                                   id="inputState6"
+                                                                   maxlength="10" tabindex="1"
+                                                                   name="dcodate"
+                                                                   min="2020-01-01"
+                                                                   max="2023-12-31"
+                                                                   value="2023-03-01">
+                                                        </div>
+                                                        <div class="form-group col-md-1">
+                                                            <label for="inputState7">БЮД(:гача)</label>
+                                                            <input type="date"
+                                                                   class="form-control form-control-sm px-1"
+                                                                   id="inputState7"
+                                                                   maxlength="10" tabindex="1"
+                                                                   name="dcodate"
+                                                                   min="2020-01-01"
+                                                                   max="2023-12-31"
+                                                                   value="2023-03-01">
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState11">Божхона пости</label>
+                                                            <select class="selectpicker form-control show-menu-arrow" data-style="form-control form-control-sm" id="inputState11" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">
+                                                                <option data-icon="fa fa-heart" class="option-class" value="26002" data-subtext="26002">"Тошкент-товар1" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState12">Шартнома тури</label>
+                                                            <select class="selectpicker form-control show-menu-arrow" data-style="form-control form-control-sm" id="inputState12" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">
+                                                                <option data-icon="fa fa-heart" class="option-class" value="26002" data-subtext="26002">"Тошкент-товар1" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState13">Метод</label>
+                                                            <select class="selectpicker form-control show-menu-arrow" data-style="form-control form-control-sm" id="inputState13" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">
+                                                                <option data-icon="fa fa-heart" class="option-class" value="26002" data-subtext="26002">"Тошкент-товар1" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState14">Аввалги режим</label>
+                                                            <select class="selectpicker form-control show-menu-arrow" data-style="form-control form-control-sm" id="inputState14" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">
+                                                                <option data-icon="fa fa-heart" class="option-class" value="26002" data-subtext="26002">"Тошкент-товар1" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState15">Товар маркаси</label>
+                                                            <input type="text" class="form-control form-control-sm px-1" id="inputState15" placeholder="Товар маркаси">
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState20">Тузатиш киритилган</label>
+                                                            <select class="selectpicker form-control show-menu-arrow" data-style="form-control form-control-sm" id="inputState20" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">
+                                                                <option data-icon="fa fa-heart" class="option-class" value="26002" data-subtext="26002">"Тошкент-товар1" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState21">БЮД рақами</label>
+                                                            <input type="text" class="form-control form-control-sm px-1" id="inputState21" placeholder="пост/сана/рақам">
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState22">Имортер СТИР/ЖШШИР</label>
+                                                            <input type="text" class="form-control form-control-sm px-1" id="inputState22" placeholder="СТИР/ЖШШИР">
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState23">Ўз еҳтиёжи/тижорат</label>
+                                                            <select class="selectpicker form-control show-menu-arrow" data-style="form-control form-control-sm" id="inputState23" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">
+                                                                <option data-icon="fa fa-heart" class="option-class" value="26002" data-subtext="26002">"Тошкент-товар1" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                                <option class="option-class" value="26003" data-subtext="26003">"Арқбулоқ" ТИФ</option>
+                                                                <option class="option-class" value="26004" data-subtext="26004">"Чуқурсой" ТИФ</option>
+                                                                <option class="option-class" value="26010" data-subtext="26010">"Сирғали" ТИФ божхона пости</option>
+                                                                <option class="option-class" value="26002" data-subtext="26002">"Тошкент-товар" ТИФ</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState24">Шартнома ИДН рақами</label>
+                                                            <input type="text" class="form-control form-control-sm px-1" id="inputState24" placeholder="Шартнома ИДН рақами">
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label for="inputState25">Божхона қиймати асоси</label>
+                                                            <input type="text" class="form-control form-control-sm px-1" id="inputState25" placeholder="Божхона қиймати асоси">
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label>Чегарани кесиб ўтган сана</label>
+                                                            <div class="px-1" style="margin-top: -2px">
+                                                                <button type="button"
+                                                                        class="btn  btn-outline-primary btn-sm">
+                                                                    30 кун
+                                                                </button>
+                                                                <button type="button"
+                                                                        class="btn  btn-outline-secondary btn-sm">
+                                                                    90 кун
+                                                                </button>
+                                                                <button type="button"
+                                                                        class="btn  btn-outline-secondary btn-sm">
+                                                                    180 кун
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
-
-
-                                                       <div class="col-2 text-right">
-                                                           <button type="button" tabindex="3"
-                                                                   class="btn btn-sm btn-outline-primary f-w-900 w-75 updateAppTableV1 "
-                                                                   style="border-radius: 3px">
-                                                               <i class="fas fa-wrench"></i>&nbsp;Созлама
-                                                           </button>
-                                                       </div>
-
-
-                                                </div>
-
-                                            </form>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <!-- [ horizontal-layout ] start -->
-        <div class="col-sm-12">
-            <div class="mt-3 dt-responsive table-responsive p-4">
-                <table id="app_table_01" class="table table-striped table-bordered nowrap">
-                    <thead class="text-center">
-                    <tr>
-                        <th>№</th>
-                        <th>БЮД рақами</th>
-                    </tr>
-                    </thead>
-                </table>
+        <!-- Modal -->
+        <div class="col-12">
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title ml-auto" id="exampleModalLongTitle">Ҳисобот</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card">
+                                <div class="card-body">
+                                    <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
+                                               role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
+                                               role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+                                        </li>
+
+                                    </ul>
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                                             aria-labelledby="pills-home-tab">
+                                            <p class="mb-0">Consequat occaecat ullamco amet non eiusmod nostrud dolore irure
+                                                incididunt est duis anim sunt officia. Fugiat velit proident aliquip nisi incididunt
+                                                nostrud exercitation proident est
+                                                nisi.
+                                                Irure magna
+                                                elit commodo anim ex veniam culpa eiusmod id nostrud sit cupidatat in veniam ad.
+                                                Eiusmod consequat eu adipisicing minim anim aliquip cupidatat culpa excepteur quis.
+                                                Occaecat sit eu exercitation
+                                                irure
+                                                Lorem incididunt nostrud.
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                             aria-labelledby="pills-profile-tab">
+                                            <p class="mb-0">Ad pariatur nostrud pariatur exercitation ipsum ipsum culpa mollit
+                                                commodo mollit ex. Aute sunt incididunt amet commodo est sint nisi deserunt pariatur
+                                                do. Aliquip ex eiusmod voluptate
+                                                exercitation
+                                                cillum id incididunt elit sunt. Qui minim sit magna Lorem id et dolore velit Lorem
+                                                amet exercitation duis deserunt. Anim id labore elit adipisicing ut in id occaecat
+                                                pariatur ut ullamco ea tempor
+                                                duis.
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="mt-0 dt-responsive p-2">
+                    <table id="app_table_01" class="table row-border order-column nowrap" style="width: 100%">
+                        <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>БЮД рақами</th>
+                            <th>ТИФ ТН код</th>
+                            <th>Режим</th>
+                            <th>Юк жўн. мамлакат</th>
+                            <th>Ишлаб чиқ. мамлакат</th>
+                            <th>Савдо қил. мамлакат</th>
+                            <th>Етк. бер. шарти</th>
+                            <th>Етк. бер. пункти</th>
+                            <th>Тран. тури</th>
+                            <th>Товар тўлиқ номи</th>
+                            <th>Марка</th>
+                            <th>Б.Қ. индекси АҚШ долл.</th>
+                            <th>Б.Қ. АҚШ долл.</th>
+                            <th>Ф.Қ. АҚШ долл.</th>
+                            <th>Метод</th>
+                            <th>Нетто</th>
+                            <th>Брутто</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
-        <!-- [ horizontal-layout ] end -->
     </div>
-</div>
 
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/assets/data-table/jquery.spring-friendly.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/assets/data-table/dataTables.colReorder.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/resources/assets/data-table/dataTables.fixedHeader.min.js"></script>
-
-<script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.spring-friendly.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.colReorder.min.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.fixedHeader.min.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.fixedColumns.min.js"></script>
+    <script>
     $('select').selectpicker();
-    let numberCount = 0
     var table = $('#app_table_01').DataTable({
-        fixedHeader: true,
+        scrollY:        '70vh',
+        scrollX:        true,
+        scrollCollapse: true,
+        scrollResize: true,
+        fixedHeader: {
+            header: true,
+            headerOffset: $('#fixed').height()
+        },
+        fixedColumns:   {
+            left: 1
+        },
         searching: true,
         processing: true,
         responsive: true,
         ajax: '<%=request.getContextPath()%>/routeV2/data/cost_monitoring_base/v2',
         serverSide: true,
         dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-1'l><'col-sm-12 col-md-4'i><'col-sm-12 col-md-7'p>>",
-        lengthMenu: [ [8, 25, 50, -1], [8, 25, 50, "барча"] ],
+        lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "барча"] ],
         columns: [
-            {   name: '#',
+            {
+                // title: '№',
                 data: null,
                 sortable: false,
-                render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
-            },
-            {
-                data: 'gc3Date'
-            },
-        ],
-        columnDefs: [
-            {
                 searchable: false,
                 orderable: false,
-                targets: 0,
-            }
+                render: function (data, type, row, meta) {return meta.row + meta.settings._iDisplayStart + 1}
+            },
+            {
+                // title: 'БЮД рақами',
+                data: 'gc3Date'
+            },
+            {
+                // title: 'ТИФ ТН код',
+                data: 'g33'
+            },
+            {
+                // title: 'Режим',
+                data: 'g33'
+            },
+            {
+                // title: 'Юк жўн. мамлакат',
+                data: 'g33'
+            },
+            {
+                // title: 'Ишлаб чиқ. мамлакат',
+                data: 'g33'
+            },
+            {
+                // title: 'Савдо қил. мамлакат',
+                data: 'g33'
+            },
+            {
+                // title: 'Етк. бер. шарти',
+                data: 'g33'
+            },
+            {
+                // title: 'Етк. бер. пункти',
+                data: 'g33'
+            },
+            {
+                // title: 'Тран. тури',
+                data: 'g33'
+            },
+            {
+                // title: 'Товар тўлиқ номи',
+                data: 'g33'
+            },
+            {
+                // title: 'Марка',
+                data: 'g33'
+            },
+            {
+                // title: 'Б.Қ. индекси АҚШ долл.',
+                data: 'g33'
+            },
+            {
+                // title: 'Б.Қ. АҚШ долл.',
+                data: 'g33'
+            },
+            {
+                // title: 'Ф.Қ. АҚШ долл.',
+                data: 'g33'
+            },
+            {
+                // title: 'Метод',
+                data: 'g33'
+            },
+            {
+                // title: 'Нетто',
+                data: 'g33'
+            },
+            {
+                // title: 'Брутто',
+                data: 'g33'
+            },
         ],
         colReorder: true,
         order: [[1, 'asc']],
@@ -463,7 +611,6 @@
     $('.updateAppTableV1').on('click', function () {
         onDateBoundChange();
     })
-
     $(document).ready(function () {
         table.on('order.dt search.dt', function () {
             let i = 1;
@@ -473,77 +620,28 @@
         }).draw();
     });
 
-    <%--function applicationProccess(id) {--%>
-    <%--    let params = {--%>
-    <%--        "id": id--%>
-    <%--    }--%>
-    <%--    $.ajax({--%>
-    <%--        type: "GET",--%>
-    <%--        url: "${pageContext.servletContext.contextPath}/route/decision_global/d_global/v1",--%>
-    <%--        data: params,--%>
-    <%--        beforeSend: function () {},--%>
-    <%--        accept: function () {},--%>
-    <%--        success: function (response){--%>
-    <%--            $("#generalContainer").html(response);--%>
-    <%--        },--%>
-    <%--        error: function () {}--%>
-    <%--    });--%>
-    <%--}--%>
-</script>
+    $('#toggle_fullscreen').on('click', function(){
+        // if already full screen; exit
+        // else go fullscreen
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+            $('.toggle_fullscreen').html('<i class="kic"/>')
+        } else {
+            $('#container').get(0).requestFullscreen();
+            $('.toggle_fullscreen').html('<i class="kat"/>')
+        }
+    });
+    </script>
 <style>
-    .dropdown dropdown-menu {
-        z-index: 9999!important;
-        position: relative;
+    #container{
+        /*border:1px solid red;*/
+        /*border-radius: .5em;*/
     }
-
-    table.fixedHeader-floating{
-        background-color:white
-    }
-    table.fixedHeader-floating.no-footer{
-        border-bottom-width:0
-    }
-    table.fixedHeader-locked{
-        position:absolute !important;
-        background-color:white
-    }
-    @media print{table.fixedHeader-floating{display:none}}
-    table.DTCR_clonedTable.dataTable{
-        position:absolute !important;
-        background-color:rgba(255, 255, 255, 0.7);
-        z-index:202
-    }
-    div.DTCR_pointer{
-        width:1px;
-        background-color:#0259c4;
-        z-index:201
-    }
-    div.container { max-width: 1200px }
-    table thead th {
-        border-right: 1px dashed #0c571d !important;
-        border-bottom: 2px solid black !important;
-    }
-    table.dataTable thead > tr > th {
-        vertical-align: top !important;
-    }
-    table.dataTable thead .sorting:after,
-    table.dataTable thead .sorting_asc:after,
-    table.dataTable thead .sorting_desc:after {
-        vertical-align: top !important;
-    }
-    ::placeholder {
-        text-align: center;
-    }
-    /* or, for legacy browsers */
-    ::-webkit-input-placeholder {
-        text-align: center;
-    }
-    :-moz-placeholder { /* Firefox 18- */
-        text-align: center;
-    }
-    ::-moz-placeholder { /* Firefox 19+ */
-        text-align: center;
-    }
-    :-ms-input-placeholder {
-        text-align: center;
+    #container:fullscreen {
+        padding-top: 15vh!important;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: auto!important;
     }
 </style>
+</body>
