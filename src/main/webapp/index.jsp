@@ -1,14 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ADMIN
-  Date: 12.04.2023
-  Time: 14:33
-  To change this template use File | Settings | File Templates.
---%>
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ include file="locale.jsp" %>
 
-<html lang="en">
+<html lang="${sessionDataValue.language.substring(0, 2)}">
 <head>
     <title>Божхона қиймати назорати</title>
     <meta charset="utf-8">
@@ -126,8 +125,8 @@
                                 <i class="fas fa-users f-20"></i>
                             </div>
                             <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 user_type">
-                                Рўйхатдан ўтган фойдаланувчилар: 2000623 та <br>
-                                Фаол фойдаланувчилар: 1000623 та
+                                <fmt:message key="registeredUsers" bundle="${resourceBundle}"/>: ${activeCount.count} та <br>
+                                <fmt:message key="usersOnline" bundle="${resourceBundle}"/>: ${activeCount.activ} та
                             </div>
                         </div>
                     </li>
