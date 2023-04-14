@@ -223,7 +223,6 @@
         });
 
         function appFuncV2(){
-            alert("dsfsdffds")
             $.ajax({
                 type: "GET",
                 url: "${pageContext.servletContext.contextPath}/routeV2/data/cost_monitoring_base/v1",

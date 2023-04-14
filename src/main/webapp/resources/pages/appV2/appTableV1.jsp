@@ -20,31 +20,16 @@
                     <div class="justify-content-center py-1 pb-2 mt-2">
                         <div class="row m-0 justify-content-center">
                             <div class="col-1 mx-2  p-0 text-center">
-                                <label for="tif"
-                                       class="f-w-600"
-                                       style=" margin-right: 5px;">ТИФ ТН код </label>
-
-                                <input type="text" id="tif"
-                                       class="form-control form-control-sm w-100 "
-                                       placeholder="8703 80 000 0">
+                                <label for="tif" class="f-w-600" style=" margin-right: 5px;">ТИФ ТН код </label>
+                                <input type="text" id="tif" class="form-control form-control-sm w-100 " placeholder="8703 80 000 0">
                             </div>
-
                             <div class="col-1 mx-2  p-0 text-center">
-                                <label for="tovar"
-                                       class="f-w-600"
-                                       style=" margin-right: 5px;">Товар номи </label>
-
-                                <input type="text" id="tovar"
-                                       class="form-control form-control-sm w-100 "
-                                       placeholder="BYD">
+                                <label for="tovar" class="f-w-600" style=" margin-right: 5px;">Товар номи </label>
+                                <input type="text" id="tovar" class="form-control form-control-sm w-100 " placeholder="BYD">
                             </div>
                             <div class="col-2 mr-2  p-0 text-center">
-                                <label for="country"
-                                       class="f-w-600"
-                                       style=" margin-right: 5px;">Юк жўнатувчи мамлакат </label>
-
-                                <select id="country" class="form-control form-control-sm w-100 "
-                                >
+                                <label for="country" class="f-w-600" style=" margin-right: 5px;">Юк жўнатувчи мамлакат </label>
+                                <select id="country" class="form-control form-control-sm w-100 ">
                                     <option>156 Хитой</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -53,21 +38,15 @@
                                 </select>
                             </div>
                             <div class="col-2 mr-2  p-0 text-center">
-                                <label for="country_made"
-                                       class="f-w-600"
-                                       style=" margin-right: 5px;">Келиб чиқиш мамлакати </label>
-                                <select id="country_made"
-                                        class="form-control form-control-sm w-100 "
-                                >
+                                <label for="country_made" class="f-w-600" style=" margin-right: 5px;">Келиб чиқиш мамлакати </label>
+                                <select id="country_made" class="form-control form-control-sm w-100 ">
                                     <option>410 Корея</option>
                                     <option>2</option>
                                     <option>3</option>
                                     <option>4</option>
                                     <option>5</option>
                                 </select>
-
                             </div>
-
                             <div class="col-1 text-right m-0 p-0 mr-1">
                                 <label for="minFirstDay"
                                        class="f-w-600"
@@ -78,10 +57,7 @@
                                        name="dcodate" id="minFirstDay" min="2020-01-01"
                                        max="2023-12-31" value="2023-03-01">
                             </div>
-                            <div class="col-1 text-right m-0 p-0"><label for="maxFirstDay"
-                                                                         class="f-w-600"
-                                                                         style=" margin-right: 5px;">гача: </label>
-
+                            <div class="col-1 text-right m-0 p-0"><label for="maxFirstDay" class="f-w-600" style=" margin-right: 5px;">гача: </label>
                                 <input type="date" class="form-control form-control-sm w-100 "
                                        maxlength="10" tabindex="2"
                                        name="dcodate" id="maxFirstDay" min="2020-01-01"
@@ -93,7 +69,6 @@
                                         style="border-radius: 5px">
                                     <i class="feather icon-search"></i>&nbsp;Излаш
                                 </button>
-
                             </div>
                             <div class="col-1 text-right ml-1 p-0 " style="margin-top: 28px">
                                 <button type="button" tabindex="3"
@@ -101,7 +76,6 @@
                                         style="border-radius: 5px">
                                     <i class="feather icon-bar-chart"></i>&nbsp;Ҳисобот
                                 </button>
-
                             </div>
                         </div>
                     </div>
@@ -110,15 +84,10 @@
                     <div id="main">
                         <div class="container-fluid">
                             <div class="accordion" id="faq">
-
                                 <div class="card m-0">
                                     <div class="card-header" id="faqhead2">
-                                        <a href="#" class="btn btn-header-link collapsed"
-                                           data-toggle="collapse" data-target="#faq2"
-                                           aria-expanded="true" aria-controls="faq2">Қўшимча қидирув
-                                            филтрлари</a>
+                                        <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2" aria-expanded="true" aria-controls="faq2">Қўшимча қидирув филтрлари</a>
                                     </div>
-
                                     <div id="faq2" class="collapse" aria-labelledby="faqhead2"
                                          data-parent="#faq">
                                         <div class="card-body text-center justify-content-center">
@@ -126,52 +95,39 @@
                                                 <div class="form-row">
                                                     <div class="form-group col-md-2">
                                                         <label for="inputState1">ХББ</label>
-                                                        <select id="inputState1"
-                                                                class="form-control form-control-sm">
+                                                        <select id="inputState1" class="form-control form-control-sm">
                                                             <option selected>ХББни танланг</option>
                                                             <option>...</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState2">Олиб ўтиш
-                                                            хусусияти</label>
-                                                        <select id="inputState2"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Олиб ўтиш хусусиятини
-                                                                танланг
+                                                        <label for="inputState2">Олиб ўтиш хусусияти</label>
+                                                        <select id="inputState2" class="form-control form-control-sm">
+                                                            <option selected>Олиб ўтиш хусусиятини танланг
                                                             </option>
                                                             <option>...</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState3">Қўшимча ўлчов
-                                                            бирлиги</label>
-                                                        <select id="inputState3"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Қўшимча ўлчов бирлиги
-                                                                танланг
+                                                        <label for="inputState3">Қўшимча ўлчов бирлиги</label>
+                                                        <select id="inputState3" class="form-control form-control-sm">
+                                                            <option selected>Қўшимча ўлчов бирлиги танланг
                                                             </option>
                                                             <option>...</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState4">Божхона
-                                                            режими</label>
-                                                        <select id="inputState4"
-                                                                class="form-control form-control-sm">
+                                                        <label for="inputState4">Божхона режими</label>
+                                                        <select id="inputState4" class="form-control form-control-sm">
                                                             <option selected>Режимни танланг
                                                             </option>
                                                             <option>...</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState5">Етказиб
-                                                            шарти</label>
-                                                        <select id="inputState5"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Етказиб шартини
-                                                                танланг
-                                                            </option>
+                                                        <label for="inputState5">Етказиб шарти</label>
+                                                        <select id="inputState5" class="form-control form-control-sm">
+                                                            <option selected>Етказиб шартини танланг</option>
                                                             <option>...</option>
                                                         </select>
                                                     </div>
@@ -197,115 +153,69 @@
                                                                max="2023-12-31"
                                                                value="2023-03-01">
                                                     </div>
-
-
-
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState11">Божхона
-                                                            пости</label>
-                                                        <select id="inputState11"
-                                                                class="form-control form-control-sm">
+                                                        <label for="inputState11">Божхона пости</label>
+                                                        <select id="inputState11" class="form-control form-control-sm">
                                                             <option selected>Постни танланг</option>
                                                             <option>...</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState12">Шартнома
-                                                            тури</label>
-                                                        <select id="inputState12"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Шартнома турини
-                                                                танланг
-                                                            </option>
+                                                        <label for="inputState12">Шартнома тури</label>
+                                                        <select id="inputState12" class="form-control form-control-sm">
+                                                            <option selected>Шартнома турини танланг</option>
                                                             <option>...</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
                                                         <label for="inputState13">Метод</label>
-                                                        <select id="inputState13"
-                                                                class="form-control form-control-sm">
+                                                        <select id="inputState13" class="form-control form-control-sm">
                                                             <option selected>Методтанланг</option>
                                                             <option>...</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState14">Аввалги
-                                                            режим</label>
-                                                        <select id="inputState14"
-                                                                class="form-control form-control-sm">
+                                                        <label for="inputState14">Аввалги режим</label>
+                                                        <select id="inputState14" class="form-control form-control-sm">
                                                             <option selected>Режимни танланг
                                                             </option>
                                                             <option>...</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState15">Товар
-                                                            маркаси</label>
-                                                        <input type="text"
-                                                               class="form-control form-control-sm px-1"
-                                                               id="inputState15"
-                                                               placeholder="Товар маркаси"
-                                                        >
-
+                                                        <label for="inputState15">Товар маркаси</label>
+                                                        <input type="text" class="form-control form-control-sm px-1" id="inputState15" placeholder="Товар маркаси">
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState20">Тузатиш
-                                                            киритилган</label>
-                                                        <select id="inputState20"
-                                                                class="form-control form-control-sm">
+                                                        <label for="inputState20">Тузатиш киритилган</label>
+                                                        <select id="inputState20" class="form-control form-control-sm">
                                                             <option selected>Режимни танланг
                                                             </option>
                                                             <option>...</option>
                                                         </select>
                                                     </div>
-
-
                                                     <div class="form-group col-md-2">
                                                         <label for="inputState21">БЮД рақами</label>
-                                                        <input type="text"
-                                                               class="form-control form-control-sm px-1"
-                                                               id="inputState21"
-                                                               placeholder="пост/сана/рақам"
-                                                        >
-                                                    </div>
-
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState22">Имортер
-                                                            СТИР/ЖШШИР</label>
-                                                        <input type="text"
-                                                               class="form-control form-control-sm px-1"
-                                                               id="inputState22"
-                                                               placeholder="СТИР/ЖШШИР"
-                                                        >
+                                                        <input type="text" class="form-control form-control-sm px-1" id="inputState21" placeholder="пост/сана/рақам">
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState23">Ўз
-                                                            еҳтиёжи/тижорат</label>
-                                                        <select id="inputState23"
-                                                                class="form-control form-control-sm">
-                                                            <option selected>Ўз еҳтиёжи/тижорат
-                                                            </option>
+                                                        <label for="inputState22">Имортер СТИР/ЖШШИР</label>
+                                                        <input type="text" class="form-control form-control-sm px-1" id="inputState22" placeholder="СТИР/ЖШШИР">
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="inputState23">Ўз еҳтиёжи/тижорат</label>
+                                                        <select id="inputState23" class="form-control form-control-sm">
+                                                            <option selected>Ўз еҳтиёжи/тижорат</option>
                                                             <option>...</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState24">Шартнома ИДН
-                                                            рақами</label>
-                                                        <input type="text"
-                                                               class="form-control form-control-sm px-1"
-                                                               id="inputState24"
-                                                               placeholder="Шартнома ИДН рақами"
-                                                        >
+                                                        <label for="inputState24">Шартнома ИДН рақами</label>
+                                                        <input type="text" class="form-control form-control-sm px-1" id="inputState24" placeholder="Шартнома ИДН рақами">
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState25">Божхона қиймати
-                                                            асоси</label>
-                                                        <input type="text"
-                                                               class="form-control form-control-sm px-1"
-                                                               id="inputState25"
-                                                               placeholder="Божхона қиймати асоси"
-                                                        >
-
+                                                        <label for="inputState25">Божхона қиймати асоси</label>
+                                                        <input type="text" class="form-control form-control-sm px-1" id="inputState25" placeholder="Божхона қиймати асоси">
                                                     </div>
                                                     <div class="form-group col-md-2">
                                                         <label>Чегарани кесиб ўтган сана</label>
@@ -324,8 +234,6 @@
                                                             </button>
                                                         </div>
                                                     </div>
-
-
                                                        <div class="col-2 text-right">
                                                            <button type="button" tabindex="3"
                                                                    class="btn btn-sm btn-outline-primary f-w-900 w-75 updateAppTableV1 "
@@ -333,15 +241,11 @@
                                                                <i class="fas fa-wrench"></i>&nbsp;Созлама
                                                            </button>
                                                        </div>
-
-
                                                 </div>
-
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -350,20 +254,34 @@
         </div>
     </div>
     <div class="row">
-        <!-- [ horizontal-layout ] start -->
         <div class="col-sm-12">
-            <div class="mt-3 dt-responsive table-responsive p-4">
-                <table id="app_table_01" class="table table-striped table-bordered nowrap">
-                    <thead class="text-center">
+            <div class="mt-3 dt-responsive p-4 ">
+                <table id="app_table_01" class="table table-striped compact  table-bordered nowrap" style="width: 100%">
+                    <thead>
                     <tr>
                         <th>№</th>
                         <th>БЮД рақами</th>
+                        <th>ТИФ ТН код</th>
+                        <th>Режим</th>
+                        <th>Юк жўн. мамлакат</th>
+                        <th>Ишлаб чиқ. мамлакат</th>
+                        <th>Савдо қил. мамлакат</th>
+                        <th>Етк. бер. шарти</th>
+                        <th>Етк. бер. пункти</th>
+                        <th>Тран. тури</th>
+                        <th>Товар тўлиқ номи</th>
+                        <th>Марка</th>
+                        <th>Б.Қ. индекси АҚШ долл.</th>
+                        <th>Б.Қ. АҚШ долл.</th>
+                        <th>Ф.Қ. АҚШ долл.</th>
+                        <th>Метод</th>
+                        <th>Нетто</th>
+                        <th>Брутто</th>
                     </tr>
                     </thead>
                 </table>
             </div>
         </div>
-        <!-- [ horizontal-layout ] end -->
     </div>
 </div>
 
@@ -375,6 +293,8 @@
     $('select').selectpicker();
     let numberCount = 0
     var table = $('#app_table_01').DataTable({
+        scrollX: true,
+        // scrollY:true,
         fixedHeader: true,
         searching: true,
         processing: true,
@@ -384,23 +304,82 @@
         dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-1'l><'col-sm-12 col-md-4'i><'col-sm-12 col-md-7'p>>",
         lengthMenu: [ [8, 25, 50, -1], [8, 25, 50, "барча"] ],
         columns: [
-            {   name: '#',
+            {
+                // title: '№',
                 data: null,
                 sortable: false,
-                render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
-            },
-            {
-                data: 'gc3Date'
-            },
-        ],
-        columnDefs: [
-            {
                 searchable: false,
                 orderable: false,
-                targets: 0,
-            }
+                render: function (data, type, row, meta) {return meta.row + meta.settings._iDisplayStart + 1}
+            },
+            {
+                // title: 'БЮД рақами',
+                data: 'gc3Date'
+            },
+            {
+                // title: 'ТИФ ТН код',
+                data: 'g33'
+            },
+            {
+                // title: 'Режим',
+                data: 'g33'
+            },
+            {
+                // title: 'Юк жўн. мамлакат',
+                data: 'g33'
+            },
+            {
+                // title: 'Ишлаб чиқ. мамлакат',
+                data: 'g33'
+            },
+            {
+                // title: 'Савдо қил. мамлакат',
+                data: 'g33'
+            },
+            {
+                // title: 'Етк. бер. шарти',
+                data: 'g33'
+            },
+            {
+                // title: 'Етк. бер. пункти',
+                data: 'g33'
+            },
+            {
+                // title: 'Тран. тури',
+                data: 'g33'
+            },
+            {
+                // title: 'Товар тўлиқ номи',
+                data: 'g33'
+            },
+            {
+                // title: 'Марка',
+                data: 'g33'
+            },
+            {
+                // title: 'Б.Қ. индекси АҚШ долл.',
+                data: 'g33'
+            },
+            {
+                // title: 'Б.Қ. АҚШ долл.',
+                data: 'g33'
+            },
+            {
+                // title: 'Ф.Қ. АҚШ долл.',
+                data: 'g33'
+            },
+            {
+                // title: 'Метод',
+                data: 'g33'
+            },
+            {
+                // title: 'Нетто',
+                data: 'g33'
+            },
+            {
+                // title: 'Брутто',
+                data: 'g33'
+            },
         ],
         colReorder: true,
         order: [[1, 'asc']],
@@ -464,7 +443,6 @@
     $('.updateAppTableV1').on('click', function () {
         onDateBoundChange();
     })
-
     $(document).ready(function () {
         table.on('order.dt search.dt', function () {
             let i = 1;
@@ -474,22 +452,6 @@
         }).draw();
     });
 
-    <%--function applicationProccess(id) {--%>
-    <%--    let params = {--%>
-    <%--        "id": id--%>
-    <%--    }--%>
-    <%--    $.ajax({--%>
-    <%--        type: "GET",--%>
-    <%--        url: "${pageContext.servletContext.contextPath}/route/decision_global/d_global/v1",--%>
-    <%--        data: params,--%>
-    <%--        beforeSend: function () {},--%>
-    <%--        accept: function () {},--%>
-    <%--        success: function (response){--%>
-    <%--            $("#generalContainer").html(response);--%>
-    <%--        },--%>
-    <%--        error: function () {}--%>
-    <%--    });--%>
-    <%--}--%>
 </script>
 <style>
     .dropdown dropdown-menu {
@@ -546,5 +508,8 @@
     }
     :-ms-input-placeholder {
         text-align: center;
+    }
+    div.dataTables_wrapper {
+        margin: 0 auto;
     }
 </style>
