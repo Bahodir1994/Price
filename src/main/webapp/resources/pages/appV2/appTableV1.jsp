@@ -643,8 +643,8 @@
              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl modal-autoheight" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title ml-auto" id="exampleModalLongTitle">Ҳисобот</h4>
+                    <div class="modal-header" style="background-color: #7497ea">
+                        <h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-history text-white"></i> Қиймат мониторингидан фойдаланиш натижаларини қайд этиш ҳисоботи</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -679,9 +679,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="mt-0 dt-responsive p-2">
-                <table id="app_table_01" class="table row-border order-column nowrap table-bordered"
-                       style="width: 100%">
-                    <thead>
+                <table id="app_table_01" class="table table-striped row-border order-column nowrap table-bordered" style="width: 100%"><thead>
                     <tr>
                         <th>№</th>
                         <th>БЮД рақами</th>
@@ -735,6 +733,10 @@
 <script type="text/javascript"
         src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/buttons.bootstrap4.min.js"></script>
 <script type="text/javascript"
+        src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.dateTime.min.js">
+</script><script type="text/javascript"
+        src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/datetime.js"></script>
+</script><script type="text/javascript"
         src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/lottie.js"></script>
 <script>
 

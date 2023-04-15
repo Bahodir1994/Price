@@ -240,6 +240,7 @@
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/menu-setting.min.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/pages/data-api-custom.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/prism.js"></script>
+        <script src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/moment.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/horizontal-menu.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/dist/js/bootstrap-select.min.js"></script>
         <script>

@@ -1,4 +1,4 @@
-package uz.customs.customprice.entity;
+package uz.customs.customprice.entity.costmonitoring;
 
 import lombok.*;
 

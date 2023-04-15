@@ -2026,7 +2026,7 @@ pre code {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .table-hover tbody tr:hover {
@@ -6358,13 +6358,13 @@ a.close.disabled {
 @media (min-width: 992px) {
     .modal-lg,
     .modal-xl {
-        max-width: 900px;
+        max-width: 800px;
     }
 }
 
 @media (min-width: 1200px) {
     .modal-xl {
-        max-width: 1140px;
+        max-width: 1500px;
     }
 }
 
@@ -29354,7 +29354,7 @@ select.form-control:focus::-ms-value {
 
 /* Zebra-striping */
 .table-striped tbody tr:nth-of-type(2n+1) {
-    background-color: rgba(70, 128, 255, 0.03);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* Hover effect */
