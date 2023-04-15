@@ -9,7 +9,7 @@ $(document).ready(function() {
                 '<a href="#!"></a>' +
             '</div>' +
             '<div class="style-block">' +
-                '<h4 class="mb-2">Able-pro <small class="font-weight-normal">v8.0 Customizer</small></h4>' +
+                '<h4 class="mb-2">Созламалар</h4>' +
                 '<hr class="">' +
                 '<div class="m-style-scroller">' +
                     '<h6 class="mt-2">Layouts</h6>' +
