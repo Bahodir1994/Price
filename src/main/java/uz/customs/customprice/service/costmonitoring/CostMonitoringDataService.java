@@ -1,4 +1,4 @@
-package uz.customs.customprice.service.costmonitoring.logEntityServices;
+package uz.customs.customprice.service.costmonitoring;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
@@ -7,22 +7,20 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import uz.customs.customprice.entity.costmonitoring.CPLog;
-import uz.customs.customprice.repository.costmonitoring.CostMonitoringDataLogRepository;
+import uz.customs.customprice.component.costmonitoring.DateRangeSpecification;
+import uz.customs.customprice.entity.BaseEntity;
+import uz.customs.customprice.repository.CostMonitoringDataRepository;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 
 @Service
 @RequiredArgsConstructor
-public class CostMonitoringDataLogService {
+public class CostMonitoringDataService {
 
-    private final CostMonitoringDataLogRepository costMonitoringDataLogRepository;
+    private final CostMonitoringDataRepository costMonitoringDataRepository;
 
     @Transactional(rollbackFor = {Exception.class}, propagation = Propagation.REQUIRED)
-    public DataTablesOutput<CPLog> dataTable(DataTablesInput input){
+    public DataTablesOutput<BaseEntity> dataTable(DataTablesInput input){
         DateRangeSpecification dateRangeSpecification = new DateRangeSpecification(input);
 
 //        String searchValue = escapeContent(input.getSearch().getValue());
@@ -53,7 +51,7 @@ public class CostMonitoringDataLogService {
 //            }
 //        };
 
-        return costMonitoringDataLogRepository.findAll(
+        return costMonitoringDataRepository.findAll(
                 input,
                 dateRangeSpecification/*.and(new ExcludeAnalystsSpecification()).and(fullNameSpecification)*/
 //                (root, query, criteriaBuilder) -> {
@@ -65,9 +63,9 @@ public class CostMonitoringDataLogService {
         );
     }
 
-    private static class ExcludeAnalystsSpecification implements Specification<CPLog> {
+    private static class ExcludeAnalystsSpecification implements Specification<BaseEntity> {
         @Override
-        public Predicate toPredicate(Root<CPLog> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+        public Predicate toPredicate(Root<BaseEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
             Predicate senderLocationId = criteriaBuilder.notEqual(root.get("statusNm"), "Analyst");
             Predicate senderPostId = criteriaBuilder.notEqual(root.get("senderPostId"), "Analystic");
             Predicate finalPredicate = criteriaBuilder.and(senderLocationId, senderPostId);

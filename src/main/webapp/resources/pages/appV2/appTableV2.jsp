@@ -16,34 +16,16 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="mt-0 dt-responsive p-2">
-                    <table id="app_table_02" class="table table-striped row-border order-column table-bordered" style="width: 100%">
+                    <table id="app_table_02" class="table row-border order-column table-bordered" style="width: 100%">
                         <thead class="text-center">
                             <tr>
                                 <th>№</th>
-                                <th>Таркибий тузулма</th>
-                                <th>Ходим</th>
-                                <th>Ўртача излаш вақт</th>
-                                <th>Тиф Тн кодлари сони</th>
+                                <th>Излашни амалга оширган таркибий тузулма</th>
+                                <th>Излашни амалга оширган ходим</th>
+                                <th>Ўртача излаш учун сарифланган вақт</th>
+                                <th>Излаш амалга оширган Тиф Тн кодлари сони</th>
                             </tr>
                         </thead>
-                        <tfoo>
-                            <tr>
-                                <th></th>
-                                <th>
-                                    <select>
-                                        <option></option>
-                                    </select>
-                                </th>
-                                <th>
-                                    <input type="text" placeholder="қидирув..."/>
-                                </th>
-                                <th>
-                                    <select>
-                                        <option></option>
-                                    </select>
-                                </th>
-                            </tr>
-                        </tfoo>
                     </table>
                 </div>
             </div>
@@ -127,16 +109,19 @@
                     render: function (data, type, row, meta) {return meta.row + meta.settings._iDisplayStart + 1}
                 },
                 {
-                    data: 'insTime',
-                    render: $.fn.dataTable.render.moment('YYYY-MM-DDTHH:mm:ss.SSSSZ','YYYY-MM-DD HH:mm' )
+                    // title: 'БЮД рақами',
+                    data: 'gc3Date'
                 },
                 {
-                    data: 'userNm'
+                    // title: 'ТИФ ТН код',
+                    data: 'g33'
                 },
                 {
-                    data: 'resultTime'
+                    // title: 'Режим',
+                    data: 'g33'
                 },
                 {
+                    // title: 'Юк жўн. мамлакат',
                     data: 'g33'
                 }
             ],
@@ -197,7 +182,7 @@
         var minFirstDay = $('input#minFirstDay');
         var maxFirstDay = $('input#maxFirstDay');
         var onDateBoundChange = function () {
-            table2.column('.insTime').search(minFirstDay.val() + ';' + maxFirstDay.val()).draw();
+            table2.column('.gc3Date').search(minFirstDay.val() + ';' + maxFirstDay.val()).draw();
         };
         $('.updateAppTableV1').on('click', function () {
             onDateBoundChange();

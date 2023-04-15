@@ -1,22 +1,22 @@
-package uz.customs.customprice.service.costmonitoring.logEntityServices;
+package uz.customs.customprice.component.costmonitoring;
 
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.Search;
 import org.springframework.data.jpa.domain.Specification;
-import uz.customs.customprice.entity.costmonitoring.BaseEntity;
-import uz.customs.customprice.entity.costmonitoring.CPLog;
+import uz.customs.customprice.entity.BaseEntity;
 
 import javax.persistence.criteria.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static org.springframework.util.StringUtils.hasText;
 
-public class DateRangeSpecification implements Specification<CPLog> {
+public class DateRangeSpecification implements Specification<BaseEntity> {
     private final LocalDate minFirstDay;
     private final LocalDate maxFirstDay;
 
     public DateRangeSpecification(DataTablesInput input) {
-        Search columnSearch = input.getColumn("insTime").getSearch();
+        Search columnSearch = input.getColumn("gc3Date").getSearch();
         String dateFilter = columnSearch.getValue();
         columnSearch.setValue("");
         if (!hasText(dateFilter)) {
@@ -48,8 +48,8 @@ public class DateRangeSpecification implements Specification<CPLog> {
     }
 
     @Override
-    public Predicate toPredicate(Root<CPLog> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-        Expression<LocalDate> firstDay = root.get("insTime").as(LocalDate.class);
+    public Predicate toPredicate(Root<BaseEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+        Expression<LocalDate> firstDay = root.get("gc3Date").as(LocalDate.class);
         if (minFirstDay != null && maxFirstDay != null) {
             return criteriaBuilder.between(firstDay, minFirstDay, maxFirstDay);
         } else if (minFirstDay != null) {
