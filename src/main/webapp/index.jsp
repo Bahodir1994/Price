@@ -109,15 +109,15 @@
                         <!-- ========   change your logo hear   ============ -->
                         <img src="${pageContext.servletContext.contextPath}/resources/assets/images/gtk.png" style="width: 35px"
                              alt="" class="logo">
-                        <span class="ml-1 b-title f-18">Божхона қиймати</span>
+                        <span class="ml-1 b-title f-18"><fmt:message key="systemName" bundle="${resourceBundle}"/></span>
                     </a>
 
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                                    <span class="d-inline-block m-b-0 text-white f-16">Админстратор БҚ (дастурчи) :
-                                        <span style="text-decoration: underline">Шоймардонов Рустам</span></span>
+                                    <span class="d-inline-block m-b-0 text-white f-16">${sessionDataValue.userRoleName} :
+                                        <span style="text-decoration: underline">${sessionDataValue.userName}</span></span>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
@@ -194,16 +194,22 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-notification">
                                     <div class="pro-head">
-                                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/user/avatar-5.jpg" class="img-radius" alt="User-Profile-Image">
-                                        <span>Рол</span>
-                                        <a href="#" class="dud-logout ml-1" title="Logout">
+                                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/gtk.png"
+                                             class="img-radius" alt="User-Profile-Image">
+                                        <span>${sessionDataValue.userRoleName}</span><br><span>${sessionDataValue.userName}</span>
+                                        <a href="${pageContext.request.contextPath}/exit.do" class="dud-logout" title="Logout">
                                             <i class="feather icon-log-out"></i>
                                         </a>
                                     </div>
                                     <ul class="pro-body">
-                                        <li><a href="#" class="dropdown-item"><i class="fas fa-user-circle "></i> Рол 1</a></li>
-                                        <li><a href="#" class="dropdown-item"><i class="fas fa-user-circle "></i> Рол 2</a></li>
-                                        <li><a href="#" class="dropdown-item"><i class="fas fa-user-circle "></i> Рол 3</a></li>
+                                        <c:forEach var="roleList" items="${sessionDataValue.roles}">
+                                            <c:if test="${roleList.code == sessionDataValue.userRole}">
+                                                <li class="active"><a href="#" class="dropdown-item"><i class="feather icon-user"></i>${roleList.name}</a></li>
+                                            </c:if>
+                                            <c:if test="${roleList.code != sessionDataValue.userRole}">
+                                                <li class=""><a href="javascript:checkRole('${roleList.code}')" class="dropdown-item"><i class="feather icon-user"></i>${roleList.name}</a></li>
+                                            </c:if>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
