@@ -90,7 +90,7 @@ public class LogServiceImpl implements LogService {
                 "    (   select\n" +
                 "            count(*)\n" +
                 "        from\n" +
-                "            expertise.user_e m\n" +
+                "            CPID.user_e m\n" +
                 "        where\n" +
                 "            m.isdeleted=0) soni,\n" +
                 "    (   select\n" +
@@ -99,7 +99,7 @@ public class LogServiceImpl implements LogService {
                 "            (   select\n" +
                 "                    l.user_id\n" +
                 "                from\n" +
-                "                    expertise.log l\n" +
+                "                    CPID.log l\n" +
                 "                where\n" +
                 "                    (\n" +
                 "                        l.enter +1 hour)\n" +
@@ -124,7 +124,7 @@ public class LogServiceImpl implements LogService {
         String activeCountQuery = "SELECT\n" +
                 "    count(*)\n" +
                 "FROM\n" +
-                "    expertise.log l\n" +
+                "    CPID.log l\n" +
                 "WHERE\n" +
                 "    l.ISDELETED=0\n" +
                 "AND l.UPDTIME BETWEEN CURRENT_TIMESTAMP - 60 minutes AND CURRENT_TIMESTAMP";
