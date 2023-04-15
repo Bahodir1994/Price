@@ -9,7 +9,7 @@
 
 <html lang="${sessionDataValue.language.substring(0, 2)}">
     <head>
-        <title>Божхона қиймати назорати</title>
+        <title><fmt:message key="systemName" bundle="${resourceBundle}"/></title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -35,10 +35,9 @@
                 <div class="navbar-content sidenav-horizontal" id="layout-sidenav">
                     <ul class="nav pcoded-inner-navbar sidenav-inner">
 
-                        <li class="nav-item pcoded-hasmenu active pcoded-trigger f-w-600 activeI drop">
-                            <a href="#!" class="nav-link "><span class="pcoded-micon"><i
-                                    class="feather icon-home text-dark"></i></span><span
-                                    class="pcoded-mtext">Асосий саҳифа</span></a>
+                    <li class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link "><span class="pcoded-micon"><i
+                                class="feather icon-home text-dark"></i></span><span class="pcoded-mtext">Асосий саҳифа</span></a>
 
                         </li>
                         <li class="nav-item pcoded-hasmenu">
@@ -136,26 +135,53 @@
                         </li>
                         <li>
                             <div class="dropdown drp-user">
-                                <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret has-ripple"
-                                   data-toggle="dropdown" title="Тил" style="color:#fff
-                                                ; font-size: 20px; width: 80px">
-                                    <img src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"
-                                         class="mr-1" width="20px" style="border-radius: 50%" alt=""><span
-                                        style="font-weight: bold; font-size: 14px;">&nbsp;&nbsp;Ўзб&nbsp;&nbsp;</span>
-                                    <span class="ripple ripple-animate"
-                                          style="height: 52px; width: 52px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(26, 83, 240); opacity: 0.4; top: 3px; left: -11.9844px;"></span></a>
+
+                                <c:if test="${sessionDataValue.language == 'uz_UZ'}">
+                                    <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret has-ripple"
+                                       data-toggle="dropdown" title="Тил" style="color:#fff; font-size: 20px; width: 80px">
+                                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"  width="20px" style="border-radius: 50%" alt="">
+                                        <span style="font-weight: bold; font-size: 14px;">&nbsp;&nbsp;Ўзб&nbsp;&nbsp;</span>
+                                        <span class="ripple ripple-animate" style="height: 52px; width: 52px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(26, 83, 240); opacity: 0.4; top: 3px; left: -11.9844px;"></span>
+                                    </a>
+                                </c:if>
+                                <c:if test="${sessionDataValue.language == 'oz_OZ'}">
+                                    <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret has-ripple"
+                                       data-toggle="dropdown" title="Тил" style="color:#fff; font-size: 20px; width: 80px">
+                                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"  width="20px" style="border-radius: 50%" alt="">
+                                        <span style="font-weight: bold; font-size: 14px;">&nbsp;&nbsp;O'zb&nbsp;&nbsp;</span>
+                                        <span class="ripple ripple-animate" style="height: 52px; width: 52px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(26, 83, 240); opacity: 0.4; top: 3px; left: -11.9844px;"></span>
+                                    </a>
+                                </c:if>
+                                <c:if test="${sessionDataValue.language == 'ru_RU'}">
+                                    <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret has-ripple"
+                                       data-toggle="dropdown" title="Тил" style="color:#fff; font-size: 20px; width: 80px">
+                                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/ru.svg"  width="20px" style="border-radius: 50%" alt="">
+                                        <span style="font-weight: bold; font-size: 14px;">&nbsp;&nbsp;Рус&nbsp;&nbsp;</span>
+                                        <span class="ripple ripple-animate" style="height: 52px; width: 52px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(26, 83, 240); opacity: 0.4; top: 3px; left: -11.9844px;"></span>
+                                    </a>
+                                </c:if>
+                                <c:if test="${sessionDataValue.language == 'en_EN'}">
+                                    <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret has-ripple"
+                                       data-toggle="dropdown" title="Тил" style="color:#fff; font-size: 20px; width: 80px">
+                                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/gb.svg"  width="20px" style="border-radius: 50%" alt="">
+                                        <span style="font-weight: bold; font-size: 14px;">&nbsp;&nbsp;Eng&nbsp;&nbsp;</span>
+                                        <span class="ripple ripple-animate" style="height: 52px; width: 52px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(26, 83, 240); opacity: 0.4; top: 3px; left: -11.9844px;"></span>
+                                    </a>
+                                </c:if>
+
+
                                 <div class="dropdown-menu dropdown-menu-right profile-notification p-2 f-16"
                                      style="min-width: 150px;">
-                                    <a class="dropdown-item" href="" onclick="langF('OZ')" style="padding: 10px"><img
-                                            src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"
-                                            class="mr-2" width="20px" alt=""><span>O'zbekcha</span></a>
-                                    <a class="dropdown-item" href="" onclick="langF('UZ')" style="padding: 10px"><img
+                                    <a class="dropdown-item" href="" onclick="langF('uz_UZ')" style="padding: 10px"><img
                                             src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"
                                             class="mr-2" width="20px" alt=""><span>Ўзбекча</span></a>
-                                    <a class="dropdown-item" href="" onclick="langF('RU')" style="padding: 10px"><img
+                                    <a class="dropdown-item" href="" onclick="langF('oz_OZ')" style="padding: 10px"><img
+                                            src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"
+                                            class="mr-2" width="20px" alt=""><span>O'zbekcha</span></a>
+                                    <a class="dropdown-item" href="" onclick="langF('ru_RU')" style="padding: 10px"><img
                                             src="${pageContext.servletContext.contextPath}/resources/assets/images/ru.svg"
                                             class="mr-2" width="20px" alt=""><span>Русский</span></a>
-                                    <a class="dropdown-item" href="" onclick="langF('EN')" style="padding: 10px"><img
+                                    <a class="dropdown-item" href="" onclick="langF('en_EN')" style="padding: 10px"><img
                                             src="${pageContext.servletContext.contextPath}/resources/assets/images/gb.svg"
                                             class="mr-2" width="20px" alt=""><span>English</span></a>
                                 </div>
@@ -168,7 +194,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-notification">
                                     <div class="pro-head">
-                                        <img src="assets/images/user/avatar-5.jpg" class="img-radius" alt="User-Profile-Image">
+                                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/user/avatar-5.jpg" class="img-radius" alt="User-Profile-Image">
                                         <span>Рол</span>
                                         <a href="#" class="dud-logout ml-1" title="Logout">
                                             <i class="feather icon-log-out"></i>
@@ -263,10 +289,82 @@
                     },
                     error: function () {
 
+                }
+            });
+        }
+
+        // $(document).ready(function () {
+        //     indexUserSession();
+        // });
+
+        function indexUserSession() {
+            setTimeout(() => {
+                $.get({
+                    url: "..${pageContext.request.contextPath}/index/index-user-session",
+                    dataType: "html",
+                    header: 'Content-type: text/html; charset=utf-8',
+                    success: function (res) {
+                        document.body.style.cursor = 'default';
+                        window.location.reload();
+                    },
+                    error: function (res) {
+                        $(".loading2").addClass("d-none");
+                        if (res.status == 401) {
+                            $(".logOutForm").submit();
+                        }
+                        document.body.style.cursor = 'default';
+                    }
+                });
+            }, 300)
+        }
+
+            function checkRole(roleCode) {
+                var dataS = {"role": roleCode};
+                $.post({
+                    url: "${pageContext.servletContext.contextPath}/checkRole/checkRole",
+                    async: false,
+                    data: dataS,
+                    beforeSend: function () {
+                    },
+                    complete: function () {
+                    },
+                    success: function (res) {
+                        window.location.reload();
+                        $('#roleName').html(res.roleName);
+                        $('#fullName').html(res.fullName);
+                    },
+                    error: function (res) {
+                        if (res.status == 401) {
+                            $(".logOutForm").submit();
+                        }
+                        $('#preloader').addClass('visually-hidden');
                     }
                 });
             }
-        </script>
-        <script src="${pageContext.servletContext.contextPath}/resources/assets/js/analytics.js"></script>
-    </body>
+
+            function langF(langCode) {
+                var params = {"langCode": langCode};
+                $.post({
+                    url: "${pageContext.servletContext.contextPath}/check_language_type/i18/v1",
+                    async: false,
+                    data: params,
+                    beforeSend: function () {
+                    },
+                    complete: function () {
+                    },
+                    success: function (res) {
+                        window.location.reload();
+                    },
+                    error: function (res) {
+                        if (res.status == 401) {
+                            $(".logOutForm").submit();
+                        }
+                        $('#preloader').addClass('visually-hidden');
+                    }
+                });
+            }
+
+    </script>
+    <script src="${pageContext.servletContext.contextPath}/resources/assets/js/analytics.js"></script>
+</body>
 </html>
