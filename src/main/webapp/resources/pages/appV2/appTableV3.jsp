@@ -11,35 +11,20 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<head>
-</head>
 <body>
     <div class="page-wrapper">
         <div class="row">
             <div class="col-sm-12">
                 <div class="mt-0 dt-responsive p-2">
-                    <table id="app_table_03" class="table row-border order-column nowrap" style="width: 100%">
-                        <thead>
-                        <tr>
-                            <th>№</th>
-                            <th>БЮД рақами</th>
-                            <th>ТИФ ТН код</th>
-                            <th>Режим</th>
-                            <th>Юк жўн. мамлакат</th>
-                            <th>Ишлаб чиқ. мамлакат</th>
-                            <th>Савдо қил. мамлакат</th>
-                            <th>Етк. бер. шарти</th>
-                            <th>Етк. бер. пункти</th>
-                            <th>Тран. тури</th>
-                            <th>Товар тўлиқ номи</th>
-                            <th>Марка</th>
-                            <th>Б.Қ. индекси АҚШ долл.</th>
-                            <th>Б.Қ. АҚШ долл.</th>
-                            <th>Ф.Қ. АҚШ долл.</th>
-                            <th>Метод</th>
-                            <th>Нетто</th>
-                            <th>Брутто</th>
-                        </tr>
+                    <table id="app_table_03" class="table row-border order-column table-bordered" style="width: 100%">
+                        <thead class="text-center">
+                            <tr>
+                                <th>№</th>
+                                <th>Излашни амалга оширган таркибий тузулма</th>
+                                <th>Излашни амалга оширган ходим</th>
+                                <th>Ўртача излаш учун сарифланган вақт</th>
+                                <th>Излаш амалга оширган Тиф Тн кодлари сони</th>
+                            </tr>
                         </thead>
                     </table>
                 </div>
@@ -48,8 +33,49 @@
     </div>
     <script>
     $('select').selectpicker();
+    function newexportaction2(e, dt, button, config) {
+        var self = this;
+        var oldStart = dt.settings()[0]._iDisplayStart;
+        dt.one('preXhr', function (e, s, data) {
+            // Just this once, load all data from the server...
+            data.start = 0;
+            data.length = 2147483647;
+            dt.one('preDraw', function (e, settings) {
+                // Call the original action function
+                if (button[0].className.indexOf('buttons-copy') >= 0) {
+                    $.fn.dataTable.ext.buttons.copyHtml5.action.call(self, e, dt, button, config);
+                } else if (button[0].className.indexOf('buttons-excel') >= 0) {
+                    $.fn.dataTable.ext.buttons.excelHtml5.available(dt, config) ?
+                        $.fn.dataTable.ext.buttons.excelHtml5.action.call(self, e, dt, button, config) :
+                        $.fn.dataTable.ext.buttons.excelFlash.action.call(self, e, dt, button, config);
+                } else if (button[0].className.indexOf('buttons-csv') >= 0) {
+                    $.fn.dataTable.ext.buttons.csvHtml5.available(dt, config) ?
+                        $.fn.dataTable.ext.buttons.csvHtml5.action.call(self, e, dt, button, config) :
+                        $.fn.dataTable.ext.buttons.csvFlash.action.call(self, e, dt, button, config);
+                } else if (button[0].className.indexOf('buttons-pdf') >= 0) {
+                    $.fn.dataTable.ext.buttons.pdfHtml5.available(dt, config) ?
+                        $.fn.dataTable.ext.buttons.pdfHtml5.action.call(self, e, dt, button, config) :
+                        $.fn.dataTable.ext.buttons.pdfFlash.action.call(self, e, dt, button, config);
+                } else if (button[0].className.indexOf('buttons-print') >= 0) {
+                    $.fn.dataTable.ext.buttons.print.action(e, dt, button, config);
+                }
+                dt.one('preXhr', function (e, s, data) {
+                    // DataTables thinks the first item displayed is index 0, but we're not drawing that.
+                    // Set the property to what it was before exporting.
+                    settings._iDisplayStart = oldStart;
+                    data.start = oldStart;
+                });
+                // Reload the grid with the original page. Otherwise, API functions like table.cell(this) don't work properly.
+                setTimeout(dt.ajax.reload, 0);
+                // Prevent rendering of the full data to the DOM
+                return false;
+            });
+        });
+        // Requery the server with the new one-time export settings
+        dt.ajax.reload();
+    }
     var table = $('#app_table_03').DataTable({
-        scrollY:        '70vh',
+        scrollY:        '51vh',
         scrollX:        true,
         scrollCollapse: true,
         scrollResize: true,
@@ -57,15 +83,21 @@
             header: true,
             headerOffset: $('#fixed').height()
         },
-        fixedColumns:   {
-            left: 1
-        },
+        buttons: [
+            {
+                extend: 'excel',
+                text: '<i class="fa fa-file-excel"></i> Excel',
+                titleAttr: 'Excel',
+                className: 'btn btn-sm btn-success',
+                action: newexportaction2
+            },
+        ],
         searching: true,
         processing: true,
         responsive: true,
         ajax: '<%=request.getContextPath()%>/routeV2/data/cost_monitoring_base/v6',
         serverSide: true,
-        dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-1'l><'col-sm-12 col-md-4'i><'col-sm-12 col-md-7'p>>",
+        dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'Btr>> <'row'<'col-sm-12 col-md-1'l><'col-sm-12 col-md-4'i><'col-sm-12 col-md-7'p>>",
         lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "барча"] ],
         columns: [
             {
@@ -73,7 +105,6 @@
                 data: null,
                 sortable: false,
                 searchable: false,
-                orderable: false,
                 render: function (data, type, row, meta) {return meta.row + meta.settings._iDisplayStart + 1}
             },
             {
@@ -91,59 +122,7 @@
             {
                 // title: 'Юк жўн. мамлакат',
                 data: 'g33'
-            },
-            {
-                // title: 'Ишлаб чиқ. мамлакат',
-                data: 'g33'
-            },
-            {
-                // title: 'Савдо қил. мамлакат',
-                data: 'g33'
-            },
-            {
-                // title: 'Етк. бер. шарти',
-                data: 'g33'
-            },
-            {
-                // title: 'Етк. бер. пункти',
-                data: 'g33'
-            },
-            {
-                // title: 'Тран. тури',
-                data: 'g33'
-            },
-            {
-                // title: 'Товар тўлиқ номи',
-                data: 'g33'
-            },
-            {
-                // title: 'Марка',
-                data: 'g33'
-            },
-            {
-                // title: 'Б.Қ. индекси АҚШ долл.',
-                data: 'g33'
-            },
-            {
-                // title: 'Б.Қ. АҚШ долл.',
-                data: 'g33'
-            },
-            {
-                // title: 'Ф.Қ. АҚШ долл.',
-                data: 'g33'
-            },
-            {
-                // title: 'Метод',
-                data: 'g33'
-            },
-            {
-                // title: 'Нетто',
-                data: 'g33'
-            },
-            {
-                // title: 'Брутто',
-                data: 'g33'
-            },
+            }
         ],
         colReorder: true,
         order: [[1, 'asc']],

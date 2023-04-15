@@ -6358,7 +6358,7 @@ a.close.disabled {
 @media (min-width: 992px) {
     .modal-lg,
     .modal-xl {
-        max-width: 800px;
+        max-width: 900px;
     }
 }
 
@@ -32549,10 +32549,10 @@ new-task label input[type=checkbox] {
 /**====== Icon layouts css end ======**/
 .table.dataTable[class*="table-"] thead th {
     background: rgba(60, 148, 232, 0.66) !important;
-    height: 5px !important;
-    vertical-align: middle;
+    /*height: 5px !important;*/
+    /*vertical-align: middle;*/
     color: #000;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 

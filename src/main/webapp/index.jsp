@@ -284,7 +284,6 @@
                     accept: function () {
                     },
                     success: function (response) {
-                        console.log(response)
                         $("#main-body").html(response);
                     },
                     error: function () {

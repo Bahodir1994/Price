@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/fixedColumns.bootstrap4.min.css">
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/fixedHeader.bootstrap4.min.css">
-
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/buttons.bootstrap4.min.css">
 </head>
 <body>
     <div class="page-wrapper" id="container">
@@ -110,7 +111,7 @@
                     <div class="col-sm-12 p-2">
                         <div id="main">
                             <div class="container-fluid">
-                                <div class="accordion" id="faq">
+                                <div class="" id="faq">
                                     <div class="card m-0">
                                         <div class="card-header" id="faqhead2">
                                             <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2" aria-expanded="true" aria-controls="faq2">Қўшимча қидирув филтрлари</a>
@@ -351,26 +352,26 @@
                 <div class="modal-dialog modal-dialog-centered modal-xl modal-autoheight" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title ml-auto" id="exampleModalLongTitle">Ҳисобот</h5>
+                            <h4 class="modal-title ml-auto" id="exampleModalLongTitle">Ҳисобот</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <ul class="nav nav-pills m-auto w-75 justify-content-center" id="pills-tab" role="tablist">
-                                <li class="nav-item w-50 border border-primary rounded-0" onclick="appFuncV2_ajax_v1()">
-                                    <a class="nav-link active rounded-0" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+                                <li class="nav-item w-50 border border-primary rounded-0 text-center" onclick="appFuncV2_ajax_v1()">
+                                    <a class="nav-link active rounded-0" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Ходимлар кесимида</a>
                                 </li>
-                                <li class="nav-item w-50 border border-primary rounded-0" onclick="appFuncV2_ajax_v2()">
+                                <li class="nav-item w-50 border border-primary rounded-0 text-center" onclick="appFuncV2_ajax_v2()">
                                     <a class="nav-link rounded-0" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
-                                       role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+                                       role="tab" aria-controls="pills-profile" aria-selected="false">Товарлар кесимида</a>
                                 </li>
                             </ul>
                             <div class="border-top border-bottom-info" id="pills-tabContent"></div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+<%--                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
+<%--                            <button type="button" class="btn btn-primary">Save changes</button>--%>
                         </div>
                     </div>
                 </div>
@@ -379,9 +380,9 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="mt-0 dt-responsive p-2">
-                    <table id="app_table_01" class="table row-border order-column nowrap" style="width: 100%">
+                    <table id="app_table_01" class="table row-border order-column nowrap table-bordered" style="width: 100%">
                         <thead>
-                        <tr>
+                            <tr>
                             <th>№</th>
                             <th>БЮД рақами</th>
                             <th>ТИФ ТН код</th>
@@ -414,7 +415,12 @@
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.colReorder.min.js"></script>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.fixedHeader.min.js"></script>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.fixedColumns.min.js"></script>
-
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jszip.min.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/pdfmake.min.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/buttons.print.min.js"></script>
+    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/buttons.bootstrap4.min.js"></script>
     <script>
         $('select').selectpicker();
         var table = $('#app_table_01').DataTable({
@@ -597,6 +603,9 @@
         });
 
         $('.updateAppTableV2V3').on('click', function () {
+            $('#pills-profile-tab').removeClass('active')
+            $('#pills-home-tab').removeClass('active').addClass('active')
+            $('#pills-tabContent').html('')
             setTimeout(() => {
                 appFuncV2_ajax_v1();
             }, 1000);
