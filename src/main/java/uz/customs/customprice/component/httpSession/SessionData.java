@@ -45,6 +45,15 @@ public class SessionData {
             }
         }
 
+        Integer roleI = (Integer) session.getAttribute("role");
+        String roleN = "";
+        for (Role role : roleList) {
+            if (role.getCode().equals(roleI)) {
+                roleN = role.getName();
+                break;
+            }
+        }
+        session.setAttribute("userRoleName", roleN);
         SessionDataValue sessionDataValue = new SessionDataValue();
         sessionDataValue.setUserId((String) request.getSession().getAttribute("userId"));
         sessionDataValue.setUserIdS((String) request.getSession().getAttribute("userIdS"));
@@ -57,7 +66,6 @@ public class SessionData {
         sessionDataValue.setUserPostName((String) request.getSession().getAttribute("userPostName"));
         sessionDataValue.setRoles(roleList);
         sessionDataValue.setLanguage((String) request.getSession().getAttribute("lang"));
-
         return sessionDataValue;
     }
 }
