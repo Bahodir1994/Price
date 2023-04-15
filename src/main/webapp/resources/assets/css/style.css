@@ -22419,7 +22419,7 @@ pre[class*=language-]:before {
 }
 
 .b-brand .b-title {
-    width: 200px;
+
     margin-left: 10px;
     font-weight: 600;
     color: #fff;
@@ -24396,7 +24396,7 @@ pre[class*=language-]:before {
 .menu-styler .style-toggler > a {
     position: fixed;
     right: 0;
-    top: 80px;
+    top: 500px;
     z-index: 1031;
     transition: 0.3s ease-in-out;
 }
@@ -33372,4 +33372,114 @@ table.dataTable thead .sorting_desc:after {
     position: relative;
     overflow-y: auto;
     height: 75vh !important;
+}
+/*clock*/
+
+li .cal {
+    text-align: center;
+    color: #fff !important;
+}
+
+li .cal .time {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 15px;
+
+}
+
+.cal .days {
+    font-size: 15px;
+    display: flex;
+    line-height: 25px
+}
+
+/*text*/
+svg #loop {
+
+            font-family: Arial, Helvetica, sans-serif !important;
+            letter-spacing: 1px;
+            stroke: rgba(16, 27, 51, 1);
+            font-size: 18px;
+            font-weight: 700;
+            stroke-width: 1;
+            animation: textAnimate 20s infinite alternate;
+        }
+
+@keyframes textAnimate {
+    0% {
+        stroke-dasharray: 0 50%;
+        stroke-dashoffset: 50%;
+        fill: rgba(255, 255, 255, 1);
+    }
+    50% {
+        fill: rgb(156, 204, 101);
+    }
+    75% {
+        fill: rgb(255, 186, 87);
+    }
+    100% {
+        stroke-dasharray: 50% 0;
+        stroke-dashoffset: -50%;
+        fill: rgb(0, 172, 193);
+    }
+}
+
+svg .text1 {
+    font-family: Arial, Helvetica, sans-serif !important;
+    letter-spacing: 3px;
+    stroke: rgb(2, 90, 187);
+    font-size: 32px;
+    font-weight: 600;
+    stroke-width: 1;
+    animation: textAnimate1 20s infinite alternate;
+    text-align: left;
+}
+
+svg .text2 {
+    font-family: Arial, Helvetica, sans-serif !important;
+    letter-spacing: 3px;
+    stroke: rgb(234, 9, 9);
+    font-size: 22px;
+    font-weight: 600;
+    stroke-width: 1;
+    animation: textAnimate2 20s infinite alternate;
+    text-align: left;
+}
+
+@keyframes textAnimate1 {
+    0% {
+        stroke-dasharray: 0 50%;
+        stroke-dashoffset: 50%;
+        fill: rgba(148, 5, 5, 1);
+    }
+    50% {
+        fill: rgba(148, 5, 5, 0.9);
+    }
+    75% {
+        fill: rgba(148, 5, 5, 0.8);
+    }
+    100% {
+        stroke-dasharray: 50% 0;
+        stroke-dashoffset: -50%;
+        fill: rgba(148, 5, 5, 0.7);
+    }
+}
+
+@keyframes textAnimate2 {
+    0% {
+        stroke-dasharray: 0 50%;
+        stroke-dashoffset: 50%;
+        fill: rgba(2, 90, 187, 1);
+    }
+    50% {
+        fill: rgba(2, 90, 187, 0.9);
+    }
+    75% {
+        fill: rgba(2, 90, 187, 0.8);
+    }
+    100% {
+        stroke-dasharray: 50% 0;
+        stroke-dashoffset: -50%;
+        fill: rgba(2, 90, 187, 0.7);
+    }
 }
