@@ -6225,8 +6225,7 @@ a.close.disabled {
 .modal-dialog-centered::before {
     display: block;
     height: calc(100vh - 1rem);
-    height: -webkit-min-content;
-    height: -moz-min-content;
+
     height: min-content;
     content: "";
 }
@@ -6307,7 +6306,7 @@ a.close.disabled {
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-end;
-    padding: 20px 20 px-0 .25rem;
+
     border-top: 1px solid #e3eaef;
     border-bottom-right-radius: calc(0.3rem - 1px);
     border-bottom-left-radius: calc(0.3rem - 1px);
@@ -6345,8 +6344,7 @@ a.close.disabled {
 
     .modal-dialog-centered::before {
         height: calc(100vh - 3.5rem);
-        height: -webkit-min-content;
-        height: -moz-min-content;
+
         height: min-content;
     }
 
@@ -10744,7 +10742,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .text-hide {
-    font: 0/0 a;
+
     color: transparent;
     text-shadow: none;
     background-color: transparent;
@@ -10818,7 +10816,7 @@ a.text-dark:hover, a.text-dark:focus {
         page-break-after: avoid;
     }
 
-@    page {
+@page {
          size: a3;
      }
 
@@ -20840,7 +20838,7 @@ pre[class*="language-"] {
 
 .datta-example-modal-content > pre {
     overflow: hidden;
-    width: -webkit-fit-content;
+
     width: -moz-fit-content;
     width: fit-content;
 }
@@ -24192,7 +24190,7 @@ pre[class*=language-]:before {
 
     .pcoded-navbar.navbar-collapsed .pcoded-inner-navbar > li.pcoded-hasmenu > a:after {
         transition: none;
-        transition-delay: 0;
+
     }
 
     .pcoded-navbar.navbar-collapsed .pcoded-badge {
@@ -24200,7 +24198,7 @@ pre[class*=language-]:before {
     }
 
     .pcoded-navbar.navbar-collapsed:hover .pcoded-badge {
-        transition-delay: 0;
+
     }
 }
 
@@ -28364,9 +28362,7 @@ select.form-control:focus::-ms-value {
     background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%234680ff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
-.samp-bg {
-    background: gradient-x-three-colors();
-}
+
 
 .swal-icon--error {
     border-color: #ff5252;
@@ -28632,9 +28628,7 @@ select.form-control:focus::-ms-value {
 }
 
 [ui-pnotify].ui-pnotify .brighttheme-error div,
-[ui-pnotify].ui-pnotify .brighttheme-error h4 {
-    color: danger(#ff5252, 30%);
-}
+
 
 [ui-pnotify].ui-pnotify .brighttheme-icon-notice {
     background-color: #bd6f00;
@@ -28659,7 +28653,7 @@ select.form-control:focus::-ms-value {
     border-radius: 0;
     border-left: 0.6rem solid transparent;
     border-right: 0.6rem solid transparent;
-    border-bottom: 1.2rem solid danger(#ff5252, 30%);
+    border-bottom: 1.2rem solid #ff5252;
     color: #ffd2d2;
 }
 
@@ -29602,9 +29596,6 @@ div.dtk-focus-alt table.dataTable tbody th.focus {
     fill: none;
 }
 
-.highcharts-button-box {
-    fill: inherit;
-}
 
 .highcharts-tracker-line {
     stroke-linejoin: round;
@@ -29735,10 +29726,7 @@ div.dtk-focus-alt table.dataTable tbody th.focus {
     stroke-width: 3;
 }
 
-.highcharts-state-hover path {
-    transition: stroke-width 50;
-    /* quick in */
-}
+
 
 .highcharts-state-normal path {
     transition: stroke-width 250ms;
@@ -29899,10 +29887,6 @@ text.highcharts-data-label {
 }
 
 .highcharts-funnel-series .highcharts-point-select,
-.highcharts-pyramid-series .highcharts-point-select {
-    fill: inherit;
-    stroke: inherit;
-}
 
 .highcharts-solidgauge-series .highcharts-point {
     stroke-width: 0;
@@ -30057,7 +30041,7 @@ circle.highcharts-legend-nav-active, circle.highcharts-legend-nav-inactive {
 }
 
 .highcharts-polygon-series .highcharts-graph {
-    fill: inherit;
+
     stroke-width: 0;
 }
 
@@ -30184,7 +30168,7 @@ circle.highcharts-legend-nav-active, circle.highcharts-legend-nav-inactive {
 }
 
 .highcharts-button-hover {
-    transition: fill 0;
+
     fill: #e6e6e6;
     stroke: #cccccc;
 }
@@ -30250,9 +30234,7 @@ input.highcharts-range-selector {
     font-size: 1.1em;
 }
 
-.highcharts-crosshair-label .highcharts-label-box {
-    fill: inherit;
-}
+
 
 .highcharts-candlestick-series .highcharts-point {
     stroke: #000000;
@@ -30291,7 +30273,8 @@ input.highcharts-range-selector {
 }
 
 .highcharts-map-series .highcharts-point-hover {
-    transition: fill 0ms, fill-opacity 0;
+    transition: fill 0ms;
+
     fill-opacity: 0.5;
     stroke-width: 2px;
 }
@@ -30993,16 +30976,7 @@ text.highcharts-drilldown-data-label {
     transition: all ease-in 0.3s;
 }
 
-#task-container li.complete:before {
-    background: url("../images/complete.png") no-repeat;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    content: "";
-    width: 55px;
-    height: 55px;
-    background-size: 100%;
-}
+
 
 #task-container li.complete p {
     text-decoration: line-through;
@@ -33182,7 +33156,7 @@ new-task label input[type=checkbox] {
     line-height: 30px;
     color: #222;
 }
-7table
+
 
 /*login css*/
 .relative {
