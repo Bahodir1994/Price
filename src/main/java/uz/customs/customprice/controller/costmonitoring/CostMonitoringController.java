@@ -40,4 +40,36 @@ public class CostMonitoringController {
         return costMonitoringDataService.dataTable(input);
     }
 
+    /******************************************************************************************************************/
+
+    @GetMapping(value = "/data/cost_monitoring_base/v3")
+    public ModelAndView getDataV3() throws JsonProcessingException {
+        ModelAndView modelAndView = new ModelAndView("/resources/pages/appV2/appTableV2");
+
+        List<Country> country = countryService.findAllByLngaTpcdOrderByCodeAsc("UZ");
+        modelAndView.addObject("country", country);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/data/cost_monitoring_base/v4")
+    public DataTablesOutput<BaseEntity> getDataV4(@Valid DataTablesInput input) throws UnexpectedRollbackException {
+        return costMonitoringDataService.dataTable(input);
+    }
+
+    /******************************************************************************************************************/
+
+    @GetMapping(value = "/data/cost_monitoring_base/v5")
+    public ModelAndView getDataV5() throws JsonProcessingException {
+        ModelAndView modelAndView = new ModelAndView("/resources/pages/appV2/appTableV3");
+
+        List<Country> country = countryService.findAllByLngaTpcdOrderByCodeAsc("UZ");
+        modelAndView.addObject("country", country);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/data/cost_monitoring_base/v6")
+    public DataTablesOutput<BaseEntity> getDataV6(@Valid DataTablesInput input) throws UnexpectedRollbackException {
+        return costMonitoringDataService.dataTable(input);
+    }
+
 }

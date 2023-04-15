@@ -33237,3 +33237,20 @@ table.dataTable thead .sorting_desc:after {
 .option-class {
     border-bottom: 0.5px dashed #00adff!important;
 }
+
+#container{
+    /*border:1px solid red;*/
+    /*border-radius: .5em;*/
+}
+#container:fullscreen {
+    padding-top: 15vh!important;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto!important;
+}
+
+.modal-autoheight .modal-body {
+    position: relative;
+    overflow-y: auto;
+    height: 75vh !important;
+}

@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="col-1 text-right ml-1 p-0 " style="margin-top: 20px">
                                     <button type="button" tabindex="3"
-                                            class="btn btn-sm btn-outline-success f-w-900 w-75 updateAppTableV1"
+                                            class="btn btn-sm btn-outline-success f-w-900 w-75 updateAppTableV2V3"
                                             style="border-radius: 5px" data-toggle="modal" data-target="#exampleModalCenter">
                                         <i class="feather icon-bar-chart"></i>&nbsp;Ҳисобот
                                     </button>
@@ -333,7 +333,6 @@
                                                                 </button>
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </form>
                                             </div>
@@ -349,7 +348,7 @@
         <!-- Modal -->
         <div class="col-12">
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-dialog modal-dialog-centered modal-xl modal-autoheight" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title ml-auto" id="exampleModalLongTitle">Ҳисобот</h5>
@@ -358,50 +357,16 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="card">
-                                <div class="card-body">
-                                    <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
-                                               role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
-                                               role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
-                                        </li>
-
-                                    </ul>
-                                    <div class="tab-content" id="pills-tabContent">
-                                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                                             aria-labelledby="pills-home-tab">
-                                            <p class="mb-0">Consequat occaecat ullamco amet non eiusmod nostrud dolore irure
-                                                incididunt est duis anim sunt officia. Fugiat velit proident aliquip nisi incididunt
-                                                nostrud exercitation proident est
-                                                nisi.
-                                                Irure magna
-                                                elit commodo anim ex veniam culpa eiusmod id nostrud sit cupidatat in veniam ad.
-                                                Eiusmod consequat eu adipisicing minim anim aliquip cupidatat culpa excepteur quis.
-                                                Occaecat sit eu exercitation
-                                                irure
-                                                Lorem incididunt nostrud.
-                                            </p>
-                                        </div>
-                                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
-                                             aria-labelledby="pills-profile-tab">
-                                            <p class="mb-0">Ad pariatur nostrud pariatur exercitation ipsum ipsum culpa mollit
-                                                commodo mollit ex. Aute sunt incididunt amet commodo est sint nisi deserunt pariatur
-                                                do. Aliquip ex eiusmod voluptate
-                                                exercitation
-                                                cillum id incididunt elit sunt. Qui minim sit magna Lorem id et dolore velit Lorem
-                                                amet exercitation duis deserunt. Anim id labore elit adipisicing ut in id occaecat
-                                                pariatur ut ullamco ea tempor
-                                                duis.
-                                            </p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
+                            <ul class="nav nav-pills m-auto w-75 justify-content-center" id="pills-tab" role="tablist">
+                                <li class="nav-item w-50 border border-primary rounded-0" onclick="appFuncV2_ajax_v1()">
+                                    <a class="nav-link active rounded-0" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+                                </li>
+                                <li class="nav-item w-50 border border-primary rounded-0" onclick="appFuncV2_ajax_v2()">
+                                    <a class="nav-link rounded-0" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
+                                       role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+                                </li>
+                            </ul>
+                            <div class="border-top border-bottom-info" id="pills-tabContent"></div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -410,7 +375,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="row">
             <div class="col-sm-12">
@@ -450,198 +414,225 @@
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.colReorder.min.js"></script>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.fixedHeader.min.js"></script>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.fixedColumns.min.js"></script>
+
     <script>
-    $('select').selectpicker();
-    var table = $('#app_table_01').DataTable({
-        scrollY:        '70vh',
-        scrollX:        true,
-        scrollCollapse: true,
-        scrollResize: true,
-        fixedHeader: {
-            header: true,
-            headerOffset: $('#fixed').height()
-        },
-        fixedColumns:   {
-            left: 1
-        },
-        searching: true,
-        processing: true,
-        responsive: true,
-        ajax: '<%=request.getContextPath()%>/routeV2/data/cost_monitoring_base/v2',
-        serverSide: true,
-        dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-1'l><'col-sm-12 col-md-4'i><'col-sm-12 col-md-7'p>>",
-        lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "барча"] ],
-        columns: [
-            {
-                // title: '№',
-                data: null,
-                sortable: false,
-                searchable: false,
-                orderable: false,
-                render: function (data, type, row, meta) {return meta.row + meta.settings._iDisplayStart + 1}
+        $('select').selectpicker();
+        var table = $('#app_table_01').DataTable({
+            scrollY:        '70vh',
+            scrollX:        true,
+            scrollCollapse: true,
+            scrollResize: true,
+            fixedHeader: {
+                header: true,
+                headerOffset: $('#fixed').height()
             },
-            {
-                // title: 'БЮД рақами',
-                data: 'gc3Date'
+            fixedColumns:   {
+                left: 1
             },
-            {
-                // title: 'ТИФ ТН код',
-                data: 'g33'
+            searching: true,
+            processing: true,
+            responsive: true,
+            ajax: '<%=request.getContextPath()%>/routeV2/data/cost_monitoring_base/v2',
+            serverSide: true,
+            dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-1'l><'col-sm-12 col-md-4'i><'col-sm-12 col-md-7'p>>",
+            lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "барча"] ],
+            columns: [
+                {
+                    // title: '№',
+                    data: null,
+                    sortable: false,
+                    searchable: false,
+                    orderable: false,
+                    render: function (data, type, row, meta) {return meta.row + meta.settings._iDisplayStart + 1}
+                },
+                {
+                    // title: 'БЮД рақами',
+                    data: 'gc3Date'
+                },
+                {
+                    // title: 'ТИФ ТН код',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Режим',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Юк жўн. мамлакат',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Ишлаб чиқ. мамлакат',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Савдо қил. мамлакат',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Етк. бер. шарти',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Етк. бер. пункти',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Тран. тури',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Товар тўлиқ номи',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Марка',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Б.Қ. индекси АҚШ долл.',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Б.Қ. АҚШ долл.',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Ф.Қ. АҚШ долл.',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Метод',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Нетто',
+                    data: 'g33'
+                },
+                {
+                    // title: 'Брутто',
+                    data: 'g33'
+                },
+            ],
+            colReorder: true,
+            order: [[1, 'asc']],
+            "language": {
+                "processing": "<span class='fa-stack fa-lg'><i class='fas fa-spinner fa-spin fa-stack-2x fa-fw'></i></span>&nbsp;Юкланмоқда ...",
+                "search": "Излаш:",
+                "lengthMenu": "_MENU_",
+                "zeroRecords": "маълумотлар топилмади",
+                "info": "кўрсатилаётган сахифа _PAGES_ дан _PAGE_",
+                "infoEmpty": "<span class='m-3'>Маълумотлар топилмади</span>",
+                "infoFiltered": "(filtered from _MAX_ total records)",
+                "paginate": {
+                    "previous": "Oldingi",
+                    "next": "Keyingi"
+                },
             },
-            {
-                // title: 'Режим',
-                data: 'g33'
-            },
-            {
-                // title: 'Юк жўн. мамлакат',
-                data: 'g33'
-            },
-            {
-                // title: 'Ишлаб чиқ. мамлакат',
-                data: 'g33'
-            },
-            {
-                // title: 'Савдо қил. мамлакат',
-                data: 'g33'
-            },
-            {
-                // title: 'Етк. бер. шарти',
-                data: 'g33'
-            },
-            {
-                // title: 'Етк. бер. пункти',
-                data: 'g33'
-            },
-            {
-                // title: 'Тран. тури',
-                data: 'g33'
-            },
-            {
-                // title: 'Товар тўлиқ номи',
-                data: 'g33'
-            },
-            {
-                // title: 'Марка',
-                data: 'g33'
-            },
-            {
-                // title: 'Б.Қ. индекси АҚШ долл.',
-                data: 'g33'
-            },
-            {
-                // title: 'Б.Қ. АҚШ долл.',
-                data: 'g33'
-            },
-            {
-                // title: 'Ф.Қ. АҚШ долл.',
-                data: 'g33'
-            },
-            {
-                // title: 'Метод',
-                data: 'g33'
-            },
-            {
-                // title: 'Нетто',
-                data: 'g33'
-            },
-            {
-                // title: 'Брутто',
-                data: 'g33'
-            },
-        ],
-        colReorder: true,
-        order: [[1, 'asc']],
-        "language": {
-            "processing": "<span class='fa-stack fa-lg'><i class='fas fa-spinner fa-spin fa-stack-2x fa-fw'></i></span>&nbsp;Юкланмоқда ...",
-            "search": "Излаш:",
-            "lengthMenu": "_MENU_",
-            "zeroRecords": "маълумотлар топилмади",
-            "info": "кўрсатилаётган сахифа _PAGES_ дан _PAGE_",
-            "infoEmpty": "<span class='m-3'>Маълумотлар топилмади</span>",
-            "infoFiltered": "(filtered from _MAX_ total records)",
-            "paginate": {
-                "previous": "Oldingi",
-                "next": "Keyingi"
-            },
-        },
-    });
+        });
+        // $('input#appNum').change(function() {
+        //     var filter = $(this).val();
+        //     table.column('.appNum').search(filter).draw();
+        // });
+        // $('input#g7a').change(function() {
+        //     var filter = $(this).val();
+        //     table.column('.g7a').search(filter).draw();
+        // });
+        // $('input#g7b').change(function() {
+        //     var filter = $(this).val();
+        //     table.column('.g7b').search(filter).draw();
+        // });
+        // $('input#g7c').change(function() {
+        //     var filter = $(this).val();
+        //     table.column('.g7c').search(filter).draw();
+        // });
+        // $('select#senderPostId').change(function() {
+        //     var filter = '';
+        //     $('select#senderPostId option:selected').each(function() {
+        //         filter += $(this).val() + "+";
+        //     });
+        //     filter = filter.substring(0, filter.length - 1);
+        //     table.column('.senderPostId').search(filter).draw();
+        // });
+        // $('input#atdInspectorName').change(function() {
+        //     var filter = $(this).val();
+        //     table.column('.atdInspectorName').search(filter).draw();
+        // });
+        // $('select#statusNm').change(function() {
+        //     var filter = '';
+        //     $('select#statusNm option:selected').each(function() {
+        //         filter += $(this).val() + "+";
+        //     });
+        //     filter = filter.substring(0, filter.length - 1);
+        //     table.column('.status').search(filter).draw();
+        // });
+        //
+        var minFirstDay = $('input#minFirstDay');
+        var maxFirstDay = $('input#maxFirstDay');
+        var onDateBoundChange = function () {
+            table.column('.gc3Date').search(minFirstDay.val() + ';' + maxFirstDay.val()).draw();
+        };
 
-    // $('input#appNum').change(function() {
-    //     var filter = $(this).val();
-    //     table.column('.appNum').search(filter).draw();
-    // });
-    // $('input#g7a').change(function() {
-    //     var filter = $(this).val();
-    //     table.column('.g7a').search(filter).draw();
-    // });
-    // $('input#g7b').change(function() {
-    //     var filter = $(this).val();
-    //     table.column('.g7b').search(filter).draw();
-    // });
-    // $('input#g7c').change(function() {
-    //     var filter = $(this).val();
-    //     table.column('.g7c').search(filter).draw();
-    // });
-    // $('select#senderPostId').change(function() {
-    //     var filter = '';
-    //     $('select#senderPostId option:selected').each(function() {
-    //         filter += $(this).val() + "+";
-    //     });
-    //     filter = filter.substring(0, filter.length - 1);
-    //     table.column('.senderPostId').search(filter).draw();
-    // });
-    // $('input#atdInspectorName').change(function() {
-    //     var filter = $(this).val();
-    //     table.column('.atdInspectorName').search(filter).draw();
-    // });
-    // $('select#statusNm').change(function() {
-    //     var filter = '';
-    //     $('select#statusNm option:selected').each(function() {
-    //         filter += $(this).val() + "+";
-    //     });
-    //     filter = filter.substring(0, filter.length - 1);
-    //     table.column('.status').search(filter).draw();
-    // });
-    //
-    var minFirstDay = $('input#minFirstDay');
-    var maxFirstDay = $('input#maxFirstDay');
-    var onDateBoundChange = function () {
-        table.column('.gc3Date').search(minFirstDay.val() + ';' + maxFirstDay.val()).draw();
-    };
-    $('.updateAppTableV1').on('click', function () {
-        onDateBoundChange();
-    })
-    $(document).ready(function () {
-        table.on('order.dt search.dt', function () {
-            let i = 1;
-            table.cells(null, 0, {search: 'applied', order: 'applied'}).every(function (cell) {
-                this.data(i++);
+        $('.updateAppTableV1').on('click', function () {
+            onDateBoundChange();
+        })
+        $(document).ready(function () {
+            table.on('order.dt search.dt', function () {
+                let i = 1;
+                table.cells(null, 0, {search: 'applied', order: 'applied'}).every(function (cell) {
+                    this.data(i++);
+                });
+            }).draw();
+        });
+        $('#toggle_fullscreen').on('click', function(){
+            // if already full screen; exit
+            // else go fullscreen
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+                $('.toggle_fullscreen').html('<i class="kic"/>')
+            } else {
+                $('#container').get(0).requestFullscreen();
+                $('.toggle_fullscreen').html('<i class="kat"/>')
+            }
+        });
+
+        $('.updateAppTableV2V3').on('click', function () {
+            setTimeout(() => {
+                appFuncV2_ajax_v1();
+            }, 1000);
+        })
+
+        function appFuncV2_ajax_v1() {
+            $.ajax({
+                type: "GET",
+                url: "${pageContext.servletContext.contextPath}/routeV2/data/cost_monitoring_base/v3",
+                beforeSend: function () {
+                },
+                accept: function () {
+                },
+                success: function (response) {
+                    $('#pills-tabContent').html(response);
+                },
+                error: function () {
+
+                }
             });
-        }).draw();
-    });
-
-    $('#toggle_fullscreen').on('click', function(){
-        // if already full screen; exit
-        // else go fullscreen
-        if (document.fullscreenElement) {
-            document.exitFullscreen();
-            $('.toggle_fullscreen').html('<i class="kic"/>')
-        } else {
-            $('#container').get(0).requestFullscreen();
-            $('.toggle_fullscreen').html('<i class="kat"/>')
         }
-    });
+        function appFuncV2_ajax_v2() {
+            $.ajax({
+                type: "GET",
+                url: "${pageContext.servletContext.contextPath}/routeV2/data/cost_monitoring_base/v5",
+                beforeSend: function () {
+                },
+                accept: function () {
+                },
+                success: function (response) {
+                    $('#pills-tabContent').html(response);
+                },
+                error: function () {
+
+                }
+            });
+        }
     </script>
-<style>
-    #container{
-        /*border:1px solid red;*/
-        /*border-radius: .5em;*/
-    }
-    #container:fullscreen {
-        padding-top: 15vh!important;
-        width: 100vw;
-        height: 100vh;
-        overflow-y: auto!important;
-    }
-</style>
 </body>
