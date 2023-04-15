@@ -103,13 +103,13 @@
         </nav>
         <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
             <div class="container-fluid">
-                <div class="m-header">
+                <div class="m-header mr-1">
                     <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
                     <a href="#!" class="b-brand">
                         <!-- ========   change your logo hear   ============ -->
                         <img src="${pageContext.servletContext.contextPath}/resources/assets/images/gtk.png" style="width: 35px"
                              alt="" class="logo">
-                        <span class="ml-1 b-title f-18"><fmt:message key="systemName" bundle="${resourceBundle}"/></span>
+                        <span class="ml-1 b-title f-16 text-nowrap"><fmt:message key="systemName" bundle="${resourceBundle}"/></span>
                     </a>
 
                 </div>
@@ -190,7 +190,7 @@
                         <li>
                             <div class="dropdown drp-user">
                                 <a href="#" class="dropdown-toggle f-20" data-toggle="dropdown">
-                                    <i class="fas fa-user-circle "></i>
+                                    <i class="fa-solid fa-user-pilot"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-notification">
                                     <div class="pro-head">
