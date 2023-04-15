@@ -27,7 +27,7 @@
 <div class="page-wrapper" id="container">
     <div class="page-header">
         <div class="page-block">
-            <a href="#" id="toggle_fullscreen"><i class="fa fa-window-maximize fa-2x"/></a>
+
             <div class="row align-items-center">
 
                 <div class="col-sm-12 my-0 py-0 px-0 " style="vertical-align: middle">
@@ -112,7 +112,7 @@
                             </div>
 
                             <div class="card-header-right "
-                                 style="position: absolute; z-index: 9999; margin-top: -2%; margin-left: 94%">
+                                 style="position: absolute; z-index: 3; margin-top: -1.2%; margin-left: 94%">
                                 <div class="btn-group card-option ">
                                     <button type="button" class="btn dropdown-toggle has-ripple" data-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">
@@ -121,18 +121,12 @@
                                               style="height: 20px; width: 20px; animation-duration: 0.689655s; animation-timing-function: linear; background: rgb(136, 136, 136); opacity: 0.4; top: -4.375px; left: 0px;"></span>
                                     </button>
                                     <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right" style="">
-                                        <li class="dropdown-item full-card"><span style=""><i
-                                                class="feather icon-maximize"></i> Кенгайтириш</span>
-                                            <span style="display: none;"><i class="feather icon-minimize"></i> Қайта тиклаш</span>
+                                        <li class="dropdown-item full-card" id="toggle_fullscreen"><span style=""><i
+                                                class="feather icon-maximize"></i> Кенгайтириш / Йиғиш</span>
+
                                         </li>
-                                        <li class="dropdown-item minimize-card"><span><i class="feather icon-minus"></i> Йиғиш</span><span
-                                                style="display:none"><i
-                                                class="feather icon-plus"></i> Кенгайтириш</span></li>
-                                        <li class="dropdown-item reload-card"><i class="feather icon-refresh-cw"></i>
-                                            Янгилаш
-                                        </li>
-                                        <li class="dropdown-item close-card"><i class="feather icon-trash"></i> Ўчириш
-                                        </li>
+
+
                                     </ul>
                                 </div>
                             </div>
