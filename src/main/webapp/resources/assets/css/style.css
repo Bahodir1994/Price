@@ -24394,7 +24394,7 @@ pre[class*=language-]:before {
 .menu-styler .style-toggler > a {
     position: fixed;
     right: 0;
-    top: 80px;
+    top: 500px;
     z-index: 1031;
     transition: 0.3s ease-in-out;
 }
