@@ -16,14 +16,16 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="mt-0 dt-responsive p-2">
-                    <table id="app_table_03" class="table row-border order-column table-bordered" style="width: 100%">
+                    <table id="app_table_03" class="table table-striped row-border order-column table-bordered" style="width: 100%">
                         <thead class="text-center">
                             <tr>
                                 <th>№</th>
-                                <th>Излашни амалга оширган таркибий тузулма</th>
-                                <th>Излашни амалга оширган ходим</th>
-                                <th>Ўртача излаш учун сарифланган вақт</th>
-                                <th>Излаш амалга оширган Тиф Тн кодлари сони</th>
+                                <th>Tаркибий тузулма</th>
+                                <th>Ходим</th>
+                                <th>Тиф Тн кодлари сони</th>
+                                <th>Ишлатилган калит сўз</th>
+                                <th>Топилган қайдлар сони</th>
+                                <th>Излаш вақти</th>
                             </tr>
                         </thead>
                     </table>
@@ -74,7 +76,7 @@
         // Requery the server with the new one-time export settings
         dt.ajax.reload();
     }
-    var table = $('#app_table_03').DataTable({
+    var table3 = $('#app_table_03').DataTable({
         scrollY:        '51vh',
         scrollX:        true,
         scrollCollapse: true,
@@ -101,27 +103,29 @@
         lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "барча"] ],
         columns: [
             {
-                // title: '№',
                 data: null,
                 sortable: false,
                 searchable: false,
                 render: function (data, type, row, meta) {return meta.row + meta.settings._iDisplayStart + 1}
             },
             {
-                // title: 'БЮД рақами',
-                data: 'gc3Date'
+                data: 'locationNm'
             },
             {
-                // title: 'ТИФ ТН код',
+                data: 'userNm'
+            },
+            {
                 data: 'g33'
             },
             {
-                // title: 'Режим',
-                data: 'g33'
+                data: 'keyword'
             },
             {
-                // title: 'Юк жўн. мамлакат',
-                data: 'g33'
+                data: 'resultCount'
+            },
+            {
+                data: 'insTime',
+                render: $.fn.dataTable.render.moment('YYYY-MM-DDTHH:mm:ss.SSSSZ','YYYY-MM-DD HH:mm' )
             }
         ],
         colReorder: true,
@@ -181,18 +185,19 @@
     var minFirstDay = $('input#minFirstDay');
     var maxFirstDay = $('input#maxFirstDay');
     var onDateBoundChange = function () {
-        table.column('.gc3Date').search(minFirstDay.val() + ';' + maxFirstDay.val()).draw();
+        table3.column('.insTime').search(minFirstDay.val() + ';' + maxFirstDay.val()).draw();
     };
     $('.updateAppTableV1').on('click', function () {
         onDateBoundChange();
     })
     $(document).ready(function () {
-        table.on('order.dt search.dt', function () {
+        table3.on('order.dt search.dt', function () {
             let i = 1;
-            table.cells(null, 0, {search: 'applied', order: 'applied'}).every(function (cell) {
+            table3.cells(null, 0, {search: 'applied', order: 'applied'}).every(function (cell) {
                 this.data(i++);
             });
         }).draw();
     });
+    table3.columns.adjust();
     </script>
 </body>

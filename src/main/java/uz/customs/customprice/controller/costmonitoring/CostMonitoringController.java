@@ -1,7 +1,6 @@
 package uz.customs.customprice.controller.costmonitoring;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
@@ -10,10 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import uz.customs.customprice.entity.BaseEntity;
+import uz.customs.customprice.entity.costmonitoring.BaseEntity;
 import uz.customs.customprice.entity.catalog.Country;
+import uz.customs.customprice.entity.costmonitoring.CPLog;
 import uz.customs.customprice.service.catalog.CountryService;
-import uz.customs.customprice.service.costmonitoring.CostMonitoringDataService;
+import uz.customs.customprice.service.costmonitoring.baseEntityServices.CostMonitoringDataService;
+import uz.customs.customprice.service.costmonitoring.logEntityServices.CostMonitoringDataLogService;
+import uz.customs.customprice.service.costmonitoring.logEntityServices.CostMonitoringLogService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -24,6 +26,7 @@ import java.util.List;
 public class CostMonitoringController {
 
     private final CostMonitoringDataService costMonitoringDataService;
+    private final CostMonitoringDataLogService costMonitoringDataLogService;
     private final CountryService countryService;
 
     @GetMapping(value = "/data/cost_monitoring_base/v1")
@@ -52,8 +55,8 @@ public class CostMonitoringController {
     }
 
     @GetMapping(value = "/data/cost_monitoring_base/v4")
-    public DataTablesOutput<BaseEntity> getDataV4(@Valid DataTablesInput input) throws UnexpectedRollbackException {
-        return costMonitoringDataService.dataTable(input);
+    public DataTablesOutput<CPLog> getDataV4(@Valid DataTablesInput input) throws UnexpectedRollbackException {
+        return costMonitoringDataLogService.dataTable(input);
     }
 
     /******************************************************************************************************************/
@@ -68,8 +71,8 @@ public class CostMonitoringController {
     }
 
     @GetMapping(value = "/data/cost_monitoring_base/v6")
-    public DataTablesOutput<BaseEntity> getDataV6(@Valid DataTablesInput input) throws UnexpectedRollbackException {
-        return costMonitoringDataService.dataTable(input);
+    public DataTablesOutput<CPLog> getDataV6(@Valid DataTablesInput input) throws UnexpectedRollbackException {
+        return costMonitoringDataLogService.dataTable(input);
     }
 
 }

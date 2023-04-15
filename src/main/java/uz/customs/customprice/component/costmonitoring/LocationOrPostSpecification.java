@@ -1,7 +1,7 @@
 package uz.customs.customprice.component.costmonitoring;
 
 import org.springframework.data.jpa.domain.Specification;
-import uz.customs.customprice.entity.BaseEntity;
+import uz.customs.customprice.entity.costmonitoring.BaseEntity;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
