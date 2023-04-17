@@ -24,7 +24,7 @@ public class BaseEntity {
     @Column(name = "CMDT_ID", nullable = false, length = 22)
     private String cmdtId;
 
-    @Column(name = "UGTK", nullable = true, length = 5)
+    @Column(name = "UGTK", nullable = true, length = 4)
     private String ugtk;
 
     @Column(name = "G7A", nullable = true, length = 5)

@@ -269,7 +269,7 @@
 <script src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/moment.js"></script>
 <script src="${pageContext.servletContext.contextPath}/resources/assets/js/horizontal-menu.js"></script>
 <script src="${pageContext.servletContext.contextPath}/resources/assets/dist/js/bootstrap-select.min.js"></script>
-<script type="application/json" src="${pageContext.servletContext.contextPath}/resources/assets/dist/js/i18n/defaults-${sessionDataValue.language}.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/assets/dist/js/i18n/defaults-${sessionDataValue.language}.js"></script>
 <script>
     (function () {
         if ($('#layout-sidenav').hasClass('sidenav-horizontal') || window.layoutHelpers.isSmallScreen()) {

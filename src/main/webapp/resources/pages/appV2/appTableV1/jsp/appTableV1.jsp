@@ -1,21 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ADMIN
-  Date: 13.04.2023
-  Time: 12:14
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
-<%
-    String lang = session.getAttribute("lang").toString();
-%>
-
+<%@ include file="/locale.jsp" %>
 <head>
     <link rel="stylesheet"
           href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/dataTables.bootstrap4.min.css">
@@ -147,84 +136,34 @@
                                             <form>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState1">ХББ</label>
-                                                        <select class="selectpicker form-control show-menu-arrow"
+                                                        <label for="ugtk">ҲББ</label>
+                                                        <select class="selectpicker form-control show-menu-arrow ugtk"
                                                                 data-style="form-control form-control-sm"
-                                                                id="inputState1" multiple
+                                                                id="ugtk" multiple
                                                                 data-selected-text-format="count > 3"
                                                                 data-actions-box="true" data-live-search="true">
-                                                            <option data-icon="fi fi-af" class="option-class"
-                                                                    value="26002" data-subtext="26002">"Тошкент-товар1"
+                                                            <c:forEach items="${location}" var="location" varStatus="i">
+                                                                <option class="option-class" value="${location.code.substring(0,2)}" data-subtext="${location.code}">${location.cdNm}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-2">
+                                                        <label for="g37C">Олиб ўтиш хусусияти</label>
+                                                        <select class="selectpicker form-control show-menu-arrow g37C"
+                                                                data-style="form-control form-control-sm"
+                                                                id="g37C" multiple
+                                                                data-selected-text-format="count > 3"
+                                                                data-actions-box="true" data-live-search="true">
+                                                            <option data-icon="fa fa-heart" class="option-class" value="26002" data-subtext="26002">"Тошкент-товар1"
                                                                 ТИФ
-                                                            </option>
-                                                            <option class="option-class" value="26003"
-                                                                    data-subtext="26003">"Арқбулоқ" ТИФ
-                                                            </option>
-                                                            <option class="option-class" value="26004"
-                                                                    data-subtext="26004">"Чуқурсой" ТИФ
-                                                            </option>
-                                                            <option class="option-class" value="26010"
-                                                                    data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                            </option>
-                                                            <option class="option-class" value="26002"
-                                                                    data-subtext="26002">"Тошкент-товар" ТИФ
-                                                            </option>
-                                                            <option class="option-class" value="26003"
-                                                                    data-subtext="26003">"Арқбулоқ" ТИФ
-                                                            </option>
-                                                            <option class="option-class" value="26004"
-                                                                    data-subtext="26004">"Чуқурсой" ТИФ
-                                                            </option>
-                                                            <option class="option-class" value="26010"
-                                                                    data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                            </option>
-                                                            <option class="option-class" value="26002"
-                                                                    data-subtext="26002">"Тошкент-товар" ТИФ
                                                             </option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState2">Олиб ўтиш хусусияти</label>
-                                                        <select class="selectpicker form-control show-menu-arrow"
+                                                        <label for="g41">Қўшимча ўлчов бирлиги</label>
+                                                        <select class="selectpicker form-control show-menu-arrow g41"
                                                                 data-style="form-control form-control-sm"
-                                                                id="inputState2" multiple
-                                                                data-selected-text-format="count > 3"
-                                                                data-actions-box="true" data-live-search="true">
-                                                            <option data-icon="fa fa-heart" class="option-class"
-                                                                    value="26002" data-subtext="26002">"Тошкент-товар1"
-                                                                ТИФ
-                                                            </option>
-                                                            <option class="option-class" value="26003"
-                                                                    data-subtext="26003">"Арқбулоқ" ТИФ
-                                                            </option>
-                                                            <option class="option-class" value="26004"
-                                                                    data-subtext="26004">"Чуқурсой" ТИФ
-                                                            </option>
-                                                            <option class="option-class" value="26010"
-                                                                    data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                            </option>
-                                                            <option class="option-class" value="26002"
-                                                                    data-subtext="26002">"Тошкент-товар" ТИФ
-                                                            </option>
-                                                            <option class="option-class" value="26003"
-                                                                    data-subtext="26003">"Арқбулоқ" ТИФ
-                                                            </option>
-                                                            <option class="option-class" value="26004"
-                                                                    data-subtext="26004">"Чуқурсой" ТИФ
-                                                            </option>
-                                                            <option class="option-class" value="26010"
-                                                                    data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                            </option>
-                                                            <option class="option-class" value="26002"
-                                                                    data-subtext="26002">"Тошкент-товар" ТИФ
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-2">
-                                                        <label for="inputState3">Қўшимча ўлчов бирлиги</label>
-                                                        <select class="selectpicker form-control show-menu-arrow"
-                                                                data-style="form-control form-control-sm"
-                                                                id="inputState3" multiple
+                                                                id="g41" multiple
                                                                 data-selected-text-format="count > 3"
                                                                 data-actions-box="true" data-live-search="true">
                                                             <option data-icon="fa fa-heart" class="option-class"
@@ -294,10 +233,10 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState5">Етказиб шарти</label>
+                                                        <label for="g20A">Етказиб бериш шарти</label>
                                                         <select class="selectpicker form-control show-menu-arrow"
                                                                 data-style="form-control form-control-sm"
-                                                                id="inputState5" multiple
+                                                                id="g20A" multiple
                                                                 data-selected-text-format="count > 3"
                                                                 data-actions-box="true" data-live-search="true">
                                                             <option data-icon="fa fa-heart" class="option-class"
@@ -353,10 +292,10 @@
                                                                value="2023-03-01">
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState11">Божхона пости</label>
-                                                        <select class="selectpicker form-control show-menu-arrow"
+                                                        <label for="g7A">Божхона пости</label>
+                                                        <select class="selectpicker form-control show-menu-arrow g7A"
                                                                 data-style="form-control form-control-sm"
-                                                                id="inputState11" multiple
+                                                                id="g7A" multiple
                                                                 data-selected-text-format="count > 3"
                                                                 data-actions-box="true" data-live-search="true">
                                                             <option data-icon="fa fa-heart" class="option-class"
@@ -390,10 +329,10 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState12">Шартнома тури</label>
-                                                        <select class="selectpicker form-control show-menu-arrow"
+                                                        <label for="vidKontrakta">Шартнома тури</label>
+                                                        <select class="selectpicker form-control show-menu-arrow vidKontrakta"
                                                                 data-style="form-control form-control-sm"
-                                                                id="inputState12" multiple
+                                                                id="vidKontrakta" multiple
                                                                 data-selected-text-format="count > 3"
                                                                 data-actions-box="true" data-live-search="true">
                                                             <option data-icon="fa fa-heart" class="option-class"
@@ -543,9 +482,9 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="g7A">БЮД рақами</label>
-                                                        <input type="text" class="form-control form-control-sm px-1 g7A"
-                                                               id="g7A" placeholder="пост/сана/рақам">
+                                                        <label for="g7C">БЮД рақами</label>
+                                                        <input type="text" class="form-control form-control-sm px-1 g7C"
+                                                               id="g7C" placeholder="пост/сана/рақам">
                                                     </div>
                                                     <div class="form-group col-md-2">
                                                         <label for="inputState22">Имортер СТИР/ЖШШИР</label>
@@ -712,10 +651,6 @@
     $('select').selectpicker();
     let sessionData = ${sessionGetterDataValue};
 
-
-
-
-
     /******************************************************************************************************************/
     var app_table_01 = $('#app_table_01').DataTable({
         scrollY: '70vh',
@@ -738,7 +673,7 @@
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "барча"]],
         columns: [
             {
-                title: '#',
+                title: '№',
                 data: null,
                 sortable: false,
                 searchable: false,
@@ -811,6 +746,7 @@
                 this.data(i++);
             });
         }).draw();
+        app_table_01.column('ugtk:name').visible(false);
     });
     /******************************************************************************************************************/
 
@@ -818,11 +754,15 @@
         app_table_01
             .column('gc3Date:name').search($('input#minFirstDay').val() + ';' + $('input#maxFirstDay').val())
             .column('g33:name').search($('input#g33').val())
-            .column('g31Name:name').search($('input#g31Name').val()).draw();
+            .column('g31Name:name').search($('input#g31Name').val())
+            .column('ugtk:name').search($('select#ugtk').val())
+            .column('g37C:name').search($('select#g37C').val())
+            .column('g1B:name').search($('select#g1B').val())
+            .column('g7A:name').search($('select#g7A').val())
+            .column('g7C:name').search($('input#g7C').val())
+            .column('vidKontrakta:name').search($('select#vidKontrakta').val())
+            .draw();
     })
-
-
-
     $('#toggle_fullscreen').on('click', function () {
         // if already full screen; exit
         // else go fullscreen

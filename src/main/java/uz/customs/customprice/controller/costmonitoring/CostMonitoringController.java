@@ -17,6 +17,7 @@ import uz.customs.customprice.entity.catalog.Country;
 import uz.customs.customprice.entity.costmonitoring.CPLog;
 import uz.customs.customprice.service.catalog.CountryService;
 import uz.customs.customprice.service.costmonitoring.baseEntityServices.CostMonitoringDataService;
+import uz.customs.customprice.service.costmonitoring.baseEntityServices.CostMonitoringService;
 import uz.customs.customprice.service.costmonitoring.logEntityServices.CostMonitoringDataLogService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,19 +33,11 @@ public class CostMonitoringController {
     private final CostMonitoringDataLogService costMonitoringDataLogService;
     private final GetterSessionData getterSessionData;
     private final CountryService countryService;
+    private final CostMonitoringService costMonitoringService;
 
     @GetMapping(value = "/data/cost_monitoring_base/v1")
     public ModelAndView getDataV1(HttpServletRequest httpServletRequest) throws JsonProcessingException {
-        ModelAndView modelAndView = new ModelAndView("resources/pages/appV2/appTableV1/jsp/appTableV1");
-        SessionDataValue sessionGetterDataValue = getterSessionData.onlyGetSessionData(httpServletRequest);
-
-        ObjectMapper mapper = new ObjectMapper();
-        modelAndView.addObject("sessionGetterDataValue", mapper.writeValueAsString(sessionGetterDataValue));
-        modelAndView.addObject("sessionLanguage", sessionGetterDataValue.getLanguage());
-
-        List<Country> country = countryService.findAllByLngaTpcdOrderByCodeAsc("UZ");
-        modelAndView.addObject("country", country);
-        return modelAndView;
+        return  costMonitoringService.getValues(httpServletRequest);
     }
 
     @GetMapping(value = "/data/cost_monitoring_base/v2")

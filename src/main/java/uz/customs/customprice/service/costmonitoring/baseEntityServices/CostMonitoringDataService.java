@@ -52,7 +52,7 @@ public class CostMonitoringDataService {
 
         return costMonitoringDataRepository.findAll(
                 input,
-                dateRangeSpecification/*.and(new ExcludeAnalystsSpecification()).and(fullNameSpecification)*/
+                dateRangeSpecification.and(new ExcludeAnalystsSpecification())/*.and(fullNameSpecification)*/
 //                (root, query, criteriaBuilder) -> {
 //                    if (query.getResultType() != Long.class) {
 //                        root.fetch("tnfCommodity", JoinType.LEFT);
@@ -65,9 +65,9 @@ public class CostMonitoringDataService {
     private static class ExcludeAnalystsSpecification implements Specification<BaseEntity> {
         @Override
         public Predicate toPredicate(Root<BaseEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-            Predicate senderLocationId = criteriaBuilder.notEqual(root.get("g33"), "Analyst");
-            Predicate senderPostId = criteriaBuilder.notEqual(root.get("g31Name"), "Analystic");
-            Predicate finalPredicate = criteriaBuilder.and(senderLocationId, senderPostId);
+            Predicate g33 = criteriaBuilder.equal(root.get("g33"), "8537109100");
+            Predicate codeUgtk = criteriaBuilder.equal(root.get("ugtk"), "26");
+            Predicate finalPredicate = criteriaBuilder.and(g33, codeUgtk);
             return finalPredicate;
         }
     }

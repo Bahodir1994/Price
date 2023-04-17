@@ -24,13 +24,13 @@
 
 (function ($) {
   $.fn.selectpicker.defaults = {
-    noneSelectedText: 'Tanlanmagan',
-    noneResultsText: 'Topilmadi {0}',
-    countSelectedText: 'Tanlangan {0} dan {1}',
-    maxOptionsText: ['Maksimal limit ({n} {var} tanlangan)', 'Guruhda maksimal limit ({n} {var} tanlangan)', ['ta.', 'ta.']],
-    doneButtonText: 'Yopish',
-    selectAllText: 'Barchasini tanlash',
-    deselectAllText: 'Barchasini o\'\chirish',
+    noneSelectedText: 'Танланмаган',
+    noneResultsText: 'Топилмади {0}',
+    countSelectedText: 'Танланган {0} дан {1}',
+    maxOptionsText: ['Максимал лимит ({n} {var} танланган)', 'Гуруҳда максимал лимит ({n} {var} танланган)', ['та.', 'та.']],
+    doneButtonText: 'Ёпиш',
+    selectAllText: 'Барчасини танлаш',
+    deselectAllText: 'Барчасини ўчириш',
     multipleSeparator: ', '
   };
 })(jQuery);
