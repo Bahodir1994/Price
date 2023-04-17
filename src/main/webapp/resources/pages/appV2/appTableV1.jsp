@@ -27,27 +27,25 @@
 <div class="page-wrapper" id="container">
     <div class="page-header">
         <div class="page-block">
-
             <div class="row align-items-center">
-
                 <div class="col-sm-12 my-0 py-0 px-0 " style="vertical-align: middle">
                     <div class="justify-content-center py-1 pb-2 mt-2">
                         <div class="row m-0 justify-content-center">
                             <div class="col-1 mx-2  p-0 text-center">
-                                <label for="tif" class="f-w-600" style=" margin-right: 5px;">ТИФ ТН код </label>
-                                <input type="text" id="tif" class="form-control form-control-sm w-100 "
+                                <label for="g33" class="f-w-600" style=" margin-right: 5px;">ТИФ ТН код </label>
+                                <input type="text" id="g33" class="form-control form-control-sm w-100 g33"
                                        placeholder="8703 80 000 0">
                             </div>
                             <div class="col-1 mx-2  p-0 text-center">
-                                <label for="tovar" class="f-w-600" style=" margin-right: 5px;">Товар номи </label>
-                                <input type="text" id="tovar" class="form-control form-control-sm w-100 "
+                                <label for="g31Name" class="f-w-600" style=" margin-right: 5px;">Товар номи </label>
+                                <input type="text" id="g31Name" class="form-control form-control-sm w-100 g31Name"
                                        placeholder="BYD">
                             </div>
                             <div class="col-2 mr-2  p-0 text-center">
-                                <label for="country" class="f-w-600" style=" margin-right: 5px;">Юк жўнатувчи
+                                <label for="g15" class="f-w-600" style=" margin-right: 5px;">Юк жўнатувчи
                                     мамлакат </label>
-                                <select class="selectpicker form-control show-menu-arrow"
-                                        data-style="form-control form-control-sm" id="country" multiple
+                                <select class="selectpicker form-control show-menu-arrow g15"
+                                        data-style="form-control form-control-sm" id="g15" multiple
                                         data-selected-text-format="count > 3" data-actions-box="true"
                                         data-live-search="true">
                                     <c:forEach items="${country}" var="country" varStatus="i">
@@ -110,23 +108,18 @@
                                     <i class="fas fa-wrench"></i>&nbsp;Созлама
                                 </button>
                             </div>
-
                             <div class="card-header-right "
                                  style="position: absolute; z-index: 3; margin-top: -1.2%; margin-left: 94%">
                                 <div class="btn-group card-option ">
                                     <button type="button" class="btn dropdown-toggle has-ripple" data-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">
                                         <i class="feather icon-more-horizontal"></i>
-                                        <span class="ripple ripple-animate"
-                                              style="height: 20px; width: 20px; animation-duration: 0.689655s; animation-timing-function: linear; background: rgb(136, 136, 136); opacity: 0.4; top: -4.375px; left: 0px;"></span>
+                                        <span class="ripple ripple-animate" style="height: 20px; width: 20px; animation-duration: 0.689655s; animation-timing-function: linear; background: rgb(136, 136, 136); opacity: 0.4; top: -4.375px; left: 0px;"></span>
                                     </button>
                                     <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right" style="">
                                         <li class="dropdown-item full-card" id="toggle_fullscreen"><span style=""><i
                                                 class="feather icon-maximize"></i> Кенгайтириш / Йиғиш</span>
-
                                         </li>
-
-
                                     </ul>
                                 </div>
                             </div>
@@ -260,15 +253,14 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState4">Божхона режими</label>
-                                                        <select class="selectpicker form-control show-menu-arrow"
+                                                        <label for="g1B">Божхона режими</label>
+                                                        <select class="selectpicker form-control show-menu-arrow g1B"
                                                                 data-style="form-control form-control-sm"
-                                                                id="inputState4" multiple
+                                                                id="g1B" multiple
                                                                 data-selected-text-format="count > 3"
                                                                 data-actions-box="true" data-live-search="true">
                                                             <option data-icon="fa fa-heart" class="option-class"
-                                                                    value="26002" data-subtext="26002">"Тошкент-товар1"
-                                                                ТИФ
+                                                                    value="26002" data-subtext="26002">"Тошкент-товар1" ТИФ
                                                             </option>
                                                             <option class="option-class" value="26003"
                                                                     data-subtext="26003">"Арқбулоқ" ТИФ
@@ -546,9 +538,9 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState21">БЮД рақами</label>
-                                                        <input type="text" class="form-control form-control-sm px-1"
-                                                               id="inputState21" placeholder="пост/сана/рақам">
+                                                        <label for="g7A">БЮД рақами</label>
+                                                        <input type="text" class="form-control form-control-sm px-1 g7A"
+                                                               id="g7A" placeholder="пост/сана/рақам">
                                                     </div>
                                                     <div class="form-group col-md-2">
                                                         <label for="inputState22">Имортер СТИР/ЖШШИР</label>
@@ -673,33 +665,11 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="mt-0 dt-responsive p-2">
-                <table id="app_table_01" class="table table-striped row-border order-column nowrap table-bordered" style="width: 100%"><thead>
-                    <tr>
-                        <th>№</th>
-                        <th>БЮД рақами</th>
-                        <th>ТИФ ТН код</th>
-                        <th>Режим</th>
-                        <th>Юк жўн. мамлакат</th>
-                        <th>Ишлаб чиқ. мамлакат</th>
-                        <th>Савдо қил. мамлакат</th>
-                        <th>Етк. бер. шарти</th>
-                        <th>Етк. бер. пункти</th>
-                        <th>Тран. тури</th>
-                        <th>Товар тўлиқ номи</th>
-                        <th>Марка</th>
-                        <th>Б.Қ. индекси АҚШ долл.</th>
-                        <th>Б.Қ. АҚШ долл.</th>
-                        <th>Ф.Қ. АҚШ долл.</th>
-                        <th>Метод</th>
-                        <th>Нетто</th>
-                        <th>Брутто</th>
-                    </tr>
-                    </thead>
+                <table id="app_table_01" class="table table-striped row-border order-column nowrap table-bordered" style="width: 100%">
                 </table>
             </div>
         </div>
     </div>
-
 </div>
 
 <script type="text/javascript"
@@ -730,12 +700,14 @@
         src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.dateTime.min.js">
 </script><script type="text/javascript"
         src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/datetime.js"></script>
-</script><script type="text/javascript"
+<script type="text/javascript"
         src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/lottie.js"></script>
 <script>
 
     $('select').selectpicker();
-    var table = $('#app_table_01').DataTable({
+    let sessionData = ${sessionGetterDataValue};
+    /******************************************************************************************************************/
+    var app_table_01 = $('#app_table_01').DataTable({
         scrollY: '70vh',
         scrollX: true,
         scrollCollapse: true,
@@ -752,11 +724,11 @@
         responsive: true,
         ajax: '<%=request.getContextPath()%>/routeV2/data/cost_monitoring_base/v2',
         serverSide: true,
-        dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-1'l><'col-sm-12 col-md-4'i><'col-sm-12 col-md-7'p>>",
+        dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-2 mt-2'l><'col-sm-12 col-md-3'i><'col-sm-12 col-md-7 mt-2'p>>",
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "барча"]],
         columns: [
             {
-                // title: '№',
+                title: '#',
                 data: null,
                 sortable: false,
                 searchable: false,
@@ -765,145 +737,82 @@
                     return meta.row + meta.settings._iDisplayStart + 1
                 }
             },
-            {
-                // title: 'БЮД рақами',
-                data: 'gc3Date'
-            },
-            {
-                // title: 'ТИФ ТН код',
-                data: 'g33'
-            },
-            {
-                // title: 'Режим',
-                data: 'g33'
-            },
-            {
-                // title: 'Юк жўн. мамлакат',
-                data: 'g33'
-            },
-            {
-                // title: 'Ишлаб чиқ. мамлакат',
-                data: 'g33'
-            },
-            {
-                // title: 'Савдо қил. мамлакат',
-                data: 'g33'
-            },
-            {
-                // title: 'Етк. бер. шарти',
-                data: 'g33'
-            },
-            {
-                // title: 'Етк. бер. пункти',
-                data: 'g33'
-            },
-            {
-                // title: 'Тран. тури',
-                data: 'g33'
-            },
-            {
-                // title: 'Товар тўлиқ номи',
-                data: 'g33'
-            },
-            {
-                // title: 'Марка',
-                data: 'g33'
-            },
-            {
-                // title: 'Б.Қ. индекси АҚШ долл.',
-                data: 'g33'
-            },
-            {
-                // title: 'Б.Қ. АҚШ долл.',
-                data: 'g33'
-            },
-            {
-                // title: 'Ф.Қ. АҚШ долл.',
-                data: 'g33'
-            },
-            {
-                // title: 'Метод',
-                data: 'g33'
-            },
-            {
-                // title: 'Нетто',
-                data: 'g33'
-            },
-            {
-                // title: 'Брутто',
-                data: 'g33'
-            },
+            {title: 'ugtk', name: 'ugtk', data: 'ugtk'},
+            {title: 'g7A', name: 'g7A', data: 'g7A'},
+            {title: 'g7B', name: 'g7B', data: 'g7B'},
+            {title: 'g7C', name: 'g7C', data: 'g7C'},
+            {title: 'g1A', name: 'g1A', data: 'g1A'},
+            {title: 'g1B', name: 'g1B', data: 'g1B'},
+            {title: 'g32', name: 'g32', data: 'g32'},
+            {title: 'g37B', name: 'g37B', data: 'g37B'},
+            {title: 'g37C', name: 'g37C', data: 'g37C'},
+            {title: 'g2Name', name: 'g2Name', data: 'g2Name'},
+            {title: 'g8Code2', name: 'g8Code2', data: 'g8Code2'},
+            {title: 'g33', name: 'g33', data: 'g33'},
+            {title: 'g31Name', name: 'g31Name', data: 'g31Name'},
+            {title: 'g15', name: 'g15', data: 'g15'},
+            {title: 'g11', name: 'g11', data: 'g11'},
+            {title: 'vidKontrakta', name: 'vidKontrakta', data: 'vidKontrakta'},
+            {title: 'g34', name: 'g34', data: 'g34'},
+            {title: 's34', name: 's34', data: 's34'},
+            {title: 'g25', name: 'g25', data: 'g25'},
+            {title: 'g20A', name: 'g20A', data: 'g20A'},
+            {title: 'g20B', name: 'g20B', data: 'g20B'},
+            {title: 'g20Name', name: 'g20Name', data: 'g20Name'},
+            {title: 'g22A', name: 'g22A', data: 'g22A'},
+            {title: 'g45', name: 'g45', data: 'g45'},
+            {title: 'g45Usd', name: 'g45Usd', data: 'g45Usd'},
+            {title: 'g42', name: 'g42', data: 'g42'},
+            {title: 'g42Usd', name: 'g42Usd', data: 'g42Usd'},
+            {title: 'indxusd', name: 'indxusd', data: 'indxusd'},
+            {title: 'indxusdLn', name: 'indxusdLn', data: 'indxusdLn'},
+            {title: 'g45Usded', name: 'g45Usded', data: 'g45Usded'},
+            {title: 'g45UsdedLn', name: 'g45UsdedLn', data: 'g45UsdedLn'},
+            {title: 'g31Marka', name: 'g31Marka', data: 'g31Marka'},
+            {title: 'g35', name: 'g35', data: 'g35'},
+            {title: 'g38', name: 'g38', data: 'g38'},
+            {title: 'g41', name: 'g41', data: 'g41'},
+            {title: 'g43', name: 'g43', data: 'g43'},
+            {title: 'g31Amount', name: 'g31Amount', data: 'g31Amount'},
+            {title: 'vesEd', name: 'vesEd', data: 'vesEd'},
+            {title: 'gdvipdate', name: 'gdvipdate', data: 'gdvipdate'},
+            {title: 'gc3Date', name: 'gc3Date', data: 'gc3Date'},
+            {title: 'metod', name: 'metod', data: 'metod'},
+            {title: 'vzaimosvyaz', name: 'vzaimosvyaz', data: 'vzaimosvyaz'},
+            {title: 'idn', name: 'idn', data: 'idn'},
+            {title: 'obl', name: 'obl', data: 'obl'},
+            {title: 'lgot20', name: 'lgot20', data: 'lgot20'},
+            {title: 'lgot27', name: 'lgot27', data: 'lgot27'},
+            {title: 'lgot29', name: 'lgot29', data: 'lgot29'},
+            {title: 'sovstavka', name: 'sovstavka', data: 'sovstavka'},
+            {title: 'asosQiymat', name: 'asosQiymat', data: 'asosQiymat'},
+            {title: 'ktd', name: 'ktd', data: 'ktd'},
         ],
         colReorder: true,
         order: [[1, 'asc']],
-        "language": {
-            "processing": "<span class='fa-stack fa-lg'><i class='fas fa-spinner fa-spin fa-stack-2x fa-fw'></i></span>&nbsp;Юкланмоқда ...",
-            "search": "Излаш:",
-            "lengthMenu": "_MENU_",
-            "zeroRecords": "маълумотлар топилмади",
-            "info": "кўрсатилаётган сахифа _PAGES_ дан _PAGE_",
-            "infoEmpty": "<span class='m-3'>Маълумотлар топилмади</span>",
-            "infoFiltered": "(filtered from _MAX_ total records)",
-            "paginate": {
-                "previous": "Oldingi",
-                "next": "Keyingi"
-            },
+        language: {
+            url: '${pageContext.servletContext.contextPath}/resources/assets/json/datatablePlugini18/plugin_i18_'+sessionData.language+'.json'
         },
     });
-    // $('input#appNum').change(function() {
-    //     var filter = $(this).val();
-    //     table.column('.appNum').search(filter).draw();
-    // });
-    // $('input#g7a').change(function() {
-    //     var filter = $(this).val();
-    //     table.column('.g7a').search(filter).draw();
-    // });
-    // $('input#g7b').change(function() {
-    //     var filter = $(this).val();
-    //     table.column('.g7b').search(filter).draw();
-    // });
-    // $('input#g7c').change(function() {
-    //     var filter = $(this).val();
-    //     table.column('.g7c').search(filter).draw();
-    // });
-    // $('select#senderPostId').change(function() {
-    //     var filter = '';
-    //     $('select#senderPostId option:selected').each(function() {
-    //         filter += $(this).val() + "+";
-    //     });
-    //     filter = filter.substring(0, filter.length - 1);
-    //     table.column('.senderPostId').search(filter).draw();
-    // });
-    // $('input#atdInspectorName').change(function() {
-    //     var filter = $(this).val();
-    //     table.column('.atdInspectorName').search(filter).draw();
-    // });
-    // $('select#statusNm').change(function() {
-    //     var filter = '';
-    //     $('select#statusNm option:selected').each(function() {
-    //         filter += $(this).val() + "+";
-    //     });
-    //     filter = filter.substring(0, filter.length - 1);
-    //     table.column('.status').search(filter).draw();
-    // });
-    //
-    var minFirstDay = $('input#minFirstDay');
-    var maxFirstDay = $('input#maxFirstDay');
-    var onDateBoundChange = function () {
-        table.column('.gc3Date').search(minFirstDay.val() + ';' + maxFirstDay.val()).draw();
-    };
-
-    $('.updateAppTableV1').on('click', function () {
-        onDateBoundChange();
-    })
     $(document).ready(function () {
-        table.on('order.dt search.dt', function () {
+        app_table_01.on('order.dt search.dt', function () {
             let i = 1;
-            table.cells(null, 0, {search: 'applied', order: 'applied'}).every(function (cell) {
+            app_table_01.cells(null, 0, {search: 'applied', order: 'applied'}).every(function (cell) {
                 this.data(i++);
             });
         }).draw();
     });
+    /******************************************************************************************************************/
+
+    $('.updateAppTableV1').on('click', function () {
+        app_table_01
+            .column('gc3Date:name').search($('input#minFirstDay').val() + ';' + $('input#maxFirstDay').val())
+            .column('g33:name').search($('input#g33').val())
+            .column('g31Name:name').search($('input#g31Name').val()).draw();
+    })
+
+
+
     $('#toggle_fullscreen').on('click', function () {
         // if already full screen; exit
         // else go fullscreen
@@ -916,6 +825,7 @@
         }
     });
 
+    /******************************************************************************************************************/
     $('.updateAppTableV2V3').on('click', function () {
         $('#pills-profile-tab').removeClass('active')
         $('#pills-home-tab').removeClass('active').addClass('active')
@@ -926,7 +836,6 @@
             appFuncV2_ajax_v1();
         }, 1500);
     })
-
     function appFuncV2_ajax_v1() {
         $.ajax({
             type: "GET",
@@ -944,7 +853,6 @@
             }
         });
     }
-
     function appFuncV2_ajax_v2() {
         $.ajax({
             type: "GET",

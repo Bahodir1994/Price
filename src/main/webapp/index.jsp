@@ -17,12 +17,10 @@
     <meta name="keywords" content="">
     <meta name="author" content="Phoenixcoded"/>
     <!-- Favicon icon -->
-    <link rel="icon" href="${pageContext.servletContext.contextPath}/resources/assets/images/gtk.png"
-          type="image/x-icon">
+    <link rel="icon" href="${pageContext.servletContext.contextPath}/resources/assets/images/gtk.png" type="image/x-icon">
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/prism-coy.css">
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/style.css">
-    <link rel="stylesheet"
-          href="${pageContext.servletContext.contextPath}/resources/assets/dist/css/bootstrap-select.css">
+    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/dist/css/bootstrap-select.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
 </head>
 <body>
@@ -119,7 +117,6 @@
                   </svg>
                 </span>
             </a>
-
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
@@ -245,7 +242,6 @@
                     </div>
                 </li>
             </ul>
-
         </div>
     </div>
 </header>
@@ -273,6 +269,7 @@
 <script src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/moment.js"></script>
 <script src="${pageContext.servletContext.contextPath}/resources/assets/js/horizontal-menu.js"></script>
 <script src="${pageContext.servletContext.contextPath}/resources/assets/dist/js/bootstrap-select.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/resources/assets/dist/js/i18n/defaults-${sessionDataValue.language}.js"></script>
 <script>
     (function () {
         if ($('#layout-sidenav').hasClass('sidenav-horizontal') || window.layoutHelpers.isSmallScreen()) {

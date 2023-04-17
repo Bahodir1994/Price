@@ -1,6 +1,7 @@
 package uz.customs.customprice.controller.costmonitoring;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import uz.customs.customprice.component.httpSession.GetterSessionData;
+import uz.customs.customprice.component.httpSession.SessionDataValue;
 import uz.customs.customprice.entity.costmonitoring.BaseEntity;
 import uz.customs.customprice.entity.catalog.Country;
 import uz.customs.customprice.entity.costmonitoring.CPLog;
@@ -17,6 +20,7 @@ import uz.customs.customprice.service.costmonitoring.baseEntityServices.CostMoni
 import uz.customs.customprice.service.costmonitoring.logEntityServices.CostMonitoringDataLogService;
 import uz.customs.customprice.service.costmonitoring.logEntityServices.CostMonitoringLogService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -27,11 +31,16 @@ public class CostMonitoringController {
 
     private final CostMonitoringDataService costMonitoringDataService;
     private final CostMonitoringDataLogService costMonitoringDataLogService;
+    private final GetterSessionData getterSessionData;
     private final CountryService countryService;
 
     @GetMapping(value = "/data/cost_monitoring_base/v1")
-    public ModelAndView getDataV1() throws JsonProcessingException {
+    public ModelAndView getDataV1(HttpServletRequest httpServletRequest) throws JsonProcessingException {
         ModelAndView modelAndView = new ModelAndView("/resources/pages/appV2/appTableV1");
+        SessionDataValue sessionGetterDataValue = getterSessionData.onlyGetSessionData(httpServletRequest);
+
+        ObjectMapper mapper = new ObjectMapper();
+        modelAndView.addObject("sessionGetterDataValue", mapper.writeValueAsString(sessionGetterDataValue));
 
         List<Country> country = countryService.findAllByLngaTpcdOrderByCodeAsc("UZ");
         modelAndView.addObject("country", country);

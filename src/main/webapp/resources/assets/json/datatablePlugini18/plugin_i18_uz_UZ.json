@@ -1,0 +1,21 @@
+{
+    "emptyTable": "Маълумот йўқ",
+    "info": "Умумий _TOTAL_ ёзувларлардан _START_ дан _END_ гачаси кўрсатилмоқда",
+    "infoEmpty": "Умумий 0 ёзувлардан 0 дан 0 гачаси кўрсатилмоқда",
+    "infoFiltered": "(_MAX_ ёзувлардан филтрланди)",
+    "lengthMenu": "_MENU_ та ёзувлар",
+    "loadingRecords": "Ёзувлар юкланмоқда...",
+    "processing": "<span class='fa-stack fa-lg'><i class='fas fa-spinner fa-spin fa-stack-2x fa-fw'></i></span>&nbsp;Юкланмоқда...",
+    "search": "Izlash:",
+    "zeroRecords": "Маълумот йўқ.",
+    "paginate": {
+        "first": "Биринчи",
+        "previous": "Aввалги",
+        "next": "Кейинги",
+        "last": "Охирги"
+    },
+    "aria": {
+        "sortAscending": ": тўғри тартиблаш",
+        "sortDescending": ": тескари тартиблаш"
+    }
+} 

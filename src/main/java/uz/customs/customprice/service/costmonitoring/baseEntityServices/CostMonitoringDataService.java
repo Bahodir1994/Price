@@ -65,8 +65,8 @@ public class CostMonitoringDataService {
     private static class ExcludeAnalystsSpecification implements Specification<BaseEntity> {
         @Override
         public Predicate toPredicate(Root<BaseEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-            Predicate senderLocationId = criteriaBuilder.notEqual(root.get("statusNm"), "Analyst");
-            Predicate senderPostId = criteriaBuilder.notEqual(root.get("senderPostId"), "Analystic");
+            Predicate senderLocationId = criteriaBuilder.notEqual(root.get("g33"), "Analyst");
+            Predicate senderPostId = criteriaBuilder.notEqual(root.get("g31Name"), "Analystic");
             Predicate finalPredicate = criteriaBuilder.and(senderLocationId, senderPostId);
             return finalPredicate;
         }

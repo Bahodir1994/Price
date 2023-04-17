@@ -173,4 +173,5 @@ public class BaseEntity {
 
     @Column(name = "KTD", nullable = false)
     private int ktd;
+    
 }

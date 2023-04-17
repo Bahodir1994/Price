@@ -5,6 +5,7 @@ server:
       persistent: false
       timeout: 3600
     context-path:
+  max-http-header-size: 65536
 spring:
   main:
     allow-circular-references: true
