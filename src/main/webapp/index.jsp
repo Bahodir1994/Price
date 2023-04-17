@@ -37,7 +37,7 @@
                 <li class="nav-item pcoded-hasmenu">
                     <a href="#!" class="nav-link "><span class="pcoded-micon"><i
                             class="feather icon-home text-dark"></i></span><span
-                            class="pcoded-mtext">Асосий саҳифа</span></a>
+                            class="pcoded-mtext"><fmt:message key="mainPage" bundle="${resourceBundle}"/></span></a>
 
                 </li>
                 <li class="nav-item pcoded-hasmenu">
