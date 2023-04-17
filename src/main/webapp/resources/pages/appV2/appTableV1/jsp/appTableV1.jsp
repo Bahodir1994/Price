@@ -366,10 +366,10 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState13">Метод</label>
-                                                        <select class="selectpicker form-control show-menu-arrow"
+                                                        <label for="metod">Метод</label>
+                                                        <select class="selectpicker form-control show-menu-arrow metod"
                                                                 data-style="form-control form-control-sm"
-                                                                id="inputState13" multiple
+                                                                id="metod" multiple
                                                                 data-selected-text-format="count > 3"
                                                                 data-actions-box="true" data-live-search="true">
                                                             <option data-icon="fa fa-heart" class="option-class"
@@ -403,10 +403,10 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState14">Аввалги режим</label>
-                                                        <select class="selectpicker form-control show-menu-arrow"
+                                                        <label for=" g37B">Аввалги режим</label>
+                                                        <select class="selectpicker form-control show-menu-arrow g37B"
                                                                 data-style="form-control form-control-sm"
-                                                                id="inputState14" multiple
+                                                                id=" g37B" multiple
                                                                 data-selected-text-format="count > 3"
                                                                 data-actions-box="true" data-live-search="true">
                                                             <option data-icon="fa fa-heart" class="option-class"
@@ -440,15 +440,15 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState15">Товар маркаси</label>
-                                                        <input type="text" class="form-control form-control-sm px-1"
-                                                               id="inputState15" placeholder="Товар маркаси">
+                                                        <label for="g31Marka">Товар маркаси</label>
+                                                        <input type="text" class="form-control form-control-sm px-1 g31Marka"
+                                                               id="g31Marka" placeholder="Товар маркаси">
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState20">Тузатиш киритилган</label>
-                                                        <select class="selectpicker form-control show-menu-arrow"
+                                                        <label for="ktd">Тузатиш киритилган</label>
+                                                        <select class="selectpicker form-control show-menu-arrow ktd"
                                                                 data-style="form-control form-control-sm"
-                                                                id="inputState20" multiple
+                                                                id="ktd" multiple
                                                                 data-selected-text-format="count > 3"
                                                                 data-actions-box="true" data-live-search="true">
                                                             <option data-icon="fa fa-heart" class="option-class"
@@ -487,15 +487,15 @@
                                                                id="g7C" placeholder="пост/сана/рақам">
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState22">Имортер СТИР/ЖШШИР</label>
-                                                        <input type="text" class="form-control form-control-sm px-1"
-                                                               id="inputState22" placeholder="СТИР/ЖШШИР">
+                                                        <label for="g8Code2">Имортер СТИР/ЖШШИР</label>
+                                                        <input type="text" class="form-control form-control-sm px-1 g8Code2"
+                                                               id="g8Code2" placeholder="СТИР/ЖШШИР">
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState23">Ўз еҳтиёжи/тижорат</label>
-                                                        <select class="selectpicker form-control show-menu-arrow"
+                                                        <label for="g43">Ўз еҳтиёжи/тижорат</label>
+                                                        <select class="selectpicker form-control show-menu-arrow g43"
                                                                 data-style="form-control form-control-sm"
-                                                                id="inputState23" multiple
+                                                                id="g43" multiple
                                                                 data-selected-text-format="count > 3"
                                                                 data-actions-box="true" data-live-search="true">
                                                             <option data-icon="fa fa-heart" class="option-class"
@@ -529,14 +529,14 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState24">Шартнома ИДН рақами</label>
-                                                        <input type="text" class="form-control form-control-sm px-1"
-                                                               id="inputState24" placeholder="Шартнома ИДН рақами">
+                                                        <label for="idn">Шартнома ИДН рақами</label>
+                                                        <input type="text" class="form-control form-control-sm px-1 idn"
+                                                               id="idn" placeholder="Шартнома ИДН рақами">
                                                     </div>
                                                     <div class="form-group col-md-2">
-                                                        <label for="inputState25">Божхона қиймати асоси</label>
-                                                        <input type="text" class="form-control form-control-sm px-1"
-                                                               id="inputState25" placeholder="Божхона қиймати асоси">
+                                                        <label for="asosQiymat">Божхона қиймати асоси</label>
+                                                        <input type="text" class="form-control form-control-sm px-1 asosQiymat"
+                                                               id="asosQiymat" placeholder="Божхона қиймати асоси">
                                                     </div>
                                                     <div class="form-group col-md-2">
                                                         <label>Чегарани кесиб ўтган сана</label>
@@ -760,6 +760,14 @@
             .column('g1B:name').search($('select#g1B').val())
             .column('g7A:name').search($('select#g7A').val())
             .column('g7C:name').search($('input#g7C').val())
+            .column('metod:name').search($('select#metod').val())
+            .column('g37B:name').search($('select#g37B').val())
+            .column('ktd:name').search($('select#ktd').val())
+            .column('g43:name').search($('select#g43').val())
+            .column('g31Marka:name').search($('input#g31Marka').val())
+            .column('g8Code2:name').search($('input#g8Code2').val())
+            .column('idn:name').search($('input#idn').val())
+            .column('asosQiymat:name').search($('input#asosQiymat').val())
             .column('vidKontrakta:name').search($('select#vidKontrakta').val())
             .draw();
     })
