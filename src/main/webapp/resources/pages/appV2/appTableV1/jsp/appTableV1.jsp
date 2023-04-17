@@ -11,6 +11,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<%
+    String lang = session.getAttribute("lang").toString();
+%>
+
 <head>
     <link rel="stylesheet"
           href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/dataTables.bootstrap4.min.css">
@@ -702,10 +707,15 @@
         src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/datetime.js"></script>
 <script type="text/javascript"
         src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/lottie.js"></script>
+<script type="text/javascript" id="plugin_column_i18" src="${pageContext.servletContext.contextPath}/resources/pages/appV2/appTableV1/js/plugin_column_i18_${sessionLanguage}.js"></script>
 <script>
-
     $('select').selectpicker();
     let sessionData = ${sessionGetterDataValue};
+
+
+
+
+
     /******************************************************************************************************************/
     var app_table_01 = $('#app_table_01').DataTable({
         scrollY: '70vh',
@@ -737,56 +747,56 @@
                     return meta.row + meta.settings._iDisplayStart + 1
                 }
             },
-            {title: 'ugtk', name: 'ugtk', data: 'ugtk'},
-            {title: 'g7A', name: 'g7A', data: 'g7A'},
-            {title: 'g7B', name: 'g7B', data: 'g7B'},
-            {title: 'g7C', name: 'g7C', data: 'g7C'},
-            {title: 'g1A', name: 'g1A', data: 'g1A'},
-            {title: 'g1B', name: 'g1B', data: 'g1B'},
-            {title: 'g32', name: 'g32', data: 'g32'},
-            {title: 'g37B', name: 'g37B', data: 'g37B'},
-            {title: 'g37C', name: 'g37C', data: 'g37C'},
-            {title: 'g2Name', name: 'g2Name', data: 'g2Name'},
-            {title: 'g8Code2', name: 'g8Code2', data: 'g8Code2'},
-            {title: 'g33', name: 'g33', data: 'g33'},
-            {title: 'g31Name', name: 'g31Name', data: 'g31Name'},
-            {title: 'g15', name: 'g15', data: 'g15'},
-            {title: 'g11', name: 'g11', data: 'g11'},
-            {title: 'vidKontrakta', name: 'vidKontrakta', data: 'vidKontrakta'},
-            {title: 'g34', name: 'g34', data: 'g34'},
-            {title: 's34', name: 's34', data: 's34'},
-            {title: 'g25', name: 'g25', data: 'g25'},
-            {title: 'g20A', name: 'g20A', data: 'g20A'},
-            {title: 'g20B', name: 'g20B', data: 'g20B'},
-            {title: 'g20Name', name: 'g20Name', data: 'g20Name'},
-            {title: 'g22A', name: 'g22A', data: 'g22A'},
-            {title: 'g45', name: 'g45', data: 'g45'},
-            {title: 'g45Usd', name: 'g45Usd', data: 'g45Usd'},
-            {title: 'g42', name: 'g42', data: 'g42'},
-            {title: 'g42Usd', name: 'g42Usd', data: 'g42Usd'},
-            {title: 'indxusd', name: 'indxusd', data: 'indxusd'},
-            {title: 'indxusdLn', name: 'indxusdLn', data: 'indxusdLn'},
-            {title: 'g45Usded', name: 'g45Usded', data: 'g45Usded'},
-            {title: 'g45UsdedLn', name: 'g45UsdedLn', data: 'g45UsdedLn'},
-            {title: 'g31Marka', name: 'g31Marka', data: 'g31Marka'},
-            {title: 'g35', name: 'g35', data: 'g35'},
-            {title: 'g38', name: 'g38', data: 'g38'},
-            {title: 'g41', name: 'g41', data: 'g41'},
-            {title: 'g43', name: 'g43', data: 'g43'},
-            {title: 'g31Amount', name: 'g31Amount', data: 'g31Amount'},
-            {title: 'vesEd', name: 'vesEd', data: 'vesEd'},
-            {title: 'gdvipdate', name: 'gdvipdate', data: 'gdvipdate'},
-            {title: 'gc3Date', name: 'gc3Date', data: 'gc3Date'},
-            {title: 'metod', name: 'metod', data: 'metod'},
-            {title: 'vzaimosvyaz', name: 'vzaimosvyaz', data: 'vzaimosvyaz'},
-            {title: 'idn', name: 'idn', data: 'idn'},
-            {title: 'obl', name: 'obl', data: 'obl'},
-            {title: 'lgot20', name: 'lgot20', data: 'lgot20'},
-            {title: 'lgot27', name: 'lgot27', data: 'lgot27'},
-            {title: 'lgot29', name: 'lgot29', data: 'lgot29'},
-            {title: 'sovstavka', name: 'sovstavka', data: 'sovstavka'},
-            {title: 'asosQiymat', name: 'asosQiymat', data: 'asosQiymat'},
-            {title: 'ktd', name: 'ktd', data: 'ktd'},
+            {title: langArray.ugtk, name: 'ugtk', data: 'ugtk'},
+            {title: langArray.g7A, name: 'g7A', data: 'g7A'},
+            {title: langArray.g7B, name: 'g7B', data: 'g7B'},
+            {title: langArray.g7C, name: 'g7C', data: 'g7C'},
+            {title: langArray.g1A, name: 'g1A', data: 'g1A'},
+            {title: langArray.g1B, name: 'g1B', data: 'g1B'},
+            {title: langArray.g32, name: 'g32', data: 'g32'},
+            {title: langArray.g37B, name: 'g37B', data: 'g37B'},
+            {title: langArray.g37C, name: 'g37C', data: 'g37C'},
+            {title: langArray.g2Name, name: 'g2Name', data: 'g2Name'},
+            {title: langArray.g8Code2, name: 'g8Code2', data: 'g8Code2'},
+            {title: langArray.g33, name: 'g33', data: 'g33'},
+            {title: langArray.g31Name, name: 'g31Name', data: 'g31Name'},
+            {title: langArray.g15, name: 'g15', data: 'g15'},
+            {title: langArray.g11, name: 'g11', data: 'g11'},
+            {title: langArray.vidKontrakta, name: 'vidKontrakta', data: 'vidKontrakta'},
+            {title: langArray.g34, name: 'g34', data: 'g34'},
+            {title: langArray.s34, name: 's34', data: 's34'},
+            {title: langArray.g25, name: 'g25', data: 'g25'},
+            {title: langArray.g20A, name: 'g20A', data: 'g20A'},
+            {title: langArray.g20B, name: 'g20B', data: 'g20B'},
+            {title: langArray.g20Name, name: 'g20Name', data: 'g20Name'},
+            {title: langArray.g22A, name: 'g22A', data: 'g22A'},
+            {title: langArray.g45, name: 'g45', data: 'g45'},
+            {title: langArray.g45Usd, name: 'g45Usd', data: 'g45Usd'},
+            {title: langArray.g42, name: 'g42', data: 'g42'},
+            {title: langArray.g42Usd, name: 'g42Usd', data: 'g42Usd'},
+            {title: langArray.indxusd, name: 'indxusd', data: 'indxusd'},
+            {title: langArray.indxusdLn, name: 'indxusdLn', data: 'indxusdLn'},
+            {title: langArray.g45Usded, name: 'g45Usded', data: 'g45Usded'},
+            {title: langArray.g45UsdedLn, name: 'g45UsdedLn', data: 'g45UsdedLn'},
+            {title: langArray.g31Marka, name: 'g31Marka', data: 'g31Marka'},
+            {title: langArray.g35, name: 'g35', data: 'g35'},
+            {title: langArray.g38, name: 'g38', data: 'g38'},
+            {title: langArray.g41, name: 'g41', data: 'g41'},
+            {title: langArray.g43, name: 'g43', data: 'g43'},
+            {title: langArray.g31Amount, name: 'g31Amount', data: 'g31Amount'},
+            {title: langArray.vesEd, name: 'vesEd', data: 'vesEd'},
+            {title: langArray.gdvipdate, name: 'gdvipdate', data: 'gdvipdate'},
+            {title: langArray.gc3Date, name: 'gc3Date', data: 'gc3Date'},
+            {title: langArray.metod, name: 'metod', data: 'metod'},
+            {title: langArray.vzaimosvyaz, name: 'vzaimosvyaz', data: 'vzaimosvyaz'},
+            {title: langArray.idn, name: 'idn', data: 'idn'},
+            {title: langArray.obl, name: 'obl', data: 'obl'},
+            {title: langArray.lgot20, name: 'lgot20', data: 'lgot20'},
+            {title: langArray.lgot27, name: 'lgot27', data: 'lgot27'},
+            {title: langArray.lgot29, name: 'lgot29', data: 'lgot29'},
+            {title: langArray.sovstavka, name: 'sovstavka', data: 'sovstavka'},
+            {title: langArray.asosQiymat, name: 'asosQiymat', data: 'asosQiymat'},
+            {title: langArray.ktd, name: 'ktd', data: 'ktd'},
         ],
         colReorder: true,
         order: [[1, 'asc']],
