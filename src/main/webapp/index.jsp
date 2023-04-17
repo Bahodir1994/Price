@@ -42,35 +42,35 @@
                 </li>
                 <li class="nav-item pcoded-hasmenu">
                     <a href="#!" class="nav-link "><span class="pcoded-micon" style="color: #6fb6d5"><i
-                            class="fas fa-copy "></i></span><span class="pcoded-mtext">Қарздорликлар ҳисоби</span></a>
+                            class="fas fa-copy "></i></span><span class="pcoded-mtext"><fmt:message key="accPayable" bundle="${resourceBundle}"/></span></a>
 
                 </li>
                 <li class="nav-item pcoded-hasmenu">
                     <a href="#!" class="nav-link "><span class="pcoded-micon" style="color: #36d038"><i
                             class="fas fa-file-signature"></i></span><span
-                            class="pcoded-mtext">Дастлабки қарор</span><span class="pcoded-badge badge badge-success">100+</span></a>
+                            class="pcoded-mtext"><fmt:message key="inDecision" bundle="${resourceBundle}"/></span><span class="pcoded-badge badge badge-success">100+</span></a>
 
                 </li>
                 <li class="nav-item pcoded-hasmenu">
                     <a href="javascript:appFuncV2()" class="nav-link "><span class="pcoded-micon"
                                                                              style="color: #4fee51"><i
-                            class="fas fa-list"></i></span><span class="pcoded-mtext">Божхона қиймати мониторинги</span></a>
+                            class="fas fa-list"></i></span><span class="pcoded-mtext"><fmt:message key="valMon" bundle="${resourceBundle}"/></span></a>
 
                 </li>
                 <li class="nav-item pcoded-hasmenu">
                     <a href="#!" class="nav-link"><span class="pcoded-micon" style="color: #bed52a"><i
-                            class="fas fa-cog"></i></span><span class="pcoded-mtext">Мантиқий назорат</span></a>
+                            class="fas fa-cog"></i></span><span class="pcoded-mtext"><fmt:message key="logControl" bundle="${resourceBundle}"/></span></a>
 
                 </li>
 
                 <li class="nav-item pcoded-hasmenu">
                     <a href="#!" class="nav-link "><span class="pcoded-micon" style="color: #2574c5"><i
-                            class="fas fa-globe"></i></span><span class="pcoded-mtext">Халқаро сўровнома</span></a>
+                            class="fas fa-globe"></i></span><span class="pcoded-mtext"><fmt:message key="inSurvey" bundle="${resourceBundle}"/></span></a>
 
                 </li>
                 <li class="nav-item pcoded-hasmenu">
                     <a href="#!" class="nav-link "><span class="pcoded-micon" style="color: #36d038"><i
-                            class="fas fa-sliders-h"></i></span><span class="pcoded-mtext">Шартли божхона қиймати</span></a>
+                            class="fas fa-sliders-h"></i></span><span class="pcoded-mtext"><fmt:message key="conCusValue" bundle="${resourceBundle}"/></span></a>
 
                 </li>
 
@@ -78,12 +78,12 @@
                 <li class="nav-item pcoded-hasmenu">
                     <a href="#!" class="nav-link "><span class="pcoded-micon" style="color: #b9bbba"><i
                             class="fas fa-copy"></i></span><span
-                            class="pcoded-mtext">Божхона қиймати бўйича қарор</span></a>
+                            class="pcoded-mtext"><fmt:message key="desCusValue" bundle="${resourceBundle}"/></span></a>
 
                 </li>
                 <li class="nav-item pcoded-hasmenu">
                     <a href="#!" class="nav-link "><span class="pcoded-micon" style="color: #e58423"><i
-                            class="fas fa-calculator"></i></span><span class="pcoded-mtext">Индекатив нархлар</span></a>
+                            class="fas fa-calculator"></i></span><span class="pcoded-mtext"><fmt:message key="indPrices" bundle="${resourceBundle}"/></span></a>
 
                 </li>
                 <li class="nav-item pcoded-hasmenu">
@@ -350,6 +350,7 @@
             });
         }, 300)
     }
+
     function checkRole(roleCode) {
         var dataS = {"role": roleCode};
         $.post({
@@ -373,6 +374,7 @@
             }
         });
     }
+
     function langF(langCode) {
         var params = {"langCode": langCode};
         $.post({
