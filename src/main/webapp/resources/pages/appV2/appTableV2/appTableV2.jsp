@@ -154,7 +154,6 @@
                 url: '${pageContext.servletContext.contextPath}/resources/assets/json/datatablePlugini18/plugin_i18_'+sessionData.language+'.json'
             },
         });
-
         var minFirstDay = $('input#minFirstDay');
         var maxFirstDay = $('input#maxFirstDay');
         var onDateBoundChange = function () {
