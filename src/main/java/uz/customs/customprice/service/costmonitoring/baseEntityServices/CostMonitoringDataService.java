@@ -52,7 +52,7 @@ public class CostMonitoringDataService {
 
         return costMonitoringDataRepository.findAll(
                 input,
-                dateRangeSpecification.and(new ExcludeAnalystsSpecification())/*.and(fullNameSpecification)*/
+                dateRangeSpecification/*.and(new ExcludeAnalystsSpecification()).and(fullNameSpecification)*/
 //                (root, query, criteriaBuilder) -> {
 //                    if (query.getResultType() != Long.class) {
 //                        root.fetch("tnfCommodity", JoinType.LEFT);
