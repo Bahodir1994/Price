@@ -1,4 +1,4 @@
-var langArray = {
+var appTableV1 = {
     ugtk: "HBB",
     g7A: "Post kodi",
     g7B: "BYuD roʼyxatdan oʼtgan sana",
@@ -49,4 +49,24 @@ var langArray = {
     sovstavka: "Um. stav.",
     asosQiymat: "Boj. qiym. asosi",
     ktd: "Tuz. (KTD)",
+};
+
+var appTableV2 = {
+    locationNm: "Tarkibiy tuzulma",
+    g33:"TIF TN kodi",
+    userNm:"Xodim",
+    keyword:"Ishlatilgan kalit so'zi",
+    resultTime:"O'rtacha vaqt sarfi",
+    resultCount:"Topilgan qaydlar soni",
+    insTime:"Izlash vaqti"
+};
+
+var appTableV3 = {
+    locationNm: "Tarkibiy tuzulma",
+    g33:"TIF TN kodi",
+    userNm:"Xodim",
+    keyword:"Ishlatilgan kalit so'zi",
+    resultCount:"Topilgan qaydlar soni",
+    insTime:"Izlash vaqti"
 }
+

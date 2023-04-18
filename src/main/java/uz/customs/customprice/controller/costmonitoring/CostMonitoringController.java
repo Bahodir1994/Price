@@ -1,7 +1,6 @@
 package uz.customs.customprice.controller.costmonitoring;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import uz.customs.customprice.component.httpSession.GetterSessionData;
-import uz.customs.customprice.component.httpSession.SessionDataValue;
 import uz.customs.customprice.entity.costmonitoring.BaseEntity;
 import uz.customs.customprice.entity.catalog.Country;
 import uz.customs.customprice.entity.costmonitoring.CPLog;
@@ -49,7 +47,7 @@ public class CostMonitoringController {
 
     @GetMapping(value = "/data/cost_monitoring_base/v3")
     public ModelAndView getDataV3() throws JsonProcessingException {
-        ModelAndView modelAndView = new ModelAndView("/resources/pages/appV2/appTableV2");
+        ModelAndView modelAndView = new ModelAndView("resources/pages/appV2/appTableV2/appTableV2");
 
         List<Country> country = countryService.findAllByLngaTpcdOrderByCodeAsc("UZ");
         modelAndView.addObject("country", country);
@@ -65,7 +63,7 @@ public class CostMonitoringController {
 
     @GetMapping(value = "/data/cost_monitoring_base/v5")
     public ModelAndView getDataV5() throws JsonProcessingException {
-        ModelAndView modelAndView = new ModelAndView("/resources/pages/appV2/appTableV3");
+        ModelAndView modelAndView = new ModelAndView("resources/pages/appV2/appTableV3/appTableV3");
 
         List<Country> country = countryService.findAllByLngaTpcdOrderByCodeAsc("UZ");
         modelAndView.addObject("country", country);

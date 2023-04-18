@@ -1,4 +1,4 @@
-var langArray = {
+var appTableV1 = {
     ugtk: "Code dep.",
     g7A: "Code post",
     g7B: "date of registration of CCD",
@@ -49,4 +49,24 @@ var langArray = {
     sovstavka: "aggregate rate",
     asosQiymat: "customs value basis",
     ktd: "changed",
+};
+
+var appTableV2 = {
+    locationNm: "Regional customs office",
+    g33:"HS code",
+    userNm:"Employee",
+    keyword:"Keyword used",
+    resultTime:"Average time spent",
+    resultCount:"Number of records found",
+    insTime:"Search time"
+};
+
+var appTableV3 = {
+    locationNm: "Regional customs office",
+    g33:"HS code",
+    userNm:"Employee",
+    keyword:"Keyword used",
+    resultCount:"Number of records found",
+    insTime:"Search time"
 }
+

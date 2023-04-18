@@ -23,7 +23,7 @@ public class CostMonitoringService {
     private final LocationService locationService;
 
     public ModelAndView getValues(HttpServletRequest httpServletRequest) throws JsonProcessingException {
-        ModelAndView modelAndView = new ModelAndView("resources/pages/appV2/appTableV1/jsp/appTableV1");
+        ModelAndView modelAndView = new ModelAndView("resources/pages/appV2/appTableV1/appTableV1");
         SessionDataValue sessionGetterDataValue = getterSessionData.onlyGetSessionData(httpServletRequest);
         String lngaTpcd = sessionGetterDataValue.getLanguage().substring(3, 5);
 

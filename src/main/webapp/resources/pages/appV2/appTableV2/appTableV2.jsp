@@ -17,33 +17,34 @@
             <div class="col-sm-12">
                 <div class="mt-0 dt-responsive p-2">
                     <table id="app_table_02" class="table table-striped row-border order-column table-bordered" style="width: 100%">
-                        <thead class="text-center">
-                            <tr>
-                                <th>№</th>
-                                <th>Таркибий тузулма</th>
-                                <th>Ходим</th>
-                                <th>Ўртача излаш вақт</th>
-                                <th>Тиф Тн кодлари сони</th>
-                            </tr>
-                        </thead>
-                        <tfoo>
+                        <tfoot>
                             <tr>
                                 <th></th>
                                 <th>
-                                    <select>
-                                        <option></option>
+                                    <select class="selectpicker form-control show-menu-arrow ugtkV2"
+                                            data-style="form-control form-control-sm"
+                                            id="ugtkV2" multiple
+                                            data-selected-text-format="count > 3"
+                                            data-actions-box="true" data-live-search="true">
+                                        <c:forEach items="${location}" var="location" varStatus="i">
+                                            <option class="option-class" value="${location.code.substring(0,2)}" data-subtext="${location.code}">${location.cdNm}</option>
+                                        </c:forEach>
                                     </select>
                                 </th>
                                 <th>
-                                    <input type="text" placeholder="қидирув..."/>
+                                    <input type="text" id="inspectorNmV2" class="form-control form-control-sm w-100 g31Name">
                                 </th>
+                                <th></th>
+                                <th></th>
                                 <th>
-                                    <select>
-                                        <option></option>
-                                    </select>
+                                    <input type="date"
+                                           class="form-control form-control-sm px-1 insTimeV3"
+                                           id="insTimeV3"
+                                           maxlength="10" tabindex="1"
+                                           name="insTimeV3">
                                 </th>
                             </tr>
-                        </tfoo>
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -93,7 +94,7 @@
             // Requery the server with the new one-time export settings
             dt.ajax.reload();
         }
-        var table2 = $('#app_table_02').DataTable({
+        var app_table_02 = $('#app_table_02').DataTable({
             scrollY:        '51vh',
             scrollX:        true,
             scrollCollapse: true,
@@ -113,102 +114,62 @@
             ],
             searching: true,
             processing: true,
-            responsive: true,
+            // responsive: true,
             ajax: '<%=request.getContextPath()%>/routeV2/data/cost_monitoring_base/v4',
             serverSide: true,
             dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-2 mt-2'l><'col-sm-12 col-md-3'i><'col-sm-12 col-md-7 mt-2'p>>",            lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "барча"] ],
             columns: [
                 {
-                    // title: '№',
+                    title: '№',
                     data: null,
                     sortable: false,
                     searchable: false,
                     render: function (data, type, row, meta) {return meta.row + meta.settings._iDisplayStart + 1}
                 },
                 {
-                    data: 'insTime',
-                    render: $.fn.dataTable.render.moment('YYYY-MM-DDTHH:mm:ss.SSSSZ','YYYY-MM-DD HH:mm' )
+                    title: appTableV2.locationNm,
+                    data: 'locationNm',
                 },
                 {
+                    title: appTableV2.userNm,
                     data: 'userNm'
                 },
                 {
+                    title: appTableV2.resultTime,
                     data: 'resultTime'
                 },
                 {
+                    title: appTableV2.g33,
                     data: 'g33'
+                },
+                {
+                    title: appTableV2.insTime,
+                    data: 'insTime',
+                    render: $.fn.dataTable.render.moment('YYYY-MM-DDTHH:mm:ss.SSSSZ','YYYY-MM-DD HH:mm' )
                 }
             ],
             colReorder: true,
             order: [[1, 'asc']],
-            "language": {
-                "processing": "<span class='fa-stack fa-lg'><i class='fas fa-spinner fa-spin fa-stack-2x fa-fw'></i></span>&nbsp;Юкланмоқда ...",
-                "search": "Излаш:",
-                "lengthMenu": "_MENU_",
-                "zeroRecords": "маълумотлар топилмади",
-                "info": "кўрсатилаётган сахифа _PAGES_ дан _PAGE_",
-                "infoEmpty": "<span class='m-3'>Маълумотлар топилмади</span>",
-                "infoFiltered": "(filtered from _MAX_ total records)",
-                "paginate": {
-                    "previous": "Oldingi",
-                    "next": "Keyingi"
-                },
+            language: {
+                url: '${pageContext.servletContext.contextPath}/resources/assets/json/datatablePlugini18/plugin_i18_'+sessionData.language+'.json'
             },
         });
 
-        // $('input#appNum').change(function() {
-        //     var filter = $(this).val();
-        //     table.column('.appNum').search(filter).draw();
-        // });
-        // $('input#g7a').change(function() {
-        //     var filter = $(this).val();
-        //     table.column('.g7a').search(filter).draw();
-        // });
-        // $('input#g7b').change(function() {
-        //     var filter = $(this).val();
-        //     table.column('.g7b').search(filter).draw();
-        // });
-        // $('input#g7c').change(function() {
-        //     var filter = $(this).val();
-        //     table.column('.g7c').search(filter).draw();
-        // });
-        // $('select#senderPostId').change(function() {
-        //     var filter = '';
-        //     $('select#senderPostId option:selected').each(function() {
-        //         filter += $(this).val() + "+";
-        //     });
-        //     filter = filter.substring(0, filter.length - 1);
-        //     table.column('.senderPostId').search(filter).draw();
-        // });
-        // $('input#atdInspectorName').change(function() {
-        //     var filter = $(this).val();
-        //     table.column('.atdInspectorName').search(filter).draw();
-        // });
-        // $('select#statusNm').change(function() {
-        //     var filter = '';
-        //     $('select#statusNm option:selected').each(function() {
-        //         filter += $(this).val() + "+";
-        //     });
-        //     filter = filter.substring(0, filter.length - 1);
-        //     table.column('.status').search(filter).draw();
-        // });
-        //
         var minFirstDay = $('input#minFirstDay');
         var maxFirstDay = $('input#maxFirstDay');
         var onDateBoundChange = function () {
-            table2.column('.insTime').search(minFirstDay.val() + ';' + maxFirstDay.val()).draw();
+            app_table_02.column('.insTime').search(minFirstDay.val() + ';' + maxFirstDay.val()).draw();
         };
         $('.updateAppTableV1').on('click', function () {
             onDateBoundChange();
         })
         $(document).ready(function () {
-            table2.on('order.dt search.dt', function () {
+            app_table_02.on('order.dt search.dt', function () {
                 let i = 1;
-                table2.cells(null, 0, {search: 'applied', order: 'applied'}).every(function (cell) {
+                app_table_02.cells(null, 0, {search: 'applied', order: 'applied'}).every(function (cell) {
                     this.data(i++);
                 });
             }).draw();
         });
-        table2.columns.adjust();
     </script>
 </body>
