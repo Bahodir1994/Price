@@ -642,7 +642,8 @@
         src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/buttons.bootstrap4.min.js"></script>
 <script type="text/javascript"
         src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.dateTime.min.js">
-</script><script type="text/javascript"
+</script>
+<script type="text/javascript"
         src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/datetime.js"></script>
 <script type="text/javascript"
         src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/lottie.js"></script>
@@ -651,7 +652,7 @@
 <script>
 
     $('select').selectpicker();
-    let sessionData = ${sessionGetterDataValue};
+    var sessionData = ${sessionGetterDataValue};
 
     /******************************************************************************************************************/
     var app_table_01 = $('#app_table_01').DataTable({
