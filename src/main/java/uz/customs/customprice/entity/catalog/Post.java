@@ -1,10 +1,13 @@
 package uz.customs.customprice.entity.catalog;
 
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "POST", schema = "CPID")
+@Where(clause = "USE_YN = 'Y'")
 @IdClass(PostPK.class)
 public class Post {
     @Id

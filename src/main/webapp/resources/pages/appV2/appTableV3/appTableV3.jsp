@@ -70,7 +70,8 @@
                                             data-style="form-control form-control-sm"
                                             id="ugtkV3" multiple
                                             data-selected-text-format="count > 1"
-                                            data-actions-box="true" data-live-search="true">
+                                            data-actions-box="true" data-live-search="true"
+                                            data-size="5">
                                         <c:forEach items="${location}" var="location" varStatus="i">
                                             <option class="option-class" value="${location.code}" data-subtext="${location.code}">${location.cdNm}</option>
                                         </c:forEach>

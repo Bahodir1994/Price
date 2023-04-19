@@ -1,44 +1,53 @@
 package uz.customs.customprice.entity.catalog;
 
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "LOCATION", schema = "CPID")
+@Where(clause = "USE_YN = 'Y'")
 @IdClass(LocationPK.class)
 public class Location {
     @Id
-    @Column(name = "CODE", nullable = false, length = 4)
+    @Column(name = "CODE", columnDefinition = "VARCHAR(4) CCSID 1025")
     private String code;
     
     @Id
-    @Column(name = "CD_ID", nullable = false, length = 4)
+    @Column(name = "CD_ID", columnDefinition = "VARCHAR(4) CCSID 1025")
     private String cdId;
     
-    @Column(name = "CD_NM", length = 600)
+    @Column(name = "CD_NM", columnDefinition = "VARCHAR(600) CCSID 1208")
     private String cdNm;
     
-    @Column(name = "CD_DESC", length = 600)
+    @Column(name = "CD_DESC", columnDefinition = "VARCHAR(600) CCSID 1208")
     private String cdDesc;
     
-    @Column(name = "CD_ORDR", length = 4)
+    @Column(name = "CD_ORDR", columnDefinition = "VARCHAR(4) CCSID 1025")
     private String cdOrdr;
 
     @Id
-    @Column(name = "LNGA_TPCD", nullable = false, length = 2)
+    @Column(name = "LNGA_TPCD", columnDefinition = "VARCHAR(2) CCSID 1025")
     private String lngaTpcd;
     
-    @Column(name = "USE_YN", length = 2)
+    @Column(name = "USE_YN", columnDefinition = "VARCHAR(2) CCSID 1025")
     private String useYn;
     
-    @Column(name = "CD_ID_L", length = 2)
+    @Column(name = "CD_ID_L", columnDefinition = "VARCHAR(2) CCSID 1025")
     private String cdIdL;
     
-    @Column(name = "ADRESS", length = 1200)
+    @Column(name = "ADRESS", columnDefinition = "VARCHAR(600) CCSID 1208")
     private String adress;
     
-    @Column(name = "TELEPHONE", length = 100)
+    @Column(name = "TELEPHONE", columnDefinition = "VARCHAR(30) CCSID 1025")
     private String telephone;
+
+    @Column(name = "IDN", columnDefinition = "VARCHAR(2) CCSID 1025")
+    private String idn;
+
+    @Column(name = "BRANCHID", columnDefinition = "VARCHAR(3) CCSID 1025")
+    private String branchId;
 
     public String getCode() {
         return code;
@@ -120,16 +129,32 @@ public class Location {
         this.telephone = telephone;
     }
 
+    public String getIdn() {
+        return idn;
+    }
+
+    public void setIdn(String idn) {
+        this.idn = idn;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Location location = (Location) o;
-        return Objects.equals(code, location.code) && Objects.equals(cdId, location.cdId) && Objects.equals(cdNm, location.cdNm) && Objects.equals(cdDesc, location.cdDesc) && Objects.equals(cdOrdr, location.cdOrdr) && Objects.equals(lngaTpcd, location.lngaTpcd) && Objects.equals(useYn, location.useYn) && Objects.equals(cdIdL, location.cdIdL) && Objects.equals(adress, location.adress) && Objects.equals(telephone, location.telephone);
+        return Objects.equals(code, location.code) && Objects.equals(cdId, location.cdId) && Objects.equals(cdNm, location.cdNm) && Objects.equals(cdDesc, location.cdDesc) && Objects.equals(cdOrdr, location.cdOrdr) && Objects.equals(lngaTpcd, location.lngaTpcd) && Objects.equals(useYn, location.useYn) && Objects.equals(cdIdL, location.cdIdL) && Objects.equals(adress, location.adress) && Objects.equals(telephone, location.telephone) && Objects.equals(idn, location.idn) && Objects.equals(branchId, location.branchId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(code, cdId, cdNm, cdDesc, cdOrdr, lngaTpcd, useYn, cdIdL, adress, telephone);
+        return Objects.hash(code, cdId, cdNm, cdDesc, cdOrdr, lngaTpcd, useYn, cdIdL, adress, telephone, idn, branchId);
     }
 }
