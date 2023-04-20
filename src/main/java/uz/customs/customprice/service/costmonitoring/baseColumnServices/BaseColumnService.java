@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,15 +20,27 @@ public class BaseColumnService {
     private final BaseColumnRepository baseColumnRepository;
     private final GetterSessionData getterSessionData;
 
+    private static <T> T findUniqueElement(List<T> elements) {
+        if (elements.size() == 1) {
+            return elements.get(0);
+        }
+        return null;
+    }
+
     public Map<String, Object> getColumns(HttpServletRequest httpServletRequest) {
         SessionDataValue sessionGetterDataValue = getterSessionData.onlyGetSessionData(httpServletRequest);
         Map<String, Object> objectMap = new HashMap<>();
-        objectMap.put(
-                "activeSetting", baseColumnRepository.findByInsUser(sessionGetterDataValue.getUserId()).stream()
-                        .filter(baseColumn -> baseColumn.getIsDefault() == 1).collect(Collectors.toList()).get(0)
-        );
-        objectMap.put(
-                "otherSettings", baseColumnRepository.findByInsUser(sessionGetterDataValue.getUserId()).stream()
+
+        Optional<BaseColumn> baseColumnActive = baseColumnRepository.findByInsUser(sessionGetterDataValue.getUserId())
+                .stream()
+                .filter(baseColumn -> baseColumn.getIsDefault() == 1)
+                .collect(Collectors.collectingAndThen(Collectors.toList(),
+                        list -> Optional.ofNullable(findUniqueElement(list))));
+        baseColumnActive.ifPresentOrElse(
+                baseColumn -> {objectMap.put("activeSetting", baseColumn);},
+                () -> {objectMap.put("activeSetting", baseColumnRepository.findById("1").get());});
+
+        objectMap.put("otherSettings", baseColumnRepository.findByInsUser(sessionGetterDataValue.getUserId()).stream()
                         .filter(baseColumn -> baseColumn.getIsDefault() == 0).collect(Collectors.toList())
         );
 

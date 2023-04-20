@@ -30,7 +30,7 @@ public class BaseColumn extends AbstractAuditingEntity {
     private boolean ugtk;
     private boolean g7A;
     private boolean g7B;
-    private boolean me;
+    private boolean g7C;
     private boolean g7Ag7Bg7C;
     private boolean g1A;
     private boolean g1B;

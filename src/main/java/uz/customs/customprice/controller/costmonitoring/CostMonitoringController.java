@@ -26,7 +26,7 @@ public class CostMonitoringController {
 
     @GetMapping(value = "/data/cost_monitoring_base/v1")
     public ModelAndView getDataV1(HttpServletRequest httpServletRequest) throws JsonProcessingException {
-        return  costMonitoringService.getValues(httpServletRequest);
+        return costMonitoringService.getValues(httpServletRequest);
     }
 
     @GetMapping(value = "/data/cost_monitoring_base/v2")

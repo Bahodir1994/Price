@@ -1171,7 +1171,7 @@
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.spring-friendly.js"></script>
-    <script type="text/javascript"
+<%--    <script type="text/javascript"--%>
 <%--            src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.colReorder.min.js"></script>--%>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.fixedHeader.min.js"></script>
@@ -1191,11 +1191,11 @@
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/buttons.bootstrap4.min.js"></script>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.dateTime.min.js"></script>
-    <script type="text/javascript"
+<%--    <script type="text/javascript"--%>
 <%--            src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/ColReorderWithResize.js"></script>--%>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.dataTables.colResize.js"></script>
-    <script type="text/javascript"
+<%--    <script type="text/javascript"--%>
 <%--            src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.mask.min.js"></script>--%>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.maskMoney.js"></script>
@@ -1209,7 +1209,9 @@
         $('select').selectpicker();
         var sessionData = ${sessionGetterDataValue};
 
-        /******************************************************************************************************************/
+        setTimeout(() => {
+            fisibatoreColumns();
+        }, 100);
         var app_table_01 = $('#app_table_01').DataTable({
             scrollY: '70vh',
             scrollX: true,
@@ -1258,7 +1260,7 @@
                 {className: "dt-head-center", title: appTableV1.g2Name, name: 'g2Name', data: 'g2Name'},
                 {className: "dt-head-center", title: appTableV1.g8Code2, name: 'g8Code2', data: 'g8Code2', render: data => {return data.replace(/^(\d{3})(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1 $2 $3 $4 $5');} },
                 {className: "dt-head-center", title: appTableV1.g33, name: 'g33', data: 'g33', render: data => {return data.replace(/^(\d{4})(\d{2})(\d{3})(\d{1}).*/, '$1 $2 $3 $4');}},
-                {className: "dt-head-center nowrap g31Wi", title: appTableV1.g31Name, name: 'g31Name', width: '500px!important', data: 'g31Name', render: data => {return '<textarea rows="1" class="border-left-0 border-right-0 font-weight-normal m-0 p-0 g31Name" style="background-color: rgb(0, 0, 0, 0); overflow:visible">'+data+'</textarea>'}, orderable: false},
+                {className: "dt-head-center nowrap g31Wi", title: appTableV1.g31Name, name: 'g31Name', width: '500px!important', data: 'g31Name', render: data => {return '<textarea rows="1" class="border-0 font-weight-normal m-0 p-0 g31Name" style="background-color: rgb(0, 0, 0, 0); overflow:visible">'+data+'</textarea>'}, orderable: false},
                 {className: "dt-head-center", title: appTableV1.g15, name: 'g15', data: 'g15'},
                 {className: "dt-head-center", title: appTableV1.g11, name: 'g11', data: 'g11'},
                 {className: "dt-head-center", title: appTableV1.vidKontrakta, name: 'vidKontrakta', data: 'vidKontrakta'},
@@ -1315,9 +1317,7 @@
                     this.data(i++);
                 });
             }).draw();
-            app_table_01.column('ugtk:name').visible(false);
         });
-        /**************************************************************************************************************/
 
         $('.updateAppTableV1').on('click', function () {
             app_table_01
@@ -1351,8 +1351,6 @@
                 $('.toggle_fullscreen').html('<i class="kat"/>')
             }
         });
-
-        /**************************************************************************************************************/
         $('.updateAppTableV2V3').on('click', function () {
             $('#pills-profile-tab').removeClass('active')
             $('#pills-home-tab').removeClass('active').addClass('active')
@@ -1398,7 +1396,81 @@
             });
         }
         function columnSetting() {
-            
+            $.ajax({
+                type: "GET",
+                // data: JSON.stringify(dataS),
+                url: "<%=request.getContextPath()%>/routeV2/V3/data/cost_monitoring_base/v1",
+                dataType: "json",
+                async: true,
+                contentType: 'application/json',
+                beforeSend: function () {
+                },
+                complete: function () {
+                },
+                success: function (res) {
+
+                },
+                error: function (res) {
+                }
+            });
+        }
+        function fisibatoreColumns(){
+            var columnListAll = ${columns}
+            var columnList = JSON.parse(JSON.stringify(columnListAll.activeSetting));
+
+            app_table_01.column('ugtk:name').visible(columnList.ugtk)
+            app_table_01.column('g7A:name').visible(columnList.g7A);
+            app_table_01.column('g7B:name').visible(columnList.g7B);
+            app_table_01.column('g7C:name').visible(columnList.g7C);
+            app_table_01.column('g7Ag7Bg7C:name').visible(columnList.g7Ag7Bg7C);
+            app_table_01.column('g1A:name').visible(columnList.g1A);
+            app_table_01.column('g1B:name').visible(columnList.g1B);
+            app_table_01.column('g1Ag1B:name').visible(columnList.g1Ag1B);
+            app_table_01.column('g32:name').visible(columnList.g32);
+            app_table_01.column('g37B:name').visible(columnList.g37B);
+            app_table_01.column('g37C:name').visible(columnList.g37C);
+            app_table_01.column('g2Name:name').visible(columnList.g2Name);
+            app_table_01.column('g8Code2:name').visible(columnList.g8Code2);
+            app_table_01.column('g33:name').visible(columnList.g33);
+            app_table_01.column('g31Name:name').visible(columnList.g31Name);
+            app_table_01.column('g15:name').visible(columnList.g15);
+            app_table_01.column('g11:name').visible(columnList.g11);
+            app_table_01.column('vidKontrakta:name').visible(columnList.vidKontrakta);
+            app_table_01.column('g34:name').visible(columnList.g34);
+            app_table_01.column('s34:name').visible(columnList.s34);
+            app_table_01.column('g25:name').visible(columnList.g25);
+            app_table_01.column('g20A:name').visible(columnList.g20A);
+            app_table_01.column('g20B:name').visible(columnList.g20B);
+            app_table_01.column('g20Name:name').visible(columnList.g20Name);
+            app_table_01.column('g20Ag20B:name').visible(columnList.g20Ag20B);
+            app_table_01.column('g22A:name').visible(columnList.g22A);
+            app_table_01.column('g45:name').visible(columnList.g45);
+            app_table_01.column('g45Usd:name').visible(columnList.g45Usd);
+            app_table_01.column('g42:name').visible(columnList.g42);
+            app_table_01.column('g42Usd:name').visible(columnList.g42Usd);
+            app_table_01.column('indxusd:name').visible(columnList.indxusd);
+            app_table_01.column('indxusdLn:name').visible(columnList.indxusdLn);
+            app_table_01.column('g45Usded:name').visible(columnList.g45Usded);
+            app_table_01.column('g45UsdedLn:name').visible(columnList.g45UsdedLn);
+            app_table_01.column('g31Marka:name').visible(columnList.g31Marka);
+            app_table_01.column('g35:name').visible(columnList.g35);
+            app_table_01.column('g38:name').visible(columnList.g38);
+            app_table_01.column('g41:name').visible(columnList.g41);
+            app_table_01.column('g43:name').visible(columnList.g43);
+            app_table_01.column('g31Amount:name').visible(columnList.g31Amount);
+            app_table_01.column('vesEd:name').visible(columnList.vesEd);
+            app_table_01.column('gdvipdate:name').visible(columnList.gdvipdate);
+            app_table_01.column('gc3Date:name').visible(columnList.gc3Date);
+            app_table_01.column('metod:name').visible(columnList.metod);
+            app_table_01.column('vzaimosvyaz:name').visible(columnList.vzaimosvyaz);
+            app_table_01.column('idn:name').visible(columnList.idn);
+            app_table_01.column('obl:name').visible(columnList.obl);
+            app_table_01.column('lgot20:name').visible(columnList.lgot20);
+            app_table_01.column('lgot27:name').visible(columnList.lgot27);
+            app_table_01.column('lgot29:name').visible(columnList.lgot29);
+            app_table_01.column('sovstavka:name').visible(columnList.sovstavka);
+            app_table_01.column('asosQiymat:name').visible(columnList.asosQiymat);
+            app_table_01.column('ktd:name').visible(columnList.ktd);
         }
         function openText(x) {
             if (x === 0){
@@ -1408,9 +1480,6 @@
             }
 
         }
-
-    </script>
-    <script>
         function myTalk() {
             var group = document.forms[0];
             var txt = "";
