@@ -253,6 +253,15 @@
                     <div class="pcoded-inner-content">
                         <div class="main-body" id="main-body">
                             <!--put here page -->
+                            <div class="" style="background-position: center;
+                                    margin-top: -10%;
+                                    height: 863px;
+                                    width: 100%;
+                                    background-attachment: fixed;
+                                    background-repeat: no-repeat;
+                                    background-size: cover;
+                                    position: relative;
+                                    background-image: url('${pageContext.servletContext.contextPath}/resources/assets/images/background/fon2.svg')"></div>
                         </div>
                     </div>
                 </div>
