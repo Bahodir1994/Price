@@ -23965,7 +23965,7 @@ pre[class*=language-]:before {
 }
 
 .pcoded-main-container {
-    background: #ecf0f5;
+    background: url('../images/background/new.png');
     position: relative;
     margin: 0 auto;
     padding-top: 0;
@@ -23977,6 +23977,14 @@ pre[class*=language-]:before {
     margin-left: 230px;
     min-height: 100vh;
     transition: all 0.3s ease-in-out;
+    background-position: center;
+
+    height: 863px;
+    width: 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
 /* main content end*/

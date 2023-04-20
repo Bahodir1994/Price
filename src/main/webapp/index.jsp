@@ -54,7 +54,7 @@
 
                         </li>
                         <li class="nav-item pcoded-hasmenu">
-                            <a href="javascript:appFuncV2()" class="nav-link "><span class="pcoded-micon"
+                            <a href="javascript:appFuncV2()" onclick="myMenu()"  class="nav-link "><span class="pcoded-micon"
                                                                                      style="color: #4fee51"><i
                                     class="fas fa-list"></i></span><span class="pcoded-mtext"><fmt:message key="valMon" bundle="${resourceBundle}"/></span></a>
 
@@ -90,12 +90,12 @@
                         </li>
                         <li class="nav-item pcoded-hasmenu">
                             <a href="#!" class="nav-link "><span class="pcoded-micon" style="color: #15d5da"><i
-                                    class="fas fa-history"></i></span><span class="pcoded-mtext">БЮД тарихи</span></a>
+                                    class="fas fa-history"></i></span><span class="pcoded-mtext"><fmt:message key="bydHis" bundle="${resourceBundle}"/></span></a>
 
                         </li>
                         <li class="nav-item pcoded-hasmenu">
                             <a href="#!" class="nav-link "><span class="pcoded-micon" style="color: #1c4dcb"><i
-                                    class="fas fa-list-ul"></i></span><span class="pcoded-mtext">Божхона қийматини ҳавола қилиш тарихи</span></a>
+                                    class="fas fa-list-ul"></i></span><span class="pcoded-mtext"><fmt:message key="cusCostHis" bundle="${resourceBundle}"/></span></a>
 
                         </li>
 
@@ -107,7 +107,7 @@
             <div class="container-fluid">
                 <div class="m-header mr-1">
                     <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
-                    <a href="#!" class="b-brand">
+                    <a href="#!" class="b-brand" style="height: 60px">
                         <!-- ========   change your logo hear   ============ -->
                         <img src="${pageContext.servletContext.contextPath}/resources/assets/images/gtk.png" style="margin-left: 80px; margin-right: -25px; width: 35px"
                              alt="" class="logo">
@@ -248,25 +248,26 @@
                 </div>
             </div>
         </header>
-        <div class="pcoded-main-container">
+        <div class="pcoded-main-container" id="apple">
             <div class="pcoded-wrapper container-fluid">
                 <div class="pcoded-content">
                     <div class="pcoded-inner-content">
                         <div class="main-body" id="main-body">
                             <!--put here page -->
-                            <div class="" style="background-position: center;
-                                    margin-top: -10%;
-                                    height: 863px;
-                                    width: 100%;
-                                    background-attachment: fixed;
-                                    background-repeat: no-repeat;
-                                    background-size: cover;
-                                    position: relative;
-                                    background-image: url('${pageContext.servletContext.contextPath}/resources/assets/images/background/fon2.svg')"></div>
-                        </div>
+<%--                            <div class="" style="background-position: center;--%>
+<%--                                    margin-top: -10%;--%>
+<%--                                    height: 863px;--%>
+<%--                                    width: 100%;--%>
+<%--                                    background-attachment: fixed;--%>
+<%--                                    background-repeat: no-repeat;--%>
+<%--                                    background-size: cover;--%>
+<%--                                    position: relative;--%>
+<%--                                    background-image: url('${pageContext.servletContext.contextPath}/resources/assets/images/background/new.png')"></div>--%>
+<%--                        </div>--%>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         <!-- Required Js -->
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/jquery3-5-1.js"></script>
@@ -332,7 +333,9 @@
                     accept: function () {
                     },
                     success: function (response) {
+
                         $("#main-body").html(response);
+
                     },
                     error: function () {
 
@@ -411,6 +414,7 @@
                 });
             }
 
+
         </script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/analytics.js"></script>
 
@@ -487,6 +491,12 @@
                 updateTime();
             }, 1000);
 
+        </script>
+        <script>
+
+            function myMenu() {
+                document.getElementById("apple").style.background = "#ecf0f5";
+            }
         </script>
     </body>
 </html>
