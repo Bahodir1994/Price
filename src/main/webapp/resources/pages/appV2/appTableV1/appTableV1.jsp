@@ -43,18 +43,17 @@
                         <div class="justify-content-center py-1 pb-2 mt-2">
                             <div class="form-row m-0 justify-content-center">
                                 <div class="form-group mx-2  p-0 text-center">
-                                    <label for="g33" class="f-w-600" style=" margin-right: 5px;">ТИФ ТН код </label>
+                                    <label for="g33" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="hsCode" bundle="${resourceBundle}"/></label>
                                     <input type="text" id="g33" class="form-control form-control-sm w-100 g33"
-                                           placeholder="8703 80 000 0">
+                                           placeholder="0000 00 000 0">
                                 </div>
                                 <div class="form-group mx-2  p-0 text-center">
-                                    <label for="g31Name" class="f-w-600" style=" margin-right: 5px;">Товар номи </label>
+                                    <label for="g31Name" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="commodityName" bundle="${resourceBundle}"/></label>
                                     <input type="text" id="g31Name" class="form-control form-control-sm w-100 g31Name"
                                            placeholder="BYD">
                                 </div>
                                 <div class="form-group mr-2  p-0 text-center">
-                                    <label for="g15" class="f-w-600" style=" margin-right: 5px;">Юк жўнатувчи
-                                        мамлакат </label>
+                                    <label for="g15" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="shipmentCountry" bundle="${resourceBundle}"/></label>
                                     <select class="selectpicker form-control show-menu-arrow g15"
                                             data-style="form-control form-control-sm" id="g15" multiple
                                             data-selected-text-format="count > 3" data-actions-box="true"
@@ -67,41 +66,31 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-2 mr-2  p-0 text-center">
-                                    <label for="country_made" class="f-w-600" style=" margin-right: 5px;">Келиб чиқиш
-                                        мамлакати </label>
-                                    <select class="selectpicker form-control show-menu-arrow"
-                                            data-style="form-control form-control-sm" id="country_made" multiple
+                                    <label for="g11" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="originCountry" bundle="${resourceBundle}"/></label>
+                                    <select class="selectpicker form-control show-menu-arrow g11"
+                                            data-style="form-control form-control-sm" id="g11" multiple
                                             data-selected-text-format="count > 3" data-actions-box="true"
                                             data-live-search="true">
                                         <c:forEach items="${country}" var="country" varStatus="i">
-                                            <option data-icon="fi fi-${country.cdIdL}" class="option-class"
-                                                    value="${country.code}"
+                                            <option data-icon="fi fi-${country.cdIdL}" class="option-class" value="${country.code}"
                                                     data-subtext="${country.code}">${country.cdNm}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
                                 <div class="form-group text-right m-0 p-0 mr-1">
-                                    <label for="minFirstDay"
+                                    <label for="gc3DateStart"
                                            class="f-w-600"
-                                           style=" margin-right: 5px;">дан: </label>
-
-                                    <input type="date" class="form-control form-control-sm w-100 "
-                                           maxlength="10" tabindex="1"
-                                           name="dcodate" id="minFirstDay" min="2020-01-01"
-                                           max="2023-12-31" value="2023-03-01">
+                                           style=" margin-right: 5px;"><fmt:message key="from" bundle="${resourceBundle}"/>: </label>
+                                    <input type="date" class="form-control form-control-sm w-100 gc3DateStart" maxlength="10" tabindex="1" name="dcodate" id="gc3DateStart">
                                 </div>
-                                <div class="form-group col-md-1 col-sm-1 text-right m-0 p-0"><label for="maxFirstDay" class="f-w-600"
-                                                                             style=" margin-right: 5px;">гача: </label>
-                                    <input type="date" class="form-control form-control-sm w-100 "
-                                           maxlength="10" tabindex="2"
-                                           name="dcodate" id="maxFirstDay" min="2020-01-01"
-                                           max="2023-12-31" value="2023-04-11">
+                                <div class="form-group col-md-1 col-sm-1 text-right m-0 p-0"><label for="gc3DateEnd" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="to" bundle="${resourceBundle}"/>: </label>
+                                    <input type="date" class="form-control form-control-sm w-100 gc3DateEnd" maxlength="10" tabindex="2" name="dcodate" id="gc3DateEnd">
                                 </div>
                                 <div class="form-group col-md-1 col-sm-1 text-right ml-1 p-0 " style="margin-top: 20px">
                                     <button type="button" tabindex="3"
                                             class="btn btn-sm btn-outline-primary f-w-900 w-75 updateAppTableV1"
                                             style="border-radius: 5px">
-                                        <i class="feather icon-search"></i>&nbsp;Излаш
+                                        <i class="feather icon-search"></i>&nbsp;<fmt:message key="search" bundle="${resourceBundle}"/>
                                     </button>
                                 </div>
                                 <div class="form-group col-md-1 col-sm-1 text-right ml-1 p-0 " style="margin-top: 20px">
@@ -109,16 +98,16 @@
                                             class="btn btn-sm btn-outline-success f-w-900 w-75 updateAppTableV2V3"
                                             style="border-radius: 5px" data-toggle="modal"
                                             data-target="#exampleModalCenter">
-                                        <i class="feather icon-bar-chart"></i>&nbsp;Ҳисобот
+                                        <i class="feather icon-bar-chart"></i>&nbsp;<fmt:message key="report" bundle="${resourceBundle}"/>
                                     </button>
                                 </div>
                                 <div class="form-group col-md-1 col-sm-1 text-right ml-1 p-0 " style="margin-top: 20px">
                                     <button type="button" tabindex="3"
-                                            class="btn btn-sm btn-outline-primary f-w-900 w-75 updateAppTableV1"
+                                            class="btn btn-sm btn-outline-primary f-w-900 w-75"
                                             style="border-radius: 5px"
                                             data-toggle="modal"
                                             data-target="#exampleModalCenter1">
-                                        <i class="fas fa-wrench"></i>&nbsp;Созлама
+                                        <i class="fas fa-wrench"></i> <fmt:message key="configuration" bundle="${resourceBundle}"/>
                                     </button>
                                 </div>
                                 <div class="card-header-right "
@@ -131,7 +120,7 @@
                                         </button>
                                         <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right" style="">
                                             <li class="dropdown-item full-card" id="toggle_fullscreen"><span style=""><i
-                                                    class="feather icon-maximize"></i> Кенгайтириш / Йиғиш</span>
+                                                    class="feather icon-maximize"></i> <fmt:message key="sizeResize" bundle="${resourceBundle}"/></span>
                                             </li>
                                         </ul>
                                     </div>
@@ -146,153 +135,78 @@
                                     <div class="card m-0">
                                         <div class="card-header" id="faqhead2">
                                             <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse"
-                                               data-target="#faq2" aria-expanded="true" aria-controls="faq2">Қўшимча қидирув
-                                                филтрлари</a>
+                                               data-target="#faq2" aria-expanded="true" aria-controls="faq2"><fmt:message key="additionalSearch" bundle="${resourceBundle}"/></a>
                                         </div>
-                                        <div id="faq2" class="collapse" aria-labelledby="faqhead2"
-                                             data-parent="#faq">
+                                        <div id="faq2" class="collapse" aria-labelledby="faqhead2" data-parent="#faq">
                                             <div class="card-body text-left justify-content-center">
                                                 <form>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-2">
-                                                            <label for="ugtk">ҲББ</label>
+                                                            <label for="ugtk"><fmt:message key="regionalCustomsOffice" bundle="${resourceBundle}"/></label>
                                                             <select class="selectpicker form-control show-menu-arrow ugtk"
                                                                     data-style="form-control form-control-sm"
                                                                     id="ugtk" multiple
                                                                     data-selected-text-format="count > 3"
                                                                     data-actions-box="true" data-live-search="true">
                                                                 <c:forEach items="${location}" var="location" varStatus="i">
-                                                                    <option class="option-class" value="${location.code.substring(0,2)}" data-subtext="${location.code}">${location.cdNm}</option>
+                                                                    <option class="option-class" value="${location.code.substring(2,4)}" data-subtext="${location.code}">${location.cdNm}</option>
                                                                 </c:forEach>
                                                             </select>
                                                         </div>
+
                                                         <div class="form-group col-md-2">
-                                                            <label for="g37C">Олиб ўтиш хусусияти</label>
+                                                            <label for="g37C"><fmt:message key="transferFeature" bundle="${resourceBundle}"/></label>
                                                             <select class="selectpicker form-control show-menu-arrow g37C"
                                                                     data-style="form-control form-control-sm"
                                                                     id="g37C" multiple
                                                                     data-selected-text-format="count > 3"
                                                                     data-actions-box="true" data-live-search="true">
-                                                                <option data-icon="fa fa-heart" class="option-class" value="26002" data-subtext="26002">"Тошкент-товар1"
-                                                                    ТИФ
-                                                                </option>
+                                                                <c:forEach items="${featMove}" var="featMove" varStatus="i">
+                                                                    <option class="option-class" value="${featMove.code}" >${featMove.code}</option>
+                                                                </c:forEach>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="g41">Қўшимча ўлчов бирлиги</label>
+                                                            <label for="g41"><fmt:message key="transferFeature" bundle="${resourceBundle}"/></label>
                                                             <select class="selectpicker form-control show-menu-arrow g41"
                                                                     data-style="form-control form-control-sm"
                                                                     id="g41" multiple
                                                                     data-selected-text-format="count > 3"
                                                                     data-actions-box="true" data-live-search="true">
-                                                                <option data-icon="fa fa-heart" class="option-class"
-                                                                        value="26002" data-subtext="26002">"Тошкент-товар1"
-                                                                    ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
+                                                                <c:forEach items="${unit}" var="unit" varStatus="i">
+                                                                    <option class="option-class" value="${unit.code}" >${unit.code} - ${unit.cdDesc}</option>
+                                                                </c:forEach>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="g1B">Божхона режими</label>
+                                                            <label for="g1B"><fmt:message key="customsMode" bundle="${resourceBundle}"/></label>
                                                             <select class="selectpicker form-control show-menu-arrow g1B"
                                                                     data-style="form-control form-control-sm"
                                                                     id="g1B" multiple
                                                                     data-selected-text-format="count > 3"
                                                                     data-actions-box="true" data-live-search="true">
-                                                                <option data-icon="fa fa-heart" class="option-class"
-                                                                        value="26002" data-subtext="26002">"Тошкент-товар1" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
+                                                                <c:forEach items="${customsMode}" var="customsMode" varStatus="i">
+                                                                    <option class="option-class" value="${customsMode.code}" >${customsMode.code} - ${customsMode.cdDesc}</option>
+                                                                </c:forEach>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="g20A">Етказиб бериш шарти</label>
-                                                            <select class="selectpicker form-control show-menu-arrow"
+                                                            <label for="g20A"><fmt:message key="deliveryCondition" bundle="${resourceBundle}"/></label>
+                                                            <select class="selectpicker form-control show-menu-arrow g20A"
                                                                     data-style="form-control form-control-sm"
                                                                     id="g20A" multiple
                                                                     data-selected-text-format="count > 3"
                                                                     data-actions-box="true" data-live-search="true">
-                                                                <option data-icon="fa fa-heart" class="option-class"
-                                                                        value="26002" data-subtext="26002">"Тошкент-товар1"
-                                                                    ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
+                                                                <c:forEach items="${deliveryTerms}" var="deliveryTerms" varStatus="i">
+                                                                    <option class="option-class" value="${deliveryTerms.raqam}" >${deliveryTerms.raqam} - ${deliveryTerms.sign}</option>
+                                                                </c:forEach>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-1">
-                                                            <label for="inputState6">БЮД(:дан)</label>
+                                                            <label for="g7BStart"><fmt:message key="ccd" bundle="${resourceBundle}"/> (:<fmt:message key="from" bundle="${resourceBundle}"/>)</label>
                                                             <input type="date"
-                                                                   class="form-control form-control-sm px-1"
-                                                                   id="inputState6"
+                                                                   class="form-control form-control-sm px-1 g7BStart"
+                                                                   id="g7BStart"
                                                                    maxlength="10" tabindex="1"
                                                                    name="dcodate"
                                                                    min="2020-01-01"
@@ -300,10 +214,10 @@
                                                                    value="2023-03-01">
                                                         </div>
                                                         <div class="form-group col-md-1">
-                                                            <label for="inputState7">БЮД(:гача)</label>
+                                                            <label for="g7BEnd"><fmt:message key="ccd" bundle="${resourceBundle}"/> (:<fmt:message key="to" bundle="${resourceBundle}"/>)</label>
                                                             <input type="date"
-                                                                   class="form-control form-control-sm px-1"
-                                                                   id="inputState7"
+                                                                   class="form-control form-control-sm px-1 g7BEnd"
+                                                                   id="g7BEnd"
                                                                    maxlength="10" tabindex="1"
                                                                    name="dcodate"
                                                                    min="2020-01-01"
@@ -311,267 +225,102 @@
                                                                    value="2023-03-01">
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="g7A">Божхона пости</label>
+                                                            <label for="g7A"><fmt:message key="customsPost" bundle="${resourceBundle}"/> </label>
                                                             <select class="selectpicker form-control show-menu-arrow g7A"
                                                                     data-style="form-control form-control-sm"
                                                                     id="g7A" multiple
                                                                     data-selected-text-format="count > 3"
                                                                     data-actions-box="true" data-live-search="true">
-                                                                <option data-icon="fa fa-heart" class="option-class"
-                                                                        value="26002" data-subtext="26002">"Тошкент-товар1"
-                                                                    ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
+                                                                <c:forEach items="${post}" var="post" varStatus="i">
+                                                                    <option class="option-class" value="${post.code}" >${post.code} - ${post.cdNm}</option>
+                                                                </c:forEach>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="vidKontrakta">Шартнома тури</label>
+                                                            <label for="vidKontrakta"><fmt:message key="existenceContract" bundle="${resourceBundle}"/></label>
                                                             <select class="selectpicker form-control show-menu-arrow vidKontrakta"
                                                                     data-style="form-control form-control-sm"
                                                                     id="vidKontrakta" multiple
                                                                     data-selected-text-format="count > 3"
-                                                                    data-actions-box="true" data-live-search="true">
-                                                                <option data-icon="fa fa-heart" class="option-class"
-                                                                        value="26002" data-subtext="26002">"Тошкент-товар1"
-                                                                    ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
+                                                                    data-live-search="true">
+                                                                <option class="option-class" value="1"><fmt:message key="yes" bundle="${resourceBundle}"/></option>
+                                                                <option class="option-class" value="0"><fmt:message key="no" bundle="${resourceBundle}"/></option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="metod">Метод</label>
+                                                            <label for="metod"><fmt:message key="method" bundle="${resourceBundle}"/></label>
                                                             <select class="selectpicker form-control show-menu-arrow metod"
                                                                     data-style="form-control form-control-sm"
                                                                     id="metod" multiple
                                                                     data-selected-text-format="count > 3"
                                                                     data-actions-box="true" data-live-search="true">
-                                                                <option data-icon="fa fa-heart" class="option-class"
-                                                                        value="26002" data-subtext="26002">"Тошкент-товар1"
-                                                                    ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
+                                                                <c:forEach items="${method}" var="method" varStatus="i">
+                                                                    <option class="option-class" value="${method.id}" >${method.id.replace('0','')} - усул</option>
+                                                                </c:forEach>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for=" g37B">Аввалги режим</label>
+                                                            <label for="g37B"><fmt:message key="oldCustomsMode" bundle="${resourceBundle}"/></label>
                                                             <select class="selectpicker form-control show-menu-arrow g37B"
                                                                     data-style="form-control form-control-sm"
-                                                                    id=" g37B" multiple
+                                                                    id="g37B" multiple
                                                                     data-selected-text-format="count > 3"
                                                                     data-actions-box="true" data-live-search="true">
-                                                                <option data-icon="fa fa-heart" class="option-class"
-                                                                        value="26002" data-subtext="26002">"Тошкент-товар1"
-                                                                    ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
+                                                                <c:forEach items="${customsMode}" var="customsMode" varStatus="i">
+                                                                    <option class="option-class" value="${customsMode.code}" >${customsMode.code} - ${customsMode.cdDesc}</option>
+                                                                </c:forEach>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="g31Marka">Товар маркаси</label>
-                                                            <input type="text" class="form-control form-control-sm px-1 g31Marka"
-                                                                   id="g31Marka" placeholder="Товар маркаси">
+                                                            <label for="g31Marka"><fmt:message key="brandName" bundle="${resourceBundle}"/></label>
+                                                            <input type="text" class="form-control form-control-sm px-1 g31Marka" id="g31Marka" placeholder="<fmt:message key="brandName" bundle="${resourceBundle}"/>">
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="ktd">Тузатиш киритилган</label>
+                                                            <label for="ktd"><fmt:message key="correctionIncluded" bundle="${resourceBundle}"/></label>
                                                             <select class="selectpicker form-control show-menu-arrow ktd"
                                                                     data-style="form-control form-control-sm"
                                                                     id="ktd" multiple
-                                                                    data-selected-text-format="count > 3"
-                                                                    data-actions-box="true" data-live-search="true">
-                                                                <option data-icon="fa fa-heart" class="option-class"
-                                                                        value="26002" data-subtext="26002">"Тошкент-товар1"
-                                                                    ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
+                                                                    data-selected-text-format="count > 3">
+                                                                <option class="option-class" value="1"><fmt:message key="yes" bundle="${resourceBundle}"/></option>
+                                                                <option class="option-class" value="0"><fmt:message key="no" bundle="${resourceBundle}"/></option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="g7C">БЮД рақами</label>
+                                                            <label for="g7C"><fmt:message key="ccd" bundle="${resourceBundle}"/> <fmt:message key="number" bundle="${resourceBundle}"/></label>
                                                             <input type="text" class="form-control form-control-sm px-1 g7C"
-                                                                   id="g7C" placeholder="пост/сана/рақам">
+                                                                   id="g7C" placeholder="<fmt:message key="ccd" bundle="${resourceBundle}"/> <fmt:message key="number" bundle="${resourceBundle}"/>">
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="g8Code2">Имортер СТИР/ЖШШИР</label>
+                                                            <label for="g8Code2"><fmt:message key="importer" bundle="${resourceBundle}"/> <fmt:message key="tin" bundle="${resourceBundle}"/>/<fmt:message key="pin" bundle="${resourceBundle}"/></label>
                                                             <input type="text" class="form-control form-control-sm px-1 g8Code2"
-                                                                   id="g8Code2" placeholder="СТИР/ЖШШИР">
+                                                                   id="g8Code2" placeholder="<fmt:message key="tin" bundle="${resourceBundle}"/>/<fmt:message key="pin" bundle="${resourceBundle}"/>">
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="g43">Ўз еҳтиёжи/тижорат</label>
+                                                            <label for="g43"><fmt:message key="needOrCommerce" bundle="${resourceBundle}"/></label>
                                                             <select class="selectpicker form-control show-menu-arrow g43"
                                                                     data-style="form-control form-control-sm"
                                                                     id="g43" multiple
-                                                                    data-selected-text-format="count > 3"
-                                                                    data-actions-box="true" data-live-search="true">
-                                                                <option data-icon="fa fa-heart" class="option-class"
-                                                                        value="26002" data-subtext="26002">"Тошкент-товар1"
-                                                                    ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26003"
-                                                                        data-subtext="26003">"Арқбулоқ" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26004"
-                                                                        data-subtext="26004">"Чуқурсой" ТИФ
-                                                                </option>
-                                                                <option class="option-class" value="26010"
-                                                                        data-subtext="26010">"Сирғали" ТИФ божхона пости
-                                                                </option>
-                                                                <option class="option-class" value="26002"
-                                                                        data-subtext="26002">"Тошкент-товар" ТИФ
-                                                                </option>
+                                                                    data-selected-text-format="count > 3">
+                                                                <option class="option-class" value="1"><fmt:message key="yes" bundle="${resourceBundle}"/></option>
+                                                                <option class="option-class" value="0"><fmt:message key="no" bundle="${resourceBundle}"/></option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="idn">Шартнома ИДН рақами</label>
+                                                            <label for="idn"><fmt:message key="contractIdnNumber" bundle="${resourceBundle}"/></label>
                                                             <input type="text" class="form-control form-control-sm px-1 idn"
-                                                                   id="idn" placeholder="Шартнома ИДН рақами">
+                                                                   id="idn" placeholder="<fmt:message key="contractIdnNumber" bundle="${resourceBundle}"/>">
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="asosQiymat">Божхона қиймати асоси</label>
+                                                            <label for="asosQiymat"><fmt:message key="customsValueBasis" bundle="${resourceBundle}"/></label>
                                                             <input type="text" class="form-control form-control-sm px-1 asosQiymat"
-                                                                   id="asosQiymat" placeholder="Божхона қиймати асоси">
+                                                                   id="asosQiymat" placeholder="<fmt:message key="customsValueBasis" bundle="${resourceBundle}"/>">
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label>Чегарани кесиб ўтган сана</label>
+                                                            <label><fmt:message key="dateOfBorderCrossing" bundle="${resourceBundle}"/></label>
                                                             <div class="px-1" style="margin-top: -2px">
-                                                                <button type="button"
-                                                                        class="btn  btn-outline-primary btn-sm">
-                                                                    30 кун
-                                                                </button>
-                                                                <button type="button"
-                                                                        class="btn  btn-outline-secondary btn-sm">
-                                                                    90 кун
-                                                                </button>
-                                                                <button type="button"
-                                                                        class="btn  btn-outline-secondary btn-sm">
-                                                                    180 кун
-                                                                </button>
+                                                                <button type="button" class="btn btn-outline-primary btn-sm day30">30 <fmt:message key="day" bundle="${resourceBundle}"/></button>
+                                                                <button type="button" class="btn btn-outline-primary btn-sm day90">90 <fmt:message key="day" bundle="${resourceBundle}"/></button>
+                                                                <button type="button" class="btn btn-outline-primary btn-sm day180">180 <fmt:message key="day" bundle="${resourceBundle}"/></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -593,7 +342,7 @@
                 <div class="modal-dialog modal-dialog-centered modal-xl modal-autoheight" role="document">
                     <div class="modal-content">
                         <div class="modal-header" style="background-color: #7497ea">
-                            <h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-history text-white"></i> Қиймат мониторингидан фойдаланиш натижаларини қайд этиш ҳисоботи</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-history text-white"></i> <fmt:message key="reportLable" bundle="${resourceBundle}"/></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -603,14 +352,13 @@
                                 <li class="nav-item w-50 border border-primary rounded-0 text-center"
                                     onclick="appFuncV2_ajax_v1()">
                                     <a class="nav-link active rounded-0" id="pills-home-tab" data-toggle="pill"
-                                       href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Ходимлар
-                                        кесимида</a>
+                                       href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><fmt:message key="lineInspectors" bundle="${resourceBundle}"/></a>
                                 </li>
                                 <li class="nav-item w-50 border border-primary rounded-0 text-center"
                                     onclick="appFuncV2_ajax_v2()">
                                     <a class="nav-link rounded-0" id="pills-profile-tab" data-toggle="pill"
                                        href="#pills-profile"
-                                       role="tab" aria-controls="pills-profile" aria-selected="false">Товарлар кесимида</a>
+                                       role="tab" aria-controls="pills-profile" aria-selected="false"><fmt:message key="lineCustoms" bundle="${resourceBundle}"/></a>
                                 </li>
                             </ul>
                             <div class="border-top border-bottom-info" id="pills-tabContent">
@@ -631,7 +379,7 @@
                 <div class="modal-dialog modal-dialog-centered modal-xl modal-autoheight" role="document">
                     <div class="modal-content">
                         <div class="modal-header" style="background-color: #7497ea">
-                            <h5 class="modal-title" id="exampleModalLongTitle1"><i class="fa fa-history "></i> Устун созламаси</h5>
+                            <h5 class="modal-title" id="exampleModalLongTitle1"><i class="fa fa-history "></i> <fmt:message key="columnSetting" bundle="${resourceBundle}"/></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -666,13 +414,11 @@
                                             <div class="col-md-3">
                                                 <form>
                                                     <div class="form-group row">
-                                                        <div class="col-sm-1 px-0 mt-4   ">1</div>
-                                                        <div class="col-sm-11 px-0 mt-4   ">
-                                                            <div class="form-check" >
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck1" name="group" value="Юк жўнатувчи мамлакат"   >
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck1" >Юк жўнатувчи мамлакат</label>
+                                                        <div class="col-sm-1 px-0 mt-4">1</div>
+                                                        <div class="col-sm-11 px-0 mt-4">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" id="gridCheck1" name="group" value="Юк жўнатувчи мамлакат">
+                                                                <label class="form-check-label" for="gridCheck1" >Юк жўнатувчи мамлакат</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-1 px-0 mt-4   ">2</div>
@@ -1317,27 +1063,32 @@
                     this.data(i++);
                 });
             }).draw();
+            $('.day30').click();
         });
 
         $('.updateAppTableV1').on('click', function () {
             app_table_01
-                .column('gc3Date:name').search($('input#minFirstDay').val() + ';' + $('input#maxFirstDay').val())
+                .column('gc3Date:name').search($('input#gc3DateStart').val() + ';' + $('input#gc3DateEnd').val())
+                .column('g7B:name').search($('input#g7BStart').val() + ';' + $('input#g7BEnd').val())
                 .column('g33:name').search($('input#g33').val())
                 .column('g31Name:name').search($('input#g31Name').val())
-                // .column('ugtk:name').search($('select#ugtk').val())
-                // .column('g37C:name').search($('select#g37C').val())
-                // .column('g1B:name').search($('select#g1B').val())
-                // .column('g7A:name').search($('select#g7A').val())
-                // .column('g7C:name').search($('input#g7C').val())
-                // .column('metod:name').search($('select#metod').val())
-                // .column('g37B:name').search($('select#g37B').val())
-                // .column('ktd:name').search($('select#ktd').val())
-                // .column('g43:name').search($('select#g43').val())
-                // .column('g31Marka:name').search($('input#g31Marka').val())
-                // .column('g8Code2:name').search($('input#g8Code2').val())
-                // .column('idn:name').search($('input#idn').val())
-                // .column('asosQiymat:name').search($('input#asosQiymat').val())
-                // .column('vidKontrakta:name').search($('select#vidKontrakta').val())
+                .column('ugtk:name').search($('select#ugtk').val())
+                .column('g37C:name').search($('select#g37C').val())
+                .column('g1B:name').search($('select#g1B').val())
+                .column('g7A:name').search($('select#g7A').val())
+                .column('g7C:name').search($('input#g7C').val())
+                .column('g37B:name').search($('select#g37B').val())
+                .column('metod:name').search($('select#metod').val())
+                .column('g20A:name').search($('select#g20A').val())
+                .column('ktd:name').search($('select#ktd').val())
+                .column('g43:name').search($('select#g43').val())
+                .column('g31Marka:name').search($('input#g31Marka').val())
+                .column('g8Code2:name').search($('input#g8Code2').val())
+                .column('idn:name').search($('input#idn').val())
+                .column('asosQiymat:name').search($('input#asosQiymat').val())
+                .column('vidKontrakta:name').search($('select#vidKontrakta').val())
+                .column('g11:name').search($('select#g11').val())
+                .column('g15:name').search($('select#g15').val())
                 .draw();
         })
         $('#toggle_fullscreen').on('click', function () {
@@ -1360,6 +1111,39 @@
             setTimeout(() => {
                 appFuncV2_ajax_v1();
             }, 1500);
+        })
+        $('.day30').on('click', function () {
+            var startDate = '', endDate = '';
+            $('.day30').addClass('active');
+            $('.day90').removeClass('active');
+            $('.day180').removeClass('active');
+            var todayDate = new Date();
+            var startDate = new Date (todayDate.setMonth(todayDate.getMonth() - 1));
+            var endDate = new Date();
+            $('.gc3DateStart').val(startDate.toISOString().slice(0, 10));
+            $('.gc3DateEnd').val(endDate.toISOString().slice(0, 10));
+        });
+        $('.day90').on('click', function () {
+            var startDate = '', endDate = '';
+            $('.day30').removeClass('active');
+            $('.day90').addClass('active');
+            $('.day180').removeClass('active');
+            var todayDate = new Date();
+            var startDate = new Date (todayDate.setMonth(todayDate.getMonth() - 3));
+            var endDate = new Date();
+            $('.gc3DateStart').val(startDate.toISOString().slice(0, 10));
+            $('.gc3DateEnd').val(endDate.toISOString().slice(0, 10));
+        });
+        $('.day180').on('click', function () {
+            var startDate = '', endDate = '';
+            $('.day30').removeClass('active');
+            $('.day90').removeClass('active');
+            $('.day180').addClass('active');
+            var todayDate = new Date();
+            var startDate = new Date (todayDate.setMonth(todayDate.getMonth() - 6));
+            var endDate = new Date();
+            $('.gc3DateStart').val(startDate.toISOString().slice(0, 10));
+            $('.gc3DateEnd').val(endDate.toISOString().slice(0, 10));
         })
 
         function appFuncV2_ajax_v1() {

@@ -11,6 +11,7 @@ import uz.customs.customprice.entity.costmonitoring.BaseEntity;
 import uz.customs.customprice.repository.costmonitoring.CostMonitoringDataRepository;
 
 import javax.persistence.criteria.*;
+import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +22,7 @@ public class CostMonitoringDataService {
     @Transactional(rollbackFor = {Exception.class}, propagation = Propagation.REQUIRED)
     public DataTablesOutput<BaseEntity> dataTable(DataTablesInput input){
         DateRangeSpecification dateRangeSpecification = new DateRangeSpecification(input);
+        DateRangeG7B dateRangeG7B = new DateRangeG7B(input);
 
 //        String searchValue = escapeContent(input.getSearch().getValue());
 //        input.getSearch().setValue("");
@@ -52,7 +54,7 @@ public class CostMonitoringDataService {
 
         return costMonitoringDataRepository.findAll(
                 input,
-                dateRangeSpecification/*.and(new ExcludeAnalystsSpecification()).and(fullNameSpecification)*/
+                dateRangeSpecification.and(dateRangeG7B)/*.and(new ExcludeAnalystsSpecification()).and(fullNameSpecification)*/
 //                (root, query, criteriaBuilder) -> {
 //                    if (query.getResultType() != Long.class) {
 //                        root.fetch("tnfCommodity", JoinType.LEFT);
@@ -65,8 +67,9 @@ public class CostMonitoringDataService {
     private static class ExcludeAnalystsSpecification implements Specification<BaseEntity> {
         @Override
         public Predicate toPredicate(Root<BaseEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+            Expression<LocalDate> ugtkQuery = root.get("ugtk").as(LocalDate.class);
             Predicate g33 = criteriaBuilder.equal(root.get("g33"), "8537109100");
-            Predicate codeUgtk = criteriaBuilder.equal(root.get("ugtk"), "26");
+            Predicate codeUgtk = criteriaBuilder.equal(root.get("ugtk"), ugtkQuery);
             Predicate finalPredicate = criteriaBuilder.and(g33, codeUgtk);
             return finalPredicate;
         }
