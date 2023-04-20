@@ -33351,22 +33351,40 @@ table.dataTable thead .sorting_desc:after {
 /*new **/
 /*clock*/
 
-li .cal {
+/*li .cal {*/
+/*    text-align: center;*/
+/*    color: #fff !important;*/
+/*}*/
+
+/*li .cal .time {*/
+/*    font-size: 20px;*/
+/*    font-weight: 600;*/
+/*    line-height: 15px;*/
+
+/*}*/
+
+/*.cal .days {*/
+/*    font-size: 15px;*/
+/*    display: flex;*/
+/*    line-height: 25px*/
+/*}*/
+
+.time {
+    /*background: #222;*/
+    color: #fff;
+    /*padding: 8px;*/
     text-align: center;
-    color: #fff !important;
+    /*width: 300px;*/
 }
-
-li .cal .time {
+.hms {
     font-size: 20px;
-    font-weight: 600;
-    line-height: 15px;
-
+    font-weight: 200;
 }
-
-.cal .days {
-    font-size: 15px;
-    display: flex;
-    line-height: 25px
+.ampm {
+    font-size: 12pt;
+}
+.date {
+    font-size: 14px;
 }
 
 /*text*/

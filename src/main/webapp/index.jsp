@@ -128,12 +128,13 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <li class="d-flex">
-                            <div class="cal">
-                                <div class="days">
-                                    <div class="date"></div>
-                                </div>
-                                <div class="time"></div>
+                        <li style="line-height: 1.2">
+                            <div class="time" style="padding-top: 5px">
+                                <span class="date"></span>
+                                <p class="hms"></p>
+
+
+
                             </div>
                         </li>
                         <li class="mr-5">
@@ -412,63 +413,80 @@
 
         </script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/analytics.js"></script>
+
         <script>
-            var now = new Date(); //create a new Date
-            var year = now.getFullYear();
-            var mm = now.getMonth();
-            var dd = now.getDate();
-            var hour = now.getHours();
-            var min = now.getMinutes();
-            var sec = now.getSeconds();
+            function updateTime() {
+                var dateInfo = new Date();
 
-            //Get month as a string
-            function monthToStr(data) {
-                var month = new Array();
-                month[0] = "01";
-                month[1] = "02";
-                month[2] = "03";
-                month[3] = "04";
-                month[4] = "05";
-                month[5] = "06";
-                month[6] = "07";
-                month[7] = "08";
-                month[8] = "09";
-                month[9] = "10";
-                month[10] = "11";
-                month[11] = "12";
-                return month[data];
+                /* time */
+                var hr,
+                    _min =
+                        dateInfo.getMinutes() < 10
+                            ? "0" + dateInfo.getMinutes()
+                            : dateInfo.getMinutes(),
+                    sec =
+                        dateInfo.getSeconds() < 10
+                            ? "0" + dateInfo.getSeconds()
+                            : dateInfo.getSeconds(),
+                    ampm = dateInfo.getHours() >= 24 ;
+
+                // replace 0 with 12 at midnight, subtract 12 from hour if 13–23
+                if (dateInfo.getHours() == 0) {
+                    hr = 24;
+                } else if (dateInfo.getHours() > 24) {
+                    hr = dateInfo.getHours() - 24;
+                } else {
+                    hr = dateInfo.getHours();
+                }
+
+                var currentTime = hr + ":" + _min + ":" + sec;
+
+                // print time
+                document.getElementsByClassName("hms")[0].innerHTML = currentTime;
+
+
+                /* date */
+                var dow = [
+                        "<fmt:message key="dateYak" bundle="${resourceBundle}"/>",
+                        "<fmt:message key="dateDu" bundle="${resourceBundle}"/>",
+                        "<fmt:message key="dateSe" bundle="${resourceBundle}"/>",
+                        "<fmt:message key="dateChor" bundle="${resourceBundle}"/>",
+                        "<fmt:message key="datePay" bundle="${resourceBundle}"/>",
+                        "<fmt:message key="dateJuma" bundle="${resourceBundle}"/>",
+                        "<fmt:message key="dateShan" bundle="${resourceBundle}"/>"
+
+
+
+                    ],
+                    month = [
+                        "01",
+                        "02",
+                        "03",
+                        "04",
+                        "05",
+                        "06",
+                        "07",
+                        "08",
+                        "09",
+                        "10",
+                        "11",
+                        "12"
+                    ],
+                    day = dateInfo.getDate();
+
+                // store date
+                var currentDate =
+                    day + "." + month[dateInfo.getMonth()] + ".2023" + " " + dow[dateInfo.getDay()] ;
+
+                document.getElementsByClassName("date")[0].innerHTML = currentDate;
             }
 
-            //Get day as a string
-            function dayToStr(data) {
-                var day = new Array();
-                day[0] = "Душанба";
-                day[1] = "Сешанба";
-                day[2] = "Чоршанба";
-                day[3] = "Пайшанба";
-                day[4] = "Жума";
-                day[5] = "Шанба";
-                day[6] = "Якшанба";
-                return day[data];
-            }
+            // print time and date once, then update them every second
+            updateTime();
+            setInterval(function () {
+                updateTime();
+            }, 1000);
 
-            function setTime() {
-                var now = new Date(); //create a new Date
-                var year = now.getFullYear();
-                var mm = now.getMonth();
-                var dd = now.getDate();
-                var hour = now.getHours() >= 10 ? now.getHours() : "0" + now.getHours();
-                var min = now.getMinutes() >= 10 ? now.getMinutes() : "0" + now.getMinutes();
-                var sec = now.getSeconds() >= 10 ? now.getSeconds() : "0" + now.getSeconds();
-
-                // Get Date
-                $(".day").html(dayToStr(dd));
-                $(".date").html(dd + "." + monthToStr(mm) + "." + year + ", " + 'Шанба');
-                $(".time").html(hour + ":" + min + ":" + sec);
-            }
-
-            // Set Interval to refresh the clock every second
-            setInterval(setTime, 1000);
         </script>
     </body>
 </html>
