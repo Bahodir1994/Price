@@ -13,6 +13,7 @@ var appTableV1 = {
     g2Name:"Exporter/Shipper",
     g8Code2:"Tin Of Exporter",
     g33:"Hs Code",
+    g31NameNoIcon: "Packages.And.Description.Of.Goods",
     g31Name:"Packages.And.Description.Of.Goods"+
         "<span class='border border-white rounded openerTextArea ml-2' style='cursor: pointer' onclick='openText(1)'><i class=\"fa fa-angle-double-down m-2 openerTextArea \"/></span>" +
         "<span class='border border-white rounded openerTextArea ml-2' style='cursor: pointer' onclick='openText(0)'><i class=\"fa fa-angle-double-up m-2 openerTextArea \"/></span>",
@@ -56,7 +57,8 @@ var appTableV1 = {
     ktd:"Chang.",
     oblYes: "yes",
     oblNo: "no",
-    methodText: "method"
+    methodText: "method",
+    all : "All reports"
 };
 
 var appTableV2 = {
@@ -66,7 +68,8 @@ var appTableV2 = {
     keyword:"Keyword used",
     resultTime:"Average time spent",
     resultCount:"Number of records found",
-    insTime:"Search time"
+    insTime:"Search time",
+    all : "All reports"
 };
 
 var appTableV3 = {
@@ -75,6 +78,18 @@ var appTableV3 = {
     userNm:"Employee",
     keyword:"Keyword used",
     resultCount:"Number of records found",
-    insTime:"Search time"
+    insTime:"Search time",
+    all : "All reports"
 }
 
+var appTableV1Setting = {
+    availableTitle: "Not selected",
+    selectedTitle: "Selected",
+    searchPlaceholder: "Search",
+    columnSettingNames: "Column setting name",
+    settingsList: "List of settings",
+    saveSetting: "Save setting",
+    activeSetting: "Activate setting",
+    deleteSetting: "Delete the setting",
+    tourBtnText: "Setup guide",
+}

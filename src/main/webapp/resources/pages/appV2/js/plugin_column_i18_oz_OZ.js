@@ -13,6 +13,7 @@ var appTableV1 = {
     g2Name: "Eksportchi/Jo‘Natuvchi",
     g8Code2: "STIR/JSHSHIR",
     g33: "TIF TN",
+    g31NameNoIcon: "Yuk.Joylari.Va.Tovar.Tavsifi",
     g31Name: "Yuk.Joylari.Va.Tovar.Tavsifi"+
             "<span class='border border-white rounded openerTextArea ml-2' style='cursor: pointer' onclick='openText(1)'><i class=\"fa fa-angle-double-down m-2 openerTextArea \"/></span>" +
             "<span class='border border-white rounded openerTextArea ml-2' style='cursor: pointer' onclick='openText(0)'><i class=\"fa fa-angle-double-up m-2 openerTextArea \"/></span>",
@@ -56,7 +57,8 @@ var appTableV1 = {
     ktd: "Tuz. (Ktd)",
     oblYes: "xa",
     oblNo: "yo'q",
-    methodText: "usul"
+    methodText: "usul",
+    all : "Xammasi"
 };
 
 var appTableV2 = {
@@ -66,7 +68,8 @@ var appTableV2 = {
     keyword:"Ishlatilgan kalit so'zi",
     resultTime:"O'rtacha vaqt sarfi",
     resultCount:"Topilgan qaydlar soni",
-    insTime:"Izlash vaqti"
+    insTime:"Izlash vaqti",
+    all : "Xammasi"
 };
 
 var appTableV3 = {
@@ -75,6 +78,18 @@ var appTableV3 = {
     userNm:"Xodim",
     keyword:"Ishlatilgan kalit so'zi",
     resultCount:"Topilgan qaydlar soni",
-    insTime:"Izlash vaqti"
+    insTime:"Izlash vaqti",
+    all : "Xammasi"
 }
 
+var appTableV1Setting = {
+    availableTitle: "Tanlanmagan",
+    selectedTitle: "Tanlangan",
+    searchPlaceholder: "Izlash",
+    columnSettingNames: "Ustun sozlamasi nomi",
+    settingsList: "Sozlamalar ro'yxati",
+    saveSetting: "Saqlash",
+    activeSetting: "Faollashtirish",
+    deleteSetting: "O'chirish",
+    tourBtnText: "O'chirish",
+}

@@ -30,8 +30,8 @@ public class CostMonitoringController {
     }
 
     @GetMapping(value = "/data/cost_monitoring_base/v2")
-    public DataTablesOutput<BaseEntity> getDataV2(@Valid DataTablesInput input) throws UnexpectedRollbackException {
-        return costMonitoringDataService.dataTable(input);
+    public DataTablesOutput<BaseEntity> getDataV2(@Valid DataTablesInput input, HttpServletRequest httpServletRequest) throws UnexpectedRollbackException {
+        return costMonitoringDataService.dataTable(input, httpServletRequest);
     }
 
 }

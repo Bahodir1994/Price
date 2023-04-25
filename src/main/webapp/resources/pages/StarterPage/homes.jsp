@@ -7,275 +7,55 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="/locale.jsp" %>
 
-<div class="col-12">
-    <div class="card" style="opacity: 0.97">
-        <div class="row p-4">
-            <div class=" col-lg-3 col-md-6">
-                <a href="#">
-                    <div class="card   nav-link">
-                        <div class="card-body">
-                            <div class="row align-items-center ">
-                                <div class="col-8">
-                                    <h4 class="text-c-yellow">5 та</h4>
-                                    <h5 class=" m-b-0 text-nowrap"><fmt:message key="systemName" bundle="${resourceBundle}"/></h5>
-                                </div>
-                                <div class="col-4 text-right">
-                                    <i class="feather icon-layers f-28"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-c-yellow">
-                            <div class="row align-items-center">
+<style>
 
-                                <div class="col-12 text-right">
-
-                                    <p class="text-white m-b-0">+5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class=" col-xl-3 col-md-6">
-                <a href="tasniflash.html">
-                    <div class="card   ">
-                        <div class="card-body">
-                            <div class="row align-items-center ">
-                                <div class="col-8">
-                                    <h4 class="text-c-green">32 та</h4>
-                                    <h5 class=" m-b-0 text-nowrap"><fmt:message key="systemName" bundle="${resourceBundle}"/></h5>
-                                </div>
-                                <div class="col-4 text-right">
-                                    <i class="feather icon-layers f-28"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-c-green">
-                            <div class="row align-items-center">
-
-                                <div class="col-12 text-right">
-
-                                    <p class="text-white m-b-0">+5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class=" col-xl-3 col-md-6">
-                <a href="#">
-                    <div class="card   nav-link">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-8">
-                                    <h4 class="text-c-red">14 та</h4>
-                                    <h5 class=" m-b-0"><fmt:message key="systemName" bundle="${resourceBundle}"/></h5>
-                                </div>
-                                <div class="col-4 text-right">
-                                    <i class="feather icon-layers f-28"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-c-red">
-                            <div class="row align-items-center">
-
-                                <div class="col-12 text-right">
-
-                                    <p class="text-white m-b-0">+5</p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class=" col-xl-3 col-md-6">
-                <a href="#">
-                    <div class="card   nav-link">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-8">
-                                    <h4 class="text-c-blue">66 та</h4>
-                                    <h5 class=" m-b-0"><fmt:message key="systemName" bundle="${resourceBundle}"/></h5>
-                                </div>
-                                <div class="col-4 text-right">
-                                    <i class="feather icon-layers f-28"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-c-blue">
-                            <div class="row align-items-center">
-
-                                <div class="col-12 text-right">
-
-                                    <p class="text-white m-b-0">+5</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-12 ">
-            <div class="row m-0 pb-4 justify-content-center" style="border-bottom: 1px #000 solid">
-                <div
-                        class="col-3 mt-2 p-0 ml-1"><span class="f-22 "><i class="feather icon-list " style="color:#0c6af3;"></i>&nbsp;
-                    &nbsp;<fmt:message key="systemName" bundle="${resourceBundle}"/></span></div>
-                <div class="col-1 text-right m-0 p-0"><label for="DT1" class="f-w-600" style="margin-top: 8px; margin-right: 5px;"><fmt:message key="systemName" bundle="${resourceBundle}"/>: </label>
-                </div>
-                <div class="col-2 text-left m-0 p-0">
-                    <input type="date" class="form-control w-100" maxlength="10" tabindex="1" name="dcodate" id="DT1" min="2020-01-01" max="2023-12-31" value="2023-03-25">
-                </div>
-                <div class="col-1 text-right m-0 p-0"><label for="DT2" class="f-w-600" style="margin-top: 8px; margin-right: 5px;"><fmt:message key="systemName" bundle="${resourceBundle}"/>: </label></div>
-                <div class="col-2 text-left m-0 p-0">
-                    <input type="date" class="form-control w-100" maxlength="10" tabindex="2" name="dcodate" id="DT2" min="2020-01-01" max="2023-12-31" value="2023-04-01">
-                </div>
-                <div class="col-2 text-right ml-4 p-0">
-                    <button type="button" tabindex="3" onclick="getAllautoDecl2(1)" class="btn btn-outline-primary f-w-900 w-75">
-                        <i class="feather icon-refresh-ccw"></i>&nbsp;&nbsp;<fmt:message key="systemName" bundle="${resourceBundle}"/>
-                    </button>
-                </div>
-
-            </div>
-            <div class="mt-3 dt-responsive table-responsive p-4">
-                <table id="footer-search" class="table table-striped table-bordered nowrap">
-                    <thead class="text-center">
-                    <tr>
-                        <th><fmt:message key="systemName" bundle="${resourceBundle}"/>Мурожаат тартиб рақами</th>
-                        <th><fmt:message key="systemName" bundle="${resourceBundle}"/>Жўнатилган вақт</th>
-                        <th><fmt:message key="systemName" bundle="${resourceBundle}"/>Товарлар</th>
-                        <th><fmt:message key="systemName" bundle="${resourceBundle}"/>Маъсул шахс</th>
-                        <th><fmt:message key="systemName" bundle="${resourceBundle}"/>Телефон рақами</th>
-                        <th><fmt:message key="systemName" bundle="${resourceBundle}"/>Мурожаат мақоми</th>
-                        <th><fmt:message key="systemName" bundle="${resourceBundle}"/>Намуна</th>
-                    </tr>
-                    </thead>
-                    <tbody class="text-center justify-content-center">
-                    <tr>
-                        <td class="font-weight-bold"><a href="#">SU.T.AERO.00026</a></td>
-                        <td style="color: #007BFF">13.02.2022 15:13</td>
-                        <td>1 товар</td>
-                        <td>Кўрик гуруҳи инспектори Дусматов Д.</td>
-                        <td>+998 90 152 31 85</td>
-                        <td>Янги</td>
-                        <td><span
-                                style="background-color: #6C757D; border-radius: 5px; color: #fff; padding: 5px">Намуна</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="font-weight-bold"><a href="#">BN.T.AERO.00025</a></td>
-                        <td style="color: #007BFF">11.02.2022 09:05</td>
-                        <td>1 товар</td>
-                        <td>Кўрик гуруҳи инспектори Ахмадов А.Р.</td>
-                        <td>+998 97 715 45 89</td>
-                        <td>Кўрилган</td>
-                        <td><span
-                                style="background-color: #6C757D; border-radius: 5px; color: #fff; padding: 5px">Намуна</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="font-weight-bold"><a href="#">BN.T.AERO.00024</a></td>
-                        <td style="color: #007BFF">10.02.2022 09:05</td>
-                        <td>1 товар</td>
-                        <td>Кўрик гуруҳи инспектори Ахмадов А.Р.</td>
-                        <td>+998 97 715 45 89</td>
-                        <td>Янги</td>
-                        <td><span
-                                style="background-color: #6C757D; border-radius: 5px; color: #fff; padding: 5px">Намуна</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="font-weight-bold"><a href="#">SU.T.AERO.00022</a></td>
-                        <td style="color: #007BFF">09.02.2022 15:13</td>
-                        <td>1 товар</td>
-                        <td>Кўрик гуруҳи инспектори Дусматов Д.</td>
-                        <td>+998 90 152 31 85</td>
-                        <td>Янги</td>
-                        <td><span
-                                style="background-color: #6C757D; border-radius: 5px; color: #fff; padding: 5px">Намуна</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="font-weight-bold"><a href="#">BN.T.AERO.00020</a></td>
-                        <td style="color: #007BFF">19.01.2022 09:05</td>
-                        <td>1 товар</td>
-                        <td>Кўрик гуруҳи инспектори Ахмадов А.Р.</td>
-                        <td>+998 97 715 45 89</td>
-                        <td>Кўрилган</td>
-                        <td><span
-                                style="background-color: #6C757D; border-radius: 5px; color: #fff; padding: 5px">Намуна</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="font-weight-bold"><a href="#">BN.T.AERO.00024</a></td>
-                        <td style="color: #007BFF">17.01.2022 15:05</td>
-                        <td>1 товар</td>
-                        <td>Кўрик гуруҳи инспектори Дусматов Д.</td>
-                        <td>+998 97 715 45 89</td>
-                        <td>Янги</td>
-                        <td><span
-                                style="background-color: #6C757D; border-radius: 5px; color: #fff; padding: 5px">Намуна</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="font-weight-bold"><a href="#">BN.T.AERO.00024</a></td>
-                        <td style="color: #007BFF">10.02.2022 09:05</td>
-                        <td>1 товар</td>
-                        <td>Кўрик гуруҳи инспектори Ахмадов А.Р.</td>
-                        <td>+998 97 715 45 89</td>
-                        <td>Янги</td>
-                        <td><span
-                                style="background-color: #6C757D; border-radius: 5px; color: #fff; padding: 5px">Намуна</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="font-weight-bold"><a href="#">SU.T.AERO.00022</a></td>
-                        <td style="color: #007BFF">09.02.2022 15:13</td>
-                        <td>1 товар</td>
-                        <td>Кўрик гуруҳи инспектори Дусматов Д.</td>
-                        <td>+998 90 152 31 85</td>
-                        <td>Янги</td>
-                        <td><span
-                                style="background-color: #6C757D; border-radius: 5px; color: #fff; padding: 5px">Намуна</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="font-weight-bold"><a href="#">BN.T.AERO.00020</a></td>
-                        <td style="color: #007BFF">19.01.2022 09:05</td>
-                        <td>1 товар</td>
-                        <td>Кўрик гуруҳи инспектори Ахмадов А.Р.</td>
-                        <td>+998 97 715 45 89</td>
-                        <td>Кўрилган</td>
-                        <td><span
-                                style="background-color: #6C757D; border-radius: 5px; color: #fff; padding: 5px">Намуна</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="font-weight-bold"><a href="#">BN.T.AERO.00024</a></td>
-                        <td style="color: #007BFF">17.01.2022 15:05</td>
-                        <td>1 товар</td>
-                        <td>Кўрик гуруҳи инспектори Дусматов Д.</td>
-                        <td>+998 97 715 45 89</td>
-                        <td>Янги</td>
-                        <td><span
-                                style="background-color: #6C757D; border-radius: 5px; color: #fff; padding: 5px">Намуна</span>
-                        </td>
-                    </tr>
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                        <th>Salary</th>
-                    </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
+    .clss {
+        background: rgba(0, 0, 10, 0.5);
+        left: 0%;
+        right: -10%;
+        top: 15vh;
+        width: 100%;
+        position: absolute;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        text-align: center;
+    }
+    .cpt {
+        border: 4px solid rgba(255, 255, 255, 0.7);
+        color: #ffffff;
+        font-size: 50px;
+        font-weight: 900;
+        letter-spacing: 3px;
+        line-height: 50px;
+        text-shadow: 0 2px 5px #333333;
+        border-right: none;
+        border-left: none;
+        width: 78%;
+        text-transform: uppercase;
+        text-align: center;
+        position: relative;
+        margin: 20% auto;
+    }
+    .cptSub {
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        line-height: 38px;
+        text-align: center;
+        width: 1068px;
+        margin-bottom: 13%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<div class="m-0 p-0" style="background: rgba(0, 0, 1, 0.3)">
+<%--    style="vertical-align: middle; text-align: center; border: 5px solid white; width: 80%; height: 60%"--%>
+    <div class="clss">
+        <p class="cpt" >БОЖХОНА ТЎЛОВЛАРИ</p>
+        <p class="cptSub">БОЖХОНА ТЎЛОВЛАРИ</p>
     </div>
 </div>
 <script>

@@ -23,9 +23,24 @@
         <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/dist/css/bootstrap-select.css">
         <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/flags/flag-icons.min.css"/>
         <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpicker.min.css">
+        <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/toastify.min.css">
+<%--        <link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/tour.min.css">--%>
 <%--        <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpickerBlue.css">--%>
+        <style>
+            /*.page-wrapper {*/
+            /*    min-height: 86vh!important;*/
+            /*    background-color: #ffffff !important;*/
+            /*    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);*/
+            /*    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);*/
+            /*    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);*/
+            /*}*/
+            /*.page-header {*/
+            /*   opacity: 0.99!important;*/
+            /*}*/
+
+        </style>
     </head>
-    <body>
+    <body id="bodybody">
         <div class="loader-bg">
             <div class="loader-track">
                 <div class="loader-fill"></div>
@@ -43,7 +58,7 @@
 
                         </li>
                         <li class="nav-item pcoded-hasmenu">
-                            <a href="#!" class="nav-link "><span class="pcoded-micon" style="color: #6fb6d5"><i
+                            <a href="#!" id="tourbutton" class="nav-link "><span class="pcoded-micon" style="color: #6fb6d5"><i
                                     class="fas fa-copy "></i></span><span class="pcoded-mtext"><fmt:message key="accPayable" bundle="${resourceBundle}"/></span></a>
 
                         </li>
@@ -54,7 +69,7 @@
 
                         </li>
                         <li class="nav-item pcoded-hasmenu">
-                            <a href="javascript:appFuncV2()" onclick="myMenu()"  class="nav-link "><span class="pcoded-micon"
+                            <a href="javascript:appFuncV2()"  class="nav-link "><span class="pcoded-micon"
                                                                                      style="color: #4fee51"><i
                                     class="fas fa-list"></i></span><span class="pcoded-mtext"><fmt:message key="valMon" bundle="${resourceBundle}"/></span></a>
 
@@ -254,16 +269,7 @@
                     <div class="pcoded-inner-content">
                         <div class="main-body" id="main-body">
                             <!--put here page -->
-<%--                            <div class="" style="background-position: center;--%>
-<%--                                    margin-top: -10%;--%>
-<%--                                    height: 863px;--%>
-<%--                                    width: 100%;--%>
-<%--                                    background-attachment: fixed;--%>
-<%--                                    background-repeat: no-repeat;--%>
-<%--                                    background-size: cover;--%>
-<%--                                    position: relative;--%>
-<%--                                    background-image: url('${pageContext.servletContext.contextPath}/resources/assets/images/background/new.png')"></div>--%>
-<%--                        </div>--%>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -282,9 +288,13 @@
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/moment.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/horizontal-menu.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/dist/js/bootstrap-select.min.js"></script>
+        <script src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/toastify.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/dist/js/i18n/defaults-${sessionDataValue.language}.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpicker.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpickerI18/${sessionDataValue.language}.js"></script>
+        <script src="${pageContext.servletContext.contextPath}/resources/assets/js/analytics.js"></script>
+<%--        <script crossorigin="anonymous" referrerpolicy="no-referrer" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/tour.js"></script>--%>
+
         <script>
             (function () {
                 if ($('#layout-sidenav').hasClass('sidenav-horizontal') || window.layoutHelpers.isSmallScreen()) {
@@ -322,30 +332,61 @@
                     MenuTrigger: 'hover',
                     SubMenuTrigger: 'hover',
                 });
+                appFuncV0();
             });
 
-            function appFuncV2() {
+            function appFuncV0() {
                 $.ajax({
                     type: "GET",
-                    url: "${pageContext.servletContext.contextPath}/routeV2/V1/data/cost_monitoring_base/v1",
+                    url: "${pageContext.servletContext.contextPath}/routeV0/V1/data/home/v1",
                     beforeSend: function () {
                     },
-                    accept: function () {
+                    complete: function () {
                     },
                     success: function (response) {
-
                         $("#main-body").html(response);
-
+                        $.toast({
+                            position: 'bottom-right',
+                            heading: 'Божхона қиймати асосй ойнаси!',
+                            text: '',
+                            icon: 'info',
+                            hideAfter: 5000,
+                            loader: true,        // Change it to false to disable loader
+                            loaderBg: '#9EC600'  // To change the background
+                        })
                     },
                     error: function () {
 
                     }
                 });
             }
+            function appFuncV2() {
+                $.ajax({
+                    type: "GET",
+                    url: "${pageContext.servletContext.contextPath}/routeV2/V1/data/cost_monitoring_base/v1",
+                    beforeSend: function () {
+                        $("#main-body").html('');
+                    },
+                    complete: function () {
+                    },
+                    success: function (response) {
+                        $("#main-body").html(response);
+                        myMenu()
+                        $.toast({
+                            position: 'bottom-right',
+                            heading: 'Божхона қиймати мониторинги!',
+                            text: 'Товарлари қиймати мониторинги жадвали.',
+                            icon: 'info',
+                            hideAfter: 5000,
+                            loader: true,        // Change it to false to disable loader
+                            loaderBg: '#9EC600'  // To change the background
+                        })
+                    },
+                    error: function () {
 
-            // $(document).ready(function () {
-            //     indexUserSession();
-            // });
+                    }
+                });
+            }
 
             function indexUserSession() {
                 setTimeout(() => {
@@ -367,7 +408,6 @@
                     });
                 }, 300)
             }
-
             function checkRole(roleCode) {
                 var dataS = {"role": roleCode};
                 $.post({
@@ -391,7 +431,6 @@
                     }
                 });
             }
-
             function langF(langCode) {
                 var params = {"langCode": langCode};
                 $.post({
@@ -415,10 +454,6 @@
             }
 
 
-        </script>
-        <script src="${pageContext.servletContext.contextPath}/resources/assets/js/analytics.js"></script>
-
-        <script>
             function updateTime() {
                 var dateInfo = new Date();
 
@@ -484,19 +519,36 @@
 
                 document.getElementsByClassName("date")[0].innerHTML = currentDate;
             }
-
-            // print time and date once, then update them every second
             updateTime();
             setInterval(function () {
                 updateTime();
             }, 1000);
-
-        </script>
-        <script>
-
             function myMenu() {
-                document.getElementById("apple").style.background = "#ecf0f5";
+                document.getElementById("bodybody").style.background = "#ecf0f5";
             }
+
+
+            // const steps = [
+            //     {
+            //         content: "This is a short guide to get you set up and show you where things are",
+            //         title: "Welcome aboard 👋",
+            //         target: "step-1",
+            //         order: "1",
+            //         group: ""
+            //     },
+            //     {
+            //         content: "This is a short guide to get you set up and show you where things are",
+            //         title: "Welcome aboard 👋",
+            //         target: "step-2",
+            //         order: "2",
+            //         group: ""
+            //     }
+            // ]
+            // const tg = new tourguide.TourGuideClient({
+            // })
+            // $('#tourbutton').on('click', function () {
+            //     tg.start()
+            // });
         </script>
     </body>
 </html>

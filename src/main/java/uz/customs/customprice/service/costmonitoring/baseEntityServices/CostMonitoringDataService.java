@@ -9,8 +9,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import uz.customs.customprice.entity.costmonitoring.BaseEntity;
 import uz.customs.customprice.repository.costmonitoring.CostMonitoringDataRepository;
+import uz.customs.customprice.service.costmonitoring.logEntityServices.CostMonitoringLogService;
 
 import javax.persistence.criteria.*;
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 
 @Service
@@ -18,11 +20,35 @@ import java.time.LocalDate;
 public class CostMonitoringDataService {
 
     private final CostMonitoringDataRepository costMonitoringDataRepository;
+    private final CostMonitoringLogService costMonitoringLogService;
 
     @Transactional(rollbackFor = {Exception.class}, propagation = Propagation.REQUIRED)
-    public DataTablesOutput<BaseEntity> dataTable(DataTablesInput input){
+    public DataTablesOutput<BaseEntity> dataTable(DataTablesInput input, HttpServletRequest httpServletRequest){
         DateRangeSpecification dateRangeSpecification = new DateRangeSpecification(input);
         DateRangeG7B dateRangeG7B = new DateRangeG7B(input);
+
+        long timeRangeQueryStart = System.currentTimeMillis();
+        DataTablesOutput<BaseEntity> baseEntityDataTablesOutput =  costMonitoringDataRepository.findAll(input, dateRangeSpecification.and(dateRangeG7B)/*.and(new ExcludeAnalystsSpecification()).and(fullNameSpecification)*/
+//                (root, query, criteriaBuilder) -> {
+//                    if (query.getResultType() != Long.class) {
+//                        root.fetch("tnfCommodity", JoinType.LEFT);
+//                    }
+//                    return null;
+//                }
+        );
+        long timeRangeQueryEnd = System.currentTimeMillis();
+
+        String g33 = input.getColumn("g33").getSearch().getValue();
+        if (!g33.equals("")){
+            costMonitoringLogService.saveLog(
+                    httpServletRequest,
+                    timeRangeQueryStart,
+                    timeRangeQueryEnd,
+                    baseEntityDataTablesOutput.getRecordsFiltered(),
+                    g33,
+                    input.getColumn("g31Name").getSearch().getValue()
+            );
+        }
 
 //        String searchValue = escapeContent(input.getSearch().getValue());
 //        input.getSearch().setValue("");
@@ -51,17 +77,7 @@ public class CostMonitoringDataService {
 //                );
 //            }
 //        };
-
-        return costMonitoringDataRepository.findAll(
-                input,
-                dateRangeSpecification.and(dateRangeG7B)/*.and(new ExcludeAnalystsSpecification()).and(fullNameSpecification)*/
-//                (root, query, criteriaBuilder) -> {
-//                    if (query.getResultType() != Long.class) {
-//                        root.fetch("tnfCommodity", JoinType.LEFT);
-//                    }
-//                    return null;
-//                }
-        );
+        return baseEntityDataTablesOutput;
     }
 
     private static class ExcludeAnalystsSpecification implements Specification<BaseEntity> {

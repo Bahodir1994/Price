@@ -4202,7 +4202,7 @@ input[type="button"].btn-block {
     line-height: 1.5;
     color: #495057;
     vertical-align: middle;
-    background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 1.1875rem center/8px 10px;
+    /*background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 1.1875rem center/8px 10px;*/
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
     -webkit-appearance: none;
@@ -23965,7 +23965,7 @@ pre[class*=language-]:before {
 }
 
 .pcoded-main-container {
-    background: url('../images/background/new.png');
+    /*background: url('../images/background/new.png');*/
     position: relative;
     margin: 0 auto;
     padding-top: 0;
@@ -23979,12 +23979,17 @@ pre[class*=language-]:before {
     transition: all 0.3s ease-in-out;
     background-position: center;
 
-    height: 863px;
+    /*height: 863px;*/
     width: 100%;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+}
+
+#bodybody {
+    background: url('../images/background/new2.png');
+    background-size: 100%;
 }
 
 /* main content end*/

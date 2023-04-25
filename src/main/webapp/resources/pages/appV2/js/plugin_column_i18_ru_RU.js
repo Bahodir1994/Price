@@ -13,6 +13,7 @@ var appTableV1 = {
     g2Name: "Экспортер/Отправитель",
     g8Code2: "ИНН/ПИНФЛ",
     g33: "ТН ВЭД",
+    g31NameNoIcon: "Грузовые.Места.И.Описание.Товара",
     g31Name: "Грузовые.Места.И.Описание.Товара"+
             "<span class='border border-white rounded openerTextArea ml-2' style='cursor: pointer' onclick='openText(1)'><i class=\"fa fa-angle-double-down m-2 openerTextArea \"/></span>" +
             "<span class='border border-white rounded openerTextArea ml-2' style='cursor: pointer' onclick='openText(0)'><i class=\"fa fa-angle-double-up m-2 openerTextArea \"/></span>",
@@ -56,7 +57,8 @@ var appTableV1 = {
     ktd: "Изм. (Ктд)",
     oblYes: "да",
     oblNo: "нет",
-    methodText: "метод"
+    methodText: "метод",
+    all : "Все записи"
 }
 
 var appTableV2 = {
@@ -66,7 +68,8 @@ var appTableV2 = {
     keyword:"Используемое ключевое слово",
     resultTime:"Среднее время, проведенное",
     resultCount:"Количество найденных записей",
-    insTime:"Время поиска"
+    insTime:"Время поиска",
+    all : "Все записи"
 }
 
 var appTableV3 = {
@@ -75,6 +78,19 @@ var appTableV3 = {
     userNm:"Сотрудник",
     keyword:"Используемое ключевое слово",
     resultCount:"Количество найденных записей",
-    insTime:"Время поиска"
+    insTime:"Время поиска",
+    all : "Все записи"
 }
 
+
+var appTableV1Setting = {
+    availableTitle: "Не выбран",
+    selectedTitle: "Выбрано",
+    searchPlaceholder: "Поиск",
+    columnSettingNames: "Имя настройки столбца",
+    settingsList: "Список настроек",
+    saveSetting: "Сохранить настройку",
+    activeSetting: "Активировать настройку",
+    deleteSetting: "Удалить настройку",
+    tourBtnText: "Sozlama bo'yicha qo'llanma",
+}

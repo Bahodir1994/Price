@@ -1,18 +1,15 @@
 package uz.customs.customprice.service.costmonitoring.logEntityServices;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 import uz.customs.customprice.component.httpSession.GetterSessionData;
 import uz.customs.customprice.component.httpSession.SessionDataValue;
-import uz.customs.customprice.entity.catalog.Country;
 import uz.customs.customprice.entity.catalog.Location;
 import uz.customs.customprice.entity.costmonitoring.CPLog;
 import uz.customs.customprice.repository.costmonitoring.CostMonitoringDataLogRepository;
 import uz.customs.customprice.repository.costmonitoring.CostMonitoringLogRepository;
-import uz.customs.customprice.service.catalog.CountryService;
 import uz.customs.customprice.service.catalog.LocationService;
 
 import javax.persistence.EntityManager;
@@ -32,12 +29,10 @@ public class CostMonitoringLogService {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void saveLog(HttpServletRequest request, long start, long end, long count){
+    public void saveLog(HttpServletRequest request, long timeRangeQueryStart, long timeRangeQueryEnd, long count, String g33, String g31Name){
         SessionDataValue sessionDataValue = getterSessionData.onlyGetSessionData(request);
 
-
-        long d = end-start;
-        System.out.println(d);
+        long timeRangeQuery = timeRangeQueryEnd-timeRangeQueryStart;
         CPLog cpLog = new CPLog();
 
         cpLog.setUserId(sessionDataValue.getUserId());
@@ -46,12 +41,9 @@ public class CostMonitoringLogService {
         cpLog.setLocationNm(sessionDataValue.getUserLocationName());
         cpLog.setPostId(sessionDataValue.getUserPost());
         cpLog.setPostNm(sessionDataValue.getUserPostName());
-        cpLog.setResultTime(d);
-//        cpLog.setG33(filterDTO.getG33());
-
-        StringBuilder g31NameS = new StringBuilder();
-
-        cpLog.setKeyword(g31NameS.toString());
+        cpLog.setResultTime(timeRangeQuery);
+        cpLog.setG33(g33);
+        cpLog.setKeyword(g31Name);
         cpLog.setResultCount(Math.toIntExact(count));
 //        cpLog.setG7a(filterDTO.getChechkPost());
 //        cpLog.setG7b(filterDTO.getChechkDate());

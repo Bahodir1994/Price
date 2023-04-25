@@ -14,6 +14,7 @@ var appTableV1 = {
      g20Ag20B:"Ет.Бер. шарти",
      g8Code2: "СТИР/ЖШШИР",
      g33: "ТИФ ТН",
+     g31NameNoIcon: "Юк.Жойлари.Ва.Товар.Тавсифи",
      g31Name: "Юк.Жойлари.Ва.Товар.Тавсифи" +
          "<span class='border border-white rounded openerTextArea ml-2' style='cursor: pointer' onclick='openText(1)'><i class=\"fa fa-angle-double-down m-2 openerTextArea \"/></span>" +
          "<span class='border border-white rounded openerTextArea ml-2' style='cursor: pointer' onclick='openText(0)'><i class=\"fa fa-angle-double-up m-2 openerTextArea \"/></span>",
@@ -56,7 +57,8 @@ var appTableV1 = {
      ktd: "Туз. (Ктд)",
      oblYes: "ха",
      oblNo: "йўқ",
-     methodText: "усул"
+     methodText: "усул",
+     all : "Хаммаси"
 };
 
 var appTableV2 = {
@@ -66,7 +68,8 @@ var appTableV2 = {
     keyword:"Ишлатилган калит сўз",
     resultTime:"Ўртача вақт сарфи",
     resultCount:"Топилган қайдлар сони",
-    insTime:"Излаш вақти"
+    insTime:"Излаш вақти",
+    all : "Хаммаси"
 }
 
 var appTableV3 = {
@@ -75,5 +78,18 @@ var appTableV3 = {
     userNm:"Ходим",
     keyword:"Ишлатилган калит сўз",
     resultCount:"Топилган қайдлар сони",
-    insTime:"Излаш вақти"
+    insTime:"Излаш вақти",
+     all : "Хаммаси"
+}
+
+var appTableV1Setting = {
+     availableTitle: "Танланмаган",
+     selectedTitle: "Танланган",
+     searchPlaceholder: "Излаш",
+     columnSettingNames: "Устун созламаси номи",
+     settingsList: "Созламалар рўйхати",
+     saveSetting: "Сақлаш",
+     activeSetting: "Фаоллаштириш",
+     deleteSetting: "Ўчириш",
+     tourBtnText: "Созлама бўйича қўлланма",
 }

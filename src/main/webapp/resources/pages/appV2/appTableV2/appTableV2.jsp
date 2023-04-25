@@ -98,7 +98,8 @@
     </div>
 
     <script>
-        $('select').selectpicker();
+
+        $('.selectpicker').selectpicker();
 
         function newexportaction(e, dt, button, config) {
             var self = this;
@@ -146,7 +147,7 @@
         }
 
         var app_table_02 = $('#app_table_02').DataTable({
-            // scrollY:        '51vh',
+            // scrollY:        '45vh',
             // scrollX:        true,
             // scrollCollapse: true,
             // scrollResize: true,
@@ -169,7 +170,7 @@
             ajax: '<%=request.getContextPath()%>/routeV2/V2/data/cost_monitoring_base/v2',
             serverSide: true,
             dom: "<'row'<'col-sm-12 col-md-6'B><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-2 mt-2'l><'col-sm-12 col-md-3'i><'col-sm-12 col-md-7 mt-2'p>>",
-            lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "барча"] ],
+            lengthMenu: [ [8, 25, 50, -1], [8, 25, 50, appTableV2.all] ],
             columns: [
                 {
                     title: '№',

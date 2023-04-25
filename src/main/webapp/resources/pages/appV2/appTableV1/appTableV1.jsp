@@ -17,7 +17,6 @@
           href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/buttons.dataTables.min.css">
     <link rel="stylesheet"
           href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/buttons.bootstrap4.min.css">
-
     <style>
         textarea {
             -webkit-box-sizing: border-box;
@@ -31,7 +30,6 @@
         textarea .g31Name {
              min-width: 500px!important
         }
-
     </style>
 </head>
 <body>
@@ -42,17 +40,17 @@
                     <div class="col-sm-12 my-0 py-0 px-0 " style="vertical-align: middle">
                         <div class="justify-content-center py-1 pb-2 mt-2">
                             <div class="form-row m-0 justify-content-center">
-                                <div class="form-group mx-2  p-0 text-center">
+                                <div class="form-group mx-2  p-0 text-center" data-tg-tour="Step 1" data-tg-title="Example heading 1">
                                     <label for="g33" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="hsCode" bundle="${resourceBundle}"/></label>
                                     <input type="text" id="g33" class="form-control form-control-sm w-100 g33"
                                            placeholder="0000 00 000 0">
                                 </div>
-                                <div class="form-group mx-2  p-0 text-center">
+                                <div class="form-group mx-2  p-0 text-center" data-tg-tour="Step 2" data-tg-title="Example heading 2">
                                     <label for="g31Name" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="commodityName" bundle="${resourceBundle}"/></label>
                                     <input type="text" id="g31Name" class="form-control form-control-sm w-100 g31Name"
                                            placeholder="BYD">
                                 </div>
-                                <div class="form-group mr-2  p-0 text-center">
+                                <div class="form-group mr-2  p-0 text-center" data-tg-tour="Step 3" data-tg-title="Example heading 3">
                                     <label for="g15" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="shipmentCountry" bundle="${resourceBundle}"/></label>
                                     <select class="selectpicker form-control show-menu-arrow g15"
                                             data-style="form-control form-control-sm" id="g15" multiple
@@ -106,20 +104,22 @@
                                             class="btn btn-sm btn-outline-primary f-w-900 w-75"
                                             style="border-radius: 5px"
                                             data-toggle="modal"
-                                            data-target="#exampleModalCenter1">
+                                            data-target="#columnSetting"
+                                            onclick="columnSetting()">
                                         <i class="fas fa-wrench"></i> <fmt:message key="configuration" bundle="${resourceBundle}"/>
                                     </button>
                                 </div>
-                                <div class="card-header-right "
-                                     style="position: absolute; z-index: 3; margin-top: -1.2%; margin-left: 94%">
-                                    <div class="btn-group card-option ">
-                                        <button type="button" class="btn dropdown-toggle has-ripple" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
+                                <div class="card-header-right " style="position: absolute; z-index: 3; margin-top: -1.2%; margin-left: 94%">
+                                    <div class="btn-group card-option">
+                                        <button type="button" class="btn dropdown-toggle has-ripple" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="feather icon-more-horizontal"></i>
                                             <span class="ripple ripple-animate" style="height: 20px; width: 20px; animation-duration: 0.689655s; animation-timing-function: linear; background: rgb(136, 136, 136); opacity: 0.4; top: -4.375px; left: 0px;"></span>
                                         </button>
                                         <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right" style="">
                                             <li class="dropdown-item full-card" id="toggle_fullscreen"><span style=""><i
+                                                    class="feather icon-maximize"></i> <fmt:message key="sizeResize" bundle="${resourceBundle}"/></span>
+                                            </li>
+                                            <li class="dropdown-item full-card" id="tourbutton"><span style=""><i
                                                     class="feather icon-maximize"></i> <fmt:message key="sizeResize" bundle="${resourceBundle}"/></span>
                                             </li>
                                         </ul>
@@ -141,7 +141,7 @@
                                             <div class="card-body text-left justify-content-center">
                                                 <form>
                                                     <div class="form-row">
-                                                        <div class="form-group col-md-2">
+                                                        <div class="form-group col-md-2" data-tg-tour="Step 4" data-tg-title="Example heading 4">
                                                             <label for="ugtk"><fmt:message key="regionalCustomsOffice" bundle="${resourceBundle}"/></label>
                                                             <select class="selectpicker form-control show-menu-arrow ugtk"
                                                                     data-style="form-control form-control-sm"
@@ -153,7 +153,6 @@
                                                                 </c:forEach>
                                                             </select>
                                                         </div>
-
                                                         <div class="form-group col-md-2">
                                                             <label for="g37C"><fmt:message key="transferFeature" bundle="${resourceBundle}"/></label>
                                                             <select class="selectpicker form-control show-menu-arrow g37C"
@@ -374,525 +373,17 @@
             </div>
         </div>
         <div class="col-12">
-            <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="columnSetting" tabindex="-1" role="dialog"
+                 aria-labelledby="columnSettingTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-xl modal-autoheight" role="document">
                     <div class="modal-content">
                         <div class="modal-header" style="background-color: #7497ea">
-                            <h5 class="modal-title" id="exampleModalLongTitle1"><i class="fa fa-history "></i> <fmt:message key="columnSetting" bundle="${resourceBundle}"/></h5>
+                            <h5 class="modal-title" id="columnSettingLongTitle1"><i class="fa fa-history "></i> <fmt:message key="columnSetting" bundle="${resourceBundle}"/></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
-                            <div class="col-12  " style="top: -2%">
-
-
-                                <div class="row justify-content-center">
-
-
-                                    <!-- Custom Suggestions: Inline -->
-                                    <div class="col-md-10 mt-4">
-                                        <div class="row">
-                                            <div class="col-md-2 ">Устун созламаси номи:</div>
-                                            <div class="col-md-7 " id="lops">
-
-                                                <input type="text"
-                                                       class="form-control form-control-sm w-100"
-                                                       placeholder=" " id="order">
-                                            </div>
-                                            <div class="col-md-3 ">
-                                                <button type="button" tabindex="3"
-                                                        class="btn btn-sm btn-outline-primary f-w-900 w-75 "
-                                                        style="border-radius: 5px" onclick="myTalk()">
-                                                    <i class="fas fa-wrench"></i>&nbsp;Фаоллаштириш
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="row justify-content-center mt-4">
-
-                                            <div class="col-md-3">
-                                                <form>
-                                                    <div class="form-group row">
-                                                        <div class="col-sm-1 px-0 mt-4">1</div>
-                                                        <div class="col-sm-11 px-0 mt-4">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" id="gridCheck1" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label" for="gridCheck1" >Юк жўнатувчи мамлакат</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 px-0 mt-4   ">2</div>
-                                                        <div class="col-sm-11 px-0 mt-4   ">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck12" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck12">Фактура қиймати валютада</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 px-0 mt-4   ">3</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck13" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck13">Шартнома ИДН рақами</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">4</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck14" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck14">Ўлчов бирлиги миқдори</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4 f  px-0">5</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck15" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck15">Тўловга тортилиши:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">6</div>
-                                                        <div class="col-sm-11  mt-4   px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck16" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck16">Нетто</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1  mt-4   px-0">7</div>
-                                                        <div class="col-sm-11  mt-4   px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck17" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck17">Имортер СТИР/ЖШШИР</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">8</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck18" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck18">Валюта коди</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1  mt-4   px-0">9</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck19" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck19">Аввалги режим</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">10</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck20" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck20">Савдо қилувчи мамлакат</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">11</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck101" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck101">Фактура қиймати АҚШ дол.</label>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <form>
-                                                    <div class="form-group row">
-
-                                                        <div class="col-sm-1 px-0 mt-4   ">12</div>
-                                                        <div class="col-sm-11 px-0 mt-4   ">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck21" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck21">Шартнома тури</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 px-0 mt-4   ">13</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck22" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck22">Қўшимча ўлчов бирлиги</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">14</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck23" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck23">Тўлов ундирилган умумий </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4 f  px-0">15</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck24" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck24">Брутто</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">16</div>
-                                                        <div class="col-sm-11  mt-4   px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck25" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck25">Имортер номи</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1  mt-4   px-0">17</div>
-                                                        <div class="col-sm-11  mt-4   px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck26" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck26">БЮД рақами</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">18</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck27" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck27">Келиб чиқиш мамлакати</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1  mt-4   px-0">19</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck28" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck28">Божхона қиймати валютада</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">20</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck29" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck29">ХББ</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">21</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck30" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck30">Ўзаро боғлиқ</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 px-0 mt-4   ">22</div>
-                                                        <div class="col-sm-11 px-0 mt-4   ">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck31" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck31">Тузатиш киритилган</label>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <form>
-                                                    <div class="form-group row">
-
-
-                                                        <div class="col-sm-1 px-0 mt-4   ">23</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck32" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck32">Метод</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">24</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck33" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck33">Юк жўнатувчи номи</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">25</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck34" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck34">Божхона режими</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">26</div>
-                                                        <div class="col-sm-11  mt-4   px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck35" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck35">Келиб чиқиш мамлакати (31-гр)</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1  mt-4   px-0">27</div>
-                                                        <div class="col-sm-11  mt-4   px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck36" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck36">Божхона қиймати АҚШ дол.</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">28</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck37" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck37">Товар тартиб рақами</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1  mt-4   px-0">29</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck38" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck38">Ўз еҳтиёжи/тижорат</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">30</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck39" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck39">Олиб ўтиш хусусияти</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">31</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck40" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck40">ҚҚСдан имтиёз/ҳужжати </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 px-0 mt-4   ">32</div>
-                                                        <div class="col-sm-11 px-0 mt-4   ">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck41" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck41">Етказиб шарти</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 px-0 mt-4   ">33</div>
-                                                        <div class="col-sm-11 px-0 mt-4   ">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck42" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck42">Божхона қиймати 1 ўл. бир. $</label>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <form>
-                                                    <div class="form-group row">
-
-                                                        <div class="col-sm-1 mt-4    px-0">34</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck43" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck43">Божхона қиймати асоси</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">35</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck44" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck44">Божхона қиймати индекси</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">36</div>
-                                                        <div class="col-sm-11  mt-4   px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck45" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck45">Товар маркаси</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1  mt-4   px-0">37</div>
-                                                        <div class="col-sm-11  mt-4   px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck46" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck46">Чегарани кесиб ўтган сана</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">38</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck47" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck47">Расмийлаштирилган вақти</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1  mt-4   px-0">39</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck48" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck48">Импорт божидан имтиёз </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">40</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck49" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck49">Етказиб  пункти</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-1 mt-4    px-0">41</div>
-                                                        <div class="col-sm-11 mt-4    px-0">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                       id="gridCheck50" name="group" value="Юк жўнатувчи мамлакат">
-                                                                <label class="form-check-label"
-                                                                       for="gridCheck50">Акциз солиғидан имтиёз </label>
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 mt-4 " >
-                                        <div class="row mt-1">
-                                            <div class="col-md-12 "><h5>Менинг созламаларим</h5></div>
-                                            <div class="row ">
-                                                <div class="col-md-8">
-                                                          <span type="button"
-                                                                class="btn btn-sm btn-outline-primary f-w-900 "
-                                                                style="border-radius: 5px" >
-                                                              &nbsp;1-созлама
-                                                          </span>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <button type="button" tabindex="3"
-                                                            class="btn btn-sm btn-secondary f-w-900 "
-                                                            style="border-radius: 5px" >
-                                                        <i class="fas fa-pen"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <button type="button" tabindex="3"
-                                                            class="btn btn-sm btn-danger f-w-900"
-                                                            style="border-radius: 5px" >
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="row mt-2">
-                                                <div class="col-md-8">
-                                                          <span type="button"
-                                                                class="btn btn-sm btn-outline-primary f-w-900 "
-                                                                style="border-radius: 5px" >
-                                                              &nbsp;2-созлама
-                                                          </span>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <button type="button" tabindex="3"
-                                                            class="btn btn-sm btn-secondary f-w-900 "
-                                                            style="border-radius: 5px" >
-                                                        <i class="fas fa-pen"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <button type="button" tabindex="3"
-                                                            class="btn btn-sm btn-danger f-w-900"
-                                                            style="border-radius: 5px" >
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="row mt-2">
-                                                <div class="col-md-8">
-                                                          <span type="button"
-                                                                class="btn btn-sm btn-outline-primary f-w-900 "
-                                                                style="border-radius: 5px" >
-                                                              &nbsp;3-созлама
-                                                          </span>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <button type="button" tabindex="3"
-                                                            class="btn btn-sm btn-secondary f-w-900 "
-                                                            style="border-radius: 5px" >
-                                                        <i class="fas fa-pen"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <button type="button" tabindex="3"
-                                                            class="btn btn-sm btn-danger f-w-900"
-                                                            style="border-radius: 5px" >
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-                            </div>
-                        </div>
+                        <div class="modal-body appTableV1SettingModal"></div>
                         <div class="modal-footer">
                             <%--                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
                             <%--                            <button type="button" class="btn btn-primary">Save changes</button>--%>
@@ -917,8 +408,8 @@
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.spring-friendly.js"></script>
-<%--    <script type="text/javascript"--%>
-<%--            src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.colReorder.min.js"></script>--%>
+    <script type="text/javascript"
+            src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.colReorder.min.js"></script>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.fixedHeader.min.js"></script>
     <script type="text/javascript"
@@ -937,20 +428,17 @@
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/buttons.bootstrap4.min.js"></script>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.dateTime.min.js"></script>
-<%--    <script type="text/javascript"--%>
-<%--            src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/ColReorderWithResize.js"></script>--%>
+<%--    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/ColReorderWithResize.js"></script>--%>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.dataTables.colResize.js"></script>
-<%--    <script type="text/javascript"--%>
-<%--            src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.mask.min.js"></script>--%>
+<%--    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.mask.min.js"></script>--%>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.maskMoney.js"></script>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/datetime.js"></script>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/lottie.js"></script>
-    <script type="text/javascript" id="plugin_column_i18"
-            src="${pageContext.servletContext.contextPath}/resources/pages/appV2/js/plugin_column_i18_${sessionLanguage}.js"></script>
+    <script type="text/javascript" id="plugin_column_i18" src="${pageContext.servletContext.contextPath}/resources/pages/appV2/js/plugin_column_i18_${sessionLanguage}.js"></script>
     <script>
         $('select').selectpicker();
         var sessionData = ${sessionGetterDataValue};
@@ -976,7 +464,7 @@
             ajax: '<%=request.getContextPath()%>/routeV2/V1/data/cost_monitoring_base/v2',
             serverSide: true,
             dom: "<'row'<'col-sm-12 col-md-6'R><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-2 mt-2'l><'col-sm-12 col-md-3'i><'col-sm-12 col-md-7 mt-2'p>>",
-            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "барча"]],
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, appTableV1.all]],
             fields: [{
                 name: 'g33',
                 mask: '0000 00 000 0'
@@ -1049,7 +537,7 @@
             // colReorder: {
             //     addFixed: false
             // },
-            // colReorder: true,
+            colReorder: true,
             colResize: true,
             order: [[1, 'asc']],
             language: {
@@ -1067,6 +555,7 @@
         });
 
         $('.updateAppTableV1').on('click', function () {
+
             app_table_01
                 .column('gc3Date:name').search($('input#gc3DateStart').val() + ';' + $('input#gc3DateEnd').val())
                 .column('g7B:name').search($('input#g7BStart').val() + ';' + $('input#g7BEnd').val())
@@ -1106,7 +595,7 @@
             $('#pills-profile-tab').removeClass('active')
             $('#pills-home-tab').removeClass('active').addClass('active')
             $('#pills-tabContent').html('')
-            let preImg = '<div class="col-12 m-auto"><lottie-player src="${pageContext.servletContext.contextPath}/resources/assets/images/jsonImage/report.json"   background="transparent"  speed="2"  style="margin-left:auto;    margin-right:auto; width: 500px; height: 500px;"  loop  autoplay></lottie-player> </div>';
+            var preImg = '<div class="col-12 m-auto"><lottie-player src="${pageContext.servletContext.contextPath}/resources/assets/images/jsonImage/report.json"   background="transparent"  speed="2"  style="margin-left:auto;    margin-right:auto; width: 500px; height: 500px;"  loop  autoplay></lottie-player> </div>';
             $('#pills-tabContent').html(preImg);
             setTimeout(() => {
                 appFuncV2_ajax_v1();
@@ -1184,15 +673,15 @@
                 type: "GET",
                 // data: JSON.stringify(dataS),
                 url: "<%=request.getContextPath()%>/routeV2/V3/data/cost_monitoring_base/v1",
-                dataType: "json",
-                async: true,
-                contentType: 'application/json',
+                // dataType: "json",
+                // async: true,
+                // contentType: 'application/json',
                 beforeSend: function () {
                 },
                 complete: function () {
                 },
                 success: function (res) {
-
+                    $('.appTableV1SettingModal').html(res);
                 },
                 error: function (res) {
                 }
@@ -1255,6 +744,74 @@
             app_table_01.column('sovstavka:name').visible(columnList.sovstavka);
             app_table_01.column('asosQiymat:name').visible(columnList.asosQiymat);
             app_table_01.column('ktd:name').visible(columnList.ktd);
+        }
+        function fisibatoreColumnsAfter(){
+            $.ajax({
+                type: "GET",
+                url: "<%=request.getContextPath()%>/routeV2/V3/data/cost_monitoring_base/v3",
+                dataType: "json",
+                async: true,
+                contentType: 'application/json',
+                beforeSend: function () {
+                },
+                complete: function (response) {
+                    let columnList = response.responseJSON.columns.activeSetting;
+
+                    app_table_01.column('ugtk:name').visible(columnList.ugtk)
+                    app_table_01.column('g7A:name').visible(columnList.g7A);
+                    app_table_01.column('g7B:name').visible(columnList.g7B);
+                    app_table_01.column('g7C:name').visible(columnList.g7C);
+                    app_table_01.column('g7Ag7Bg7C:name').visible(columnList.g7Ag7Bg7C);
+                    app_table_01.column('g1A:name').visible(columnList.g1A);
+                    app_table_01.column('g1B:name').visible(columnList.g1B);
+                    app_table_01.column('g1Ag1B:name').visible(columnList.g1Ag1B);
+                    app_table_01.column('g32:name').visible(columnList.g32);
+                    app_table_01.column('g37B:name').visible(columnList.g37B);
+                    app_table_01.column('g37C:name').visible(columnList.g37C);
+                    app_table_01.column('g2Name:name').visible(columnList.g2Name);
+                    app_table_01.column('g8Code2:name').visible(columnList.g8Code2);
+                    app_table_01.column('g33:name').visible(columnList.g33);
+                    app_table_01.column('g31Name:name').visible(columnList.g31Name);
+                    app_table_01.column('g15:name').visible(columnList.g15);
+                    app_table_01.column('g11:name').visible(columnList.g11);
+                    app_table_01.column('vidKontrakta:name').visible(columnList.vidKontrakta);
+                    app_table_01.column('g34:name').visible(columnList.g34);
+                    app_table_01.column('s34:name').visible(columnList.s34);
+                    app_table_01.column('g25:name').visible(columnList.g25);
+                    app_table_01.column('g20A:name').visible(columnList.g20A);
+                    app_table_01.column('g20B:name').visible(columnList.g20B);
+                    app_table_01.column('g20Name:name').visible(columnList.g20Name);
+                    app_table_01.column('g20Ag20B:name').visible(columnList.g20Ag20B);
+                    app_table_01.column('g22A:name').visible(columnList.g22A);
+                    app_table_01.column('g45:name').visible(columnList.g45);
+                    app_table_01.column('g45Usd:name').visible(columnList.g45Usd);
+                    app_table_01.column('g42:name').visible(columnList.g42);
+                    app_table_01.column('g42Usd:name').visible(columnList.g42Usd);
+                    app_table_01.column('indxusd:name').visible(columnList.indxusd);
+                    app_table_01.column('indxusdLn:name').visible(columnList.indxusdLn);
+                    app_table_01.column('g45Usded:name').visible(columnList.g45Usded);
+                    app_table_01.column('g45UsdedLn:name').visible(columnList.g45UsdedLn);
+                    app_table_01.column('g31Marka:name').visible(columnList.g31Marka);
+                    app_table_01.column('g35:name').visible(columnList.g35);
+                    app_table_01.column('g38:name').visible(columnList.g38);
+                    app_table_01.column('g41:name').visible(columnList.g41);
+                    app_table_01.column('g43:name').visible(columnList.g43);
+                    app_table_01.column('g31Amount:name').visible(columnList.g31Amount);
+                    app_table_01.column('vesEd:name').visible(columnList.vesEd);
+                    app_table_01.column('gdvipdate:name').visible(columnList.gdvipdate);
+                    app_table_01.column('gc3Date:name').visible(columnList.gc3Date);
+                    app_table_01.column('metod:name').visible(columnList.metod);
+                    app_table_01.column('vzaimosvyaz:name').visible(columnList.vzaimosvyaz);
+                    app_table_01.column('idn:name').visible(columnList.idn);
+                    app_table_01.column('obl:name').visible(columnList.obl);
+                    app_table_01.column('lgot20:name').visible(columnList.lgot20);
+                    app_table_01.column('lgot27:name').visible(columnList.lgot27);
+                    app_table_01.column('lgot29:name').visible(columnList.lgot29);
+                    app_table_01.column('sovstavka:name').visible(columnList.sovstavka);
+                    app_table_01.column('asosQiymat:name').visible(columnList.asosQiymat);
+                    app_table_01.column('ktd:name').visible(columnList.ktd);
+                }
+            });
         }
         function openText(x) {
             if (x === 0){
