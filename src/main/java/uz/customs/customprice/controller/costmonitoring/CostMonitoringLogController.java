@@ -37,7 +37,7 @@ public class CostMonitoringLogController {
 
     @GetMapping(value = "/data/cost_monitoring_base/v2")
     public DataTablesOutput<CPLog> getDataV4(@Valid DataTablesInput input) throws UnexpectedRollbackException {
-        return costMonitoringDataLogService.dataTable(input);
+        return costMonitoringDataLogService.getReportInspector(input);
     }
 
     /******************************************************************************************************************/
@@ -49,7 +49,7 @@ public class CostMonitoringLogController {
 
     @GetMapping(value = "/data/cost_monitoring_base/v4")
     public DataTablesOutput<CPLog> getDataV6(@Valid DataTablesInput input) throws UnexpectedRollbackException {
-        return costMonitoringDataLogService.dataTable(input);
+        return costMonitoringDataLogService.getReportCommodity(input);
     }
 
 }

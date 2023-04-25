@@ -28,7 +28,8 @@ public class CostMonitoringDataService {
         DateRangeG7B dateRangeG7B = new DateRangeG7B(input);
 
         long timeRangeQueryStart = System.currentTimeMillis();
-        DataTablesOutput<BaseEntity> baseEntityDataTablesOutput =  costMonitoringDataRepository.findAll(input, dateRangeSpecification.and(dateRangeG7B)/*.and(new ExcludeAnalystsSpecification()).and(fullNameSpecification)*/
+        DataTablesOutput<BaseEntity> baseEntityDataTablesOutput =  costMonitoringDataRepository.findAll(
+                input, dateRangeSpecification.and(dateRangeG7B)/*.and(new ExcludeAnalystsSpecification()).and(fullNameSpecification)*/
 //                (root, query, criteriaBuilder) -> {
 //                    if (query.getResultType() != Long.class) {
 //                        root.fetch("tnfCommodity", JoinType.LEFT);

@@ -3,17 +3,20 @@ package uz.customs.customprice.service.costmonitoring.logEntityServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import uz.customs.customprice.entity.costmonitoring.CPLog;
 import uz.customs.customprice.repository.costmonitoring.CostMonitoringDataLogRepository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,8 +24,70 @@ public class CostMonitoringDataLogService {
 
     private final CostMonitoringDataLogRepository costMonitoringDataLogRepository;
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Transactional(rollbackFor = {Exception.class}, propagation = Propagation.REQUIRED)
-    public DataTablesOutput<CPLog> dataTable(DataTablesInput input){
+    public DataTablesOutput<CPLog> getReportInspector(DataTablesInput input){
+        DateRangeSpecification dateRangeSpecification = new DateRangeSpecification(input);
+
+        // Create CriteriaBuilder and CriteriaQuery
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = criteriaBuilder.createQuery(Object[].class);
+        Root<CPLog> root = query.from(CPLog.class);
+
+        // Define the columns to select
+        query.multiselect(
+                root.get("locationId").alias("locationId"),
+                root.get("locationNm").alias("locationNm"),
+                root.get("userId").alias("userId"),
+                root.get("userNm").alias("userNm"),
+                criteriaBuilder.avg(root.get("resultTime")).alias("resultTime"),
+                criteriaBuilder.count(root.get("g33")).alias("g33"),
+                criteriaBuilder.count(root.get("keyword")).alias("keyword"),
+                criteriaBuilder.sum(root.get("resultCount")).alias("resultCount")
+        );
+
+        // Group by locationId, locationNm, userId, and userNm
+        query.groupBy(
+                root.get("locationId"),
+                root.get("locationNm"),
+                root.get("userId"),
+                root.get("userNm")
+        );
+
+        // Apply the date range specification as well as any other specifications needed
+        Predicate predicate = dateRangeSpecification.toPredicate(root, query, criteriaBuilder);
+        query.where(predicate);
+
+        // Execute the query and transform the result into CPLog objects
+        List<Object[]> result = entityManager.createQuery(query).getResultList();
+        List<CPLog> cpLogs = new ArrayList<>();
+        for (Object[] row : result) {
+            CPLog cpLog = new CPLog();
+            cpLog.setLocationId(String.valueOf(row[0]));
+            cpLog.setLocationNm((String) row[1]);
+            cpLog.setUserId((String) row[2]);
+            cpLog.setUserNm((String) row[3]);
+            cpLog.setResultTime(Double.valueOf((Double) row[4]).longValue());
+            cpLog.setG33(row[5].toString());
+            cpLog.setKeyword(row[6].toString());
+            cpLog.setResultCount( Long.valueOf((Long) row[7]).intValue());
+            cpLogs.add(cpLog);
+        }
+
+        // Create a DataTablesOutput object with the transformed result and input parameters
+        DataTablesOutput<CPLog> output = new DataTablesOutput<>();
+        output.setDraw(input.getDraw());
+        output.setData(cpLogs);
+        output.setRecordsFiltered(result.size());
+        output.setRecordsTotal(result.size());
+
+        return output;
+    }
+
+    @Transactional(rollbackFor = {Exception.class}, propagation = Propagation.REQUIRED)
+    public DataTablesOutput<CPLog> getReportCommodity(DataTablesInput input){
         DateRangeSpecification dateRangeSpecification = new DateRangeSpecification(input);
 
 //        String searchValue = escapeContent(input.getSearch().getValue());
@@ -55,7 +120,7 @@ public class CostMonitoringDataLogService {
 
         return costMonitoringDataLogRepository.findAll(
                 input,
-                dateRangeSpecification/*.and(new ExcludeAnalystsSpecification()).and(fullNameSpecification)*/
+                dateRangeSpecification/*.and(new SpecificationCommodity()).and(fullNameSpecification)*/
 //                (root, query, criteriaBuilder) -> {
 //                    if (query.getResultType() != Long.class) {
 //                        root.fetch("tnfCommodity", JoinType.LEFT);
@@ -63,16 +128,6 @@ public class CostMonitoringDataLogService {
 //                    return null;
 //                }
         );
-    }
-
-    private static class ExcludeAnalystsSpecification implements Specification<CPLog> {
-        @Override
-        public Predicate toPredicate(Root<CPLog> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-            Predicate senderLocationId = criteriaBuilder.notEqual(root.get("statusNm"), "Analyst");
-            Predicate senderPostId = criteriaBuilder.notEqual(root.get("senderPostId"), "Analystic");
-            Predicate finalPredicate = criteriaBuilder.and(senderLocationId, senderPostId);
-            return finalPredicate;
-        }
     }
 
 }

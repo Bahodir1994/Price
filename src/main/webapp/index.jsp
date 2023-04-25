@@ -27,16 +27,16 @@
 <%--        <link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/tour.min.css">--%>
 <%--        <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpickerBlue.css">--%>
         <style>
-            /*.page-wrapper {*/
-            /*    min-height: 86vh!important;*/
-            /*    background-color: #ffffff !important;*/
-            /*    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);*/
-            /*    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);*/
-            /*    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);*/
-            /*}*/
-            /*.page-header {*/
-            /*   opacity: 0.99!important;*/
-            /*}*/
+            .page-wrapper {
+                min-height: 86vh!important;
+                background-color: #ffffff !important;
+                -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+                -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+                box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+            }
+            .page-header {
+               opacity: 0.99!important;
+            }
 
         </style>
     </head>
@@ -544,8 +544,10 @@
             //         group: ""
             //     }
             // ]
+            //
             // const tg = new tourguide.TourGuideClient({
             // })
+            //
             // $('#tourbutton').on('click', function () {
             //     tg.start()
             // });
