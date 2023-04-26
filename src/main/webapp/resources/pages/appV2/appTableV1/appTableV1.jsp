@@ -484,7 +484,7 @@
                 {className: "dt-head-center", title: appTableV1.g2Name, name: 'g2Name', data: 'g2Name'},
                 {className: "dt-head-center", title: appTableV1.g8Code2, name: 'g8Code2', data: 'g8Code2', render: data => {return data.replace(/^(\d{3})(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1 $2 $3 $4 $5');} },
                 {className: "dt-head-center", title: appTableV1.g33, name: 'g33', data: 'g33', render: data => {return data.replace(/^(\d{4})(\d{2})(\d{3})(\d{1}).*/, '$1 $2 $3 $4');}},
-                {className: "dt-head-center nowrap g31Wi", title: appTableV1.g31Name, name: 'g31Name', width: '500px!important', data: 'g31Name', render: data => {return '<textarea rows="1" class="border-0 font-weight-normal m-0 p-0 g31Name" style="background-color: rgb(0, 0, 0, 0); overflow:visible">'+data+'</textarea>'}, orderable: false},
+                {className: "dt-head-center nowrap g31Wi", searchable: false, title: appTableV1.g31Name, name: 'g31Name', width: '500px!important', data: 'g31Name', render: data => {return '<textarea rows="1" class="border-0 font-weight-normal m-0 p-0 g31Name" style="background-color: rgb(0, 0, 0, 0); overflow:visible">'+data+'</textarea>'}, orderable: false},
                 {className: "dt-head-center", title: appTableV1.g15, name: 'g15', data: 'g15'},
                 {className: "dt-head-center", title: appTableV1.g11, name: 'g11', data: 'g11'},
                 {className: "dt-head-center", title: appTableV1.vidKontrakta, name: 'vidKontrakta', data: 'vidKontrakta'},
