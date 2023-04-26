@@ -42,8 +42,7 @@
                             <div class="form-row m-0 justify-content-center">
                                 <div class="form-group mx-2  p-0 text-center" data-tg-tour="Step 1" data-tg-title="Example heading 1">
                                     <label for="g33" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="hsCode" bundle="${resourceBundle}"/></label>
-                                    <input type="text" id="g33" class="form-control form-control-sm w-100 g33"
-                                           placeholder="0000 00 000 0">
+                                    <input type="text" id="g33" class="form-control form-control-sm w-100 g33" placeholder="0000 00 000 0">
                                 </div>
                                 <div class="form-group mx-2  p-0 text-center" data-tg-tour="Step 2" data-tg-title="Example heading 2">
                                     <label for="g31Name" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="commodityName" bundle="${resourceBundle}"/></label>
@@ -117,9 +116,6 @@
                                         </button>
                                         <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right" style="">
                                             <li class="dropdown-item full-card" id="toggle_fullscreen"><span style=""><i
-                                                    class="feather icon-maximize"></i> <fmt:message key="sizeResize" bundle="${resourceBundle}"/></span>
-                                            </li>
-                                            <li class="dropdown-item full-card" id="tourbutton"><span style=""><i
                                                     class="feather icon-maximize"></i> <fmt:message key="sizeResize" bundle="${resourceBundle}"/></span>
                                             </li>
                                         </ul>
@@ -207,10 +203,7 @@
                                                                    class="form-control form-control-sm px-1 g7BStart"
                                                                    id="g7BStart"
                                                                    maxlength="10" tabindex="1"
-                                                                   name="dcodate"
-                                                                   min="2020-01-01"
-                                                                   max="2023-12-31"
-                                                                   value="2023-03-01">
+                                                                   name="dcodate">
                                                         </div>
                                                         <div class="form-group col-md-1">
                                                             <label for="g7BEnd"><fmt:message key="ccd" bundle="${resourceBundle}"/> (:<fmt:message key="to" bundle="${resourceBundle}"/>)</label>
@@ -218,10 +211,7 @@
                                                                    class="form-control form-control-sm px-1 g7BEnd"
                                                                    id="g7BEnd"
                                                                    maxlength="10" tabindex="1"
-                                                                   name="dcodate"
-                                                                   min="2020-01-01"
-                                                                   max="2023-12-31"
-                                                                   value="2023-03-01">
+                                                                   name="dcodate">
                                                         </div>
                                                         <div class="form-group col-md-2">
                                                             <label for="g7A"><fmt:message key="customsPost" bundle="${resourceBundle}"/> </label>
@@ -555,7 +545,51 @@
         });
 
         $('.updateAppTableV1').on('click', function () {
+            if ([undefined, null, ''].includes($('#g33').val()) && [undefined, null, ''].includes($('#g31Name').val())){
+                // if ([undefined, null, ''].includes($('#g33').val()) && ![undefined, null, ''].includes($('#g31Name').val())){
+                //     $.toast({
+                //         position: 'top-right',
+                //         heading: 'Тақиқланган амал!',
+                //         text: 'Излашни амалга ошириш учун Тиф Тн коди киритилиши лозим.',
+                //         icon: 'error',
+                //         loader: true,        // Change it to false to disable loader
+                //         loaderBg: '#9EC600'  // To change the background
+                //     })
+                //     return;
+                // }
+                // if (![undefined, null, ''].includes($('#g33').val()) && [undefined, null, ''].includes($('#g31Name').val())){
+                //     $.toast({
+                //         position: 'top-right',
+                //         heading: 'Тақиқланган амал!',
+                //         text: 'Излашни амалга ошириш учун Товар номи киритилиши лозим.',
+                //         icon: 'error',
+                //         loader: true,        // Change it to false to disable loader
+                //         loaderBg: '#9EC600'  // To change the background
+                //     })
+                //     return;
+                // }
+                // if ([undefined, null, ''].includes($('#g33').val()) && [undefined, null, ''].includes($('#g31Name').val())){
+                //     $.toast({
+                //         position: 'top-right',
+                //         heading: 'Тақиқланган амал!',
+                //         text: 'Излашни амалга ошириш учун Тиф Тн коди ва Товар номи киритилиши лозим.',
+                //         icon: 'error',
+                //         loader: true,        // Change it to false to disable loader
+                //         loaderBg: '#9EC600'  // To change the background
+                //     })
+                //     return;
+                // }
+                $.toast({
+                    position: 'top-right',
+                    heading: 'Тақиқланган амал!',
+                    text: 'Излашни амалга ошириш учун Тиф Тн коди ёки Товар номи киритилиши лозим.',
+                    icon: 'error',
+                    loader: true,        // Change it to false to disable loader
+                    loaderBg: '#9EC600'  // To change the background
+                })
+                return;
 
+            }
             app_table_01
                 .column('gc3Date:name').search($('input#gc3DateStart').val() + ';' + $('input#gc3DateEnd').val())
                 .column('g7B:name').search($('input#g7BStart').val() + ';' + $('input#g7BEnd').val())
@@ -611,6 +645,14 @@
             var endDate = new Date();
             $('.gc3DateStart').val(startDate.toISOString().slice(0, 10));
             $('.gc3DateEnd').val(endDate.toISOString().slice(0, 10));
+            $.toast({
+                position: 'top-right',
+                heading: 'Тахрирланди!',
+                text: 'Чегарани кесиб ўтиш санаси 30 кун этиб белгиланди.',
+                icon: 'info',
+                loader: true,        // Change it to false to disable loader
+                loaderBg: '#9EC600'  // To change the background
+            })
         });
         $('.day90').on('click', function () {
             var startDate = '', endDate = '';
@@ -622,6 +664,14 @@
             var endDate = new Date();
             $('.gc3DateStart').val(startDate.toISOString().slice(0, 10));
             $('.gc3DateEnd').val(endDate.toISOString().slice(0, 10));
+            $.toast({
+                position: 'top-right',
+                heading: 'Тахрирланди!',
+                text: 'Чегарани кесиб ўтиш санаси 90 кун этиб белгиланди.',
+                icon: 'info',
+                loader: true,        // Change it to false to disable loader
+                loaderBg: '#9EC600'  // To change the background
+            })
         });
         $('.day180').on('click', function () {
             var startDate = '', endDate = '';
@@ -633,6 +683,14 @@
             var endDate = new Date();
             $('.gc3DateStart').val(startDate.toISOString().slice(0, 10));
             $('.gc3DateEnd').val(endDate.toISOString().slice(0, 10));
+            $.toast({
+                position: 'top-right',
+                heading: 'Тахрирланди!',
+                text: 'Чегарани кесиб ўтиш санаси 180 кун этиб белгиланди.',
+                icon: 'info',
+                loader: true,        // Change it to false to disable loader
+                loaderBg: '#9EC600'  // To change the background
+            })
         })
 
         function appFuncV2_ajax_v1() {

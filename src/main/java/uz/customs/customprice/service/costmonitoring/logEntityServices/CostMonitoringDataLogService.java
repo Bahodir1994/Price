@@ -1,8 +1,11 @@
 package uz.customs.customprice.service.costmonitoring.logEntityServices;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.data.jpa.datatables.mapping.Column;
 import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,12 +14,14 @@ import uz.customs.customprice.repository.costmonitoring.CostMonitoringDataLogRep
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.Tuple;
+import javax.persistence.criteria.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static antlr.build.ANTLR.root;
+import static org.springframework.security.oauth2.common.AuthenticationScheme.query;
 
 @Service
 @RequiredArgsConstructor
@@ -58,6 +63,16 @@ public class CostMonitoringDataLogService {
 
         // Apply the date range specification as well as any other specifications needed
         Predicate predicate = dateRangeSpecification.toPredicate(root, query, criteriaBuilder);
+
+        for (Column column : input.getColumns()) {
+            String columnName = column.getData();
+            String searchValue = column.getSearch().getValue();
+            if (StringUtils.isNotEmpty(searchValue)) {
+                predicate = criteriaBuilder.and(predicate,
+                        criteriaBuilder.like(root.get(columnName), "%" + searchValue + "%"));
+            }
+        }
+
         query.where(predicate);
 
         // Execute the query and transform the result into CPLog objects

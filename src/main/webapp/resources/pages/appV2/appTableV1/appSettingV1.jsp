@@ -84,7 +84,7 @@
             <div class="col-md-2" style="margin-top: 60px">
                 <button class="btn btn-sm btn-block btn-outline-primary" onclick="activateSetting()"><i class="fas fa-check"/> <span class="actBtn"></span></button>
                 <button class="btn btn-sm btn-block btn-outline-danger" onclick="deleteSetting()"><i class="fas fa-remove-format"/> <span class="delBtn"></span></button>
-                <button class="btn btn-sm btn-block btn-outline-info" id="tourbutton" ><i class="fas fa-book-reader"/> <span class="tourBtn"></span></button>
+<%--                <button class="btn btn-sm btn-block btn-outline-info" id="tourbutton" ><i class="fas fa-book-reader"/> <span class="tourBtn"></span></button>--%>
             </div>
         </div>
     </div>
