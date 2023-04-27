@@ -270,7 +270,6 @@
                 </div>
             </div>
         </div>
-        </div>
         <!-- Required Js -->
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/jquery3-5-1.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/popper.min.js"></script>
@@ -341,8 +340,8 @@
                     },
                     success: function (response) {
                         $("#main-body").html(response);
-                        $.toast({
-                            position: 'bottom-right',
+                        var s1 = $.toast({
+                            position: 'top-right',
                             heading: 'Божхона қиймати асосй ойнаси!',
                             text: '',
                             icon: 'info',

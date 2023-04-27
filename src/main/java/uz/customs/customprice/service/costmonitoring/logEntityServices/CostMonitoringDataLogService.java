@@ -15,6 +15,7 @@ import uz.customs.customprice.repository.costmonitoring.CostMonitoringDataLogRep
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Tuple;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 
 import java.util.ArrayList;
@@ -76,7 +77,11 @@ public class CostMonitoringDataLogService {
         query.where(predicate);
 
         // Execute the query and transform the result into CPLog objects
-        List<Object[]> result = entityManager.createQuery(query).getResultList();
+        List<Object[]> resultTotalCount = entityManager.createQuery(query).getResultList();
+        List<Object[]> result = entityManager.createQuery(query)
+                .setFirstResult(input.getStart())
+                .setMaxResults(input.getLength())
+                .getResultList();
         List<CPLog> cpLogs = new ArrayList<>();
         for (Object[] row : result) {
             CPLog cpLog = new CPLog();
@@ -95,11 +100,153 @@ public class CostMonitoringDataLogService {
         DataTablesOutput<CPLog> output = new DataTablesOutput<>();
         output.setDraw(input.getDraw());
         output.setData(cpLogs);
-        output.setRecordsFiltered(result.size());
-        output.setRecordsTotal(result.size());
+        output.setRecordsFiltered(resultTotalCount.size());
+        output.setRecordsTotal(resultTotalCount.size());
 
         return output;
     }
+
+//    public DataTablesOutput<CPLog> getReportInspector(DataTablesInput input) {
+//        DateRangeSpecification dateRangeSpecification = new DateRangeSpecification(input);
+//
+//        // Create CriteriaBuilder and CriteriaQuery
+//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//        CriteriaQuery<Object[]> query = criteriaBuilder.createQuery(Object[].class);
+//        Root<CPLog> root = query.from(CPLog.class);
+//
+//        // Define the columns to select
+//        query.multiselect(
+//                root.get("locationId").alias("locationId"),
+//                root.get("locationNm").alias("locationNm"),
+//                root.get("userId").alias("userId"),
+//                root.get("userNm").alias("userNm"),
+//                criteriaBuilder.avg(root.get("resultTime")).alias("resultTime"),
+//                criteriaBuilder.count(root.get("g33")).alias("g33"),
+//                criteriaBuilder.count(root.get("keyword")).alias("keyword"),
+//                criteriaBuilder.sum(root.get("resultCount")).alias("resultCount")
+//        );
+//
+//        // Group by locationId, locationNm, userId, and userNm
+//        query.groupBy(
+//                root.get("locationId"),
+//                root.get("locationNm"),
+//                root.get("userId"),
+//                root.get("userNm")
+//        );
+//
+//        // Apply the date range specification as well as any other specifications needed
+//        Predicate predicate = dateRangeSpecification.toPredicate(root, query, criteriaBuilder);
+//
+//        for (Column column : input.getColumns()) {
+//            String columnName = column.getData();
+//            String searchValue = column.getSearch().getValue();
+//            if (StringUtils.isNotEmpty(searchValue)) {
+//                predicate = criteriaBuilder.and(predicate,
+//                        criteriaBuilder.like(root.get(columnName), "%" + searchValue + "%"));
+//            }
+//        }
+//
+//        query.where(predicate);
+//
+//        // Create a TypedQuery object and set the pagination parameters
+//        TypedQuery<Object[]> typedQuery = entityManager.createQuery(query);
+//        typedQuery.setFirstResult(input.getStart());
+//        typedQuery.setMaxResults(input.getLength());
+//
+//        // Execute the query and transform the result into CPLog objects
+//        List<Object[]> result = typedQuery.getResultList();
+//        List<CPLog> cpLogs = new ArrayList<>();
+//        for (Object[] row : result) {
+//            CPLog cpLog = new CPLog();
+//            cpLog.setLocationId(String.valueOf(row[0]));
+//            cpLog.setLocationNm((String) row[1]);
+//            cpLog.setUserId((String) row[2]);
+//            cpLog.setUserNm((String) row[3]);
+//            cpLog.setResultTime(Double.valueOf((Double) row[4]).longValue());
+//            cpLog.setG33(row[5].toString());
+//            cpLog.setKeyword(row[6].toString());
+//            cpLog.setResultCount(Long.valueOf((Long) row[7]).intValue());
+//            cpLogs.add(cpLog);
+//        }
+//
+//        // Create a DataTablesOutput object with the transformed result and input parameters
+//        DataTablesOutput<CPLog> output = new DataTablesOutput<>();
+//        output.setDraw(input.getDraw());
+//        output.setData(cpLogs);
+//        output.setRecordsFiltered(result.size());
+//        output.setRecordsTotal(result.size());
+//
+//        return output;
+//    }
+
+
+//    public DataTablesOutput<CPLog> getReportInspector(DataTablesInput input){
+//        DateRangeSpecification dateRangeSpecification = new DateRangeSpecification(input);
+//
+//        // Create CriteriaBuilder and CriteriaQuery
+//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//        CriteriaQuery<Object[]> query = criteriaBuilder.createQuery(Object[].class);
+//        Root<CPLog> root = query.from(CPLog.class);
+//
+//        // Define the columns to select
+//        query.multiselect(
+//                root.get("locationId").alias("locationId"),
+//                root.get("locationNm").alias("locationNm"),
+//                root.get("userId").alias("userId"),
+//                root.get("userNm").alias("userNm"),
+//                criteriaBuilder.avg(root.get("resultTime")).alias("resultTime"),
+//                criteriaBuilder.count(root.get("g33")).alias("g33"),
+//                criteriaBuilder.count(root.get("keyword")).alias("keyword"),
+//                criteriaBuilder.sum(root.get("resultCount")).alias("resultCount")
+//        );
+//
+//        // Group by locationId, locationNm, userId, and userNm
+//        query.groupBy(
+//                root.get("locationId"),
+//                root.get("locationNm"),
+//                root.get("userId"),
+//                root.get("userNm")
+//        );
+//
+//        // Apply the date range specification as well as any other specifications needed
+//        Predicate predicate = dateRangeSpecification.toPredicate(root, query, criteriaBuilder);
+//
+//        for (Column column : input.getColumns()) {
+//            String columnName = column.getData();
+//            String searchValue = column.getSearch().getValue();
+//            if (StringUtils.isNotEmpty(searchValue)) {
+//                predicate = criteriaBuilder.and(predicate,
+//                        criteriaBuilder.like(root.get(columnName), "%" + searchValue + "%"));
+//            }
+//        }
+//
+//        query.where(predicate);
+//
+//        // Execute the query and transform the result into CPLog objects
+//        List<Object[]> result = entityManager.createQuery(query).getResultList();
+//        List<CPLog> cpLogs = new ArrayList<>();
+//        for (Object[] row : result) {
+//            CPLog cpLog = new CPLog();
+//            cpLog.setLocationId(String.valueOf(row[0]));
+//            cpLog.setLocationNm((String) row[1]);
+//            cpLog.setUserId((String) row[2]);
+//            cpLog.setUserNm((String) row[3]);
+//            cpLog.setResultTime(Double.valueOf((Double) row[4]).longValue());
+//            cpLog.setG33(row[5].toString());
+//            cpLog.setKeyword(row[6].toString());
+//            cpLog.setResultCount( Long.valueOf((Long) row[7]).intValue());
+//            cpLogs.add(cpLog);
+//        }
+//
+//        // Create a DataTablesOutput object with the transformed result and input parameters
+//        DataTablesOutput<CPLog> output = new DataTablesOutput<>();
+//        output.setDraw(input.getDraw());
+//        output.setData(cpLogs);
+//        output.setRecordsFiltered(result.size());
+//        output.setRecordsTotal(result.size());
+//
+//        return output;
+//    }
 
     @Transactional(rollbackFor = {Exception.class}, propagation = Propagation.REQUIRED)
     public DataTablesOutput<CPLog> getReportCommodity(DataTablesInput input){

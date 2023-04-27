@@ -103,7 +103,7 @@
         </div>
     </div>
     <script>
-        $('select').selectpicker();
+        $('.selectpicker').selectpicker();
 
         function newexportaction2(e, dt, button, config) {
             var self = this;
