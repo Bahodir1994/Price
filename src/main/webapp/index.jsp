@@ -109,149 +109,155 @@
             </div>
         </nav>
         <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
-            <div class="container-fluid">
-                <div class="m-header mr-1">
-                    <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
-                    <a href="#!" class="b-brand" style="height: 60px">
-                        <!-- ========   change your logo hear   ============ -->
-                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/gtk.png" style="margin-left: 80px; margin-right: -25px; width: 35px"
-                             alt="" class="logo">
-                        <span class=" b-title f-16 text-nowrap" style="width: 260px;">
+
+              <div class="container" style="max-width: 100%!important;">
+                  <div class="m-header  mr-1">
+                      <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+                      <a href="#!" class="b-brand" style="height: 60px">
+                          <!-- ========   change your logo hear   ============ -->
+                          <img src="${pageContext.servletContext.contextPath}/resources/assets/images/gtk.png" style="margin-left: 80px; margin-right: -25px; width: 35px"
+                               alt="" class="logo">
+                          <span class=" b-title f-16 text-nowrap" style="width: 260px;">
                             <svg   width="100%" height="50%">
                              <text x="50%" y="50%" dy=".35em" dx=".6em" text-anchor="middle" id="loop">
                              <fmt:message key="systemName" bundle="${resourceBundle}"/>
                               </text>
                           </svg>
                         </span>
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                                            <span class="d-inline-block m-b-0 text-white f-14">${sessionDataValue.userRoleName} :
+                      </a>
+                      <a href="#!" class="mob-toggler">
+                          <i class="feather icon-more-vertical"></i>
+                      </a>
+                  </div>
+
+                  <div class="collapse navbar-collapse ">
+                      <ul class="navbar-nav">
+                          <li class="nav-item " >
+                                            <span class="d-inline-block m-b-0 text-white f-14 role">${sessionDataValue.userRoleName} :
                                                 <span style="border-bottom: 1px solid #dee2e6 !important;">${sessionDataValue.userName}</span></span>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li style="line-height: 1.2">
-                            <div class="time" style="padding-top: 5px">
-                                <span class="date"></span>
-                                <p class="hms"></p>
+                          </li>
+                      </ul>
+                      <ul class="navbar-nav" style="height: 50px" >
+                          <li style="line-height: 1.2" class="px-0">
+                              <div class="time" style="padding-top: 5px">
+                                  <span class="date"></span>
+                                  <p class="hms"></p>
 
 
 
-                            </div>
-                        </li>
-                        <li class="mr-5">
-                            <div class="row ml-4">
-                                <div class="col-sm-1 col-md-1 col-lg-2 col-xl-2 user_online">
-                                    <i class="fas fa-users f-20"></i>
-                                </div>
-                                <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 user_type">
-                                    <fmt:message key="registeredUsers" bundle="${resourceBundle}"/>: ${activeCount.count} та
-                                    <br>
-                                    <fmt:message key="usersOnline" bundle="${resourceBundle}"/>: ${activeCount.activ} та
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown drp-user">
+                              </div>
+                          </li>
+                          <li class="px-0">
+                              <div class="row" id="users">
+                                  <div class="col-sm-1 col-md-1 col-lg-2 col-xl-2 user_online">
+                                      <i class="fas fa-users f-20"></i>
+                                  </div>
+                                  <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 user_type">
+                                      <fmt:message key="registeredUsers" bundle="${resourceBundle}"/>: ${activeCount.count} та
+                                      <br>
+                                      <fmt:message key="usersOnline" bundle="${resourceBundle}"/>: ${activeCount.activ} та
+                                  </div>
+                              </div>
+                          </li>
+                          <li class="">
+                              <div class="dropdown drp-user">
 
-                                <c:if test="${sessionDataValue.language == 'uz_UZ'}">
-                                    <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret has-ripple"
-                                       data-toggle="dropdown" title="Тил" style="color:#fff; font-size: 20px; width: 80px">
-                                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"
-                                             width="20px" style="border-radius: 50%" alt="">
-                                        <span style="font-weight: bold; font-size: 14px;">&nbsp;&nbsp;Ўзб&nbsp;&nbsp;</span>
-                                        <span class="ripple ripple-animate"
-                                              style="height: 52px; width: 52px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(26, 83, 240); opacity: 0.4; top: 3px; left: -11.9844px;"></span>
-                                    </a>
-                                </c:if>
-                                <c:if test="${sessionDataValue.language == 'oz_OZ'}">
-                                    <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret has-ripple"
-                                       data-toggle="dropdown" title="Тил" style="color:#fff; font-size: 20px; width: 80px">
-                                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"
-                                             width="20px" style="border-radius: 50%" alt="">
-                                        <span style="font-weight: bold; font-size: 14px;">&nbsp;&nbsp;O'zb&nbsp;&nbsp;</span>
-                                        <span class="ripple ripple-animate"
-                                              style="height: 52px; width: 52px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(26, 83, 240); opacity: 0.4; top: 3px; left: -11.9844px;"></span>
-                                    </a>
-                                </c:if>
-                                <c:if test="${sessionDataValue.language == 'ru_RU'}">
-                                    <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret has-ripple"
-                                       data-toggle="dropdown" title="Тил" style="color:#fff; font-size: 20px; width: 80px">
-                                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/ru.svg"
-                                             width="20px" style="border-radius: 50%" alt="">
-                                        <span style="font-weight: bold; font-size: 14px;">&nbsp;&nbsp;Рус&nbsp;&nbsp;</span>
-                                        <span class="ripple ripple-animate"
-                                              style="height: 52px; width: 52px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(26, 83, 240); opacity: 0.4; top: 3px; left: -11.9844px;"></span>
-                                    </a>
-                                </c:if>
-                                <c:if test="${sessionDataValue.language == 'en_EN'}">
-                                    <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret has-ripple"
-                                       data-toggle="dropdown" title="Тил" style="color:#fff; font-size: 20px; width: 80px">
-                                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/gb.svg"
-                                             width="20px" style="border-radius: 50%" alt="">
-                                        <span style="font-weight: bold; font-size: 14px;">&nbsp;&nbsp;Eng&nbsp;&nbsp;</span>
-                                        <span class="ripple ripple-animate"
-                                              style="height: 52px; width: 52px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(26, 83, 240); opacity: 0.4; top: 3px; left: -11.9844px;"></span>
-                                    </a>
-                                </c:if>
+                                  <c:if test="${sessionDataValue.language == 'uz_UZ'}">
+                                      <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret has-ripple lang"
+                                         data-toggle="dropdown" title="Тил" >
+                                          <img src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"
+                                               width="20px" style="border-radius: 50%" alt="">
+                                          <span style="font-weight: bold; font-size: 14px;">&nbsp;&nbsp;Ўзб&nbsp;&nbsp;</span>
+                                          <span class="ripple ripple-animate"
+                                                style="height: 52px; width: 52px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(26, 83, 240); opacity: 0.4; top: 3px; left: -11.9844px;"></span>
+                                      </a>
+                                  </c:if>
+                                  <c:if test="${sessionDataValue.language == 'oz_OZ'}">
+                                      <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret has-ripple lang"
+                                         data-toggle="dropdown" title="Тил" >
+                                          <img src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"
+                                               width="20px" style="border-radius: 50%" alt="">
+                                          <span style="font-weight: bold; font-size: 14px;">&nbsp;&nbsp;O'zb&nbsp;&nbsp;</span>
+                                          <span class="ripple ripple-animate"
+                                                style="height: 52px; width: 52px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(26, 83, 240); opacity: 0.4; top: 3px; left: -11.9844px;"></span>
+                                      </a>
+                                  </c:if>
+                                  <c:if test="${sessionDataValue.language == 'ru_RU'}">
+                                      <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret has-ripple lang"
+                                         data-toggle="dropdown" title="Тил" >
+                                          <img src="${pageContext.servletContext.contextPath}/resources/assets/images/ru.svg"
+                                               width="20px" style="border-radius: 50%" alt="">
+                                          <span style="font-weight: bold; font-size: 14px;">&nbsp;&nbsp;Рус&nbsp;&nbsp;</span>
+                                          <span class="ripple ripple-animate"
+                                                style="height: 52px; width: 52px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(26, 83, 240); opacity: 0.4; top: 3px; left: -11.9844px;"></span>
+                                      </a>
+                                  </c:if>
+                                  <c:if test="${sessionDataValue.language == 'en_EN'}">
+                                      <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret has-ripple lang"
+                                         data-toggle="dropdown" title="Тил" >
+                                          <img src="${pageContext.servletContext.contextPath}/resources/assets/images/gb.svg"
+                                               width="20px" style="border-radius: 50%" alt="">
+                                          <span style="font-weight: bold; font-size: 14px;">&nbsp;&nbsp;Eng&nbsp;&nbsp;</span>
+                                          <span class="ripple ripple-animate"
+                                                style="height: 52px; width: 52px; animation-duration: 0.7s; animation-timing-function: linear; background: rgb(26, 83, 240); opacity: 0.4; top: 3px; left: -11.9844px;"></span>
+                                      </a>
+                                  </c:if>
 
 
-                                <div class="dropdown-menu dropdown-menu-right profile-notification p-2 f-16"
-                                     style="min-width: 150px;">
-                                    <a class="dropdown-item" href="" onclick="langF('uz_UZ')" style="padding: 10px"><img
-                                            src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"
-                                            class="mr-2" width="20px" alt=""><span>Ўзбекча</span></a>
-                                    <a class="dropdown-item" href="" onclick="langF('oz_OZ')" style="padding: 10px"><img
-                                            src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"
-                                            class="mr-2" width="20px" alt=""><span>O'zbekcha</span></a>
-                                    <a class="dropdown-item" href="" onclick="langF('ru_RU')" style="padding: 10px"><img
-                                            src="${pageContext.servletContext.contextPath}/resources/assets/images/ru.svg"
-                                            class="mr-2" width="20px" alt=""><span>Русский</span></a>
-                                    <a class="dropdown-item" href="" onclick="langF('en_EN')" style="padding: 10px"><img
-                                            src="${pageContext.servletContext.contextPath}/resources/assets/images/gb.svg"
-                                            class="mr-2" width="20px" alt=""><span>English</span></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown drp-user">
-                                <a href="#" class="dropdown-toggle f-20" data-toggle="dropdown">
-                                    <img src="${pageContext.servletContext.contextPath}/resources/assets/images/ava.svg" alt=""
-                                         width="30px">
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right profile-notification">
-                                    <div class="pro-head">
-                                        <img src="${pageContext.servletContext.contextPath}/resources/assets/images/gtk.png"
-                                             class="img-radius" alt="User-Profile-Image">
-                                        <span>${sessionDataValue.userRoleName}</span><br><span>${sessionDataValue.userName}</span>
-                                        <a href="${pageContext.request.contextPath}/exit.do" class="dud-logout" title="Logout">
-                                            <i class="feather icon-log-out"></i>
-                                        </a>
-                                    </div>
-                                    <ul class="pro-body">
-                                        <c:forEach var="roleList" items="${sessionDataValue.roles}">
-                                            <c:if test="${roleList.code == sessionDataValue.userRole}">
-                                                <li class="active"><a href="#" class="dropdown-item"><img
-                                                        src="${pageContext.servletContext.contextPath}/resources/assets/images/ava.svg"
-                                                        alt="" class="mr-1" width="15px"></i>${roleList.name}</a></li>
-                                            </c:if>
-                                            <c:if test="${roleList.code != sessionDataValue.userRole}">
-                                                <li class=""><a href="javascript:checkRole('${roleList.code}')"
-                                                                class="dropdown-item"><img
-                                                        src="${pageContext.servletContext.contextPath}/resources/assets/images/ava.svg"
-                                                        alt="" class="mr-1" width="15px"></i>${roleList.name}</a></li>
-                                            </c:if>
-                                        </c:forEach>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                                  <div class="dropdown-menu dropdown-menu-right profile-notification p-2 f-16"
+                                       style="min-width: 150px;">
+                                      <a class="dropdown-item" href="" onclick="langF('uz_UZ')" style="padding: 10px"><img
+                                              src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"
+                                              class="mr-2" width="20px" alt=""><span>Ўзбекча</span></a>
+                                      <a class="dropdown-item" href="" onclick="langF('oz_OZ')" style="padding: 10px"><img
+                                              src="${pageContext.servletContext.contextPath}/resources/assets/images/uz.svg"
+                                              class="mr-2" width="20px" alt=""><span>O'zbekcha</span></a>
+                                      <a class="dropdown-item" href="" onclick="langF('ru_RU')" style="padding: 10px"><img
+                                              src="${pageContext.servletContext.contextPath}/resources/assets/images/ru.svg"
+                                              class="mr-2" width="20px" alt=""><span>Русский</span></a>
+                                      <a class="dropdown-item" href="" onclick="langF('en_EN')" style="padding: 10px"><img
+                                              src="${pageContext.servletContext.contextPath}/resources/assets/images/gb.svg"
+                                              class="mr-2" width="20px" alt=""><span>English</span></a>
+                                  </div>
+                              </div>
+                          </li>
+                          <li class="">
+                              <div class="dropdown drp-user">
+                                  <a href="#" class="dropdown-toggle f-20" data-toggle="dropdown">
+                                      <img src="${pageContext.servletContext.contextPath}/resources/assets/images/ava.svg" alt=""
+                                           width="30px">
+                                  </a>
+                                  <div class="dropdown-menu dropdown-menu-right profile-notification">
+                                      <div class="pro-head">
+                                          <img src="${pageContext.servletContext.contextPath}/resources/assets/images/gtk.png"
+                                               class="img-radius" alt="User-Profile-Image">
+                                          <span>${sessionDataValue.userRoleName}</span><br><span>${sessionDataValue.userName}</span>
+                                          <a href="${pageContext.request.contextPath}/exit.do" class="dud-logout" title="Logout">
+                                              <i class="feather icon-log-out"></i>
+                                          </a>
+                                      </div>
+                                      <ul class="pro-body">
+                                          <c:forEach var="roleList" items="${sessionDataValue.roles}">
+                                              <c:if test="${roleList.code == sessionDataValue.userRole}">
+                                                  <li class="active"><a href="#" class="dropdown-item"><img
+                                                          src="${pageContext.servletContext.contextPath}/resources/assets/images/ava.svg"
+                                                          alt="" class="mr-1" width="15px"></i>${roleList.name}</a></li>
+                                              </c:if>
+                                              <c:if test="${roleList.code != sessionDataValue.userRole}">
+                                                  <li class=""><a href="javascript:checkRole('${roleList.code}')"
+                                                                  class="dropdown-item"><img
+                                                          src="${pageContext.servletContext.contextPath}/resources/assets/images/ava.svg"
+                                                          alt="" class="mr-1" width="15px"></i>${roleList.name}</a></li>
+                                              </c:if>
+                                          </c:forEach>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+
         </header>
         <div class="pcoded-main-container" id="apple">
             <div class="pcoded-wrapper container-fluid">
