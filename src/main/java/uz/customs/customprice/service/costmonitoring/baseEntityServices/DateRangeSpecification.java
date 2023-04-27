@@ -7,6 +7,7 @@ import uz.customs.customprice.entity.costmonitoring.BaseEntity;
 
 import javax.persistence.criteria.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static org.springframework.util.StringUtils.hasText;
 
@@ -18,21 +19,21 @@ public class DateRangeSpecification implements Specification<BaseEntity> {
         Search columnSearch = input.getColumn("gc3Date").getSearch();
         String dateFilter = columnSearch.getValue();
         columnSearch.setValue("");
-        if (!hasText(dateFilter)) {
-            minFirstDay = maxFirstDay = null;
-            return;
-        }
-        String[] bounds = dateFilter.split(";");
-        minFirstDay = getValue(bounds, 0);
-        maxFirstDay = getValue(bounds, 1);
 //        if (!hasText(dateFilter)) {
-//            minFirstDay = LocalDateTime.now().toLocalDate().minusDays(1);
-//            maxFirstDay = LocalDateTime.now().toLocalDate();
-//        } else {
-//            String[] bounds = dateFilter.split(";");
-//            minFirstDay = getValue(bounds, 0);
-//            maxFirstDay = getValue(bounds, 1);
+//            minFirstDay = maxFirstDay = null;
+//            return;
 //        }
+//        String[] bounds = dateFilter.split(";");
+//        minFirstDay = getValue(bounds, 0);
+//        maxFirstDay = getValue(bounds, 1);
+        if (!hasText(dateFilter)) {
+            minFirstDay = LocalDateTime.now().toLocalDate().minusMonths(1);
+            maxFirstDay = LocalDateTime.now().toLocalDate();
+        } else {
+            String[] bounds = dateFilter.split(";");
+            minFirstDay = getValue(bounds, 0);
+            maxFirstDay = getValue(bounds, 1);
+        }
     }
 
     private LocalDate getValue(String[] bounds, int index) {

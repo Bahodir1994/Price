@@ -42,7 +42,7 @@
                     <ul class="nav pcoded-inner-navbar sidenav-inner">
 
                         <li class="nav-item pcoded-hasmenu">
-                            <a href="#!" class="nav-link "><span class="pcoded-micon"><i
+                            <a href="${pageContext.servletContext.contextPath}" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home text-dark"></i></span><span
                                     class="pcoded-mtext"><fmt:message key="mainPage" bundle="${resourceBundle}"/></span></a>
 
@@ -113,7 +113,7 @@
               <div class="container" style="max-width: 100%!important;">
                   <div class="m-header  mr-1">
                       <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
-                      <a href="#!" class="b-brand" style="height: 60px">
+                      <a href="${pageContext.servletContext.contextPath}" class="b-brand" style="height: 60px">
                           <!-- ========   change your logo hear   ============ -->
                           <img src="${pageContext.servletContext.contextPath}/resources/assets/images/gtk.png" style="margin-left: 80px; margin-right: -25px; width: 35px"
                                alt="" class="logo">

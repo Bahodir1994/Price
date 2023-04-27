@@ -162,7 +162,7 @@
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-md-2">
-                                                            <label for="g41"><fmt:message key="transferFeature" bundle="${resourceBundle}"/></label>
+                                                            <label for="g41"><fmt:message key="additionalUnitMeasurement" bundle="${resourceBundle}"/></label>
                                                             <select class="selectpicker form-control show-menu-arrow g41"
                                                                     data-style="form-control form-control-sm"
                                                                     id="g41" multiple
