@@ -118,7 +118,7 @@ public class CostMonitoringDataService {
             if (StringUtils.isEmpty(g31NameSearchValue)) {
                 return null; // No search value provided, return null predicate
             }
-            String[] searchValues = g31NameSearchValue.split(","); // assuming search values are comma-separated
+            String[] searchValues = g31NameSearchValue.split("#"); // assuming search values are comma-separated
             Predicate combinedPredicate = null;
             for (String searchValue : searchValues) {
                 searchValue = searchValue.trim();
