@@ -1,11 +1,16 @@
 package uz.customs.customprice.entity.costmonitoring;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name = "BASE", schema = "CATEGORY")
@@ -171,7 +176,13 @@ public class BaseEntity {
     @Column(name = "ASOS_QIYMAT", nullable = true, length = 815)
     private String asosQiymat;
 
+    @Column(name = "KURSVAL_CURDATE", nullable = true, length = 49)
+    private String kursvalCurdate;
+
+    @Column(name = "KURSUSD_CURDATE", nullable = true, length = 49)
+    private String kursusdCurdate;
+
     @Column(name = "KTD", nullable = false)
     private int ktd;
-    
+
 }
