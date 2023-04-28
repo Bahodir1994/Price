@@ -40,16 +40,16 @@
                     <div class="col-sm-12 my-0 py-0 px-0 " style="vertical-align: middle">
                         <div class="justify-content-center py-1 pb-2 mt-2">
                             <div class="form-row m-0 justify-content-center">
-                                <div class="form-group mx-2  p-0 text-center" data-tg-tour="Step 1" data-tg-title="Example heading 1">
+                                <div class="form-group col-xl-1 col-lg-2 mx-2  p-0 text-center" data-tg-tour="Step 1" data-tg-title="Example heading 1">
                                     <label for="g33" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="hsCode" bundle="${resourceBundle}"/></label>
                                     <input type="text" id="g33" class="form-control form-control-sm w-100 g33" placeholder="0000 00 000 0">
                                 </div>
-                                <div class="form-group mx-2  p-0 text-center" data-tg-tour="Step 2" data-tg-title="Example heading 2">
+                                <div class="form-group col-xl-1 col-lg-2 mx-2  p-0 text-center" data-tg-tour="Step 2" data-tg-title="Example heading 2">
                                     <label for="g31Name" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="commodityName" bundle="${resourceBundle}"/></label>
                                     <input type="text" id="g31Name" class="form-control form-control-sm w-100 g31Name"
                                            placeholder="BYD">
                                 </div>
-                                <div class="form-group mr-2  p-0 text-center" data-tg-tour="Step 3" data-tg-title="Example heading 3">
+                                <div class="form-group col-xl-2 col-lg-4 mr-2  p-0 text-center" data-tg-tour="Step 3" data-tg-title="Example heading 3">
                                     <label for="g15" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="shipmentCountry" bundle="${resourceBundle}"/></label>
                                     <select class="selectpicker form-control show-menu-arrow g15"
                                             data-style="form-control form-control-sm" id="g15" multiple
@@ -62,7 +62,7 @@
                                         </c:forEach>
                                     </select>
                                 </div>
-                                <div class="form-group col-sm-2 mr-2  p-0 text-center">
+                                <div class="form-group col-xl-2 col-lg-4 col-sm-2 mr-2  p-0 text-center">
                                     <label for="g11" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="originCountry" bundle="${resourceBundle}"/></label>
                                     <select class="selectpicker form-control show-menu-arrow g11"
                                             data-style="form-control form-control-sm" id="g11" multiple
@@ -74,33 +74,34 @@
                                         </c:forEach>
                                     </select>
                                 </div>
-                                <div class="form-group text-right m-0 p-0 mr-1">
+                                <div class="form-group col-xl-1 col-lg-3 text-right m-0 p-0 mr-1">
                                     <label for="gc3DateStart"
                                            class="f-w-600"
                                            style=" margin-right: 5px;"><fmt:message key="from" bundle="${resourceBundle}"/>: </label>
                                     <input type="date" class="form-control form-control-sm w-100 gc3DateStart" maxlength="10" tabindex="1" name="dcodate" id="gc3DateStart">
                                 </div>
-                                <div class="form-group col-md-1 col-sm-1 text-right m-0 p-0"><label for="gc3DateEnd" class="f-w-600" style=" margin-right: 5px;"><fmt:message key="to" bundle="${resourceBundle}"/>: </label>
+                                <div class="form-group col-xl-1 col-lg-3 col-md-1 col-sm-1 text-right m-0 p-0">
+                                    <label for="gc3DateEnd" class="f-w-600" ><fmt:message key="to" bundle="${resourceBundle}"/>: </label>
                                     <input type="date" class="form-control form-control-sm w-100 gc3DateEnd" maxlength="10" tabindex="2" name="dcodate" id="gc3DateEnd">
                                 </div>
-                                <div class="form-group col-md-1 col-sm-1 text-right ml-1 p-0 " style="margin-top: 20px">
+                                <div class="form-group col-xl-1 col-lg-2 col-md-1 col-sm-1 text-right ml-1 p-0 " style="margin-top: 20px">
                                     <button type="button" tabindex="3"
-                                            class="btn btn-sm btn-outline-primary f-w-900 w-75 updateAppTableV1"
+                                            class="btn btn-sm btn-outline-primary f-w-900  updateAppTableV1"
                                             style="border-radius: 5px">
                                         <i class="feather icon-search"></i>&nbsp;<fmt:message key="search" bundle="${resourceBundle}"/>
                                     </button>
                                 </div>
-                                <div class="form-group col-md-1 col-sm-1 text-right ml-1 p-0 " style="margin-top: 20px">
+                                <div class="form-group col-xl-1 col-lg-2 col-md-1 col-sm-1 text-right ml-1 p-0 " style="margin-top: 20px">
                                     <button type="button" tabindex="3"
-                                            class="btn btn-sm btn-outline-success f-w-900 w-75 updateAppTableV2V3"
+                                            class="btn btn-sm btn-outline-success f-w-900 updateAppTableV2V3"
                                             style="border-radius: 5px" data-toggle="modal"
                                             data-target="#exampleModalCenter">
                                         <i class="feather icon-bar-chart"></i>&nbsp;<fmt:message key="report" bundle="${resourceBundle}"/>
                                     </button>
                                 </div>
-                                <div class="form-group col-md-1 col-sm-1 text-right ml-1 p-0 " style="margin-top: 20px">
+                                <div class="form-group col-xl-1 col-lg-2 col-md-1 col-sm-1 text-right ml-1 p-0 " style="margin-top: 20px">
                                     <button type="button" tabindex="3"
-                                            class="btn btn-sm btn-outline-primary f-w-900 w-75"
+                                            class="btn btn-sm btn-outline-primary f-w-900"
                                             style="border-radius: 5px"
                                             data-toggle="modal"
                                             data-target="#columnSetting"
@@ -388,6 +389,7 @@
                     </table>
                 </div>
             </div>
+
         </div>
     </div>
 
