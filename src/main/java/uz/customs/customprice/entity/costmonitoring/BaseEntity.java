@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
 
@@ -18,6 +17,8 @@ import java.sql.Date;
 @NoArgsConstructor
 @Getter
 @Setter
+@Cacheable
+@Cache(region = "BaseEntity", usage = CacheConcurrencyStrategy.READ_WRITE)
 public class BaseEntity {
     @Id
     @Column(name = "ID", nullable = false)

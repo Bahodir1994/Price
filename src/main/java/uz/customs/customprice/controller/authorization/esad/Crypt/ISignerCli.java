@@ -1,4 +1,4 @@
-package uz.customs.expertise.controllers.authorization.esad.Crypt;
+package uz.customs.customprice.controller.authorization.esad.Crypt;
 
 import java.io.BufferedReader;
 import java.io.File;

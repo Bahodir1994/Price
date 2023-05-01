@@ -1,8 +1,8 @@
 package uz.customs.customprice.controller.authorization.esad;
 
 import com.ibm.as400.util.BASE64Encoder;
+import uz.customs.customprice.controller.authorization.esad.Crypt.ISignerCli;
 import uz.customs.customprice.controller.authorization.esad.sbs.beans.common.bnUserParam;
-import uz.customs.expertise.controllers.authorization.esad.Crypt.ISignerCli;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

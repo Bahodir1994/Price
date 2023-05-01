@@ -137,7 +137,7 @@
                                                 <span style="border-bottom: 1px solid #dee2e6 !important;">${sessionDataValue.userName}</span></span>
                           </li>
                       </ul>
-                      <ul class="navbar-nav" style="height: 50px; margin: auto" >
+                      <ul class="navbar-nav" style="height: 50px" >
                           <li style="line-height: 1.2" class="px-0">
                               <div class="time" style="padding-top: 5px">
                                   <span class="date"></span>

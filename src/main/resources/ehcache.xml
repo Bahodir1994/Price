@@ -1,0 +1,31 @@
+<ehcache>
+    <defaultCache
+            maxEntriesLocalHeap="10000000"
+            eternal="false"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="600"
+            diskSpoolBufferSizeMB="2048"
+            maxEntriesLocalDisk="10000000"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"
+            statistics="true">
+        <persistence strategy="localTempSwap"/>
+    </defaultCache>
+
+    <cache name="BaseEntity"
+           maxEntriesLocalHeap="1000"
+           eternal="false"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+    <management>
+        <management>
+            <enabled>true</enabled>
+            <agentId>yourApp</agentId>
+            <registryName>yourRegistry</registryName>
+        </management>
+    </management>
+    <property name="hibernate.jmx.enabled">true</property>
+    <property name="hibernate.jmx.usePlatformServer">true</property>
+</ehcache>

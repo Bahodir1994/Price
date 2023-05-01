@@ -33545,9 +33545,5 @@ svg #loop {
     .navbar-nav .nav-item:nth-child(2) li{
         padding-right: 10%!important;
     }
-}
-@media only screen and (max-width:638px) {
-    #users{
-       display: none!important;
-    }
+
 }

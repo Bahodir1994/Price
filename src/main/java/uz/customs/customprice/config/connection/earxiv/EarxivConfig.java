@@ -1,4 +1,4 @@
-package uz.customs.expertise.config.connection.earxiv;
+package uz.customs.customprice.config.connection.earxiv;
 
 import com.zaxxer.hikari.HikariConfig;
 

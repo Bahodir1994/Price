@@ -1,4 +1,4 @@
-package uz.customs.expertise.config.connection.earxiv;
+package uz.customs.customprice.config.connection.earxiv;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

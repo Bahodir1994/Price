@@ -29,51 +29,6 @@ public class CostMonitoringDataService {
     @Autowired
     private EntityManager entityManager;
 
-//    @Transactional(rollbackFor = {Exception.class}, propagation = Propagation.REQUIRED)
-//    public DataTablesOutput<BaseEntity> dataTable(DataTablesInput input, HttpServletRequest httpServletRequest){
-//        DateRangeSpecification dateRangeSpecification = new DateRangeSpecification(input);
-//        DateRangeG7B dateRangeG7B = new DateRangeG7B(input);
-//
-//        long timeRangeQueryStart = System.currentTimeMillis();
-//
-//        // Modify the findAll method call to add a custom Specification for g31Name search
-//        Specification<BaseEntity> specification = dateRangeSpecification.and(dateRangeG7B);
-//        String g31Name = input.getColumn("g31Name").getSearch().getValue();
-//        if (!StringUtils.isEmpty(g31Name)) {
-//            String[] g31NameValues = g31Name.split(","); // Split multiple values by comma
-//            List<Specification<BaseEntity>> g31NameSpecifications = new ArrayList<>();
-//            for (String g31NameValue : g31NameValues) {
-//                g31NameSpecifications.add((root, query, builder) ->
-//                        builder.like(builder.lower(root.get("g31Name")), "%" + g31NameValue.toLowerCase() + "%"));
-//            }
-//            specification = specification.and(Specification.where(g31NameSpecifications.get(0)));
-//            for (int i = 1; i < g31NameSpecifications.size(); i++) {
-//                specification = specification.or(g31NameSpecifications.get(i));
-//            }
-//        }
-//
-//        DataTablesOutput<BaseEntity> baseEntityDataTablesOutput =  costMonitoringDataRepository.findAll(
-//                input,
-//                specification
-//        );
-//        long timeRangeQueryEnd = System.currentTimeMillis();
-//
-//        String g33 = input.getColumn("g33").getSearch().getValue();
-//        if (!g33.equals("") || !StringUtils.isEmpty(g31Name)){
-//            costMonitoringLogService.saveLog(
-//                    httpServletRequest,
-//                    timeRangeQueryStart,
-//                    timeRangeQueryEnd,
-//                    baseEntityDataTablesOutput.getRecordsFiltered(),
-//                    g33,
-//                    g31Name
-//            );
-//        }
-//
-//        return baseEntityDataTablesOutput;
-//    }
-
-
     @Transactional(rollbackFor = {Exception.class}, propagation = Propagation.REQUIRED)
     public DataTablesOutput<BaseEntity> dataTable(DataTablesInput input, HttpServletRequest httpServletRequest){
         DateRangeSpecification dateRangeSpecification = new DateRangeSpecification(input);

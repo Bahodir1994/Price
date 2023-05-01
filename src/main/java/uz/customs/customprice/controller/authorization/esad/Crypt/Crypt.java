@@ -1,4 +1,4 @@
-package uz.customs.expertise.controllers.authorization.esad.Crypt;
+package uz.customs.customprice.controller.authorization.esad.Crypt;
 
 public class Crypt {
 

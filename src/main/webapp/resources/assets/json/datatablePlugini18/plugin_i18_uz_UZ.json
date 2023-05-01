@@ -1,12 +1,12 @@
 {
     "emptyTable": "Маълумот йўқ",
-    "info": "Умумий _TOTAL_ ёзувларлардан _START_ дан _END_ гачаси кўрсатилмоқда",
-    "infoEmpty": "Умумий 0 ёзувлардан 0 дан 0 гачаси кўрсатилмоқда",
-    "infoFiltered": "(_MAX_ ёзувлардан филтрланди)",
-    "lengthMenu": "_MENU_ та ёзувлар",
-    "loadingRecords": "Ёзувлар юкланмоқда...",
+    "info": "Умумий _TOTAL_ маълумотлардан _START_ дан _END_ гачаси кўрсатилмоқда",
+    "infoEmpty": "Умумий 0 маълумотлардан 0 дан 0 гачаси кўрсатилмоқда",
+    "infoFiltered": "(Жами _MAX_ маълумот)",
+    "lengthMenu": "_MENU_ та маълумотлар",
+    "loadingRecords": "Маълумотлар юкланмоқда...",
     "processing": "<span class='fa-stack fa-lg'><i class='fas fa-spinner fa-spin fa-stack-2x fa-fw'></i></span>&nbsp;Юкланмоқда...",
-    "search": "Izlash:",
+    "search": "Излаш:",
     "zeroRecords": "Маълумот йўқ.",
     "paginate": {
         "first": "Биринчи",

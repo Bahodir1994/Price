@@ -1,5 +1,9 @@
 package uz.customs.customprice.service.authorization;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -84,4 +88,27 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(userId);
         return true;
     }
+
+
+
+        @Autowired
+        private SessionFactory sessionFactory;
+
+        @CacheEvict(value = "users", allEntries = true)
+        public void saves(User user) {
+            sessionFactory.getCurrentSession().save(user);
+        }
+
+        @Cacheable(value = "users", key = "#id")
+        public User get(Long id) {
+            return sessionFactory.getCurrentSession().get(User.class, id);
+        }
+
+        @CacheEvict(value = "users", allEntries = true)
+        public void delete(Long id) {
+            User user = get(id);
+            if (user != null) {
+                sessionFactory.getCurrentSession().delete(user);
+            }
+        }
 }
