@@ -53,10 +53,10 @@
 </style>
 <div class="m-0 p-0" style="background: rgba(0, 0, 1, 0.3)">
 <%--    style="vertical-align: middle; text-align: center; border: 5px solid white; width: 80%; height: 60%"--%>
-    <div class="clss">
-        <p class="cpt" >БОЖХОНА ТЎЛОВЛАРИ</p>
-        <p class="cptSub">БОЖХОНА ТЎЛОВЛАРИ</p>
-    </div>
+<%--    <div class="clss">--%>
+<%--        <p class="cpt" >БОЖХОНА ТЎЛОВЛАРИ</p>--%>
+<%--        <p class="cptSub">БОЖХОНА ТЎЛОВЛАРИ</p>--%>
+<%--    </div>--%>
 </div>
 <script>
     $(document).ready();
