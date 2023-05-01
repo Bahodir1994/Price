@@ -12,7 +12,18 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 @Entity
-@Table(name = "BASE", schema = "CATEGORY")
+@Table(name = "BASE", schema = "CATEGORY", indexes = {
+        @Index(columnList = "id", unique = true),
+        @Index(columnList = "G7A", unique = false),
+        @Index(columnList = "G7B", unique = false),
+        @Index(columnList = "G7C", unique = false),
+        @Index(columnList = "G1A", unique = false),
+        @Index(columnList = "G1B", unique = false),
+        @Index(columnList = "G31NAME", unique = false),
+        @Index(columnList = "G33", unique = false),
+        @Index(columnList = "GDVIPDATE", unique = false),
+        @Index(columnList = "GC3DATE", unique = false)
+})
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
