@@ -18,9 +18,6 @@ import javax.persistence.Table;
 @Table(name = "COUNTRY", schema = "CPID")
 public class Country {
     @Id
-    @Column(name = "code")
-    private String id;
-
     @Column(name = "CODE", columnDefinition = "VARCHAR(3) CCSID 1025")
     private String code;
 

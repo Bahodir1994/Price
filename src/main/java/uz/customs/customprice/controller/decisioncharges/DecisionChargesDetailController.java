@@ -43,8 +43,8 @@ public class DecisionChargesDetailController {
     }
 
     @GetMapping(value = "/data/decision_charges/v3")
-    public DataTablesOutput<TransportType> getDataV3(@Valid DataTablesInput input, @RequestParam String appId) throws UnexpectedRollbackException {
-        return transportTypeDataService.dataTable(input, appId);
+    public DataTablesOutput<TransportType> getDataV3(@Valid DataTablesInput input, @RequestParam String appId, HttpServletRequest httpServletRequest) throws UnexpectedRollbackException {
+        return transportTypeDataService.dataTable(input, appId, httpServletRequest);
     }
 
     @GetMapping(value = "/data/decision_charges/v4")

@@ -575,6 +575,12 @@
             // $('#tourbutton').on('click', function () {
             //     tg.start()
             // });
+
+            function nullClear(s) {
+                s = ((s == null || s == "null" || s == "") ? "" : s);
+                return s;
+            }
+
         </script>
     </body>
 </html>

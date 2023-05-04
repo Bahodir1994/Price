@@ -96,7 +96,6 @@
             </div>
         </div>
     </div>
-
     <script>
 
         $('.selectpicker').selectpicker();
@@ -145,7 +144,6 @@
         function clearDate(){
             $('#insTimeV2').val('');
         }
-
         var app_table_02 = $('#app_table_02').DataTable({
             // scrollY:        '45vh',
             // scrollX:        true,
@@ -240,7 +238,6 @@
             filter = filter.substring(0, filter.length - 1);
             return filter;
         }
-
         $('.updateAppTableV2').on('click', function () {
             app_table_02
                 .column('insTime:name').search($('input#insTimeV2').val().replace(' — ', ';'))

@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import uz.customs.customprice.entity.catalog.Country;
 import uz.customs.customprice.entity.decisioncharges.ApplicationDecisionCost;
 
 import javax.persistence.*;
@@ -35,11 +36,23 @@ public class TransportType {
     @Column(name = "APP_ID", columnDefinition = "VARCHAR(50)")
     private String appId;
 
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "finish_country", insertable = false, updatable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Country finishCountryJoin;
+
     @Column(name = "finish_country", length = 3)
     private String finishCountry;
 
     @Column(name = "finish_country_NM", columnDefinition = "VARCHAR(120) CCSID 1208")
     private String finishCountryNm;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "end_country", insertable = false, updatable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Country endCountryJoin;
 
     @Column(name = "end_country", length = 3)
     private String endCountry;

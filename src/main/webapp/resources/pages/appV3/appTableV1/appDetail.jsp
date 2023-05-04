@@ -94,7 +94,7 @@
                                 </span>
                             </div>
                             <h5 class="p-2 bd-highlight" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                                <b>АРИЗА</b> №:<u class="text-primary appNumAndDate">1726/2023-03-03/00005</u>
+                                <b>АРИЗА</b> №:<u class="text-primary appNumAndDate"></u>
                             </h5>
                         </div>
                         <div class="row mt-1">
@@ -105,103 +105,94 @@
                                         <c:forEach var="val" items="${transports}" varStatus="i">
                                             <c:set var="total" value="${total + val.transportPrice}"/>
                                         </c:forEach>
-                                        <c:forEach var="val" items="${appInfo}" varStatus="i">
                                             <table class="table table-sm mt-1">
                                                 <tbody>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Аризачи:</td>
-                                                    <td style="height: 0.4vh!important;">${val[9]}</td>
+                                                    <td style="height: 0.4vh!important;" class="personFio"></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Сотувчи:</td>
-                                                    <td style="height: 0.4vh!important;">${val[3]} - ${val[15]}</td>
+                                                    <td style="height: 0.4vh!important;" class="customerCountryNmAndSellerOrg"></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Телефон рақами:</td>
-                                                    <td style="height: 0.4vh!important;">${val[11]}</td>
+                                                    <td style="height: 0.4vh!important;" class="personPhone"></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Импортёр номи:</td>
-                                                    <td style="height: 0.4vh!important;">${val[34]}</td>
+                                                    <td style="height: 0.4vh!important;" class="importerNm"></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Юк жўнатувчи:</td>
-                                                    <td style="height: 0.4vh!important;">${val[17]} - ${val[18]}</td>
+                                                    <td style="height: 0.4vh!important;" class="senderCountryNmAndSenderOrg"></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                        </c:forEach>
                                     </div>
                                 </div>
                                 <div class="col-4 col-lg-4 border-left border-right">
                                     <div class="container table-responsive">
-                                        <c:forEach var="val" items="${appInfo}" varStatus="i">
                                             <table class="table table-sm mt-1">
                                                 <tbody>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Импортёр СТИРи:</td>
-                                                    <td style="height: 0.4vh!important;">${val[35]}</td>
+                                                    <td style="height: 0.4vh!important;" class="importerTin"></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Ваколатли шахс ЖШШИРи:</td>
-                                                    <td style="height: 0.4vh!important;">${val[37]} - ${val[38]}</td>
+                                                    <td style="height: 0.4vh!important;" class="authorizedPersonPinAndAuthorizedPersonDoc"></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Ваколатини тасдиқловчи хужжат:</td>
-                                                    <td style="height: 0.4vh!important;">${val[39]} - ${val[40]}</td>
+                                                    <td style="height: 0.4vh!important;" class="stateNumberAndStateNumberDate"></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Божхона қиймати:</td>
-                                                    <td style="height: 0.4vh!important;">${val[30]} ${val[32]}</td>
+                                                    <td style="height: 0.4vh!important;" class="customsPriceSumAndCustomsPriceCurrency"></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Фактура қиймати:</td>
-                                                    <td style="height: 0.4vh!important;">${val[29]} ${val[32]}</td>
+                                                    <td style="height: 0.4vh!important;" class="priceSumAndCustomsPriceCurrency"></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                        </c:forEach>
                                     </div>
                                 </div>
                                 <div class="col-4 col-lg-4 border-left">
                                     <div class="container table-responsive">
-                                        <c:set var="total" value="${0.0}"/>
-                                        <c:forEach var="val" items="${transports}" varStatus="i">
-                                            <c:set var="total" value="${total + val.transportPrice}"/>
-                                        </c:forEach>
-                                        <c:forEach var="val" items="${appInfo}" varStatus="i">
                                             <table class="table table-sm mt-1">
                                                 <tbody>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Нетто оғирлиги:</td>
-                                                    <td style="height: 0.4vh!important;">${val[27]} кг</td>
+                                                    <td style="height: 0.4vh!important;" class="nettoSum">0.00 кг</td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Брутто оғирлиги:</td>
-                                                    <td style="height: 0.4vh!important;">${val[28]} кг</td>
+                                                    <td style="height: 0.4vh!important;" class="bruttoSum">0.00 кг</td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Етказиб бериш шарти:</td>
-                                                    <td style="height: 0.4vh!important;">${val[22]} - ${val[23]}</td>
+                                                    <td style="height: 0.4vh!important;" class="termsNmAndTermsAddr"> - </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Транспорт харажатлари:</td>
-                                                    <td style="height: 0.4vh!important;"><a
-                                                            type="button"
-                                                            class="btn btn-outline-primary btn-sm radius-30"
-                                                            type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                                            data-bs-target="#exampleModal1" style="cursor: pointer;">
-                                                            <c:out value="${total}"/>
-                                                        <i class="bx bx-info-circle"></i>
+                                                    <td style="height: 0.4vh!important;">
+                                                        <a type="button" onclick="openTransportTypeTableModal()"
+                                                            class="btn btn-outline-primary btn-sm"
+                                                            data-toggle="modal"
+                                                            data-target=".transportTypTableeModal">
+                                                            <u class="transportTypTableeModalButton"></u>
+                                                            <i class="fas fa-info-circle"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Ваколатини тасдиқловчи хужжат:</td>
-                                                    <td style="height: 0.4vh!important;">${val[39]} - ${val[40]}</td>
+                                                    <td style="height: 0.4vh!important;" class="stateNumberAndStateNumberDate"> - </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                        </c:forEach>
                                     </div>
                                 </div>
                             </div>
@@ -211,20 +202,34 @@
                         </div>
                     </div>
                 </div>
-<%--                <div class="card">--%>
-<%--                    <div class="card-body">--%>
-<%--                        <h1>asdasd</h1>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
             </div>
         </div>
-        <div class="modal fade" id="exampleExtraLargeModal3" tabindex="-1" style="display: none;"
-             aria-hidden="true">
+        <div class="modal fade transportTypTableeModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Танланган усулдан олдинги
-                            усулни қўлламаслик сабаблари</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Транспорт харакати йўналиши ва харажатлари</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mt-0 dt-responsive p-2">
+                        <table id="app_table_03" class="table table-striped row-border order-column table-bordered nowrap" cellspacing="0" style="width: 100%"></table>
+                    </div>
+<%--                    <div class="modal-footer">--%>
+<%--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
+<%--                        <button type="button" class="btn btn-primary">Send message</button>--%>
+<%--                    </div>--%>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="exampleExtraLargeModal3" tabindex="-1" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Танланган усулдан олдинги усулни қўлламаслик сабаблари</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -242,14 +247,11 @@
                                 </table>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="exampleExtraLargeModal4" tabindex="-1" aria-hidden="true"
-             style="display: none;">
+        <div class="modal fade" id="exampleExtraLargeModal4" tabindex="-1" aria-hidden="true" style="display: none;">
             <c:forEach var="its" items="${appInfo}">
                 <input class="appIdForm" type="hidden" value="${its[0]}">
             </c:forEach>
@@ -360,13 +362,11 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="exampleExtraLargeModal5" tabindex="-1" aria-hidden="true"
-             style="display: none;">
+        <div class="modal fade" id="exampleExtraLargeModal5" tabindex="-1" aria-hidden="true" style="display: none;">
             <div class="modal-dialog modal-dialog-scrollable modal-xl">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
@@ -398,7 +398,6 @@
                 </div>
             </div>
         </div>
-
         <div id="divcalculate">
         </div>
     </div>
@@ -406,7 +405,7 @@
         var applicationId = ${appId};
         var app_table_02 = $('#app_table_02').DataTable({
             scrollY: '60vh',
-            scrollX: true,
+            scrollX: false,
             scrollCollapse: true,
             scrollResize: false,
             fixedHeader: {
@@ -426,7 +425,7 @@
             serverSide: true,
             dom: "<'row'<'col-sm-12 col-md-6'R><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-2 mt-2'l><'col-sm-12 col-md-3'i><'col-sm-12 col-md-7 mt-2'p>>",
             lengthMenu: [[5, 25, 50, -1], [5, 25, 50, appTableV1.all]],
-            fields: [{name: 'g33', mask: '0000 00 000 0'}],
+            fields: [{name: 'hsCode', mask: '0000 00 000 0'}],
             columns: [
                 {
                     title: '№',
@@ -475,6 +474,58 @@
             language: {url: '${pageContext.servletContext.contextPath}/resources/assets/json/datatablePlugini18/plugin_i18_' + sessionData.language + '.json'},
         });
 
+        function appTable03(x) {
+            setTimeout(() => {
+                var app_table_03 = $('#app_table_03').DataTable({
+                    deferLoading: false,
+                    scrollY: '70vh',
+                    scrollX: true,
+                    scrollCollapse: true,
+                    scrollResize: true,
+                    fixedHeader: {
+                        header: true,
+                        headerOffset: $('#fixed').height()
+                    },
+                    searching: true,
+                    processing: true,
+                    responsive: true,
+                    ajax: {
+                        url: '<%=request.getContextPath()%>/routeV3/V2/data/decision_charges/v3',
+                        type: 'GET',
+                        data: {
+                            appId: applicationId
+                        }
+                    },
+                    serverSide: true,
+                    dom: "<'row'<'col-sm-12 col-md-6'R><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-2 mt-2'l><'col-sm-12 col-md-3'i><'col-sm-12 col-md-7 mt-2'p>>",
+                    lengthMenu: [[5, 25, 50, -1], [5, 25, 50, appTableV1.all]],
+                    columns: [
+                        {
+                            title: '№',
+                            data: null,
+                            sortable: false,
+                            searchable: false,
+                            orderable: false,
+                            render: function (data, type, row, meta) {
+                                return meta.row + meta.settings._iDisplayStart + 1
+                            }
+                        },
+                        {className: "dt-head-center", title: appTableV3.finishCountry, name: 'finishCountry', data: 'finishCountryNm'},
+                        {className: "dt-head-center", title: appTableV3.endCountry, name: 'endCountry', data: 'endCountryNm'},
+                        {className: "dt-head-center", title: appTableV3.transportType, name: 'tarnsportType', data: 'tarnsportTypeNm'},
+                        {className: "dt-head-center", title: appTableV3.transportPrice, name: 'transportPrice', data: 'transportPrice'}
+                    ],
+                    colReorder: true,
+                    colResize: true,
+                    order: [[1, 'asc']],
+                    language: {url: '${pageContext.servletContext.contextPath}/resources/assets/json/datatablePlugini18/plugin_i18_' + sessionData.language + '.json'},
+                });
+                if (x === 1) {
+                    app_table_03.draw();
+                }
+            }, 200)
+        }
+
         function applicationDetail(appId) {
             var params = {
                 "appId": appId
@@ -489,7 +540,7 @@
                 success: function (res) {
                     console.log(res)
                     createListDocs(res.earxivList)
-                    setterApplicationDetail(res)
+                    setterApplicationDetail(res);
                 },
                 error: function (res) {
                     alert("error")
@@ -507,7 +558,7 @@
                         '<td><a class="dropdown-item p-2" href="#">'+value.fileDate+'</a></td>' +
                         '<td>' +
                             '<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">' +
-                            ' <a href="${pageContext.servletContext.contextPath}/download/'+value.hash+'/'+value.fileId+'/'+value.id+'" type="button" class="btn btn-outline-primary"><i class="fa fa-download"/></a> ' +
+                            ' <a href="${pageContext.servletContext.contextPath}/routeV3/V3/download/'+value.hash+'/'+value.fileId+'/'+value.id+'" type="button" class="btn btn-outline-primary"><i class="fa fa-download"/></a> ' +
                             ' <a type="button" class="btn btn-outline-primary"><i class="fa fa-book-open"/></td></button>' +
                             '<div>' +
                         '</tr>';
@@ -515,13 +566,35 @@
             })
         }
         function setterApplicationDetail(detail) {
-            detail.id
-            $('.appNumAndDate').html(detail.appNums);
+            // console.log(' detail --> ' + detail);
+            // console.log(' id --> ' + JSON.stringify(detail.id));
+            // console.log(' appNum --> ' + JSON.stringify(detail.appNum));
+            // console.log(' versionNum --> ' + detail.versionNum);
+            // console.log(' appNums --> ' + detail.appNum);
+            $('.appNumAndDate').html(detail.appNum + '/' + detail.versionNum);
+            $('.personFio').html(detail.personFio);
+            $('.customerCountryNmAndSellerOrg').html(detail.customerCountryNm + ' - ' + detail.sellerOrg);
+            $('.personPhone').html(detail.personPhone);
+            $('.importerNm').html(detail.importerNm);
+            $('.senderCountryNmAndSenderOrg').html(detail.senderCountryNm + ' - ' + detail.senderOrg);
+            $('.importerTin').html(detail.importerTin);
+            $('.authorizedPersonPinAndAuthorizedPersonDoc').html(nullClear(detail.authorizedPersonPin) + ' - ' + nullClear(detail.authorizedPersonDoc));
+            $('.stateNumberAndStateNumberDate').html(nullClear(detail.stateNumber) + ' - ' + nullClear(detail.sateNumberDate));
+            $('.customsPriceSumAndCustomsPriceCurrency').html(detail.customsPriceSum + ' - ' + detail.customsPriceCurrency);
+            $('.priceSumAndCustomsPriceCurrency').html(detail.priceSum + ' - ' + detail.customsPriceCurrency);
+            $('.nettoSum').html(detail.nettoSum);
+            $('.bruttoSum').html(detail.bruttoSum);
+            $('.termsNmAndTermsAddr').html(detail.termsNm + ' - ' + detail.termsAddr);
+            $('.transportTypTableeModalButton').html(detail.transportPriceSum);
         }
+
+        function openTransportTypeTableModal(){appTable03(1);}
 
         $(document).ready(function () {
             applicationDetail(applicationId);
         })
+
+
     </script>
 </body>
 

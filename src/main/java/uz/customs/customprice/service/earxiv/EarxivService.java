@@ -15,4 +15,10 @@ public class EarxivService {
     public List<Earxiv> getListByAppId(String appId){
         return earxivRepository.findByAppId(appId);
     }
+
+    public Earxiv getByHashAndFileId(String hash, String fileId, String id) {
+        if (earxivRepository.findByHashAndFileIdAndId(hash, fileId, id) != null) {
+            return earxivRepository.findByHashAndFileIdAndId(hash, fileId, id);
+        } else return null;
+    }
 }

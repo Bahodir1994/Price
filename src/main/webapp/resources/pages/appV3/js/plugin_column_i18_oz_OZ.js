@@ -41,3 +41,10 @@ var appTableV2 = {
     method: "Усул",
     paymentCalculationOrRollback: "Тўл.ҳис/Қайтариш"
 }
+
+var appTableV3 = {
+    finishCountry: "Бошлағич пункт",
+    endCountry: "Тугаш пункти",
+    transportType: "Транспорт тури",
+    transportPrice: "Ҳаражатлар"
+}
