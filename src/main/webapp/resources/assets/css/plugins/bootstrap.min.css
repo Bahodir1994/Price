@@ -3400,7 +3400,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 
 .dropleft .dropdown-menu {
     top: 0;
-    right: 100%;
+    right: 100%!important;
     left: auto;
     margin-top: 0;
     margin-right: .125rem
@@ -6176,7 +6176,7 @@ a.close.disabled {
     line-break: auto;
     font-size: .875rem;
     word-wrap: break-word;
-    opacity: 0
+    opacity: 0;
 }
 
 .tooltip.show {

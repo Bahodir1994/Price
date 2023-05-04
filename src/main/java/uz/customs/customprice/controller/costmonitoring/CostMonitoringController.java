@@ -33,5 +33,4 @@ public class CostMonitoringController {
     public DataTablesOutput<BaseEntity> getDataV2(@Valid DataTablesInput input, HttpServletRequest httpServletRequest) throws UnexpectedRollbackException {
         return costMonitoringDataService.dataTable(input, httpServletRequest);
     }
-
 }

@@ -24,8 +24,7 @@
         <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/flags/flag-icons.min.css"/>
         <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpicker.min.css">
         <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/toastify.min.css">
-<%--        <link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/tour.min.css">--%>
-<%--        <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpickerBlue.css">--%>
+<%--        <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/tippy.css">--%>
         <style>
 
         </style>
@@ -53,16 +52,20 @@
 
                         </li>
                         <li class="nav-item pcoded-hasmenu">
-                            <a href="#!" class="nav-link "><span class="pcoded-micon" style="color: #36d038"><i
-                                    class="fas fa-file-signature"></i></span><span
-                                    class="pcoded-mtext"><fmt:message key="inDecision" bundle="${resourceBundle}"/></span><span class="pcoded-badge badge badge-success">100+</span></a>
-
+                            <a href="javascript:appFuncV3()" class="nav-link ">
+                                <span class="pcoded-micon" style="color: #36d038">
+                                    <i class="fas fa-file-signature"></i>
+                                </span>
+                                <span class="pcoded-mtext">
+                                    <fmt:message key="inDecision" bundle="${resourceBundle}"/>
+                                </span>
+                                <span class="pcoded-badge badge badge-success">100+</span>
+                            </a>
                         </li>
                         <li class="nav-item pcoded-hasmenu">
                             <a href="javascript:appFuncV2()"  class="nav-link "><span class="pcoded-micon"
                                                                                      style="color: #4fee51"><i
                                     class="fas fa-list"></i></span><span class="pcoded-mtext"><fmt:message key="valMon" bundle="${resourceBundle}"/></span></a>
-
                         </li>
                         <li class="nav-item pcoded-hasmenu">
                             <a href="#!" class="nav-link"><span class="pcoded-micon" style="color: #bed52a"><i
@@ -109,7 +112,6 @@
             </div>
         </nav>
         <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
-
               <div class="container" style="max-width: 100%!important;">
                   <div class="m-header  mr-1">
                       <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
@@ -129,12 +131,12 @@
                           <i class="feather icon-more-vertical"></i>
                       </a>
                   </div>
-
                   <div class="collapse navbar-collapse ">
                       <ul class="navbar-nav">
-                          <li class="nav-item " >
-                                            <span class="d-inline-block m-b-0 text-white f-14 role">${sessionDataValue.userRoleName} :
-                                                <span style="border-bottom: 1px solid #dee2e6 !important;">${sessionDataValue.userName}</span></span>
+                          <li class="nav-item">
+                              <span class="d-inline-block m-b-0 text-white f-14 role">${sessionDataValue.userRoleName}:
+                                  <span style="border-bottom: 1px solid #dee2e6 !important;">${sessionDataValue.userName}</span>
+                              </span>
                           </li>
                       </ul>
                       <ul class="navbar-nav" style="height: 50px" >
@@ -257,7 +259,6 @@
                       </ul>
                   </div>
               </div>
-
         </header>
         <div class="pcoded-main-container" id="apple">
             <div class="pcoded-wrapper container-fluid">
@@ -288,8 +289,9 @@
         <script src="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpicker.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpickerI18/${sessionDataValue.language}.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/analytics.js"></script>
-<%--        <script crossorigin="anonymous" referrerpolicy="no-referrer" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/tour.js"></script>--%>
-
+        <script src="https://unpkg.com/popper.js@1"></script>
+        <script src="https://unpkg.com/tippy.js@5"></script>
+<%--        <script src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/tippy-bundle.umd.min.js"></script>--%>
         <script>
             (function () {
                 if ($('#layout-sidenav').hasClass('sidenav-horizontal') || window.layoutHelpers.isSmallScreen()) {
@@ -371,6 +373,33 @@
                             position: 'bottom-right',
                             heading: 'Божхона қиймати мониторинги!',
                             text: 'Товарлари қиймати мониторинги жадвали.',
+                            icon: 'info',
+                            hideAfter: 5000,
+                            loader: true,        // Change it to false to disable loader
+                            loaderBg: '#9EC600'  // To change the background
+                        })
+                    },
+                    error: function () {
+
+                    }
+                });
+            }
+            function appFuncV3() {
+                $.ajax({
+                    type: "GET",
+                    url: "${pageContext.servletContext.contextPath}/routeV3/V1/data/decision_charges/v1",
+                    beforeSend: function () {
+                        $("#main-body").html('');
+                    },
+                    complete: function () {
+                    },
+                    success: function (response) {
+                        $("#main-body").html(response);
+                        myMenu()
+                        $.toast({
+                            position: 'bottom-right',
+                            heading: 'Дастлабки қарор интерактив хизмати!',
+                            text: '.....',
                             icon: 'info',
                             hideAfter: 5000,
                             loader: true,        // Change it to false to disable loader

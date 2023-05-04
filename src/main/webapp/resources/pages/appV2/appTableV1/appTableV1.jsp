@@ -419,10 +419,8 @@
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/buttons.bootstrap4.min.js"></script>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.dateTime.min.js"></script>
-<%--    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/ColReorderWithResize.js"></script>--%>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.dataTables.colResize.js"></script>
-<%--    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.mask.min.js"></script>--%>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.maskMoney.js"></script>
     <script type="text/javascript"
@@ -446,9 +444,6 @@
                 header: true,
                 headerOffset: $('#fixed').height()
             },
-            // fixedColumns: {
-            //     left: 1
-            // },
             searching: true,
             processing: true,
             responsive: true,
@@ -525,9 +520,6 @@
                 {className: "dt-head-center", title: appTableV1.asosQiymat, name: 'asosQiymat', data: 'asosQiymat'},
                 {className: "dt-head-center", title: appTableV1.ktd, name: 'ktd', data: 'ktd', render: data => {if (data === 1 ){return '<span class="text-primary">'+appTableV1.oblYes+'</span>'}else {return '<span class="text-danger">'+appTableV1.oblNo+'</span>'}}},
             ],
-            // colReorder: {
-            //     addFixed: false
-            // },
             colReorder: true,
             colResize: true,
             order: [[1, 'asc']],
@@ -616,8 +608,6 @@
                 .draw();
         })
         $('#toggle_fullscreen').on('click', function () {
-            // if already full screen; exit
-            // else go fullscreen
             if (document.fullscreenElement) {
                 document.exitFullscreen();
                 $('.toggle_fullscreen').html('<i class="kic"/>')

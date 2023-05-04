@@ -26,9 +26,6 @@ public class CostMonitoringDataService {
     private final CostMonitoringDataRepository costMonitoringDataRepository;
     private final CostMonitoringLogService costMonitoringLogService;
 
-    @Autowired
-    private EntityManager entityManager;
-
     @Transactional(rollbackFor = {Exception.class}, propagation = Propagation.REQUIRED)
     public DataTablesOutput<BaseEntity> dataTable(DataTablesInput input, HttpServletRequest httpServletRequest){
         DateRangeSpecification dateRangeSpecification = new DateRangeSpecification(input);

@@ -393,6 +393,7 @@ a.text-secondary.btn, a.text-secondary.btn:Active, a.text-secondary.btn:focus, a
 
 .tooltip .arrow::before {
     text-shadow: 0 2px 3px rgba(17, 17, 17, 0.41);
+    border-bottom-color: #f00; /* Red */
 }
 
 .card .card-block code {

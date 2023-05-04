@@ -1,4 +1,4 @@
-package uz.customs.customprice.entity.main;
+package uz.customs.customprice.controller.main;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
