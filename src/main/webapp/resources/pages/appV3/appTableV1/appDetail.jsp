@@ -494,8 +494,6 @@
             order: [[1, 'asc']],
             language: {url: '${pageContext.servletContext.contextPath}/resources/assets/json/datatablePlugini18/plugin_i18_' + sessionData.language + '.json'},
         });
-        console.log(' cmdtIdListAlt1 ---> ' + JSON.stringify(app_table_02.columns));
-        console.log(' cmdtIdListAlt2 ---> ' + app_table_02.columns);
         function appTable03(x) {
             setTimeout(() => {
                 var app_table_03 = $('#app_table_03').DataTable({
@@ -571,7 +569,7 @@
                 url: '${pageContext.servletContext.contextPath}/routeV3/V4/data/decision_charges/v1',
                 type: 'GET',
                 data: {
-                    cmdtId: applicationId
+                    appId: applicationId
                 }
             },
             serverSide: true,
@@ -604,8 +602,6 @@
             order: [[1, 'asc']],
             language: {url: '${pageContext.servletContext.contextPath}/resources/assets/json/datatablePlugini18/plugin_i18_' + sessionData.language + '.json'},
         });
-
-        
 
         function applicationDetail(appId) {
             var params = {

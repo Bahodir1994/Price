@@ -20,7 +20,7 @@ public class DecisionChargesPaymentController {
     private final DecisionChargesPaymentDataService decisionChargesPaymentDataService;
 
     @GetMapping(value = "/data/decision_charges/v1")
-    public DataTablesOutput<DecisionChargesPayment> getDataV2(@Valid DataTablesInput input, @RequestParam String cmdtId) throws UnexpectedRollbackException {
-        return decisionChargesPaymentDataService.dataTable(input, cmdtId);
+    public DataTablesOutput<DecisionChargesPayment> getDataV2(@Valid DataTablesInput input, @RequestParam String appId) throws UnexpectedRollbackException {
+        return decisionChargesPaymentDataService.dataTable(input, appId);
     }
 }
