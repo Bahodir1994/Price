@@ -64,18 +64,19 @@ public class TransportTypeDataService {
 
         @Override
         public Predicate toPredicate(Root<TransportType> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-            Predicate whereAppIdIn = criteriaBuilder.equal(root.get("appId"), appId);
             Predicate searchPanes1 = criteriaBuilder.like(root.get("finishCountryNm"), globalSearch);
             Predicate searchPanes2 = criteriaBuilder.like(root.get("endCountryNm"), globalSearch);
             Predicate searchPanes3 = criteriaBuilder.like(root.get("finishCountry"), globalSearch);
             Predicate searchPanes4 = criteriaBuilder.like(root.get("endCountry"), globalSearch);
-            Predicate searchPanes5 = criteriaBuilder.like(root.get("tarnsportTypeNm"), globalSearch);
+            Predicate searchPanes5 = criteriaBuilder.like(root.get("transports").get("cdNm"), globalSearch);
             Predicate searchPanes6 = criteriaBuilder.like(root.get("tarnsportType"), globalSearch);
 
+            Predicate whereAppIdIn = criteriaBuilder.equal(root.get("appId"), appId);
             Predicate finishCountryLngaTpcd = criteriaBuilder.equal(root.get("finishCountryJoin").get("lngaTpcd"), lngaTpcd);
             Predicate endCountryLngaTpcd = criteriaBuilder.equal(root.get("endCountryJoin").get("lngaTpcd"), lngaTpcd);
             Predicate transportCode = criteriaBuilder.equal(root.get("transports").get("lngaTpcd"), lngaTpcd);
             Predicate orListPredicates = criteriaBuilder.or(searchPanes1, searchPanes2, searchPanes3, searchPanes4, searchPanes5, searchPanes6);
+
             Predicate andListPredicates;
             if (!globalSearch.equals("")){
                 andListPredicates = criteriaBuilder.and(whereAppIdIn, finishCountryLngaTpcd, endCountryLngaTpcd, transportCode, orListPredicates);

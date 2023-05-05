@@ -98,14 +98,20 @@
                             </h5>
                         </div>
                         <div class="row mt-1">
-                            <div class="d-flex justify-content-around invoice-info w-100">
+                            <div class="col-sm-12 p-2">
+                                <div id="main">
+                                    <div class="container-fluid">
+                                        <div class="" id="faq">
+                                            <div class="card m-0">
+                                                <div class="card-header" id="faqhead2">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse"
+                                                       data-target="#faq2" aria-expanded="true" aria-controls="faq2">Malumotlar</a>
+                                                </div>
+                                                <div id="faq2" class="collapse" aria-labelledby="faqhead2" data-parent="#faq">
+                                                    <div class="d-flex justify-content-around invoice-info w-100">
                                 <div class="col-4 col-lg-4 border-right">
                                     <div class="container table-responsive">
-                                        <c:set var="total" value="${0.0}"/>
-                                        <c:forEach var="val" items="${transports}" varStatus="i">
-                                            <c:set var="total" value="${total + val.transportPrice}"/>
-                                        </c:forEach>
-                                            <table class="table table-sm mt-1">
+                                        <table class="table table-sm mt-1">
                                                 <tbody>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Аризачи:</td>
@@ -133,7 +139,7 @@
                                 </div>
                                 <div class="col-4 col-lg-4 border-left border-right">
                                     <div class="container table-responsive">
-                                            <table class="table table-sm mt-1">
+                                        <table class="table table-sm mt-1">
                                                 <tbody>
                                                 <tr>
                                                     <td style="height: 0.4vh!important;">Импортёр СТИРи:</td>
@@ -196,13 +202,28 @@
                                     </div>
                                 </div>
                             </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="mt-0 dt-responsive p-2">
                             <table id="app_table_02" class="table table-striped row-border order-column table-bordered" cellspacing="0" style="width: 100%"></table>
                         </div>
                     </div>
+                    <div class="card-body m-3" style="border: 1px dashed #0a58ca">
+                        <div>
+                            <h4>Хисобланган тўловлар</h4>
+                        </div>
+                        <div class="mt-0 dt-responsive p-2">
+                            <table id="app_table_04" class="table table-striped row-border order-column table-bordered" cellspacing="0" style="width: 100%"></table>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
         <div class="modal fade transportTypTableeModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
@@ -402,6 +423,8 @@
     </div>
     <script>
         var applicationId = ${appId};
+        var cmdtIdListAlt = [];
+
         var app_table_02 = $('#app_table_02').DataTable({
             scrollY: '60vh',
             scrollX: true,
@@ -415,7 +438,7 @@
             processing: true,
             responsive: false,
             ajax: {
-                url: '<%=request.getContextPath()%>/routeV3/V2/data/decision_charges/v2',
+                url: '${pageContext.servletContext.contextPath}/routeV3/V2/data/decision_charges/v2',
                 type: 'GET',
                 data: {
                     appId: applicationId
@@ -442,8 +465,7 @@
                         }else if(row.paymentYN==='NO'){
                             return '<button type="button" class="btn btn-outline-warning rounded-lg btn-sm btn-block" onclick="Calculating(' + "'" + row.id + "'" + ')">'+row.hsCode+'</button>'
                         }
-                    }
-                },
+                    }},
                 {className: "dt-head-center", title: appTableV2.productName, name: 'hsName', data: 'hsName', render: (_, __, row) => {return '<textarea rows="1" cols="100" class="border-0 font-weight-normal m-0 p-0 hsName" style="background-color: rgb(0, 0, 0, 0); overflow:visible">'+row.hsName+'</textarea>'}},
                 {className: "dt-head-center", title: appTableV2.createCountry, name: 'orignCountrNm', data: 'orignCountrNm'},
                 {className: "dt-head-center", title: appTableV2.createName, name: 'originOrg', data: 'originOrg'},
@@ -472,7 +494,8 @@
             order: [[1, 'asc']],
             language: {url: '${pageContext.servletContext.contextPath}/resources/assets/json/datatablePlugini18/plugin_i18_' + sessionData.language + '.json'},
         });
-
+        console.log(' cmdtIdListAlt1 ---> ' + JSON.stringify(app_table_02.columns));
+        console.log(' cmdtIdListAlt2 ---> ' + app_table_02.columns);
         function appTable03(x) {
             setTimeout(() => {
                 var app_table_03 = $('#app_table_03').DataTable({
@@ -490,7 +513,7 @@
                     processing: true,
                     responsive: true,
                     ajax: {
-                        url: '<%=request.getContextPath()%>/routeV3/V2/data/decision_charges/v3',
+                        url: '${pageContext.servletContext.contextPath}/routeV3/V2/data/decision_charges/v3',
                         type: 'GET',
                         data: {
                             appId: applicationId
@@ -532,6 +555,57 @@
                 }
             }, 200)
         }
+        var app_table_04 = $('#app_table_04').DataTable({
+            scrollY: '60vh',
+            scrollX: true,
+            scrollCollapse: true,
+            scrollResize: true,
+            fixedHeader: {
+                header: true,
+                headerOffset: $('#fixed').height()
+            },
+            searching: true,
+            processing: true,
+            responsive: false,
+            ajax: {
+                url: '${pageContext.servletContext.contextPath}/routeV3/V4/data/decision_charges/v1',
+                type: 'GET',
+                data: {
+                    cmdtId: applicationId
+                }
+            },
+            serverSide: true,
+            dom: "<'row'<'col-sm-12 col-md-6'R><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-2 mt-2'l><'col-sm-12 col-md-3'i><'col-sm-12 col-md-7 mt-2'p>>",
+            lengthMenu: [[5, 25, 50, -1], [5, 25, 50, appTableV1.all]],
+            fields: [{name: 'hsCode', mask: '0000 00 000 0'}],
+            columns: [
+                {
+                    title: '№',
+                    data: null,
+                    sortable: false,
+                    searchable: false,
+                    orderable: false,
+                    render: function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1
+                    }
+                },
+                {className: "dt-head-center", title: appTableV4.g47Type, name: 'g47Type', data: 'g47Type'},
+                {className: "dt-head-center", title: appTableV4.g47Base, name: 'g47Base', data: 'g47Base'},
+                {className: "dt-head-center", title: appTableV4.g47AltBase, name: 'g47AltBase', data: 'g47AltBase'},
+                {className: "dt-head-center", title: appTableV4.g47Rate, name: 'g47Rate', data: 'g47Rate'},
+                {className: "dt-head-center", title: appTableV4.g47AltRate, name: 'g47AltRate', data: 'g47AltRate'},
+                {className: "dt-head-center", title: appTableV4.currRate, name: 'currRate', data: 'currRate'},
+                {className: "dt-head-center", title: appTableV4.g47AltBaseEdIzm, name: 'g47AltBaseEdIzm', data: 'g47AltBaseEdIzm'},
+                {className: "dt-head-center", title: appTableV4.g47Sum, name: 'g47Sum', data: 'g47Sum'},
+                {className: "dt-head-center", title: appTableV4.g47Sp, name: 'g47Sp', data: 'g47Sp'}
+                // {className: "dt-head-center", title: appTableV4.delete, name: 'delete', data: null}
+            ],
+            colResize: true,
+            order: [[1, 'asc']],
+            language: {url: '${pageContext.servletContext.contextPath}/resources/assets/json/datatablePlugini18/plugin_i18_' + sessionData.language + '.json'},
+        });
+
+        
 
         function applicationDetail(appId) {
             var params = {
@@ -589,7 +663,6 @@
             $('.termsNmAndTermsAddr').html(detail.termsNm + ' - ' + detail.termsAddr);
             $('.transportTypTableeModalButton').html(detail.transportPriceSum);
         }
-
         function openTransportTypeTableModal(){appTable03(1);}
 
         $(document).ready(function () {

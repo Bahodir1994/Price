@@ -132,7 +132,7 @@
                                     <div class="card m-0">
                                         <div class="card-header" id="faqhead2">
                                             <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse"
-                                               data-target="#faq2" aria-expanded="true" aria-controls="faq2"><fmt:message key="additionalSearch" bundle="${resourceBundle}"/></a>
+                                               data-target="#faq2" aria-expanded="true" aria-controls="faq2">Malumotlar</a>
                                         </div>
                                         <div id="faq2" class="collapse" aria-labelledby="faqhead2" data-parent="#faq">
                                             <div class="card-body text-left justify-content-center">

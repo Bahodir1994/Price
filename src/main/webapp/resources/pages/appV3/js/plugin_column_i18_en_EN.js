@@ -48,3 +48,16 @@ var appTableV3 = {
     transportType: "Транспорт тури",
     transportPrice: "Ҳаражатлар"
 }
+
+var appTableV4 = {
+    g47Type: "Тўлов тури",
+    g47Base: "Хисоблаш асоси",
+    g47AltBase: "Адвалор ставка",
+    g47Rate: "Хос ставка",
+    g47AltRate: "Хос ставка миқдори",
+    currRate: "Доллар курси",
+    g47AltBaseEdIzm: "Қўш.ўл.бир",
+    g47Sum: "Ҳисобланган",
+    g47Sp: "Тўлов усули",
+    delete: "Ўчириш"
+}
