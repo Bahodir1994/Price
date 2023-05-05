@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import uz.customs.customprice.entity.catalog.Country;
+import uz.customs.customprice.entity.catalog.Transports;
 import uz.customs.customprice.entity.decisioncharges.ApplicationDecisionCost;
 
 import javax.persistence.*;
@@ -36,10 +37,9 @@ public class TransportType {
     @Column(name = "APP_ID", columnDefinition = "VARCHAR(50)")
     private String appId;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "finish_country", insertable = false, updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Country finishCountryJoin;
 
     @Column(name = "finish_country", length = 3)
@@ -51,7 +51,6 @@ public class TransportType {
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "end_country", insertable = false, updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Country endCountryJoin;
 
     @Column(name = "end_country", length = 3)
@@ -59,6 +58,11 @@ public class TransportType {
 
     @Column(name = "end_country_NM", columnDefinition = "VARCHAR(120) CCSID 1208")
     private String endCountryNm;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "tarnsport_type", insertable = false, updatable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Transports transports;
 
     @Column(name = "tarnsport_type", length = 2)
     private String tarnsportType;

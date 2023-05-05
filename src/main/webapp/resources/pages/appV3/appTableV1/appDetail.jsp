@@ -207,8 +207,8 @@
         <div class="modal fade transportTypTableeModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Транспорт харакати йўналиши ва харажатлари</h5>
+                    <div class="modal-header" style="background-color: #7497ea">
+                        <h5 class="modal-title" id="exampleModalLabel">Транспорт ҳаракати йўналиши ва харажатлари</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -223,7 +223,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="modal fade" id="exampleExtraLargeModal3" tabindex="-1" style="display: none;" aria-hidden="true">
             <div class="modal-dialog modal-xl">
@@ -405,9 +404,9 @@
         var applicationId = ${appId};
         var app_table_02 = $('#app_table_02').DataTable({
             scrollY: '60vh',
-            scrollX: false,
+            scrollX: true,
             scrollCollapse: true,
-            scrollResize: false,
+            scrollResize: true,
             fixedHeader: {
                 header: true,
                 headerOffset: $('#fixed').height()
@@ -477,6 +476,7 @@
         function appTable03(x) {
             setTimeout(() => {
                 var app_table_03 = $('#app_table_03').DataTable({
+                    retrieve: true,
                     deferLoading: false,
                     scrollY: '70vh',
                     scrollX: true,
@@ -497,8 +497,8 @@
                         }
                     },
                     serverSide: true,
-                    dom: "<'row'<'col-sm-12 col-md-6'R><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-2 mt-2'l><'col-sm-12 col-md-3'i><'col-sm-12 col-md-7 mt-2'p>>",
-                    lengthMenu: [[5, 25, 50, -1], [5, 25, 50, appTableV1.all]],
+                    // dom: "<'row'<'col-sm-12 col-md-6'R><'col-sm-12 col-md-6'>> <'row'<'col-sm-12'tr>> <'row'<'col-sm-12 col-md-2 mt-2'l><'col-sm-12 col-md-3'i><'col-sm-12 col-md-7 mt-2'p>>",
+                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, appTableV1.all]],
                     columns: [
                         {
                             title: '№',
@@ -510,9 +510,16 @@
                                 return meta.row + meta.settings._iDisplayStart + 1
                             }
                         },
-                        {className: "dt-head-center", title: appTableV3.finishCountry, name: 'finishCountry', data: 'finishCountryNm'},
-                        {className: "dt-head-center", title: appTableV3.endCountry, name: 'endCountry', data: 'endCountryNm'},
-                        {className: "dt-head-center", title: appTableV3.transportType, name: 'tarnsportType', data: 'tarnsportTypeNm'},
+                        {className: "dt-head-center", title: appTableV3.finishCountry, name: 'finishCountry', data: 'finishCountryJoin', render: (_, __, row) => {
+                                return '<span style="font-size: 1.4em;"><i class="fi fi-'+row.finishCountryJoin.cdIdL+' shadow"/> '+row.finishCountryJoin.cdNm+'</span>';
+                            }},
+                        {className: "dt-head-center", title: appTableV3.endCountry, name: 'endCountry', data: 'endCountryJoin', render: (_, __, row) => {
+                                return '<span style="font-size: 1.4em;"><i class="fi fi-'+row.endCountryJoin.cdIdL+' shadow"/> '+row.endCountryJoin.cdNm+'</span>';
+                            }},
+                        {className: "dt-head-center", title: appTableV3.transportType, name: 'transportsType', data: 'transports', render: (_, __, row) => {
+                            console.log(row)
+                                return '<span style="font-size: 1.4em;"><i class="fas ' + row.transports.cdDesc + '"/> <u>'+row.tarnsportType+'</u>-' + row.transports.cdNm + '</span>';
+                            }},
                         {className: "dt-head-center", title: appTableV3.transportPrice, name: 'transportPrice', data: 'transportPrice'}
                     ],
                     colReorder: true,
@@ -566,11 +573,6 @@
             })
         }
         function setterApplicationDetail(detail) {
-            // console.log(' detail --> ' + detail);
-            // console.log(' id --> ' + JSON.stringify(detail.id));
-            // console.log(' appNum --> ' + JSON.stringify(detail.appNum));
-            // console.log(' versionNum --> ' + detail.versionNum);
-            // console.log(' appNums --> ' + detail.appNum);
             $('.appNumAndDate').html(detail.appNum + '/' + detail.versionNum);
             $('.personFio').html(detail.personFio);
             $('.customerCountryNmAndSellerOrg').html(detail.customerCountryNm + ' - ' + detail.sellerOrg);
@@ -593,8 +595,5 @@
         $(document).ready(function () {
             applicationDetail(applicationId);
         })
-
-
     </script>
 </body>
-

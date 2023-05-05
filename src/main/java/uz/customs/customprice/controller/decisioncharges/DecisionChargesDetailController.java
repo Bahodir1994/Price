@@ -21,6 +21,7 @@ import uz.customs.customprice.service.decisioncharges.dataServices.CommodityDeci
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.Map;
 
 
 @RestController
@@ -43,8 +44,8 @@ public class DecisionChargesDetailController {
     }
 
     @GetMapping(value = "/data/decision_charges/v3")
-    public DataTablesOutput<TransportType> getDataV3(@Valid DataTablesInput input, @RequestParam String appId, HttpServletRequest httpServletRequest) throws UnexpectedRollbackException {
-        return transportTypeDataService.dataTable(input, appId, httpServletRequest);
+    public DataTablesOutput<TransportType> getDataV3(@Valid DataTablesInput input, @RequestParam Map<String, String> queryParameters, @RequestParam String appId, HttpServletRequest httpServletRequest) throws UnexpectedRollbackException {
+        return transportTypeDataService.dataTable(input, appId, httpServletRequest, queryParameters);
     }
 
     @GetMapping(value = "/data/decision_charges/v4")
