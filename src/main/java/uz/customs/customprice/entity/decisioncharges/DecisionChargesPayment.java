@@ -5,19 +5,22 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.*;
+import uz.customs.customprice.component.entityComponents.AbstractAuditingEntity;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "PAYMENT", schema = "CPID")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class DecisionChargesPayment {
+public class DecisionChargesPayment extends AbstractAuditingEntity{
     @Id
     @GeneratedValue(generator = "uuid4")
     @GenericGenerator(name = "uuid4", strategy = "org.hibernate.id.UUIDGenerator")

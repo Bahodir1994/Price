@@ -16,6 +16,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,26 +28,34 @@ public class DecisionChargesPaymentDataService {
     @Transactional(rollbackFor = {Exception.class}, propagation = Propagation.REQUIRED)
     public DataTablesOutput<DecisionChargesPayment> dataTable(DataTablesInput input, String appId) {
         List<CommodityDecision> commodityDecisionList = commodityDecisionService.getByAppId(appId);
+        List<String> cmdtIdList = new ArrayList<>();
+        for (int i = 0; i < commodityDecisionList.size(); i++) {
+            cmdtIdList.add(commodityDecisionList.get(i).getId());
+        }
+
         System.out.println(commodityDecisionList.stream().findAny().get().getId());
+        System.out.println(" cmdtIdList ---> " + cmdtIdList);
         DataTablesOutput<DecisionChargesPayment> tablesOutput = decisionChargesPaymentDataRepository.findAll(
                 input,
-                new DecisionChargesPaymentDataService.ExcludeAnalystsSpecification(input, commodityDecisionList)
+                new DecisionChargesPaymentDataService.ExcludeAnalystsSpecification(input, cmdtIdList)
+
         );
         return tablesOutput;
     }
 
     private static class ExcludeAnalystsSpecification implements Specification<DecisionChargesPayment> {
         private final DataTablesInput input;
-        private final List<CommodityDecision> commodityDecisionList;
+//        private final List<CommodityDecision> commodityDecisionList;
+        List<String> cmdtIdList = new ArrayList<>();
 
-        public ExcludeAnalystsSpecification(DataTablesInput input, List<CommodityDecision> commodityDecisionList) {
+        public ExcludeAnalystsSpecification(DataTablesInput input, List<String> cmdtIdList) {
             this.input = input;
-            this.commodityDecisionList = commodityDecisionList;
+            this.cmdtIdList = cmdtIdList;
         }
 
         @Override
         public Predicate toPredicate(Root<DecisionChargesPayment> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-            Predicate isDeleted = criteriaBuilder.in(root.get("cmdtId")).value(commodityDecisionList.stream().findAny().get().getId());
+            Predicate isDeleted = criteriaBuilder.in(root.get("cmdtId")).value(cmdtIdList);
             Predicate finalPredicate = criteriaBuilder.and(isDeleted);
             return finalPredicate;
         }

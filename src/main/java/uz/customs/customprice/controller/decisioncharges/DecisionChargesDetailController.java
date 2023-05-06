@@ -27,6 +27,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/routeV3/V2")
 @RequiredArgsConstructor
+
 public class DecisionChargesDetailController {
 
     private final ApplicationDecisionCostService applicationDecisionCostService;

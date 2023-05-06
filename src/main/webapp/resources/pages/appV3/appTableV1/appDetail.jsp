@@ -215,7 +215,7 @@
                     </div>
                     <div class="card-body m-3" style="border: 1px dashed #0a58ca">
                         <div>
-                            <h4>Хисобланган тўловлар</h4>
+                            <h4>Ҳисобланган тўловлар</h4>
                         </div>
                         <div class="mt-0 dt-responsive p-2">
                             <table id="app_table_04" class="table table-striped row-border order-column table-bordered" cellspacing="0" style="width: 100%"></table>
@@ -423,7 +423,7 @@
     </div>
     <script>
         var applicationId = ${appId};
-        var cmdtIdListAlt = [];
+        var cmdtIdListAlt = '';
 
         var app_table_02 = $('#app_table_02').DataTable({
             scrollY: '60vh',
@@ -456,6 +456,7 @@
                     searchable: false,
                     orderable: false,
                     render: function (data, type, row, meta) {
+                        cmdtIdListAlt = data;
                         return meta.row + meta.settings._iDisplayStart + 1
                     }
                 },
@@ -538,7 +539,6 @@
                                 return '<span style="font-size: 1.4em;"><i class="fi fi-'+row.endCountryJoin.cdIdL+' shadow"/> '+row.endCountryJoin.cdNm+'</span>';
                             }},
                         {className: "dt-head-center", title: appTableV3.transportType, name: 'transportsType', data: 'transports', render: (_, __, row) => {
-                            console.log(row)
                                 return '<span style="font-size: 1.4em;"><i class="fas ' + row.transports.cdDesc + '"/> <u>'+row.tarnsportType+'</u>-' + row.transports.cdNm + '</span>';
                             }},
                         {className: "dt-head-center", title: appTableV3.transportPrice, name: 'transportPrice', data: 'transportPrice'}
@@ -615,7 +615,6 @@
                 async: true,
                 contentType: 'application/json',
                 success: function (res) {
-                    console.log(res)
                     createListDocs(res.earxivList)
                     setterApplicationDetail(res);
                 },
@@ -664,5 +663,27 @@
         $(document).ready(function () {
             applicationDetail(applicationId);
         })
+
+        function Calculating(cmdtId) {
+            // var inspectorName = $('#userIdF_' + rowNum + ' option:selected').text();
+            var dataS = {
+                'cmdt_id': cmdtId,
+                'appId': applicationId
+            }
+            $.ajax({
+                type: "POST",
+                data: dataS,
+                url: "<%=request.getContextPath()%>/commodity/resources/pages/InitialDecision/InitialDecisionSteps/Steps4",
+                dataType: "html",
+                header: 'Content-type: text/html; charset=utf-8',
+                success: function (res) {
+                    $('div#divcalculate').html(res);
+                },
+                error: function (res) {
+                }
+            });
+        }
+
+
     </script>
 </body>
