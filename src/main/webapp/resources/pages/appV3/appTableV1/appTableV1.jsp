@@ -38,7 +38,7 @@
     <div class="page-wrapper" id="container">
         <div class="page-header">
             <div class="page-block">
-                <div class="row align-items-center">
+                <div class="row align-items-center mx-0">
                     <div class="col-sm-12 my-0 py-0 px-0 " style="vertical-align: middle">
                         <div class="justify-content-center py-1 pb-2 mt-2">
                             <div class="form-row m-0 justify-content-center">
@@ -99,8 +99,81 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
+                   <div class="col-sm-12 p-0 ">
+
+
+
+                       <div class="row mx-0" >
+                           <!-- Facebook card start -->
+                           <div class="col-md-4 col-xl-2"  >
+                               <div class="card social-widget-card">
+                                   <div class="card-body bg-facebook" style="border-radius: 5px">
+                                       <h3 class="text-white m-0">0 та</h3>
+                                       <span class="m-t-10">Янги</span>
+                                       <i class="fas fa-download"></i>
+                                   </div>
+                               </div>
+                           </div>
+                           <!-- Facebook card end -->
+                           <!-- Twitter card start -->
+                           <div class="col-md-4 col-xl-2"  >
+                               <div class="card social-widget-card">
+                                   <div class="card-body bg-facebook" style="border-radius: 5px">
+                                       <h3 class="text-white m-0">3 та</h3>
+                                       <span class="m-t-10">Кўриб чиқилмоқда</span>
+                                       <i class="fas fa-envelope-open-text"></i>
+                                   </div>
+                               </div>
+                           </div>
+                           <!-- Twitter card end -->
+                           <!-- Linked in card start -->
+                           <div class="col-md-4 col-xl-2"  >
+                               <div class="card social-widget-card">
+                                   <div class="card-body bg-facebook" style="border-radius: 5px">
+                                       <h3 class="text-white m-0">13 та</h3>
+                                       <span class="m-t-10">Рад этилганлар</span>
+                                       <i class="fas fa-times-circle"></i>
+                                   </div>
+                               </div>
+                           </div>
+                           <!-- Linked in card end -->
+                           <!-- Google-plus card start -->
+                           <div class="col-md-4 col-xl-2"  >
+                               <div class="card social-widget-card">
+                                   <div class="card-body bg-facebook" style="border-radius: 5px">
+                                       <h3 class="text-white m-0">0 та</h3>
+                                       <span class="m-t-10">Раҳбариятда</span>
+                                       <i class="fas fa-briefcase"></i>
+                                   </div>
+                               </div>
+                           </div>
+                           <!-- Google-plus card end -->
+                           <div class="col-md-4 col-xl-2"  >
+                               <div class="card social-widget-card">
+                                   <div class="card-body bg-facebook" style="border-radius: 5px">
+                                       <h3 class="text-white m-0">126 та</h3>
+                                       <span class="m-t-10">Имзоланган</span>
+                                       <i class="fas fa-file-signature"></i>
+                                   </div>
+                               </div>
+                           </div>
+                           <!-- Linked in card end -->
+                           <!-- Google-plus card start -->
+                           <div class="col-md-4 col-xl-2"  >
+                               <div class="card social-widget-card">
+                                   <div class="card-body bg-facebook" style="border-radius: 5px">
+                                       <h3 class="text-white m-0">201 та</h3>
+                                       <span class="m-t-10">Муддати ўтган (Бекор қилинган)</span>
+                                       <i class="fas fa-stopwatch"></i>
+                                   </div>
+                               </div>
+                           </div>
+                           <!-- Google-plus card end -->
+                       </div>
+                   </div>
                 </div>
             </div>
         </div>

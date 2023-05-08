@@ -59,7 +59,9 @@
                                 <span class="pcoded-mtext">
                                     <fmt:message key="inDecision" bundle="${resourceBundle}"/>
                                 </span>
-                                <span class="pcoded-badge badge badge-success">100+</span>
+
+
+
                             </a>
                         </li>
                         <li class="nav-item pcoded-hasmenu">

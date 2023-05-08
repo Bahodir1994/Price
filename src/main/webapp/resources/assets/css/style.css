@@ -22053,7 +22053,7 @@ pre[class*=language-]:before {
 /*====== Font-weight css ends ======*/
 /*====== text-color, background color css starts ======*/
 .bg-facebook {
-    background: #3C5A99;
+    background: #4680ff;
 }
 
 .text-facebook {
@@ -27977,8 +27977,8 @@ select.form-control:focus::-ms-value {
 .social-widget-card i {
     position: absolute;
     right: 10px;
-    bottom: 10px;
-    font-size: 48px;
+    bottom: 34px;
+    font-size: 34px;
     opacity: 0.4;
     transition: all ease-in 0.3s;
 }
