@@ -10,17 +10,14 @@ import uz.customs.customprice.component.httpSession.SessionDataValue;
 import uz.customs.customprice.entity.catalog.*;
 import uz.customs.customprice.entity.decisioncharges.DecisionChargesStatusType;
 import uz.customs.customprice.entity.decisioncharges.TransportType;
-import uz.customs.customprice.entity.earxiv.Earxiv;
 import uz.customs.customprice.repository.decisioncharges.dataRepository.ApplicationDecisionCostDataRepository;
 import uz.customs.customprice.repository.decisioncharges.jpaRepository.ApplicationDecisionCostRepository;
 import uz.customs.customprice.service.catalog.*;
 import uz.customs.customprice.service.earxiv.EarxivService;
-import uz.customs.customprice.service.helperClasses.ApplicationDecisionCostDTO;
+import uz.customs.customprice.service.helperClasses.decisioncharges.ApplicationDecisionCostDTO;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor

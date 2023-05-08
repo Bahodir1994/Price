@@ -1,4 +1,4 @@
-package uz.customs.customprice.service.helperClasses;
+package uz.customs.customprice.service.helperClasses.decisioncharges;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

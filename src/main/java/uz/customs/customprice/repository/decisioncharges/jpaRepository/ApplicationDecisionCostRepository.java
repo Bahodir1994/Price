@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import uz.customs.customprice.entity.decisioncharges.ApplicationDecisionCost;
-import uz.customs.customprice.service.helperClasses.ApplicationDecisionCostDTO;
+import uz.customs.customprice.service.helperClasses.decisioncharges.ApplicationDecisionCostDTO;
 
 import java.util.Optional;
 
