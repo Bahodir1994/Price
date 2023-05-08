@@ -289,9 +289,6 @@
         <script src="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpicker.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpickerI18/${sessionDataValue.language}.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/analytics.js"></script>
-        <script src="https://unpkg.com/popper.js@1"></script>
-        <script src="https://unpkg.com/tippy.js@5"></script>
-<%--        <script src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/tippy-bundle.umd.min.js"></script>--%>
         <script>
             (function () {
                 if ($('#layout-sidenav').hasClass('sidenav-horizontal') || window.layoutHelpers.isSmallScreen()) {

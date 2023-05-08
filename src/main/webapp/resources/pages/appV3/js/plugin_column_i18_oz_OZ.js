@@ -59,5 +59,5 @@ var appTableV4 = {
     g47AltBaseEdIzm: "Қўш.ўл.бир",
     g47Sum: "Ҳисобланган",
     g47Sp: "Тўлов усули",
-    delete: "Ўчириш"
+    delete: "Амаллар"
 }

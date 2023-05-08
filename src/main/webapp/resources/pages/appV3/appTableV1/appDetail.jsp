@@ -216,6 +216,7 @@
                     <div class="card-body m-3" style="border: 1px dashed #0a58ca">
                         <div>
                             <h4>Ҳисобланган тўловлар</h4>
+                            <button type="button" class="btn btn-outline-primary btn-sm btn-add ml-2"><i class="fas fa-table"></i> Тўлов хисоблаш</button>
                         </div>
                         <div class="mt-0 dt-responsive p-2">
                             <table id="app_table_04" class="table table-striped row-border order-column table-bordered" cellspacing="0" style="width: 100%"></table>
@@ -423,7 +424,7 @@
     </div>
     <script>
         var applicationId = ${appId};
-        var cmdtIdListAlt = '';
+        var cmdtIdListAlt;
 
         var app_table_02 = $('#app_table_02').DataTable({
             scrollY: '60vh',
@@ -564,7 +565,7 @@
             },
             searching: true,
             processing: true,
-            responsive: false,
+            responsive: true,
             ajax: {
                 url: '${pageContext.servletContext.contextPath}/routeV3/V4/data/decision_charges/v1',
                 type: 'GET',
@@ -595,8 +596,13 @@
                 {className: "dt-head-center", title: appTableV4.currRate, name: 'currRate', data: 'currRate'},
                 {className: "dt-head-center", title: appTableV4.g47AltBaseEdIzm, name: 'g47AltBaseEdIzm', data: 'g47AltBaseEdIzm'},
                 {className: "dt-head-center", title: appTableV4.g47Sum, name: 'g47Sum', data: 'g47Sum'},
-                {className: "dt-head-center", title: appTableV4.g47Sp, name: 'g47Sp', data: 'g47Sp'}
-                // {className: "dt-head-center", title: appTableV4.delete, name: 'delete', data: null}
+                {className: "dt-head-center", title: appTableV4.g47Sp, name: 'g47Sp', data: 'g47Sp'},
+                {className: "dt-head-center", title: appTableV4.delete, name: 'delete', data: 'id', render: function (data, type, row, meta) {
+                        return '<div class="d-flex justify-content-around">' +
+                            '<button onclick="editRows('+"'"+row.id+"'"+')" class="btn btn-sm btn-outline-warning rounded-circle"><i class="fa fa-edit cursor-pointer"></i></button>' +
+                            '<button onclick="deleteRows('+"'"+row.id+"'"+')" class="btn btn-sm btn-outline-danger rounded-circle"><i class="fas fa-trash"></i></button>' +
+                            '</div>';
+                    }}
             ],
             colResize: true,
             order: [[1, 'asc']],
@@ -663,7 +669,6 @@
         $(document).ready(function () {
             applicationDetail(applicationId);
         })
-
         function Calculating(cmdtId) {
             // var inspectorName = $('#userIdF_' + rowNum + ' option:selected').text();
             var dataS = {
@@ -684,6 +689,77 @@
             });
         }
 
+        $('.btn-add').on( 'click', function (e) {
+            $('.newRows').remove();
+            var newRow = '<tr class="newRows">' +
+                '<td>№</td>' +
+                '<td><input type="text" class="form-control form-control-sm g47Type"/></td>' +
+                '<td><input type="text" class="form-control form-control-sm g47Base"/></td>' +
+                '<td><input type="text" class="form-control form-control-sm g47AltBase"/></td>' +
+                '<td><input type="text" class="form-control form-control-sm g47Rate"/></td>' +
+                '<td><input type="text" class="form-control form-control-sm g47AltRate"/></td>' +
+                '<td><input type="text" class="form-control form-control-sm currRate"/></td>' +
+                '<td><input type="text" class="form-control form-control-sm g47AltBaseEdIzm"/></td>' +
+                '<td><input type="text" class="form-control form-control-sm g47Sum"/></td>' +
+                '<td><input type="text" class="form-control form-control-sm g47Sp"/></td>' +
+                '<td>' +
+                    '<div class="d-flex justify-content-around">' +
+                    '<button class="btn btn-sm btn-outline-primary rounded-circle"><i class="fas fa-save" onclick="saveRows()"></i></button>' +
+                    '<button class="btn btn-sm btn-outline-danger rounded-circle"><i class="fas fa-trash-restore" onclick="removeRows()"></i></button>' +
+                    '</div>' +
+                '</td>' +
+                '</tr>';
+            $('#app_table_04 tbody').append(newRow);
+        } );
+
+        function removeRows() {
+            $('.newRows').remove();
+        }
+        function saveRows() {
+            var params = {
+                "g47Type": $('.g47Type').val(),
+                "g47Base": $('.g47Base').val(),
+                "g47AltBase": $('.g47AltBase').val(),
+                "g47Rate": $('.g47Rate').val(),
+                "g47AltRate": $('.g47AltRate').val(),
+                "currRate": $('.currRate').val(),
+                "g47AltBaseEdIzm": $('.g47AltBaseEdIzm').val(),
+                "g47Sum": $('.g47Sum').val(),
+                "g47Sp": $('.g47Sp').val(),
+            }
+            $.ajax({
+                type: "POST",
+                data: params,
+                url: "${pageContext.servletContext.contextPath}/routeV3/V4/data/decision_charges/v1",
+                dataType: "json",
+                async: true,
+                contentType: 'application/json',
+                success: function (res) {
+                    createListDocs(res.earxivList)
+                    setterApplicationDetail(res);
+                },
+                error: function (res) {
+                    alert("error")
+                }
+            });
+        }
+        function editRows(id) {
+            $('.newRows').remove();
+        }
+        function deleteRows(id) {
+            $('.newRows').remove();
+        }
+
+        appTableV4.g47Type
+        appTableV4.g47Base
+        appTableV4.g47AltBase
+        appTableV4.g47Rate
+        appTableV4.g47AltRate
+        appTableV4.currRate
+        appTableV4.g47AltBaseEdIzm
+        appTableV4.g47Sum
+        appTableV4.g47Sp
+        appTableV4.delete
 
     </script>
 </body>

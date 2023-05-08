@@ -46,7 +46,7 @@ public class CommodityDecision extends AbstractAuditingEntity {
     @OneToMany(mappedBy = "commodity", cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JsonIgnore
-    private List<DecisionChargesPayment> paymentList;
+    private List<DecisionPayment> paymentList;
 
     @OneToMany(mappedBy = "commodity", cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
