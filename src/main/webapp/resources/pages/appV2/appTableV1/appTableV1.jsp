@@ -56,9 +56,7 @@
                                             data-selected-text-format="count > 3" data-actions-box="true"
                                             data-live-search="true">
                                         <c:forEach items="${country}" var="country" varStatus="i">
-                                            <option data-icon="fi fi-${country.cdIdL}" class="option-class"
-                                                    value="${country.code}"
-                                                    data-subtext="${country.code}">${country.cdNm}</option>
+                                            <option data-icon="fi fi-${country.cdIdL}" class="option-class" value="${country.code}" data-subtext="${country.code}">${country.cdNm}</option>
                                         </c:forEach>
                                     </select>
                                 </div>

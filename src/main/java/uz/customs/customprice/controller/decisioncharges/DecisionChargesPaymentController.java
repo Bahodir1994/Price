@@ -25,7 +25,7 @@ public class DecisionChargesPaymentController {
     }
 
     @PostMapping(value = "/data/decision_charges/v1")
-    public void postDataV1(@Valid DecisionPaymentDTO input) throws UnexpectedRollbackException {
+    public void postDataV1(@Valid @RequestBody DecisionPaymentDTO input) throws UnexpectedRollbackException {
         decisionChargesPaymentService.postPayment(input);
     }
 

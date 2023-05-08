@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import uz.customs.customprice.component.httpSession.GetterSessionData;
 import uz.customs.customprice.component.httpSession.SessionDataValue;
 import uz.customs.customprice.entity.catalog.*;
+import uz.customs.customprice.entity.decisioncharges.CommodityDecision;
 import uz.customs.customprice.entity.decisioncharges.DecisionChargesStatusType;
 import uz.customs.customprice.entity.decisioncharges.TransportType;
 import uz.customs.customprice.repository.decisioncharges.dataRepository.ApplicationDecisionCostDataRepository;
@@ -23,7 +24,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ApplicationDecisionCostService {
 
-    private final ApplicationDecisionCostDataRepository applicationDecisionCostDataRepository;
+    private final CommodityDecisionService commodityDecisionService;
     private final ApplicationDecisionCostRepository applicationDecisionCostRepository;
     private final GetterSessionData getterSessionData;
     private final CountryService countryService;
@@ -75,11 +76,15 @@ public class ApplicationDecisionCostService {
         List<TransportType> getInDecViewTrType = transportTypeService.getByAppId(appId);
         modelAndView.addObject("transports", getInDecViewTrType);
 
+        List<CommodityDecision> commodityDecisionList = commodityDecisionService.getByAppId(appId);
+
 //        Optional<ApplicationDecisionCost> apps = applicationDecisionCostRepository.findById(appId);
         ObjectMapper mapper = new ObjectMapper();
         modelAndView.addObject("sessionGetterDataValue", mapper.writeValueAsString(sessionGetterDataValue));
         modelAndView.addObject("sessionLanguage", sessionGetterDataValue.getLanguage());
         modelAndView.addObject("appId", mapper.writeValueAsString(appId));
+        modelAndView.addObject("cmdtIdList", commodityDecisionList);
+        modelAndView.addObject("cmdtIdListMapper", mapper.writeValueAsString(commodityDecisionList));
 
         return modelAndView;
 //        List<Earxiv> earxivList = new ArrayList<>();

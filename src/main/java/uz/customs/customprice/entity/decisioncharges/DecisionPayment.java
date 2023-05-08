@@ -74,25 +74,4 @@ public class DecisionPayment extends AbstractAuditingEntity {
 
     @Column(name = "G47SUMCURRKOD", columnDefinition = "VARCHAR(3)")
     private String g47SumCurrkod;
-
-
-    public DecisionPayment(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, CommodityDecision commodity, String cmdtId, BigDecimal g47Base, BigDecimal g47AltBase, BigDecimal g47Rate, BigDecimal g47AltRate, String g47Currkod, BigDecimal g47Sum, String g47Sp, int g47ClcType, String g47Type, String g47AltBaseCurrkod, BigDecimal currRate, String g47AltBaseEdIzm, String g47SumCurrkod) {
-        super(insUser, updUser, insTime, updTime, isDeleted);
-        this.id = id;
-        this.commodity = commodity;
-        this.cmdtId = cmdtId;
-        this.g47Base = g47Base;
-        this.g47AltBase = g47AltBase;
-        this.g47Rate = g47Rate;
-        this.g47AltRate = g47AltRate;
-        this.g47Currkod = g47Currkod;
-        this.g47Sum = g47Sum;
-        this.g47Sp = g47Sp;
-        this.g47ClcType = g47ClcType;
-        this.g47Type = g47Type;
-        this.g47AltBaseCurrkod = g47AltBaseCurrkod;
-        this.currRate = currRate;
-        this.g47AltBaseEdIzm = g47AltBaseEdIzm;
-        this.g47SumCurrkod = g47SumCurrkod;
-    }
 }

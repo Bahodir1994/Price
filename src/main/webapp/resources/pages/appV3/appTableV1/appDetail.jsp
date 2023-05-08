@@ -1,11 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Bahodir
-  Date: 03.05.2023
-  Time: 9:41
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ include file="/locale.jsp" %>
 <head>
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/dataTables.bootstrap4.min.css">
     <link rel="stylesheet"
@@ -23,44 +22,45 @@
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
-            width: 100%!important;
+            width: 100% !important;
         }
+
         .tooltip {
-            position: relative!important;
-            display: inline-block!important;;
+            position: relative !important;
+            display: inline-block !important;;
         }
 
         .tooltip .tooltiptext {
-            visibility: hidden!important;;
-            width: 140px!important;;
-            background-color: #555!important;;
-            color: #fff!important;;
-            text-align: center!important;;
-            border-radius: 6px!important;;
-            padding: 5px!important;;
-            position: absolute!important;;
-            z-index: 1!important;;
-            bottom: 150%!important;;
-            left: 50%!important;;
-            margin-left: -75px!important;;
-            opacity: 0!important;;
-            transition: opacity 0.3s!important;;
+            visibility: hidden !important;;
+            width: 140px !important;;
+            background-color: #555 !important;;
+            color: #fff !important;;
+            text-align: center !important;;
+            border-radius: 6px !important;;
+            padding: 5px !important;;
+            position: absolute !important;;
+            z-index: 1 !important;;
+            bottom: 150% !important;;
+            left: 50% !important;;
+            margin-left: -75px !important;;
+            opacity: 0 !important;;
+            transition: opacity 0.3s !important;;
         }
 
         .tooltip .tooltiptext::after {
-            content: ""!important;;
-            position: absolute!important;;
-            top: 100%!important;;
-            left: 50%!important;;
-            margin-left: -5px!important;;
-            border-width: 5px!important;;
-            border-style: solid!important;;
-            border-color: #555 transparent transparent transparent!important;;
+            content: "" !important;;
+            position: absolute !important;;
+            top: 100% !important;;
+            left: 50% !important;;
+            margin-left: -5px !important;;
+            border-width: 5px !important;;
+            border-style: solid !important;;
+            border-color: #555 transparent transparent transparent !important;;
         }
 
         .tooltip:hover .tooltiptext {
-            visibility: visible!important;;
-            opacity: 1!important;;
+            visibility: visible !important;;
+            opacity: 1 !important;;
         }
     </style>
 </head>
@@ -72,26 +72,27 @@
                     <div class="card-body m-3" style="border: 1px dashed #0a58ca">
                         <div class="d-flex justify-content-between bd-highlight">
                             <div class="btn-group">
-                                <span class="text-primary bd-highlight">
-                                    <button type="button" class="btn btn-outline-primary dropdown-toggle btn-sm appDocList" id="appDocList" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-file-archive fa-lg"></i>&nbsp;&nbsp; Ҳужжатлар
-                                </button>
-                                    <div class="dropdown-menu shadow mt-0 pt-0">
-                                        <table class="table table-striped row-border order-column table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>№</th>
-                                                    <th>Хужжат тури</th>
-                                                    <th>Хужжат рақами</th>
-                                                    <th>Хужжат санаси</th>
-                                                    <th>Yuklash/Ochish</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="dropDownDocList">
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </span>
+                                    <span class="text-primary bd-highlight">
+                                        <button type="button" class="btn btn-outline-primary dropdown-toggle btn-sm appDocList" id="appDocList" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                        <i class="fa fa-file-archive fa-lg"></i>&nbsp;&nbsp; Ҳужжатлар
+                                    </button>
+                                        <div class="dropdown-menu shadow mt-0 pt-0">
+                                            <table class="table table-striped row-border order-column table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>№</th>
+                                                        <th>Хужжат тури</th>
+                                                        <th>Хужжат рақами</th>
+                                                        <th>Хужжат санаси</th>
+                                                        <th>Yuklash/Ochish</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="dropDownDocList">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </span>
                             </div>
                             <h5 class="p-2 bd-highlight" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
                                 <b>АРИЗА</b> №:<u class="text-primary appNumAndDate"></u>
@@ -105,103 +106,103 @@
                                             <div class="card m-0">
                                                 <div class="card-header" id="faqhead2">
                                                     <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse"
-                                                       data-target="#faq2" aria-expanded="true" aria-controls="faq2">Malumotlar</a>
+                                                       data-target="#faq2" aria-expanded="true" aria-controls="faq2">Маълумотлар</a>
                                                 </div>
                                                 <div id="faq2" class="collapse" aria-labelledby="faqhead2" data-parent="#faq">
                                                     <div class="d-flex justify-content-around invoice-info w-100">
-                                <div class="col-4 col-lg-4 border-right">
-                                    <div class="container table-responsive">
-                                        <table class="table table-sm mt-1">
-                                                <tbody>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Аризачи:</td>
-                                                    <td style="height: 0.4vh!important;" class="personFio"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Сотувчи:</td>
-                                                    <td style="height: 0.4vh!important;" class="customerCountryNmAndSellerOrg"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Телефон рақами:</td>
-                                                    <td style="height: 0.4vh!important;" class="personPhone"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Импортёр номи:</td>
-                                                    <td style="height: 0.4vh!important;" class="importerNm"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Юк жўнатувчи:</td>
-                                                    <td style="height: 0.4vh!important;" class="senderCountryNmAndSenderOrg"></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                </div>
-                                <div class="col-4 col-lg-4 border-left border-right">
-                                    <div class="container table-responsive">
-                                        <table class="table table-sm mt-1">
-                                                <tbody>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Импортёр СТИРи:</td>
-                                                    <td style="height: 0.4vh!important;" class="importerTin"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Ваколатли шахс ЖШШИРи:</td>
-                                                    <td style="height: 0.4vh!important;" class="authorizedPersonPinAndAuthorizedPersonDoc"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Ваколатини тасдиқловчи хужжат:</td>
-                                                    <td style="height: 0.4vh!important;" class="stateNumberAndStateNumberDate"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Божхона қиймати:</td>
-                                                    <td style="height: 0.4vh!important;" class="customsPriceSumAndCustomsPriceCurrency"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Фактура қиймати:</td>
-                                                    <td style="height: 0.4vh!important;" class="priceSumAndCustomsPriceCurrency"></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                </div>
-                                <div class="col-4 col-lg-4 border-left">
-                                    <div class="container table-responsive">
-                                            <table class="table table-sm mt-1">
-                                                <tbody>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Нетто оғирлиги:</td>
-                                                    <td style="height: 0.4vh!important;" class="nettoSum">0.00 кг</td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Брутто оғирлиги:</td>
-                                                    <td style="height: 0.4vh!important;" class="bruttoSum">0.00 кг</td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Етказиб бериш шарти:</td>
-                                                    <td style="height: 0.4vh!important;" class="termsNmAndTermsAddr"> - </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Транспорт харажатлари:</td>
-                                                    <td style="height: 0.4vh!important;">
-                                                        <a type="button" onclick="openTransportTypeTableModal()"
-                                                            class="btn btn-outline-primary btn-sm"
-                                                            data-toggle="modal"
-                                                            data-target=".transportTypTableeModal">
-                                                            <u class="transportTypTableeModalButton"></u>
-                                                            <i class="fas fa-info-circle"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height: 0.4vh!important;">Ваколатини тасдиқловчи хужжат:</td>
-                                                    <td style="height: 0.4vh!important;" class="stateNumberAndStateNumberDate"> - </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-                                </div>
-                            </div>
+                                                        <div class="col-4 col-lg-4 border-right">
+                                                            <div class="container table-responsive">
+                                                                <table class="table table-sm mt-1">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Аризачи:</td>
+                                                                        <td style="height: 0.4vh!important;" class="personFio"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Сотувчи:</td>
+                                                                        <td style="height: 0.4vh!important;" class="customerCountryNmAndSellerOrg"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Телефон рақами:</td>
+                                                                        <td style="height: 0.4vh!important;" class="personPhone"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Импортёр номи:</td>
+                                                                        <td style="height: 0.4vh!important;" class="importerNm"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Юк жўнатувчи:</td>
+                                                                        <td style="height: 0.4vh!important;" class="senderCountryNmAndSenderOrg"></td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4 col-lg-4 border-left border-right">
+                                                            <div class="container table-responsive">
+                                                                <table class="table table-sm mt-1">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Импортёр СТИРи:</td>
+                                                                        <td style="height: 0.4vh!important;" class="importerTin"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Ваколатли шахс ЖШШИРи:</td>
+                                                                        <td style="height: 0.4vh!important;" class="authorizedPersonPinAndAuthorizedPersonDoc"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Ваколатини тасдиқловчи хужжат:</td>
+                                                                        <td style="height: 0.4vh!important;" class="stateNumberAndStateNumberDate"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Божхона қиймати:</td>
+                                                                        <td style="height: 0.4vh!important;" class="customsPriceSumAndCustomsPriceCurrency"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Фактура қиймати:</td>
+                                                                        <td style="height: 0.4vh!important;" class="priceSumAndCustomsPriceCurrency"></td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4 col-lg-4 border-left">
+                                                            <div class="container table-responsive">
+                                                                <table class="table table-sm mt-1">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Нетто оғирлиги:</td>
+                                                                        <td style="height: 0.4vh!important;" class="nettoSum">0.00 кг</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Брутто оғирлиги:</td>
+                                                                        <td style="height: 0.4vh!important;" class="bruttoSum">0.00 кг</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Етказиб бериш шарти:</td>
+                                                                        <td style="height: 0.4vh!important;" class="termsNmAndTermsAddr"> -</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Транспорт харажатлари:</td>
+                                                                        <td style="height: 0.4vh!important;">
+                                                                            <a type="button" onclick="openTransportTypeTableModal()"
+                                                                               class="btn btn-outline-primary btn-sm"
+                                                                               data-toggle="modal"
+                                                                               data-target=".transportTypTableeModal">
+                                                                                <u class="transportTypTableeModalButton"></u>
+                                                                                <i class="fas fa-info-circle"></i>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="height: 0.4vh!important;">Ваколатини тасдиқловчи хужжат:</td>
+                                                                        <td style="height: 0.4vh!important;" class="stateNumberAndStateNumberDate"> -</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -216,7 +217,21 @@
                     <div class="card-body m-3" style="border: 1px dashed #0a58ca">
                         <div>
                             <h4>Ҳисобланган тўловлар</h4>
-                            <button type="button" class="btn btn-outline-primary btn-sm btn-add ml-2"><i class="fas fa-table"></i> Тўлов хисоблаш</button>
+                        </div>
+                        <div class="row justify-content-left align-self-center">
+                            <div class="p-1">
+                                <button type="button" class="btn btn-outline-primary btn-sm btn-add ml-2"><i class="fas fa-table"></i> Тўлов хисоблаш</button>
+                            </div>
+                            <div class="p-1">
+                                <select class="selectpicker form-control show-menu-arrow cmdtHsCode"
+                                        data-style="form-control form-control-sm" id="cmdtHsCode" multiple
+                                        data-selected-text-format="count > 3" data-actions-box="true"
+                                        data-live-search="true">
+                                        <c:forEach items="${cmdtIdList}" var="cmdt" varStatus="i">
+                                            <option class="option-class" value="${cmdt.id}">${cmdt.hsCode}</option>
+                                        </c:forEach>
+                                </select>
+                            </div>
                         </div>
                         <div class="mt-0 dt-responsive p-2">
                             <table id="app_table_04" class="table table-striped row-border order-column table-bordered" cellspacing="0" style="width: 100%"></table>
@@ -238,10 +253,10 @@
                     <div class="modal-body mt-0 dt-responsive p-2">
                         <table id="app_table_03" class="table table-striped row-border order-column table-bordered nowrap" cellspacing="0" style="width: 100%"></table>
                     </div>
-<%--                    <div class="modal-footer">--%>
-<%--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
-<%--                        <button type="button" class="btn btn-primary">Send message</button>--%>
-<%--                    </div>--%>
+                    <%--                    <div class="modal-footer">--%>
+                    <%--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
+                    <%--                        <button type="button" class="btn btn-primary">Send message</button>--%>
+                    <%--                    </div>--%>
                 </div>
             </div>
         </div>
@@ -423,8 +438,10 @@
         </div>
     </div>
     <script>
+        $('.selectpicker').selectpicker();
+        var sessionData = ${sessionGetterDataValue};
         var applicationId = ${appId};
-        var cmdtIdListAlt;
+        var cmdtIdListMapper = ${cmdtIdListMapper};
 
         var app_table_02 = $('#app_table_02').DataTable({
             scrollY: '60vh',
@@ -457,18 +474,23 @@
                     searchable: false,
                     orderable: false,
                     render: function (data, type, row, meta) {
-                        cmdtIdListAlt = data;
                         return meta.row + meta.settings._iDisplayStart + 1
                     }
                 },
-                {className: "dt-head-center", title: appTableV2.hsCode, name: 'hsCode', data: 'hsCode', render: (_, __, row) => {
-                        if (row.paymentYN==='YES'){
-                            return '<button type="button" class="btn btn-outline-primary rounded-lg btn-sm btn-block" onclick="Calculating(' + "'" + row.id + "'" + ')">'+row.hsCode+'</button>'
-                        }else if(row.paymentYN==='NO'){
-                            return '<button type="button" class="btn btn-outline-warning rounded-lg btn-sm btn-block" onclick="Calculating(' + "'" + row.id + "'" + ')">'+row.hsCode+'</button>'
+                {
+                    className: "dt-head-center", title: appTableV2.hsCode, name: 'hsCode', data: 'hsCode', render: (_, __, row) => {
+                        if (row.paymentYN === 'YES') {
+                            return '<button type="button" class="btn btn-outline-primary rounded-lg btn-sm btn-block" onclick="Calculating(' + "'" + row.id + "'" + ')">' + row.hsCode + '</button>'
+                        } else if (row.paymentYN === 'NO') {
+                            return '<button type="button" class="btn btn-outline-warning rounded-lg btn-sm btn-block" onclick="Calculating(' + "'" + row.id + "'" + ')">' + row.hsCode + '</button>'
                         }
-                    }},
-                {className: "dt-head-center", title: appTableV2.productName, name: 'hsName', data: 'hsName', render: (_, __, row) => {return '<textarea rows="1" cols="100" class="border-0 font-weight-normal m-0 p-0 hsName" style="background-color: rgb(0, 0, 0, 0); overflow:visible">'+row.hsName+'</textarea>'}},
+                    }
+                },
+                {
+                    className: "dt-head-center", title: appTableV2.productName, name: 'hsName', data: 'hsName', render: (_, __, row) => {
+                        return '<textarea rows="1" cols="100" class="border-0 font-weight-normal m-0 p-0 hsName" style="background-color: rgb(0, 0, 0, 0); overflow:visible">' + row.hsName + '</textarea>'
+                    }
+                },
                 {className: "dt-head-center", title: appTableV2.createCountry, name: 'orignCountrNm', data: 'orignCountrNm'},
                 {className: "dt-head-center", title: appTableV2.createName, name: 'originOrg', data: 'originOrg'},
                 {className: "dt-head-center", title: appTableV2.customPrice, name: 'customsPrice', data: 'customsPrice'},
@@ -488,9 +510,21 @@
                 {className: "dt-head-center", title: appTableV2.typePackaging, name: 'packTypeNm', data: 'packTypeNm'},
                 {className: "dt-head-center", title: appTableV2.countPackaging, name: 'packQty', data: 'packQty'},
                 {className: "dt-head-center", title: appTableV2.countCargoPlace, name: 'cargoSpace', data: 'cargoSpace'},
-                {className: "dt-head-center", title: appTableV2.previousPreliminaryDecision, name: 'inDecNum', data: 'inDecNum', render: (_, __, row) => {return row.inDecNum + '/' + row.inDecDate}},
-                {className: "dt-head-center", title: appTableV2.previousPreliminaryDecisionHsCode, name: 'hsDecNum', data: 'hsDecNum', render: (_, __, row) => {return row.hsDecNum + '/' + row.hsDecDate}},
-                {className: "dt-head-center", title: appTableV2.method, name: 'methodNm', data: 'methodNm', render: (_, __, row) => {return '<textarea rows="1" cols="100" class="border-0 font-weight-normal m-0 p-0 hsName" style="background-color: rgb(0, 0, 0, 0); overflow:visible">'+row.methodNm+'</textarea>'}}
+                {
+                    className: "dt-head-center", title: appTableV2.previousPreliminaryDecision, name: 'inDecNum', data: 'inDecNum', render: (_, __, row) => {
+                        return row.inDecNum + '/' + row.inDecDate
+                    }
+                },
+                {
+                    className: "dt-head-center", title: appTableV2.previousPreliminaryDecisionHsCode, name: 'hsDecNum', data: 'hsDecNum', render: (_, __, row) => {
+                        return row.hsDecNum + '/' + row.hsDecDate
+                    }
+                },
+                {
+                    className: "dt-head-center", title: appTableV2.method, name: 'methodNm', data: 'methodNm', render: (_, __, row) => {
+                        return '<textarea rows="1" cols="100" class="border-0 font-weight-normal m-0 p-0 hsName" style="background-color: rgb(0, 0, 0, 0); overflow:visible">' + row.methodNm + '</textarea>'
+                    }
+                }
             ],
             colResize: true,
             order: [[1, 'asc']],
@@ -533,15 +567,21 @@
                                 return meta.row + meta.settings._iDisplayStart + 1
                             }
                         },
-                        {className: "dt-head-center", title: appTableV3.finishCountry, name: 'finishCountry', data: 'finishCountryJoin', render: (_, __, row) => {
-                                return '<span style="font-size: 1.4em;"><i class="fi fi-'+row.finishCountryJoin.cdIdL+' shadow"/> '+row.finishCountryJoin.cdNm+'</span>';
-                            }},
-                        {className: "dt-head-center", title: appTableV3.endCountry, name: 'endCountry', data: 'endCountryJoin', render: (_, __, row) => {
-                                return '<span style="font-size: 1.4em;"><i class="fi fi-'+row.endCountryJoin.cdIdL+' shadow"/> '+row.endCountryJoin.cdNm+'</span>';
-                            }},
-                        {className: "dt-head-center", title: appTableV3.transportType, name: 'transportsType', data: 'transports', render: (_, __, row) => {
-                                return '<span style="font-size: 1.4em;"><i class="fas ' + row.transports.cdDesc + '"/> <u>'+row.tarnsportType+'</u>-' + row.transports.cdNm + '</span>';
-                            }},
+                        {
+                            className: "dt-head-center", title: appTableV3.finishCountry, name: 'finishCountry', data: 'finishCountryJoin', render: (_, __, row) => {
+                                return '<span style="font-size: 1.4em;"><i class="fi fi-' + row.finishCountryJoin.cdIdL + ' shadow"/> ' + row.finishCountryJoin.cdNm + '</span>';
+                            }
+                        },
+                        {
+                            className: "dt-head-center", title: appTableV3.endCountry, name: 'endCountry', data: 'endCountryJoin', render: (_, __, row) => {
+                                return '<span style="font-size: 1.4em;"><i class="fi fi-' + row.endCountryJoin.cdIdL + ' shadow"/> ' + row.endCountryJoin.cdNm + '</span>';
+                            }
+                        },
+                        {
+                            className: "dt-head-center", title: appTableV3.transportType, name: 'transportsType', data: 'transports', render: (_, __, row) => {
+                                return '<span style="font-size: 1.4em;"><i class="fas ' + row.transports.cdDesc + '"/> <u>' + row.tarnsportType + '</u>-' + row.transports.cdNm + '</span>';
+                            }
+                        },
                         {className: "dt-head-center", title: appTableV3.transportPrice, name: 'transportPrice', data: 'transportPrice'}
                     ],
                     colReorder: true,
@@ -555,17 +595,13 @@
             }, 200)
         }
         var app_table_04 = $('#app_table_04').DataTable({
-            scrollY: '60vh',
-            scrollX: true,
-            scrollCollapse: true,
-            scrollResize: true,
-            fixedHeader: {
-                header: true,
-                headerOffset: $('#fixed').height()
-            },
+            // scrollY: '60vh',
+            // scrollX: true,
+            // scrollCollapse: true,
+            // scrollResize: true,
             searching: true,
             processing: true,
-            responsive: true,
+            responsive: false,
             ajax: {
                 url: '${pageContext.servletContext.contextPath}/routeV3/V4/data/decision_charges/v1',
                 type: 'GET',
@@ -588,6 +624,8 @@
                         return meta.row + meta.settings._iDisplayStart + 1
                     }
                 },
+                {className: "dt-head-center", title: appTableV4.g47Type, name: 'cmdtId', data: 'cmdtId', searchable: false},
+                {className: "dt-head-center", title: 'Tovar Tif Tn kodi', name: 'commodity', data: 'commodity.hsCode', searchable: false,  render: function (data) { return data ? data : '-'; }},
                 {className: "dt-head-center", title: appTableV4.g47Type, name: 'g47Type', data: 'g47Type'},
                 {className: "dt-head-center", title: appTableV4.g47Base, name: 'g47Base', data: 'g47Base'},
                 {className: "dt-head-center", title: appTableV4.g47AltBase, name: 'g47AltBase', data: 'g47AltBase'},
@@ -597,16 +635,33 @@
                 {className: "dt-head-center", title: appTableV4.g47AltBaseEdIzm, name: 'g47AltBaseEdIzm', data: 'g47AltBaseEdIzm'},
                 {className: "dt-head-center", title: appTableV4.g47Sum, name: 'g47Sum', data: 'g47Sum'},
                 {className: "dt-head-center", title: appTableV4.g47Sp, name: 'g47Sp', data: 'g47Sp'},
-                {className: "dt-head-center", title: appTableV4.delete, name: 'delete', data: 'id', render: function (data, type, row, meta) {
+                {
+                    className: "dt-head-center", title: appTableV4.delete, name: 'delete', data: 'id', render: function (data, type, row, meta) {
                         return '<div class="d-flex justify-content-around">' +
-                            '<button onclick="editRows('+"'"+row.id+"'"+')" class="btn btn-sm btn-outline-warning rounded-circle"><i class="fa fa-edit cursor-pointer"></i></button>' +
-                            '<button onclick="deleteRows('+"'"+row.id+"'"+')" class="btn btn-sm btn-outline-danger rounded-circle"><i class="fas fa-trash"></i></button>' +
+                            '<button onclick="editRows(' + "'" + row.id + "'" + ')" class="btn btn-sm btn-outline-warning rounded-circle"><i class="fa fa-edit cursor-pointer"></i></button>' +
+                            '<button onclick="deleteRows(' + "'" + row.id + "'" + ')" class="btn btn-sm btn-outline-danger rounded-circle"><i class="fas fa-trash"></i></button>' +
                             '</div>';
-                    }}
+                    }
+                }
             ],
             colResize: true,
+            colReorder: false,
             order: [[1, 'asc']],
             language: {url: '${pageContext.servletContext.contextPath}/resources/assets/json/datatablePlugini18/plugin_i18_' + sessionData.language + '.json'},
+        });
+
+        function hsCodeContainer() {
+            var filter = '';
+            $('select#cmdtHsCode option:selected').each(function() {
+                filter += $(this).val() + "+";
+            });
+            filter = filter.substring(0, filter.length - 1);
+            return filter;
+        }
+        $('.cmdtHsCode').on('change', function () {
+            app_table_04
+                .column('cmdtId:name').search(hsCodeContainer())
+                .draw();
         });
 
         function applicationDetail(appId) {
@@ -632,18 +687,18 @@
         function createListDocs(listDoc) {
             var newlistDoc = '';
             listDoc.forEach(function (value, key) {
-                newlistDoc ='' +
+                newlistDoc = '' +
                     '<tr>' +
-                        '<td><a class="dropdown-item p-2" href="#">'+Number(key+1)+'</a></td>' +
-                        '<td><a class="dropdown-item p-2" href="#">'+value.docType+'-'+value.docTypeName+'</a></td>' +
-                        '<td><a class="dropdown-item p-2" href="#">'+value.fileNum+'</a></td>' +
-                        '<td><a class="dropdown-item p-2" href="#">'+value.fileDate+'</a></td>' +
-                        '<td>' +
-                            '<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">' +
-                            ' <a href="${pageContext.servletContext.contextPath}/routeV3/V3/download/'+value.hash+'/'+value.fileId+'/'+value.id+'" type="button" class="btn btn-outline-primary"><i class="fa fa-download"/></a> ' +
-                            ' <a type="button" class="btn btn-outline-primary"><i class="fa fa-book-open"/></td></button>' +
-                            '<div>' +
-                        '</tr>';
+                    '<td><a class="dropdown-item p-2" href="#">' + Number(key + 1) + '</a></td>' +
+                    '<td><a class="dropdown-item p-2" href="#">' + value.docType + '-' + value.docTypeName + '</a></td>' +
+                    '<td><a class="dropdown-item p-2" href="#">' + value.fileNum + '</a></td>' +
+                    '<td><a class="dropdown-item p-2" href="#">' + value.fileDate + '</a></td>' +
+                    '<td>' +
+                    '<div class="btn-group btn-group-sm ml-3" role="group" aria-label="Basic example">' +
+                    ' <a href="${pageContext.servletContext.contextPath}/routeV3/V3/download/' + value.hash + '/' + value.fileId + '/' + value.id + '" type="button" class="btn btn-outline-primary"><i class="fa fa-download"/></a> ' +
+                    ' <a type="button" class="btn btn-outline-primary"><i class="fa fa-book-open"/></td></button>' +
+                    '<div>' +
+                    '</tr>';
                 $('#dropDownDocList').append(newlistDoc)
             })
         }
@@ -664,10 +719,13 @@
             $('.termsNmAndTermsAddr').html(detail.termsNm + ' - ' + detail.termsAddr);
             $('.transportTypTableeModalButton').html(detail.transportPriceSum);
         }
-        function openTransportTypeTableModal(){appTable03(1);}
+        function openTransportTypeTableModal() {
+            appTable03(1);
+        }
 
         $(document).ready(function () {
             applicationDetail(applicationId);
+            app_table_04.column('cmdtId:name').visible(false);
         })
         function Calculating(cmdtId) {
             // var inspectorName = $('#userIdF_' + rowNum + ' option:selected').text();
@@ -688,12 +746,17 @@
                 }
             });
         }
-
-        $('.btn-add').on( 'click', function (e) {
+        $('.btn-add').on('click', function (e) {
             $('.newRows').remove();
             var newRow = '<tr class="newRows">' +
                 '<td>№</td>' +
-                '<td><input type="text" class="form-control form-control-sm g47Type"/></td>' +
+                '<td>' +
+                '<select class="selectpicker form-control show-menu-arrow cmdtId" data-style="form-control form-control-sm" id="cmdtId" multiple data-selected-text-format="count > 3" data-actions-box="true" data-live-search="true">' +
+                '</select>' +
+                '</td>' +
+                '<td>' +
+                '<input type="text" class="form-control form-control-sm g47Type"/>' +
+                '</td>' +
                 '<td><input type="text" class="form-control form-control-sm g47Base"/></td>' +
                 '<td><input type="text" class="form-control form-control-sm g47AltBase"/></td>' +
                 '<td><input type="text" class="form-control form-control-sm g47Rate"/></td>' +
@@ -703,20 +766,31 @@
                 '<td><input type="text" class="form-control form-control-sm g47Sum"/></td>' +
                 '<td><input type="text" class="form-control form-control-sm g47Sp"/></td>' +
                 '<td>' +
-                    '<div class="d-flex justify-content-around">' +
-                    '<button class="btn btn-sm btn-outline-primary rounded-circle"><i class="fas fa-save" onclick="saveRows()"></i></button>' +
-                    '<button class="btn btn-sm btn-outline-danger rounded-circle"><i class="fas fa-trash-restore" onclick="removeRows()"></i></button>' +
-                    '</div>' +
+                '<div class="d-flex justify-content-around">' +
+                '<button class="btn btn-sm btn-outline-primary rounded-circle"><i class="fas fa-save" onclick="saveRows()"></i></button>' +
+                '<button class="btn btn-sm btn-outline-danger rounded-circle"><i class="fas fa-trash-restore" onclick="removeRows()"></i></button>' +
+                '</div>' +
                 '</td>' +
                 '</tr>';
             $('#app_table_04 tbody').append(newRow);
-        } );
+            selectCmdtCodes()
+            $('.selectpicker').selectpicker();
+        });
+
+        function selectCmdtCodes() {
+            $('.cmdtId').html('');
+            cmdtIdListMapper.forEach(function (data, key) {
+                var opt = '<option class="option-class" value="'+data.id+'">'+data.hsCode+'</option>';
+                $('.cmdtId').append(opt);
+            })
+        }
 
         function removeRows() {
             $('.newRows').remove();
         }
         function saveRows() {
             var params = {
+                "cmdtId": $('.cmdtId').val(),
                 "g47Type": $('.g47Type').val(),
                 "g47Base": $('.g47Base').val(),
                 "g47AltBase": $('.g47AltBase').val(),
@@ -725,18 +799,26 @@
                 "currRate": $('.currRate').val(),
                 "g47AltBaseEdIzm": $('.g47AltBaseEdIzm').val(),
                 "g47Sum": $('.g47Sum').val(),
-                "g47Sp": $('.g47Sp').val(),
+                "g47Sp": $('.g47Sp').val()
             }
             $.ajax({
                 type: "POST",
-                data: params,
+                data: JSON.stringify(params),
                 url: "${pageContext.servletContext.contextPath}/routeV3/V4/data/decision_charges/v1",
                 dataType: "json",
                 async: true,
                 contentType: 'application/json',
-                success: function (res) {
-                    createListDocs(res.earxivList)
-                    setterApplicationDetail(res);
+                complete: function (res) {
+                    app_table_04.draw();
+                    $.toast({
+                        position: 'bottom-right',
+                        heading: 'Бажарилди!',
+                        text: 'Ҳисобланган тўлов сақланди',
+                        icon: 'success',
+                        hideAfter: 5000,
+                        loader: true,        // Change it to false to disable loader
+                        loaderBg: '#9EC600'  // To change the background
+                    })
                 },
                 error: function (res) {
                     alert("error")
@@ -749,17 +831,6 @@
         function deleteRows(id) {
             $('.newRows').remove();
         }
-
-        appTableV4.g47Type
-        appTableV4.g47Base
-        appTableV4.g47AltBase
-        appTableV4.g47Rate
-        appTableV4.g47AltRate
-        appTableV4.currRate
-        appTableV4.g47AltBaseEdIzm
-        appTableV4.g47Sum
-        appTableV4.g47Sp
-        appTableV4.delete
 
     </script>
 </body>

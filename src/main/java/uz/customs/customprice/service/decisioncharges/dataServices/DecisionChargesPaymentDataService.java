@@ -12,11 +12,9 @@ import uz.customs.customprice.entity.decisioncharges.DecisionPayment;
 import uz.customs.customprice.repository.decisioncharges.dataRepository.DecisionChargesPaymentDataRepository;
 import uz.customs.customprice.service.decisioncharges.jpaServices.CommodityDecisionService;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -27,17 +25,29 @@ public class DecisionChargesPaymentDataService {
 
     @Transactional(rollbackFor = {Exception.class}, propagation = Propagation.REQUIRED)
     public DataTablesOutput<DecisionPayment> dataTable(DataTablesInput input, String appId) {
-        List<CommodityDecision> commodityDecisionList = commodityDecisionService.getByAppId(appId);
+        List<CommodityDecision> commodityDecisionList = null;
         List<String> cmdtIdList = new ArrayList<>();
-        for (int i = 0; i < commodityDecisionList.size(); i++) {
-            cmdtIdList.add(commodityDecisionList.get(i).getId());
+        if (input.getColumn("cmdtId").getSearch().getValue().equals("")){
+            commodityDecisionList = commodityDecisionService.getByAppId(appId);
+            for (int i = 0; i < commodityDecisionList.size(); i++) {
+                cmdtIdList.add(commodityDecisionList.get(i).getId());
+            }
+        }else {
+            String str = input.getColumn("cmdtId").getSearch().getValue();
+            String[] arr = str.split("\\+"); // split the string at each "+"
+            cmdtIdList = Arrays.asList(arr);
         }
 
-        System.out.println(commodityDecisionList.stream().findAny().get().getId());
-        System.out.println(" cmdtIdList ---> " + cmdtIdList);
         DataTablesOutput<DecisionPayment> tablesOutput = decisionChargesPaymentDataRepository.findAll(
                 input,
-                new DecisionChargesPaymentDataService.ExcludeAnalystsSpecification(input, cmdtIdList)
+                new DecisionChargesPaymentDataService.ExcludeAnalystsSpecification(input, cmdtIdList),
+                (root, query, criteriaBuilder) -> {
+                    if (query.getResultType() != Long.class) {
+                        root.fetch("commodity", JoinType.LEFT);
+                    }
+                    return null;
+                }
+
 
         );
         return tablesOutput;
