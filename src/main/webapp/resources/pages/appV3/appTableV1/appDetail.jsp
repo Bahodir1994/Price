@@ -1165,5 +1165,7 @@
             resizeWidth: false
         });
 
+        console.log('test');
+
     </script>
 </body>
