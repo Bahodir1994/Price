@@ -3,7 +3,7 @@ package uz.customs.customprice.service.earxiv;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uz.customs.customprice.entity.earxiv.Earxiv;
-import uz.customs.customprice.repository.decisioncharges.EarxivRepository;
+import uz.customs.customprice.repository.decisioncharges.jpaRepository.EarxivRepository;
 
 import java.util.List;
 

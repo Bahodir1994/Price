@@ -64,12 +64,12 @@ public class TransportTypeDataService {
 
         @Override
         public Predicate toPredicate(Root<TransportType> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-            Predicate searchPanes1 = criteriaBuilder.like(root.get("finishCountryNm"), globalSearch);
-            Predicate searchPanes2 = criteriaBuilder.like(root.get("endCountryNm"), globalSearch);
-            Predicate searchPanes3 = criteriaBuilder.like(root.get("finishCountry"), globalSearch);
-            Predicate searchPanes4 = criteriaBuilder.like(root.get("endCountry"), globalSearch);
-            Predicate searchPanes5 = criteriaBuilder.like(root.get("transports").get("cdNm"), globalSearch);
-            Predicate searchPanes6 = criteriaBuilder.like(root.get("tarnsportType"), globalSearch);
+            Predicate searchPanes1 = criteriaBuilder.like(root.get("finishCountryNm"), '%'+globalSearch+'%');
+            Predicate searchPanes2 = criteriaBuilder.like(root.get("endCountryNm"), '%'+globalSearch+'%');
+            Predicate searchPanes3 = criteriaBuilder.like(root.get("finishCountry"), '%'+globalSearch+'%');
+            Predicate searchPanes4 = criteriaBuilder.like(root.get("endCountry"), '%'+globalSearch+'%');
+            Predicate searchPanes5 = criteriaBuilder.like(root.get("transports").get("cdNm"), '%'+globalSearch+'%');
+            Predicate searchPanes6 = criteriaBuilder.like(root.get("tarnsportType"), '%'+globalSearch+'%');
 
             Predicate whereAppIdIn = criteriaBuilder.equal(root.get("appId"), appId);
             Predicate finishCountryLngaTpcd = criteriaBuilder.equal(root.get("finishCountryJoin").get("lngaTpcd"), lngaTpcd);

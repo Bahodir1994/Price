@@ -61,3 +61,11 @@ var appTableV4 = {
     g47Sp: "Тўлов усули",
     delete: "Амаллар"
 }
+
+var appTableV5 = {
+    statusName: "Мақоми",
+    time: "Вақти",
+    inspectorName: "Ходим",
+    distribution: "Тақсимланган ходим",
+    comment: "Изоҳ"
+}

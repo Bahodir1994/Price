@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import uz.customs.customprice.component.entityComponents.AbstractAuditingEntity;
+import uz.customs.customprice.entity.catalog.Country;
 
 import javax.persistence.*;
 import java.util.List;
@@ -48,6 +49,11 @@ public class StatusH extends AbstractAuditingEntity {
 
     @Column(name = "STMAIN_ID", columnDefinition = "VARCHAR(50)")
     private String stmainID;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "STATUS", insertable = false, updatable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private DecisionChargesStatusType statusType;
 
     @Column(name = "HISTORY_NUM")
     private Integer historyNum;

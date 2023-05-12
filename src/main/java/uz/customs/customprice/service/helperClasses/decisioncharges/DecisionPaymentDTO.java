@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -12,8 +14,9 @@ import lombok.Setter;
 public class DecisionPaymentDTO {
 
     private String id;
-    private String cmdtId;
 
+    @NotBlank(message = "1")
+    private String cmdtId;
     private String g47Type;
     private String g47Base;
     private String g47AltBase;

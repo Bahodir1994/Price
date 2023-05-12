@@ -24,10 +24,7 @@
         <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/flags/flag-icons.min.css"/>
         <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpicker.min.css">
         <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/toastify.min.css">
-<%--        <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/tippy.css">--%>
-        <style>
-
-        </style>
+        <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/sweetalert2.min.css">
     </head>
     <body id="bodybody">
         <div class="loader-bg">
@@ -39,12 +36,10 @@
             <div class="navbar-wrapper container-fluid">
                 <div class="navbar-content sidenav-horizontal" id="layout-sidenav">
                     <ul class="nav pcoded-inner-navbar sidenav-inner">
-
                         <li class="nav-item pcoded-hasmenu">
                             <a href="${pageContext.servletContext.contextPath}" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home text-dark"></i></span><span
                                     class="pcoded-mtext"><fmt:message key="mainPage" bundle="${resourceBundle}"/></span></a>
-
                         </li>
                         <li class="nav-item pcoded-hasmenu">
                             <a href="#!" id="tourbutton" class="nav-link "><span class="pcoded-micon" style="color: #6fb6d5"><i
@@ -104,11 +99,12 @@
 
                         </li>
                         <li class="nav-item pcoded-hasmenu">
-                            <a href="#!" class="nav-link "><span class="pcoded-micon" style="color: #1c4dcb"><i
-                                    class="fas fa-list-ul"></i></span><span class="pcoded-mtext"><fmt:message key="cusCostHis" bundle="${resourceBundle}"/></span></a>
-
+                            <a href="#!" class="nav-link ">
+                                <span class="pcoded-micon" style="color: #1c4dcb">
+                                    <i class="fas fa-list-ul"></i>
+                                </span><span class="pcoded-mtext"><fmt:message key="cusCostHis" bundle="${resourceBundle}"/></span>
+                            </a>
                         </li>
-
                     </ul>
                 </div>
             </div>
@@ -248,8 +244,7 @@
                                                           alt="" class="mr-1" width="15px"></i>${roleList.name}</a></li>
                                               </c:if>
                                               <c:if test="${roleList.code != sessionDataValue.userRole}">
-                                                  <li class=""><a href="javascript:checkRole('${roleList.code}')"
-                                                                  class="dropdown-item"><img
+                                                  <li class=""><a href="javascript:checkRole('${roleList.code}')" class="dropdown-item"><img
                                                           src="${pageContext.servletContext.contextPath}/resources/assets/images/ava.svg"
                                                           alt="" class="mr-1" width="15px"></i>${roleList.name}</a></li>
                                               </c:if>
@@ -287,10 +282,11 @@
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/horizontal-menu.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/dist/js/bootstrap-select.min.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/toastify.js"></script>
-        <script src="${pageContext.servletContext.contextPath}/resources/assets/dist/js/i18n/defaults-${sessionDataValue.language}.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpicker.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/flatpicker/flatpickerI18/${sessionDataValue.language}.js"></script>
+        <script src="${pageContext.servletContext.contextPath}/resources/assets/dist/js/i18n/defaults-${sessionDataValue.language}.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/assets/js/analytics.js"></script>
+        <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/sweetalert2.all.min.js"></script>
         <script>
             (function () {
                 if ($('#layout-sidenav').hasClass('sidenav-horizontal') || window.layoutHelpers.isSmallScreen()) {
@@ -476,7 +472,6 @@
                 });
             }
 
-
             function updateTime() {
                 var dateInfo = new Date();
 
@@ -550,7 +545,6 @@
                 document.getElementById("bodybody").style.background = "#ecf0f5";
             }
 
-
             // const steps = [
             //     {
             //         content: "This is a short guide to get you set up and show you where things are",
@@ -579,7 +573,6 @@
                 s = ((s == null || s == "null" || s == "") ? "" : s);
                 return s;
             }
-
         </script>
     </body>
 </html>

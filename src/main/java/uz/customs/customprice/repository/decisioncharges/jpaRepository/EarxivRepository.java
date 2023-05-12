@@ -1,4 +1,4 @@
-package uz.customs.customprice.repository.decisioncharges;
+package uz.customs.customprice.repository.decisioncharges.jpaRepository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

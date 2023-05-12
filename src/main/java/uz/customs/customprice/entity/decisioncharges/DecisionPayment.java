@@ -30,7 +30,6 @@ public class DecisionPayment extends AbstractAuditingEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CMDT_ID", insertable = false, updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private CommodityDecision commodity;
 
     @Column(name = "CMDT_ID", columnDefinition = "VARCHAR(50)")

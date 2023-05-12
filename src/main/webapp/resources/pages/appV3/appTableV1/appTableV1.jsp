@@ -6,7 +6,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="/locale.jsp" %>
 <head>
-    <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/dataTables.bootstrap4.min.css">
     <link rel="stylesheet"
           href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/fixedColumns.bootstrap4.min.css">
     <link rel="stylesheet"
@@ -17,7 +18,8 @@
           href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/buttons.dataTables.min.css">
     <link rel="stylesheet"
           href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/buttons.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/backdrop.css" />
+    <link rel="stylesheet"
+          href="${pageContext.servletContext.contextPath}/resources/assets/css/plugins/editor.dataTables.min.css" />
     <style>
         textarea {
             -webkit-box-sizing: border-box;
@@ -31,7 +33,6 @@
         textarea .g31Name {
              min-width: 500px!important
         }
-
     </style>
 </head>
 <body>
@@ -242,11 +243,13 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.dataTables.min.js"></script>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/dataTables.editor.min.js"></script>
     <script type="text/javascript"
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/jquery.spring-friendly.js"></script>
     <script type="text/javascript"
@@ -279,8 +282,6 @@
             src="${pageContext.servletContext.contextPath}/resources/assets/js/plugins/lottie.js"></script>
     <script type="text/javascript"
             id="plugin_column_i18" src="${pageContext.servletContext.contextPath}/resources/pages/appV3/js/plugin_column_i18_${sessionLanguage}.js"></script>
-    <script src="https://unpkg.com/popper.js@1"></script>
-    <script src="https://unpkg.com/tippy.js@5"></script>
     <script>
         $('.selectpicker').selectpicker();
         var sessionData = ${sessionGetterDataValue};

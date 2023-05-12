@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import uz.customs.customprice.entity.decisioncharges.CommodityDecision;
+import uz.customs.customprice.entity.decisioncharges.StatusH;
 import uz.customs.customprice.entity.decisioncharges.TransportType;
-import uz.customs.customprice.service.decisioncharges.dataServices.ApplicationDecisionCostDataService;
+import uz.customs.customprice.service.decisioncharges.dataServices.CommodityDecisionCostDataService;
+import uz.customs.customprice.service.decisioncharges.dataServices.DecisionChargesStatusHistoryDataService;
 import uz.customs.customprice.service.decisioncharges.dataServices.TransportTypeDataService;
 import uz.customs.customprice.service.decisioncharges.jpaServices.ApplicationDecisionCostService;
-import uz.customs.customprice.service.decisioncharges.dataServices.CommodityDecisionCostDataService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -33,6 +34,7 @@ public class DecisionChargesDetailController {
     private final ApplicationDecisionCostService applicationDecisionCostService;
     private final CommodityDecisionCostDataService commodityDecisionCostDataService;
     private final TransportTypeDataService transportTypeDataService;
+    private final DecisionChargesStatusHistoryDataService decisionChargesStatusHistoryDataService;
 
     @GetMapping(value = "/data/decision_charges/v1")
     public ModelAndView getDataV1(HttpServletRequest httpServletRequest, @RequestParam String id) throws JsonProcessingException {
@@ -52,6 +54,11 @@ public class DecisionChargesDetailController {
     @GetMapping(value = "/data/decision_charges/v4")
     public ResponseEntity<Object> getDataV3(@RequestParam String appId) {
         return new ResponseEntity<>(applicationDecisionCostService.getValues3(appId), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/data/decision_charges/v5")
+    public DataTablesOutput<StatusH> getDataV5(@Valid DataTablesInput input, @RequestParam Map<String, String> queryParameters, @RequestParam String appId, HttpServletRequest httpServletRequest) throws UnexpectedRollbackException {
+        return decisionChargesStatusHistoryDataService.dataTable(input, appId, httpServletRequest, queryParameters);
     }
 
 }
